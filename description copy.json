@@ -1781,7 +1781,7 @@
     },
     {
       "name": "travix/postsale/postsaleapi/v1/post_sale_service.proto",
-      "description": "This is the description of the postsaleapi package.\nThe description has another line.",
+      "description": "",
       "package": "travix.postsale.postsaleapi.v1",
       "hasEnums": true,
       "hasExtensions": false,

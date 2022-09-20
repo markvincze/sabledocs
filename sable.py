@@ -1,34 +1,14 @@
 import json
+from proto_json_parser import parse_proto_json
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-class MessageField:
-    def __init__(self):
-        self.name = ''
-        self.label = ''
-        self.description = ''
-        self.type = ''
-        self.full_type = ''
-        self.default_value = ''
+packages = parse_proto_json('description.json')
 
-class Message:
-    def __init__(self):
-        self.a = ''
+jinja_env = Environment(
+    loader=FileSystemLoader(searchpath="./"),
+    autoescape=select_autoescape()
+)
 
-class Package:
-    def __init__(self):
-        self.name = ''
-        self.description = ''
+template = jinja_env.get_template('templates/docs.html.jinja')
 
-
-# proto_data = ''
-
-with open('description.json') as proto_json_file:
-    proto_data = json.load(proto_json_file)
-
-for file in proto_data['files']:
-    print(file['package'])
-
-p = Package()
-p.name = 'foo'
-p.description = 'bar'
-print(p.description)
-print(p.name)
+print(template.render(packages=packages))
