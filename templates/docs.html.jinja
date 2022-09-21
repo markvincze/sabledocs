@@ -10,12 +10,38 @@
   <section class="section">
     <div class="container">
       {% for package in packages %}
-        <h1 class="title">
+        <h3 class="title is-3">
           Package <code>{{ package.name }}</code>
-        </h1>
+        </h3>
         <div>
             {{ package.description }}
         </div>
+        {% for enum in package.enums %}
+          <h4 class="title is-4">
+            Enum <code>{{ enum.name }}</code>
+            <span class="subtitle is-6">(<code>{{ enum.full_name }}</code>)</span>
+          </h4>
+          <p>{{ description }}</p>
+          <h5 class="title is-5">Values</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for enum_value in enum.values %}
+              <tr>
+                <td>{{ enum_value.name }}</td>
+                <td>{{ enum_value.number }}</td>
+                <td>{{ enum_value.description }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endfor %}
       {% endfor %}
     </div>
   </section>
