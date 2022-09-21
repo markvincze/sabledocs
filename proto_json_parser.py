@@ -7,6 +7,7 @@ def parse_enum(json_enum):
         ev.name = json_enum_value['name']
         ev.number = json_enum_value['number']
         ev.description = json_enum_value['description']
+        return ev
 
     e = Enum()
     e.name = json_enum['name']

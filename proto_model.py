@@ -1,3 +1,5 @@
+from pprint import pformat
+
 class MessageField:
     def __init__(self):
         self.name = ''
@@ -26,6 +28,8 @@ class Enum:
         self.full_name = ''
         self.description = ''
         self.values = []
+    def __repr__(self):
+        return pformat(vars(self), indent=4, width=1)
 
 class ServiceMethod:
     def __init__(self):
@@ -50,3 +54,5 @@ class Package:
         self.messages = []
         self.enums = []
         self.services = []
+    def __repr__(self):
+        return pformat(vars(self), indent=4, width=1)
