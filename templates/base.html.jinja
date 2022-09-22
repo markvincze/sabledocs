@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gRPC documentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+
+    <div>
+      <section class="main-content columns is-fullheight">
+
+        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
+        <aside class="section">
+          <ul class="menu-list">
+            <li><a href="#">Home</a><li>
+          </ul>
+          <p class="menu-label">
+            Packages
+          </p>
+          <ul class="menu-list">
+            {% for p in packages %}
+            <li>
+              {% if p.name == package.name %}
+              <a class="is-active" href="{{ p.name }}.html">{{ p.name }}</a>
+              <ul class="is-size-7">
+                {% for service in p.services %}
+                <li><a href="{{ p.name }}.html#service-{{ service.full_name }}">Service {{ service.name }}</a></li>
+                {% endfor %}
+                {% for message in p.messages %}
+                <li><a href="{{ p.name }}.html#message-{{ message.full_name }}">Message {{ message.name }}</a></li>
+                {% endfor %}
+                {% for enum in p.enums %}
+                <li><a href="{{ p.name }}.html#enum-{{ enum.full_name }}">Enum {{ enum.name }}</a></li>
+                {% endfor %}
+              </ul>
+              {% else %}
+              <a href="{{ p.name }}.html">{{ p.name }}</a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </aside>
+
+        <div class="container column is-10 section">
+          {% block content %}{% endblock %}
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Built with <strong>Sable</strong>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends "templates/base.html.jinja" %}
+{% block content %}
+  <h3 class="title is-3">
+    Package <code>{{ package.name }}</code>
+  </h3>
+
+  <div class="block">
+    {% for service in package.services %}
+    <p>
+      <a href="#service-{{ service.full_name }}">
+        <span class="tag" style="min-width: 6em">Service</span>
+        <code>{{ service.name }}</code> 
+      </a>
+    </p>
+    {% endfor %}
+
+    {% for message in package.messages %}
+    <p>
+      <a href="#message-{{ message.full_name }}">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>{{ message.name }}</code> 
+      </a>
+    </p>
+    {% endfor %}
+
+    {% for enum in package.enums %}
+      <p>
+        <a href="#enum-{{ enum.full_name }}">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>{{ enum.name }}</code> 
+        </a>
+      </p>
+    {% endfor %}
+  </div>
+
+  <div class="block">
+      {{ package.description }}
+  </div>
+
+  <h4 class="title is-4">
+    Messages
+  </h4>
+
+  {% for message in package.messages %}
+  <div class="box">
+    {% include 'templates/message.html.jinja' %} 
+  </div>
+  {% endfor %}
+
+  <h4 class="title is-4">
+    Enums
+  </h4>
+
+  {% for enum in package.enums %}
+  <div class="box">
+    {% include 'templates/enum.html.jinja' %} 
+  </div>
+  {% endfor %}
+{% endblock %}

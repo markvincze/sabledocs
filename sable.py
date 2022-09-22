@@ -13,6 +13,11 @@ jinja_env = Environment(
     autoescape=select_autoescape()
 )
 
-template = jinja_env.get_template('templates/docs.html.jinja')
+#template = jinja_env.get_template('templates/docs.html.jinja')
+template = jinja_env.get_template('templates/package.html.jinja')
 
-print(template.render(packages=packages))
+for package in packages:
+    with open(f'{package.name}.html', 'w') as fh:
+        fh.write(template.render(package=package, packages=packages))
+
+# print(template.render(package=packages[1], packages=packages))

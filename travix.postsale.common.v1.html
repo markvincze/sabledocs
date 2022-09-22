@@ -1,0 +1,1241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gRPC documentation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+
+    <div>
+      <section class="main-content columns is-fullheight">
+
+        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
+        <aside class="section">
+          <ul class="menu-list">
+            <li><a href="#">Home</a><li>
+          </ul>
+          <p class="menu-label">
+            Packages
+          </p>
+          <ul class="menu-list">
+            
+            <li>
+              
+              <a class="is-active" href="travix.postsale.common.v1.html">travix.postsale.common.v1</a>
+              <ul class="is-size-7">
+                
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">Message Amount</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.BaggageProduct">Message BaggageProduct</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Customer">Message Customer</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.CustomerAddress">Message CustomerAddress</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.EtdPackage">Message EtdPackage</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.FlightProduct">Message FlightProduct</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Leg">Message Leg</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.OrderSummary">Message OrderSummary</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Passenger">Message Passenger</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.PricingInfo">Message PricingInfo</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.SeatProduct">Message SeatProduct</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Segment">Message Segment</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.ProductEligibility">Message ProductEligibility</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.TravixDecimal">Message TravixDecimal</a></li>
+                
+                
+                <li><a href="travix.postsale.common.v1.html#enum-travix.postsale.common.v1.EtdPackageType">Enum EtdPackageType</a></li>
+                
+                <li><a href="travix.postsale.common.v1.html#enum-travix.postsale.common.v1.EligibilityStatus">Enum EligibilityStatus</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.postsaleapi.v1.html">travix.postsale.postsaleapi.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.producthub.baggagehub.v1.html">travix.postsale.producthub.baggagehub.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.producthub.common.v1.html">travix.postsale.producthub.common.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.shoppingcart.v1.html">travix.postsale.shoppingcart.v1</a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+
+        <div class="container column is-10 section">
+          
+  <h3 class="title is-3">
+    Package <code>travix.postsale.common.v1</code>
+  </h3>
+
+  <div class="block">
+    
+
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.Amount">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Amount</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.BaggageProduct">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>BaggageProduct</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.Customer">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Customer</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.CustomerAddress">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>CustomerAddress</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.EtdPackage">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>EtdPackage</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.FlightProduct">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>FlightProduct</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.Leg">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Leg</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.OrderSummary">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>OrderSummary</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.Passenger">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Passenger</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.PricingInfo">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>PricingInfo</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.SeatProduct">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>SeatProduct</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.Segment">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Segment</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.ProductEligibility">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>ProductEligibility</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.common.v1.TravixDecimal">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>TravixDecimal</code> 
+      </a>
+    </p>
+    
+
+    
+      <p>
+        <a href="#enum-travix.postsale.common.v1.EtdPackageType">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>EtdPackageType</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-travix.postsale.common.v1.EligibilityStatus">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>EligibilityStatus</code> 
+        </a>
+      </p>
+    
+  </div>
+
+  <div class="block">
+      
+  </div>
+
+  <h4 class="title is-4">
+    Messages
+  </h4>
+
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.Amount">
+  <a href="#message-travix.postsale.common.v1.Amount">message <code title="travix.postsale.common.v1.Amount">Amount</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>currency_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>value</code></td>
+      <td><code title="travix.postsale.common.v1.TravixDecimal">TravixDecimal</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.BaggageProduct">
+  <a href="#message-travix.postsale.common.v1.BaggageProduct">message <code title="travix.postsale.common.v1.BaggageProduct">BaggageProduct</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>product_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passenger_index</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pnr_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_reference</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>product_sale_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>quantity</code></td>
+      <td><code title="int32">int32</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>weight</code></td>
+      <td><code title="int32">int32</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pricing_info</code></td>
+      <td><code title="travix.postsale.common.v1.PricingInfo">PricingInfo</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.Customer">
+  <a href="#message-travix.postsale.common.v1.Customer">message <code title="travix.postsale.common.v1.Customer">Customer</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>email_address</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>gender</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>first_name</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>middle_name</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>last_name</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>date_of_birth</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>contact_phone</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>mobile_phone</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>address</code></td>
+      <td><code title="travix.postsale.common.v1.CustomerAddress">CustomerAddress</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.CustomerAddress">
+  <a href="#message-travix.postsale.common.v1.CustomerAddress">message <code title="travix.postsale.common.v1.CustomerAddress">CustomerAddress</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>street</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>house_number</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>house_number_addition</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>zip_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>city</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>country_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.EtdPackage">
+  <a href="#message-travix.postsale.common.v1.EtdPackage">message <code title="travix.postsale.common.v1.EtdPackage">EtdPackage</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>etd_package_type</code></td>
+      <td><code title="travix.postsale.common.v1.EtdPackageType">EtdPackageType</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>creation_date</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>products</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.FlightProduct">
+  <a href="#message-travix.postsale.common.v1.FlightProduct">message <code title="travix.postsale.common.v1.FlightProduct">FlightProduct</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>product_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>status</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>product_type</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_reference</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>is_cancelled</code></td>
+      <td><code title="bool">bool</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pnr_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>booking_identity_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>fare_bundle_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>record_locator</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>provider_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>product_sale_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>legs</code></td>
+      <td><code title="travix.postsale.common.v1.Leg">Leg</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pricing_info</code></td>
+      <td><code title="travix.postsale.common.v1.PricingInfo">PricingInfo</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.Leg">
+  <a href="#message-travix.postsale.common.v1.Leg">message <code title="travix.postsale.common.v1.Leg">Leg</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>number</code></td>
+      <td><code title="int32">int32</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>departure_airport_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>departure_time</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>arrival_airport_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>arrival_time</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>marketing_carrier</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>segments</code></td>
+      <td><code title="travix.postsale.common.v1.Segment">Segment</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.OrderSummary">
+  <a href="#message-travix.postsale.common.v1.OrderSummary">message <code title="travix.postsale.common.v1.OrderSummary">OrderSummary</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>order_number</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>creation_date</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>affiliate_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>sales_currency_code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>etd_packages</code></td>
+      <td><code title="travix.postsale.common.v1.EtdPackage">EtdPackage</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>flight_products</code></td>
+      <td><code title="travix.postsale.common.v1.FlightProduct">FlightProduct</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>status</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>customer</code></td>
+      <td><code title="travix.postsale.common.v1.Customer">Customer</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passengers</code></td>
+      <td><code title="travix.postsale.common.v1.Passenger">Passenger</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>baggage_products</code></td>
+      <td><code title="travix.postsale.common.v1.BaggageProduct">BaggageProduct</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>seat_products</code></td>
+      <td><code title="travix.postsale.common.v1.SeatProduct">SeatProduct</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.Passenger">
+  <a href="#message-travix.postsale.common.v1.Passenger">message <code title="travix.postsale.common.v1.Passenger">Passenger</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passenger_index</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>first_name</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>last_name</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>date_of_birth</code></td>
+      <td><code title="google.protobuf.Timestamp">Timestamp</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passenger_type</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>title</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.PricingInfo">
+  <a href="#message-travix.postsale.common.v1.PricingInfo">message <code title="travix.postsale.common.v1.PricingInfo">PricingInfo</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>sales_price</code></td>
+      <td><code title="travix.postsale.common.v1.Amount">Amount</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>purchase_price</code></td>
+      <td><code title="travix.postsale.common.v1.Amount">Amount</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.SeatProduct">
+  <a href="#message-travix.postsale.common.v1.SeatProduct">message <code title="travix.postsale.common.v1.SeatProduct">SeatProduct</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>product_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passenger_index</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pnr_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_reference</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>supplier_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>product_sale_state</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>segment_identifier</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pricing_info</code></td>
+      <td><code title="travix.postsale.common.v1.PricingInfo">PricingInfo</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.Segment">
+  <a href="#message-travix.postsale.common.v1.Segment">message <code title="travix.postsale.common.v1.Segment">Segment</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>product_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>marketing_carrier</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>operating_carrier</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.ProductEligibility">
+  <a href="#message-travix.postsale.common.v1.ProductEligibility">message <code title="travix.postsale.common.v1.ProductEligibility">ProductEligibility</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>product_type</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>eligibility_status</code></td>
+      <td><code title="travix.postsale.common.v1.EligibilityStatus">EligibilityStatus</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.common.v1.TravixDecimal">
+  <a href="#message-travix.postsale.common.v1.TravixDecimal">message <code title="travix.postsale.common.v1.TravixDecimal">TravixDecimal</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>number</code></td>
+      <td><code title="string">string</code></td>
+      <td>This contains the string representation of the decimal number, which on the receiving end can be parsed into a proper decimal type.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+
+  <h4 class="title is-4">
+    Enums
+  </h4>
+
+  
+  <div class="box">
+    <h5 class="title is-5" id="enum-travix.postsale.common.v1.EtdPackageType">
+  <a href="#enum-travix.postsale.common.v1.EtdPackageType">enum <code title="travix.postsale.common.v1.EtdPackageType">EtdPackageType</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>ETD_PACKAGE_TYPE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ETD_PACKAGE_TYPE_UNKNOWN</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ETD_PACKAGE_TYPE_FULL_PACKAGE</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="enum-travix.postsale.common.v1.EligibilityStatus">
+  <a href="#enum-travix.postsale.common.v1.EligibilityStatus">enum <code title="travix.postsale.common.v1.EligibilityStatus">EligibilityStatus</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>ELIGIBILITY_STATUS_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ELIGIBILITY_STATUS_YES</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ELIGIBILITY_STATUS_NO</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ELIGIBILITY_STATUS_DISABLED</code></td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+
+        </div>
+      </section>
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Built with <strong>Sable</strong>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
