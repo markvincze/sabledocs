@@ -14,27 +14,36 @@
           Package <code>{{ package.name }}</code>
         </h3>
 
-        <section class="section">
-        {% for message in package.messages %}
-        <p>
-          <a href="#message-{{ message.full_name }}">
-            <span class="tag">Message</span>
-            <code>{{ message.name }}</code> 
-          </a>
-        </p>
-        {% endfor %}
-
-        {% for enum in package.enums %}
+        <div class="block">
+          {% for service in package.services %}
           <p>
-            <a href="#enum-{{ enum.full_name }}">
-              <span class="tag">Enum</span>
-              <code>{{ enum.name }}</code> 
+            <a href="#service-{{ service.full_name }}">
+              <span class="tag" style="min-width: 7em">Service</span>
+              <code>{{ service.name }}</code> 
             </a>
           </p>
-        {% endfor %}
-        </section>
+          {% endfor %}
 
-        <div>
+          {% for message in package.messages %}
+          <p>
+            <a href="#message-{{ message.full_name }}">
+              <span class="tag" style="min-width: 7em">Message</span>
+              <code>{{ message.name }}</code> 
+            </a>
+          </p>
+          {% endfor %}
+
+          {% for enum in package.enums %}
+            <p>
+              <a href="#enum-{{ enum.full_name }}">
+                <span class="tag" style="min-width: 7em">Enum</span>
+                <code>{{ enum.name }}</code> 
+              </a>
+            </p>
+          {% endfor %}
+        </div>
+
+        <div class="block">
             {{ package.description }}
         </div>
 
@@ -43,7 +52,9 @@
         </h4>
 
         {% for message in package.messages %}
+        <div class="box">
           {% include 'templates/message.html.jinja' %} 
+        </div>
         {% endfor %}
 
         <h4 class="title is-4">
@@ -51,7 +62,9 @@
         </h4>
 
         {% for enum in package.enums %}
+        <div class="box">
           {% include 'templates/enum.html.jinja' %} 
+        </div>
         {% endfor %}
 
       {% endfor %}

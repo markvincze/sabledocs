@@ -7,6 +7,7 @@ def parse_enum(json_enum):
         ev.name = json_enum_value['name']
         ev.number = json_enum_value['number']
         ev.description = json_enum_value['description']
+
         return ev
 
     e = Enum()
@@ -25,6 +26,7 @@ def parse_field(json_field):
     mf.type = json_field['type']
     mf.full_type = json_field['fullType']
     mf.default_value = json_field['defaultValue']
+
     return mf
 
 def parse_message(json_message):
@@ -45,12 +47,16 @@ def parse_service_method(json_service_method):
     sm.response_type = json_service_method['requestType']
     sm.response_full_type = json_service_method['requestType']
 
+    return sm
+
 def parse_service(json_service):
     s = Service()
     s.name = json_service['name']
     s.full_name = json_service['fullName']
     s.description = json_service['description']
     s.methods = map(parse_service_method, json_service['methods'])
+
+    return s
 
 def parse_proto_json(file_name):
     with open(file_name) as proto_json_file:
@@ -67,8 +73,6 @@ def parse_proto_json(file_name):
             package.services.extend(map(parse_service, file['services']))
 
             packages[package_name] = package
-
-        # values = packages.values()
 
         return sorted(
             packages.values(),
