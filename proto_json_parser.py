@@ -68,4 +68,9 @@ def parse_proto_json(file_name):
 
             packages[package_name] = package
 
-        return packages.values()
+        # values = packages.values()
+
+        return sorted(
+            packages.values(),
+            key=lambda p: (p.name))
+

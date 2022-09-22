@@ -6,7 +6,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 packages = parse_proto_json('description.json')
 
 #pp = pprint.PrettyPrinter(indent=4)
-#pp.pprint(packages)
+# pp.pprint(packages)
 
 jinja_env = Environment(
     loader=FileSystemLoader(searchpath="./"),

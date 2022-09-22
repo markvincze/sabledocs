@@ -13,35 +13,47 @@
         <h3 class="title is-3">
           Package <code>{{ package.name }}</code>
         </h3>
+
+        <section class="section">
+        {% for message in package.messages %}
+        <p>
+          <a href="#message-{{ message.full_name }}">
+            <span class="tag">Message</span>
+            <code>{{ message.name }}</code> 
+          </a>
+        </p>
+        {% endfor %}
+
+        {% for enum in package.enums %}
+          <p>
+            <a href="#enum-{{ enum.full_name }}">
+              <span class="tag">Enum</span>
+              <code>{{ enum.name }}</code> 
+            </a>
+          </p>
+        {% endfor %}
+        </section>
+
         <div>
             {{ package.description }}
         </div>
-        {% for enum in package.enums %}
-          <h4 class="title is-4">
-            Enum <code>{{ enum.name }}</code>
-            <span class="subtitle is-6">(<code>{{ enum.full_name }}</code>)</span>
-          </h4>
-          <p>{{ description }}</p>
-          <h5 class="title is-5">Values</h5>
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Number</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              {% for enum_value in enum.values %}
-              <tr>
-                <td>{{ enum_value.name }}</td>
-                <td>{{ enum_value.number }}</td>
-                <td>{{ enum_value.description }}</td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
+
+        <h4 class="title is-4">
+          Messages
+        </h4>
+
+        {% for message in package.messages %}
+          {% include 'templates/message.html.jinja' %} 
         {% endfor %}
+
+        <h4 class="title is-4">
+          Enums
+        </h4>
+
+        {% for enum in package.enums %}
+          {% include 'templates/enum.html.jinja' %} 
+        {% endfor %}
+
       {% endfor %}
     </div>
   </section>
