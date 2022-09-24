@@ -1,0 +1,26 @@
+{
+  "name": "sable",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sass/mystyles.scss",
+  "scripts": {
+    // --omit-source-map-url 
+    "css-build": "node-sass sass/mystyles.scss mystyles.css",
+    "css-watch": "npm run css-build -- --watch",
+    "start": "npm run css-watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/markvincze/sable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/markvincze/sable/issues"
+  },
+  "homepage": "https://github.com/markvincze/sable#readme",
+  "devDependencies": {
+    "bulma": "^0.9.4",
+    "node-sass": "^7.0.3"
+  }
+}
