@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gRPC documentation</title>
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">-->
+    <link rel="stylesheet" href="mystyles.css">
+  </head>
+  <body>
+    <div class="columns">
+      <!--<section class="main-content columns is-fullheight">-->
+
+        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
+        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
+          <ul class="menu-list">
+            <li><a href="#">Home</a><li>
+          </ul>
+          <p class="menu-label">
+            Packages
+          </p>
+          <ul class="menu-list">
+            
+            <li>
+              
+              <a href="travix.postsale.common.v1.html">travix.postsale.common.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.postsaleapi.v1.html">travix.postsale.postsaleapi.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a class="is-active" href="travix.postsale.producthub.baggagehub.v1.html">travix.postsale.producthub.baggagehub.v1</a>
+              <ul class="is-size-7">
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#service-travix.postsale.producthub.baggagehub.v1.BaggageHubService">Service BaggageHubService</a></li>
+                
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsRequest">Message GetAvailableBaggageProductsRequest</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsResponse">Message GetAvailableBaggageProductsResponse</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductRequest">Message RemoveBaggageProductRequest</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductResponse">Message RemoveBaggageProductResponse</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest">Message SelectBaggageProductsRequest</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">Message SelectedBaggageProduct</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsResponse">Message SelectBaggageProductsResponse</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.Baggage">Message Baggage</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.BaggageProduct">Message BaggageProduct</a></li>
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#message-travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">Message BaggageProductsPerFlight</a></li>
+                
+                
+                <li><a href="travix.postsale.producthub.baggagehub.v1.html#enum-travix.postsale.producthub.baggagehub.v1.PassengerType">Enum PassengerType</a></li>
+                
+              </ul>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.producthub.common.v1.html">travix.postsale.producthub.common.v1</a>
+              
+            </li>
+            
+            <li>
+              
+              <a href="travix.postsale.shoppingcart.v1.html">travix.postsale.shoppingcart.v1</a>
+              
+            </li>
+            
+          </ul>
+        </aside>
+
+        <div class="container column is-10 section" style="display: inline-block">
+          
+  <h3 class="title is-3">
+    Package <code>travix.postsale.producthub.baggagehub.v1</code>
+  </h3>
+
+  <div class="block">
+    
+    <p>
+      <a href="#service-travix.postsale.producthub.baggagehub.v1.BaggageHubService">
+        <span class="tag" style="min-width: 6em">Service</span>
+        <code>BaggageHubService</code> 
+      </a>
+    </p>
+    
+
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsRequest">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>GetAvailableBaggageProductsRequest</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsResponse">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>GetAvailableBaggageProductsResponse</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductRequest">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>RemoveBaggageProductRequest</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductResponse">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>RemoveBaggageProductResponse</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>SelectBaggageProductsRequest</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>SelectedBaggageProduct</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsResponse">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>SelectBaggageProductsResponse</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.Baggage">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>Baggage</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.BaggageProduct">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>BaggageProduct</code> 
+      </a>
+    </p>
+    
+    <p>
+      <a href="#message-travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">
+        <span class="tag" style="min-width: 6em">Message</span>
+        <code>BaggageProductsPerFlight</code> 
+      </a>
+    </p>
+    
+
+    
+      <p>
+        <a href="#enum-travix.postsale.producthub.baggagehub.v1.PassengerType">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>PassengerType</code> 
+        </a>
+      </p>
+    
+  </div>
+
+  <div class="block">
+      
+  </div>
+
+  <h4 class="title is-4">
+    Services
+  </h4>
+
+  
+  <div class="box">
+    <h5 class="title is-5" id="service-travix.postsale.producthub.baggagehub.v1.BaggageHubService">
+  <a href="#service-travix.postsale.producthub.baggagehub.v1.BaggageHubService">service <code title="travix.postsale.producthub.baggagehub.v1.BaggageHubService">BaggageHubService</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+
+
+<h6 class="title is-6">rpc <code>GetAvailableBaggageProducts (GetAvailableBaggageProductsRequest) -> GetAvailableBaggageProductsRequest</code></h6>
+
+<h6 class="title is-6">rpc <code>SelectBaggageProducts (SelectBaggageProductsRequest) -> SelectBaggageProductsRequest</code></h6>
+
+<h6 class="title is-6">rpc <code>RemoveBaggageProduct (RemoveBaggageProductRequest) -> RemoveBaggageProductRequest</code></h6>
+ 
+  </div>
+  
+
+  <h4 class="title is-4">
+    Messages
+  </h4>
+
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsRequest">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsRequest">message <code title="travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsRequest">GetAvailableBaggageProductsRequest</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>post_sale_shopping_cart_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsResponse">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsResponse">message <code title="travix.postsale.producthub.baggagehub.v1.GetAvailableBaggageProductsResponse">GetAvailableBaggageProductsResponse</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>baggage_products_per_flight</code></td>
+      <td><code title="travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">BaggageProductsPerFlight</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductRequest">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductRequest">message <code title="travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductRequest">RemoveBaggageProductRequest</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>post_sale_shopping_cart_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>product_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductResponse">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductResponse">message <code title="travix.postsale.producthub.baggagehub.v1.RemoveBaggageProductResponse">RemoveBaggageProductResponse</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest">message <code title="travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest">SelectBaggageProductsRequest</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>post_sale_shopping_cart_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>selected_baggage_products</code></td>
+      <td><code title="travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">SelectedBaggageProduct</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">message <code title="travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsRequest.SelectedBaggageProduct">SelectedBaggageProduct</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pnr_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>passenger_index</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsResponse">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsResponse">message <code title="travix.postsale.producthub.baggagehub.v1.SelectBaggageProductsResponse">SelectBaggageProductsResponse</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.Baggage">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.Baggage">message <code title="travix.postsale.producthub.baggagehub.v1.Baggage">Baggage</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>unit</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>value</code></td>
+      <td><code title="int32">int32</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>quantity</code></td>
+      <td><code title="int32">int32</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.BaggageProduct">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.BaggageProduct">message <code title="travix.postsale.producthub.baggagehub.v1.BaggageProduct">BaggageProduct</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>passenger_types</code></td>
+      <td><code title="travix.postsale.producthub.baggagehub.v1.PassengerType">PassengerType</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>total_price</code></td>
+      <td><code title="travix.postsale.common.v1.Amount">Amount</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>code</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>baggage</code></td>
+      <td><code title="travix.postsale.producthub.baggagehub.v1.Baggage">Baggage</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+  <div class="box">
+    <h5 class="title is-5" id="message-travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">
+  <a href="#message-travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">message <code title="travix.postsale.producthub.baggagehub.v1.BaggageProductsPerFlight">BaggageProductsPerFlight</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>pnr_id</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>pnr_record_locator</code></td>
+      <td><code title="string">string</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>baggage_products</code></td>
+      <td><code title="travix.postsale.producthub.baggagehub.v1.BaggageProduct">BaggageProduct</code></td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+
+  <h4 class="title is-4">
+    Enums
+  </h4>
+
+  
+  <div class="box">
+    <h5 class="title is-5" id="enum-travix.postsale.producthub.baggagehub.v1.PassengerType">
+  <a href="#enum-travix.postsale.producthub.baggagehub.v1.PassengerType">enum <code title="travix.postsale.producthub.baggagehub.v1.PassengerType">PassengerType</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>PASSENGER_TYPE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>PASSENGER_TYPE_ADULT</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>PASSENGER_TYPE_CHILD</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+  </div>
+  
+
+        </div>
+      <!--</section>-->
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          Built with <strong>Sable</strong>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
