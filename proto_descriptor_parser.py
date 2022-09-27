@@ -3,6 +3,8 @@ from google.protobuf.descriptor_pb2 import EnumDescriptorProto
 from google.protobuf.descriptor_pb2 import EnumValueDescriptorProto
 from google.protobuf.descriptor_pb2 import DescriptorProto
 from google.protobuf.descriptor_pb2 import FieldDescriptorProto
+from google.protobuf.descriptor_pb2 import ServiceDescriptorProto
+from google.protobuf.descriptor_pb2 import MethodDescriptorProto
 from proto_model import *
 import pprint
 
@@ -40,8 +42,8 @@ class ParseContext:
     def GetComments(self, path = ""):
         return self.comments.get(self.path if path == "" else path, "")
 
-def parse_enum(enum : EnumDescriptorProto, ctx : ParseContext):
-    def parse_enum_value(enum_value : EnumValueDescriptorProto, ctx : ParseContext):
+def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext):
+    def parse_enum_value(enum_value: EnumValueDescriptorProto, ctx: ParseContext):
         ev = EnumValue()
         ev.name = enum_value.name
         ev.number = enum_value.number
@@ -51,21 +53,21 @@ def parse_enum(enum : EnumDescriptorProto, ctx : ParseContext):
 
     e = Enum()
     e.name = enum.name
-    e.full_name = f"{ctx.package}{enum.name}"
+    e.full_name = f"{ctx.package}.{enum.name}"
     e.description = ctx.GetComments()
     for i, ev in enumerate(enum.value):
         e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i)))
 
     return e
 
-def parse_enums(enums : list[EnumDescriptorProto], ctx : ParseContext):
+def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext):
     result = []
     for (i, enum) in enumerate(enums):
         result.append(parse_enum(enum, ctx.ExtendPath(i)))
 
     return result
 
-def parse_field(field : FieldDescriptorProto, ctx : ParseContext):
+def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
     mf.label = field.label
@@ -75,47 +77,48 @@ def parse_field(field : FieldDescriptorProto, ctx : ParseContext):
 
     return mf
 
-def parse_message(message: DescriptorProto, ctx : ParseContext):
+def parse_message(message: DescriptorProto, ctx: ParseContext):
     m = Message()
     m.name = message.name
-    m.full_name = f"{ctx.package}{message.name}"
+    m.full_name = f"{ctx.package}.{message.name}"
     m.description = ctx.GetComments()
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
 
     return m
 
-def parse_messages(messages : list[DescriptorProto], ctx : ParseContext):
+def parse_messages(messages: list[DescriptorProto], ctx: ParseContext):
     result = []
     for (i, message) in enumerate(messages):
         result.append(parse_message(message, ctx.ExtendPath(i)))
 
     return result
 
-def parse_service_method(json_service_method):
+def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContext):
     sm = ServiceMethod()
-    sm.name = json_service_method['name']
-    sm.description = json_service_method['description']
-    sm.request_type = json_service_method['requestType']
-    sm.request_full_type = json_service_method['requestType']
-    sm.response_type = json_service_method['requestType']
-    sm.response_full_type = json_service_method['requestType']
+    sm.name = service_method.name
+    sm.description = ctx.GetComments()
+    sm.request_type = service_method.input_type
+    sm.request_full_type = f"{ctx.package}.{service_method.input_type}"
+    sm.response_type = service_method.output_type
+    sm.response_full_type = f"{ctx.package}.{service_method.output_type}"
 
     return sm
 
-def parse_service(json_service):
+def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s = Service()
-    s.name = json_service['name']
-    s.full_name = json_service['fullName']
-    s.description = json_service['description']
-    s.methods = map(parse_service_method, json_service['methods'])
+    s.name = service.name
+    s.full_name = f"{ctx.package}.{service.name}"
+    s.description = ctx.GetComments()
+    for i, service_method in enumerate(service.method):
+        s.methods.append(parse_service_method(service_method, ctx.ExtendPath(COMMENT_SERVICE_METHOD_INDEX, i)))
 
     return s
 
-def parse_services(services : list[DescriptorProto], ctx : ParseContext):
+def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
     result = []
-    for (i, message) in enumerate(services):
-        result.append(parse_message(message, ctx.ExtendPath(i)))
+    for (i, service) in enumerate(services):
+        result.append(parse_service(service, ctx.ExtendPath(i)))
 
     return result
 
@@ -124,8 +127,6 @@ def parse_proto_descriptor(file_name):
     with open(file_name, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:
-            # if file.name != 'travix/postsale/common/v1/product_eligibility.proto':
-                # continue
 
             comments = build_comment_map(file.source_code_info)
             ctx = ParseContext.New(file.package, comments)
@@ -137,11 +138,10 @@ def parse_proto_descriptor(file_name):
 
             package.enums.extend(parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX)))
             package.messages.extend(parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX)))
-            # package.services.extend(map(parse_service, file['services']))
+            package.services.extend(parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX)))
 
             packages[file.package] = package
             print(file.name)
-
 
         return sorted(
             packages.values(),
@@ -154,7 +154,7 @@ def build_comment_map(source_code_info):
     def build_key(path):
         return '.'.join(map(lambda i: str(i), path))
 
-    def scrub(comment : str):
+    def scrub(comment: str):
         return comment.strip().replace(" \n", "\n")
 
     def build_comment(location):
@@ -174,7 +174,7 @@ def build_comment_map(source_code_info):
 
     return comments
 
-def to_type_name(type : FieldDescriptorProto.Type):
+def to_type_name(type: FieldDescriptorProto.Type):
     match type:
         case FieldDescriptorProto.Type.TYPE_BOOL: return "bool"
         case FieldDescriptorProto.Type.TYPE_DOUBLE: return "double"

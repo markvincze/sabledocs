@@ -1,6 +1,5 @@
 import json
 import pprint
-from proto_json_parser import parse_proto_json
 from proto_descriptor_parser import parse_proto_descriptor
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
