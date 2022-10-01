@@ -3,6 +3,7 @@ from pprint import pformat
 class MessageField:
     def __init__(self):
         self.name = ''
+        self.number = 0
         self.label = ''
         self.description = ''
         self.type = ''
@@ -19,7 +20,7 @@ class Message:
 class EnumValue:
     def __init__(self):
         self.name = ''
-        self.number = ''
+        self.number = 0
         self.description = ''
 
 class Enum:

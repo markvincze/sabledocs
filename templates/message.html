@@ -1,5 +1,6 @@
 <h5 class="title is-5 type-heading" id="message-{{ message.full_name }}">
-  <a href="#message-{{ message.full_name }}">message <code title="{{ message.full_name }}">{{ message.name }}</code></a>
+  <!--<a href="#message-{{ message.full_name }}">message <code title="{{ message.full_name }}">{{ message.name }}</code></a>-->
+  <a href="#message-{{ message.full_name }}">message <span title="{{ message.full_name }}">{{ message.name }}</span></a>
 </h5>
 <div class="block">
   <p>{{ message.description }}</p>
@@ -7,6 +8,7 @@
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
+      <th></th>
       <th>Field</th>
       <th>Type</th>
       <th>Description</th>
@@ -16,8 +18,20 @@
   <tbody>
     {% for field in message.fields %}
     <tr>
-      <td><code>{{ field.name }}</code></td>
-      <td><code title="{{ field.full_type }}">{{ field.type }}</code></td>
+      <td>{{ field.nunmber }}</td>
+      <td>
+        <!--<code>-->
+          {{ field.name }}
+        <!--</code>-->
+      </td>
+      <td>
+        <code title="{{ field.full_type }}">
+          {% if field.label != "" and field.label != "optional" %}
+            {{ field.label }}
+          {% endif %}
+          {{ field.type }}
+        </code>
+      </td>
       <td>{{ field.description }}</td>
       <td>{{ field.default_value }}</td>
     </tr>

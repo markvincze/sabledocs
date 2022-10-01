@@ -70,7 +70,8 @@ def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext):
 def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
-    mf.label = field.label
+    mf.number = field.number
+    mf.label = to_label_name(field.label)
     mf.description = ctx.GetComments()
     mf.type = field.type_name.strip(".") if field.type_name != "" else to_type_name(field.type)
     mf.default_value = field.default_value
@@ -196,4 +197,11 @@ def to_type_name(type: FieldDescriptorProto.Type):
         case FieldDescriptorProto.Type.TYPE_SINT32: return "sint32"
         case FieldDescriptorProto.Type.TYPE_SINT64: return "sint64"
         case _: "unknown"
+
+def to_label_name(type: FieldDescriptorProto.Label):
+    match type:
+        case FieldDescriptorProto.Label.LABEL_OPTIONAL: return "optional"
+        case FieldDescriptorProto.Label.LABEL_REQUIRED: return "required"
+        case FieldDescriptorProto.Label.LABEL_REPEATED: return "repeated"
+        case _: ""
 
