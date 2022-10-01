@@ -257,48 +257,84 @@
       
   </div>
 
-  <h4 class="title is-4">
-    Services
-  </h4>
-
   
-  <div class="box">
-    <h5 class="title is-5" id="service-travix.postsale.postsaleapi.v1.PostSaleService">
+
+  <div class="block">
+    <h4 class="title is-4">
+      Services
+    </h4>
+
+    
+    <div>
+      <h5 class="title is-5" id="service-travix.postsale.postsaleapi.v1.PostSaleService">
   <a href="#service-travix.postsale.postsaleapi.v1.PostSaleService">service <code title="travix.postsale.postsaleapi.v1.PostSaleService">PostSaleService</code></a>
 </h5>
 <div class="block">
-  <p></p>
+  <p>The service published by the PostSaleApi.
+ This service implements the endpoints necessary to carry out the generic part of the Post-Sale Shopping flow.</p>
 </div>
 
 
-<h6 class="title is-6">rpc <code>GetAllProducts (.travix.postsale.postsaleapi.v1.GetAllProductsRequest) -> .travix.postsale.postsaleapi.v1.GetAllProductsResponse</code></h6>
-
-<h6 class="title is-6">rpc <code>GetOrCreateShoppingCart (.travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartRequest) -> .travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartResponse</code></h6>
-
-<h6 class="title is-6">rpc <code>GetOrderByShoppingCartId (.travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdRequest) -> .travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdResponse</code></h6>
-
-<h6 class="title is-6">rpc <code>InitiateCheckout (.travix.postsale.postsaleapi.v1.InitiateCheckoutRequest) -> .travix.postsale.postsaleapi.v1.InitiateCheckoutResponse</code></h6>
-
-<h6 class="title is-6">rpc <code>GetPostSaleOrderByOrderId (.travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdRequest) -> .travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdResponse</code></h6>
-
-<h6 class="title is-6">rpc <code>GetPaymentStatus (.travix.postsale.postsaleapi.v1.GetPaymentStatusRequest) -> .travix.postsale.postsaleapi.v1.GetPaymentStatusResponse</code></h6>
- 
+<div class="box">
+  <h6 class="title is-6">rpc <code>GetAllProducts (GetAllProductsRequest) -> GetAllProductsResponse</code></h6>
+  
+  <div class="block">
+    <p>Returns all the available products indicating whether they are eligible or not in the current shopping session.</p>
   </div>
   
+</div>
 
-  <h4 class="title is-4">
-    Messages
-  </h4>
+<div class="box">
+  <h6 class="title is-6">rpc <code>GetOrCreateShoppingCart (GetOrCreateShoppingCartRequest) -> GetOrCreateShoppingCartResponse</code></h6>
+  
+  <div class="block">
+    <p>Gets the active Post-Sale Shopping Cart for a certain original order. If there is no active cart for it, it creates a new one.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>GetOrderByShoppingCartId (GetOrderByShoppingCartIdRequest) -> GetOrderByShoppingCartIdResponse</code></h6>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>InitiateCheckout (InitiateCheckoutRequest) -> InitiateCheckoutResponse</code></h6>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>GetPostSaleOrderByOrderId (GetPostSaleOrderByOrderIdRequest) -> GetPostSaleOrderByOrderIdResponse</code></h6>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>GetPaymentStatus (GetPaymentStatusRequest) -> GetPaymentStatusResponse</code></h6>
+  
+</div>
+ 
+    </div>
+    
+  </div>
 
   
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.PostSaleOrder">
+
+  
+
+    <h4 class="title is-4">
+      Messages
+    </h4>
+
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.PostSaleOrder">
   <a href="#message-travix.postsale.postsaleapi.v1.PostSaleOrder">message <code title="travix.postsale.postsaleapi.v1.PostSaleOrder">PostSaleOrder</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -381,16 +417,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.Product">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.Product">
   <a href="#message-travix.postsale.postsaleapi.v1.Product">message <code title="travix.postsale.postsaleapi.v1.Product">Product</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -473,16 +510,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.Price">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.Price">
   <a href="#message-travix.postsale.postsaleapi.v1.Price">message <code title="travix.postsale.postsaleapi.v1.Price">Price</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -516,16 +554,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.SalesPrice">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.SalesPrice">
   <a href="#message-travix.postsale.postsaleapi.v1.SalesPrice">message <code title="travix.postsale.postsaleapi.v1.SalesPrice">SalesPrice</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -573,16 +612,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.PurchasePrice">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.PurchasePrice">
   <a href="#message-travix.postsale.postsaleapi.v1.PurchasePrice">message <code title="travix.postsale.postsaleapi.v1.PurchasePrice">PurchasePrice</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -616,16 +656,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetAllProductsRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetAllProductsRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.GetAllProductsRequest">message <code title="travix.postsale.postsaleapi.v1.GetAllProductsRequest">GetAllProductsRequest</code></a>
 </h5>
 <div class="block">
   <p>The request message for getting all the availalbe products.</p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -639,22 +680,23 @@
     <tr>
       <td><code>order_number</code></td>
       <td><code title="">string</code></td>
-      <td>The order number for the "original order" for which the Post-Sale Shopping session is initiated.</td>
+      <td>The order number for the &#34;original order&#34; for which the Post-Sale Shopping session is initiated.</td>
       <td></td>
     </tr>
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetAllProductsResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetAllProductsResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.GetAllProductsResponse">message <code title="travix.postsale.postsaleapi.v1.GetAllProductsResponse">GetAllProductsResponse</code></a>
 </h5>
 <div class="block">
   <p>The list of all products indicating whether they are eligible or not.</p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -674,16 +716,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartRequest">message <code title="travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartRequest">GetOrCreateShoppingCartRequest</code></a>
 </h5>
 <div class="block">
   <p>The request message for getting (or creating) the active shopping art for a certain original order.</p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -697,22 +740,23 @@
     <tr>
       <td><code>order_number</code></td>
       <td><code title="">string</code></td>
-      <td>The order number for the "original order" for which the Post-Sale Shopping session is initiated.</td>
+      <td>The order number for the &#34;original order&#34; for which the Post-Sale Shopping session is initiated.</td>
       <td></td>
     </tr>
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartResponse">message <code title="travix.postsale.postsaleapi.v1.GetOrCreateShoppingCartResponse">GetOrCreateShoppingCartResponse</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -732,16 +776,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdRequest">message <code title="travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdRequest">GetOrderByShoppingCartIdRequest</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -761,16 +806,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdResponse">message <code title="travix.postsale.postsaleapi.v1.GetOrderByShoppingCartIdResponse">GetOrderByShoppingCartIdResponse</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -790,16 +836,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.InitiateCheckoutRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.InitiateCheckoutRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.InitiateCheckoutRequest">message <code title="travix.postsale.postsaleapi.v1.InitiateCheckoutRequest">InitiateCheckoutRequest</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -819,16 +866,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.InitiateCheckoutResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.InitiateCheckoutResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.InitiateCheckoutResponse">message <code title="travix.postsale.postsaleapi.v1.InitiateCheckoutResponse">InitiateCheckoutResponse</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -848,16 +896,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdRequest">message <code title="travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdRequest">GetPostSaleOrderByOrderIdRequest</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -877,16 +926,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdResponse">message <code title="travix.postsale.postsaleapi.v1.GetPostSaleOrderByOrderIdResponse">GetPostSaleOrderByOrderIdResponse</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -913,16 +963,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetPaymentStatusRequest">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetPaymentStatusRequest">
   <a href="#message-travix.postsale.postsaleapi.v1.GetPaymentStatusRequest">message <code title="travix.postsale.postsaleapi.v1.GetPaymentStatusRequest">GetPaymentStatusRequest</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -942,16 +993,17 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="message-travix.postsale.postsaleapi.v1.GetPaymentStatusResponse">
+    </div>
+    
+    <!--<div class="box">-->
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="message-travix.postsale.postsaleapi.v1.GetPaymentStatusResponse">
   <a href="#message-travix.postsale.postsaleapi.v1.GetPaymentStatusResponse">message <code title="travix.postsale.postsaleapi.v1.GetPaymentStatusResponse">GetPaymentStatusResponse</code></a>
 </h5>
 <div class="block">
   <p></p>
 </div>
-<table class="table">
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Field</th>
@@ -978,16 +1030,20 @@
     
   </tbody>
 </table> 
-  </div>
-  
-
-  <h4 class="title is-4">
-    Enums
-  </h4>
+    </div>
+    
 
   
-  <div class="box">
-    <h5 class="title is-5" id="enum-travix.postsale.postsaleapi.v1.PostSaleOrderStatus">
+
+  
+
+    <h4 class="title is-4">
+      Enums
+    </h4>
+
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-travix.postsale.postsaleapi.v1.PostSaleOrderStatus">
   <a href="#enum-travix.postsale.postsaleapi.v1.PostSaleOrderStatus">enum <code title="travix.postsale.postsaleapi.v1.PostSaleOrderStatus">PostSaleOrderStatus</code></a>
 </h5>
 <div class="block">
@@ -1023,10 +1079,10 @@
     
   </tbody>
 </table> 
-  </div>
-  
-  <div class="box">
-    <h5 class="title is-5" id="enum-travix.postsale.postsaleapi.v1.PaymentStatus">
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-travix.postsale.postsaleapi.v1.PaymentStatus">
   <a href="#enum-travix.postsale.postsaleapi.v1.PaymentStatus">enum <code title="travix.postsale.postsaleapi.v1.PaymentStatus">PaymentStatus</code></a>
 </h5>
 <div class="block">
@@ -1068,8 +1124,11 @@
     
   </tbody>
 </table> 
-  </div>
+    </div>
+    
+
   
+
 
         </div>
       <!--</section>-->

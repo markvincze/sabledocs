@@ -1,4 +1,4 @@
-{% extends "templates/base.html.jinja" %}
+{% extends "templates/base.html" %}
 {% block content %}
   <h3 class="title is-3">
     Package <code>{{ package.name }}</code>
@@ -37,33 +37,49 @@
       {{ package.description }}
   </div>
 
-  <h4 class="title is-4">
-    Services
-  </h4>
+  {% if package.services %}
 
-  {% for service in package.services %}
-  <div class="box">
-    {% include 'templates/service.html.jinja' %} 
+  <div class="block">
+    <h4 class="title is-4">
+      Services
+    </h4>
+
+    {% for service in package.services %}
+    <div>
+      {% include 'templates/service.html' %} 
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 
-  <h4 class="title is-4">
-    Messages
-  </h4>
+  {% endif %}
 
-  {% for message in package.messages %}
-  <div class="box">
-    {% include 'templates/message.html.jinja' %} 
-  </div>
-  {% endfor %}
+  {% if package.messages %}
 
-  <h4 class="title is-4">
-    Enums
-  </h4>
+    <h4 class="title is-4">
+      Messages
+    </h4>
 
-  {% for enum in package.enums %}
-  <div class="box">
-    {% include 'templates/enum.html.jinja' %} 
-  </div>
-  {% endfor %}
+    {% for message in package.messages %}
+    <!--<div class="box">-->
+    <div class="block">
+      {% include 'templates/message.html' %} 
+    </div>
+    {% endfor %}
+
+  {% endif %}
+
+  {% if package.enums %}
+
+    <h4 class="title is-4">
+      Enums
+    </h4>
+
+    {% for enum in package.enums %}
+    <div class="box">
+      {% include 'templates/enum.html' %} 
+    </div>
+    {% endfor %}
+
+  {% endif %}
+
 {% endblock %}

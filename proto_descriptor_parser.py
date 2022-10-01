@@ -98,10 +98,10 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
     sm = ServiceMethod()
     sm.name = service_method.name
     sm.description = ctx.GetComments()
-    sm.request_type = service_method.input_type
-    sm.request_full_type = f"{ctx.package}.{service_method.input_type}"
-    sm.response_type = service_method.output_type
-    sm.response_full_type = f"{ctx.package}.{service_method.output_type}"
+    sm.request_type = service_method.input_type[service_method.input_type.rfind(".") + 1:]
+    sm.request_full_type = service_method.input_type
+    sm.response_type = service_method.output_type[service_method.output_type.rfind(".") + 1:]
+    sm.response_full_type = service_method.output_type
 
     return sm
 

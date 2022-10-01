@@ -4,8 +4,7 @@
   "description": "",
   "main": "sass/mystyles.scss",
   "scripts": {
-    // --omit-source-map-url 
-    "css-build": "node-sass sass/mystyles.scss mystyles.css",
+    "css-build": "node-sass sass/mystyles.scss --omit-source-map-url mystyles.css",
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch"
   },

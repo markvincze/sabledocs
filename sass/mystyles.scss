@@ -17,3 +17,18 @@ $box-radius: 6px;
 code {
   color: $primary;
 }
+
+//h1,h2,h3,h4,h5,h6 {
+.type-heading {
+    padding: 0.5em 0;
+    border-width: 0 0 0.06em 0;
+    border-style: solid;
+    border-color: #DDDDDD;
+}
+
+.type-heading-2 {
+    padding: 0.5em 0;
+    border-width: 0 0 0 1em;
+    border-style: solid;
+    border-color: #2266BB;
+}
