@@ -392,8 +392,8 @@ table th {
 /* Bulma Elements */
 .box {
   background-color: white;
-  border-radius: 6px;
-  box-shadow: 0 0 0.5em 0.2em rgba(51, 51, 51, 0.1), 0 0px 0 1px rgba(51, 51, 51, 0.02);
+  border-radius: 3px;
+  box-shadow: 0 white;
   color: #4a4a4a;
   display: block;
   padding: 1.25rem; }
@@ -7878,6 +7878,12 @@ a.has-text-danger-dark:hover, a.has-text-danger-dark:focus {
 
 code {
   color: #016FB9; }
+
+.box {
+  box-shadow: 0 white;
+  border-width: 0.1em;
+  border-style: solid;
+  border-color: #DDDDDD; }
 
 .type-heading {
   padding: 0.5em 0;

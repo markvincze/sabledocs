@@ -8,14 +8,21 @@ $blue: #016FB9;
 $primary: $blue;
 $link: $blue;
 
-//$box-shadow: 0.5em 0.5em 0.2em 5em rgba(#FF0000, 0.1), 0 0px 0 1px rgba(#FF0000, 0.02);
-$box-shadow: 0 0 0.5em 0.2em rgba(#333333, 0.1), 0 0px 0 1px rgba(#333333, 0.02);
-$box-radius: 6px;
+//$box-shadow: 0 0 0.5em 0.2em rgba(#333333, 0.1), 0 0px 0 1px rgba(#333333, 0.02);
+$box-shadow: 0 white;
+$box-radius: 3px;
 
 @import "../node_modules/bulma/bulma.sass";
 
 code {
   color: $primary;
+}
+
+.box {
+    box-shadow: 0 white;
+    border-width: 0.1em;
+    border-style: solid;
+    border-color: #DDDDDD;
 }
 
 //h1,h2,h3,h4,h5,h6 {
