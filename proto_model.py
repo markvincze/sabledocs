@@ -57,3 +57,9 @@ class Package:
         self.services = []
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
+
+class SableContext:
+    def __init__(self, packages, all_messages, all_enums):
+        self.packages = packages
+        self.all_messages = all_messages
+        self.all_enums = all_enums

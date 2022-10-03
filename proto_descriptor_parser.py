@@ -125,6 +125,8 @@ def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
 
 def parse_proto_descriptor(file_name):
     packages = dict()
+    all_messages = []
+    all_enums = []
     with open(file_name, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:
@@ -141,12 +143,18 @@ def parse_proto_descriptor(file_name):
             package.messages.extend(parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX)))
             package.services.extend(parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX)))
 
+            all_messages.extend(package.messages)
+            all_enums.extend(package.enums)
+
             packages[file.package] = package
             print(file.name)
 
-        return sorted(
-            packages.values(),
-            key=lambda p: (p.name))
+        return SableContext(
+            sorted(
+                packages.values(),
+                key=lambda p: (p.name)),
+            all_messages,
+            all_enums)
 
 def build_comment_map(source_code_info):
     def has_comments(location):
