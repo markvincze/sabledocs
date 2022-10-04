@@ -1,4 +1,4 @@
-from google.protobuf.descriptor_p2 import FileDescriptorSet
+from google.protobuf.descriptor_pb2 import FileDescriptorSet
 from google.protobuf.descriptor_pb2 import EnumDescriptorProto
 from google.protobuf.descriptor_pb2 import EnumValueDescriptorProto
 from google.protobuf.descriptor_pb2 import DescriptorProto
