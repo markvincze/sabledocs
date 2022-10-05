@@ -1,3 +1,4 @@
+{% import "templates/type_name.html" as common %}
 <h5 class="title is-5 type-heading" id="message-{{ message.full_name }}">
   <!--<a href="#message-{{ message.full_name }}">message <code title="{{ message.full_name }}">{{ message.name }}</code></a>-->
   <a href="#message-{{ message.full_name }}">message <span title="{{ message.full_name }}">{{ message.name }}</span></a>
@@ -21,7 +22,9 @@
       <td>{{ field.nunmber }}</td>
       <td>
         <!--<code>-->
-          {{ field.name }}
+          {{ common.type_name(field) }}
+          <!--{{ common.type_name(field.name, field.full_name, package, all_messages, all_enums) }}-->
+          <!--{{ field.name }}-->
         <!--</code>-->
       </td>
       <td>

@@ -149,12 +149,24 @@ def parse_proto_descriptor(file_name):
             packages[file.package] = package
             print(file.name)
 
+        add_package_to_message_fields(all_messages, packages.values())
+
         return SableContext(
             sorted(
                 packages.values(),
                 key=lambda p: (p.name)),
             all_messages,
             all_enums)
+
+def add_package_to_message_fields(messages, packages):
+    def get_package_name(message_field : MessageField):
+        return message_field.full_type[:len(message_field.full_type) - len(message_field.type) - 1]
+
+    for m in messages:
+        for mf in m.fields:
+            package = next(filter(lambda p: p.name == get_package_name(mf.full_name), packages), None)
+            if package != None:
+                mf.package = package
 
 def build_comment_map(source_code_info):
     def has_comments(location):

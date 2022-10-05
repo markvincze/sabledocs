@@ -9,6 +9,7 @@ class MessageField:
         self.type = ''
         self.full_type = ''
         self.default_value = ''
+        self.package = None
 
 class Message:
     def __init__(self):

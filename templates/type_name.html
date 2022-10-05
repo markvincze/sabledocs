@@ -1,0 +1,13 @@
+{% macro type_name(message_field) -%}
+  {% if any (m.full_name == full_name for m in all_messages) %}
+    <a href="/{{ package.name }}.html#message-{{ full_name }}">
+      <span title="{{ full_name }}">{{ name }}</span>
+    </a>
+  {% else if any (e.full_name == full_name for e in all_enums) %}
+    <a href="/{{ package.name }}.html#enum-{{ full_name }}">
+      <span title="{{ full_name }}">{{ name }}</span>
+    </a>
+  {% else%}
+    <span title="{{ full_name }}">{{ name }}</span>
+  {% endif %}
+{%- endmacro %}
