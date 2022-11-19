@@ -13,8 +13,6 @@ jinja_env = Environment(
 template = jinja_env.get_template('templates/package.html')
 
 for package in context.packages:
-    print('Enums:')
-    print(package.enums)
     with open(f'{package.name}.html', 'w') as fh:
         fh.write(template.render(
             package=package,

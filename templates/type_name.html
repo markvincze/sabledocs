@@ -1,13 +1,13 @@
 {% macro type_name(message_field) -%}
-  {% if any (m.full_name == full_name for m in all_messages) %}
-    <a href="/{{ package.name }}.html#message-{{ full_name }}">
-      <span title="{{ full_name }}">{{ name }}</span>
+  {% if message_field.package and message_field.type_kind != "UNKNOWN" %}
+    {% if message_field.type_kind == "MESSAGE" %}
+      <a href="{{ message_field.package.name }}.html#message-{{ message_field.full_type }}">
+    {% else %}
+      <a href="{{ message_field.package.name }}.html#enum-{{ message_field.full_type }}">
+    {% endif %}
+      <span title="{{ message_field.full_type }}">{{ message_field.full_type }}</span>
     </a>
-  {% else if any (e.full_name == full_name for e in all_enums) %}
-    <a href="/{{ package.name }}.html#enum-{{ full_name }}">
-      <span title="{{ full_name }}">{{ name }}</span>
-    </a>
-  {% else%}
-    <span title="{{ full_name }}">{{ name }}</span>
+  {% else %}
+  <span>{{ message_field.full_type }}</span>
   {% endif %}
 {%- endmacro %}

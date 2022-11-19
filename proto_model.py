@@ -10,6 +10,11 @@ class MessageField:
         self.full_type = ''
         self.default_value = ''
         self.package = None
+        self.type_kind = "UNKNOWN"
+
+    def __repr__(self):
+        filtered_vars = dict(filter(lambda elem: elem[0] != "package", vars(self).items()))
+        return pformat(filtered_vars, indent=4, width=1)
 
 class Message:
     def __init__(self):
@@ -17,6 +22,8 @@ class Message:
         self.full_name = ''
         self.description = ''
         self.fields = []
+    def __repr__(self):
+        return pformat(vars(self), indent=4, width=1)
 
 class EnumValue:
     def __init__(self):

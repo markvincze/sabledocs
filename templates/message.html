@@ -19,20 +19,16 @@
   <tbody>
     {% for field in message.fields %}
     <tr>
-      <td>{{ field.nunmber }}</td>
+      <td>{{ field.number }}</td>
       <td>
-        <!--<code>-->
-          {{ common.type_name(field) }}
-          <!--{{ common.type_name(field.name, field.full_name, package, all_messages, all_enums) }}-->
-          <!--{{ field.name }}-->
-        <!--</code>-->
+        {{ field.name }}
       </td>
       <td>
         <code title="{{ field.full_type }}">
           {% if field.label != "" and field.label != "optional" %}
             {{ field.label }}
           {% endif %}
-          {{ field.type }}
+          {{ common.type_name(field) }}
         </code>
       </td>
       <td>{{ field.description }}</td>

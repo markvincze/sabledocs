@@ -73,10 +73,18 @@ def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf.number = field.number
     mf.label = to_label_name(field.label)
     mf.description = ctx.GetComments()
-    mf.type = field.type_name.strip(".") if field.type_name != "" else to_type_name(field.type)
+    mf.type = extract_type_name_from_full_name(field.type_name.strip(".")) if field.type_name != "" else to_type_name(field.type)
+    mf.full_type = field.type_name.strip(".") if field.type_name != "" else to_type_name(field.type)
     mf.default_value = field.default_value
 
     return mf
+
+def extract_type_name_from_full_name(full_type_name: str):
+    last_dot = full_type_name.rfind(".")
+    if last_dot == -1:
+        return full_type_name
+    else:
+        return full_type_name[last_dot + 1:]
 
 def parse_message(message: DescriptorProto, ctx: ParseContext):
     m = Message()
@@ -137,7 +145,7 @@ def parse_proto_descriptor(file_name):
             package = packages.get(file.package, Package())
             package.name = file.package
             package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
-            pprint.pprint(comments)
+            # pprint.pprint(comments)
 
             package.enums.extend(parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX)))
             package.messages.extend(parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX)))
@@ -158,15 +166,22 @@ def parse_proto_descriptor(file_name):
             all_messages,
             all_enums)
 
-def add_package_to_message_fields(messages, packages):
-    def get_package_name(message_field : MessageField):
+def add_package_to_message_fields(messages: list[Message], packages):
+    def get_package_name(message_field: MessageField):
         return message_field.full_type[:len(message_field.full_type) - len(message_field.type) - 1]
 
     for m in messages:
         for mf in m.fields:
-            package = next(filter(lambda p: p.name == get_package_name(mf.full_name), packages), None)
+            if mf.full_type == "":
+                continue
+
+            package = next(filter(lambda p: p.name == get_package_name(mf), packages), None)
             if package != None:
                 mf.package = package
+                if any(filter(lambda m: m.full_name == mf.full_type, package.messages)):
+                    mf.type_kind = "MESSAGE"
+                elif any(filter(lambda m: m.full_name == mf.full_type, package.enums)):
+                    mf.type_kind = "ENUM"
 
 def build_comment_map(source_code_info):
     def has_comments(location):
