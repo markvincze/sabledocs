@@ -49,6 +49,11 @@
     </div>
     <footer class="footer">
       <div class="content has-text-centered">
+        {% if sable_config.footer_content %}
+        <p>
+          {{ sable_config.footer_content | safe }}
+        </p>
+        {% endif %}
         <p>
           Built with <strong>Sable</strong>.
         </p>
