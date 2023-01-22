@@ -21,7 +21,7 @@
           <ul class="menu-list">
             {% for p in packages %}
             <li>
-              {% if p.name == package.name %}
+              {% if package and p.name == package.name %}
               <a class="is-active" href="{{ p.name }}.html">{{ p.name }}</a>
               <ul class="is-size-7">
                 {% for service in p.services %}

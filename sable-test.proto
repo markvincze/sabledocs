@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package sable.test.v1;
+
+message SmallMessage {
+    string foo = 1;
+}
+
+message TestMessage {
+    repeated string subscriptions = 1;  
+    string next_page_token = 2;
+    map<string, string> labels1 = 3;
+    map<string, int32> labels2 = 4;
+    map<string, SmallMessage> apple_orange_pear = 5;
+    map<string, int32> AppleOrangePear2 = 6;
+}

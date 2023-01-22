@@ -1,0 +1,19 @@
+{% extends "templates/base.html" %}
+{% block content %}
+  <h3 class="title is-3">
+    Packages
+  </h3>
+  <div class="block">This site contains the documentation for the following Protobuf packages.</div>
+  <div class="block">
+  {% for p in packages %}
+    <h4 class="title is-4">
+      <a href="{{ p.name }}.html">{{ p.name }}</a>
+    </h4>
+    {% if p.description %}
+    <div style="margin-top: -0.5rem; margin-bottom: 2.5rem">
+      {{ p.description }}
+    </div>
+    {% endif %}
+  {% endfor %}
+  </div>
+{% endblock %}

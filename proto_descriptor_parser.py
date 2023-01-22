@@ -87,6 +87,13 @@ def extract_type_name_from_full_name(full_type_name: str):
         return full_type_name[last_dot + 1:]
 
 def parse_message(message: DescriptorProto, ctx: ParseContext):
+    if message.nested_type: print("Printing nested types")
+    for nt in message.nested_type:
+        pprint.pprint(nt)
+    if message.enum_type: print("Printing nested enum types")
+    for nt in message.enum_type:
+        pprint.pprint(nt)
+
     m = Message()
     m.name = message.name
     m.full_name = f"{ctx.package}.{message.name}"
