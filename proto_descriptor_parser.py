@@ -23,6 +23,7 @@ COMMENT_ENUM_VALUE_INDEX = 2
 
 COMMENT_SERVICE_METHOD_INDEX = 2
 
+
 class ParseContext:
     def __init__(self, package, path, comments):
         self.package = package
@@ -39,8 +40,9 @@ class ParseContext:
     def ExtendPath(self, *path):
         return ParseContext(self.package, f"{self.path}.{'.'.join(map(str, path))}", self.comments)
 
-    def GetComments(self, path = ""):
+    def GetComments(self, path=""):
         return self.comments.get(self.path if path == "" else path, "")
+
 
 def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext):
     def parse_enum_value(enum_value: EnumValueDescriptorProto, ctx: ParseContext):
@@ -165,6 +167,7 @@ def parse_proto_descriptor(file_name):
             print(file.name)
 
         add_package_to_message_fields(all_messages, packages.values())
+
 
         return SableContext(
             sorted(

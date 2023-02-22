@@ -6,9 +6,9 @@ from sable_config import *
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from os import path
 
-sable_context = parse_proto_descriptor('descriptor.pb')
+#sable_context = parse_proto_descriptor('descriptor.pb')
 # sable_context = parse_proto_descriptor('pubsub.pb')
-# sable_context = parse_proto_descriptor('sable-test.pb')
+sable_context = parse_proto_descriptor('sable-test.pb')
 
 sable_config = SableConfig()
 
