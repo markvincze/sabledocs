@@ -1,5 +1,6 @@
 from pprint import pformat
 
+
 class MessageField:
     def __init__(self):
         self.name = ''
@@ -21,6 +22,7 @@ class Message:
         self.name = ''
         self.full_name = ''
         self.description = ''
+        self.is_map_entry = False
         self.fields = []
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
