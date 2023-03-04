@@ -14,6 +14,7 @@ from proto_model import Service
 from proto_model import Package
 from proto_model import SableContext
 import pprint
+import markdown
 
 COMMENT_PACKAGE_INDEX = 2
 COMMENT_MESSAGE_INDEX = 4
@@ -71,12 +72,8 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext):
 
 
 def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext):
-    # result = []
     for (i, enum) in enumerate(enums):
         ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i)))
-        #result.append(parse_enum(enum, ctx.ExtendPath(i)))
-
-    # return result
 
 
 def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
@@ -110,10 +107,14 @@ def parse_message(message: DescriptorProto, ctx: ParseContext):
     parse_messages(message.nested_type, ctx)
     parse_enums(message.enum_type, ctx)
 
+    if message.oneof_decl:
+        pprint.pprint(message.oneof_decl)
+
     m = Message()
     m.name = message.name
     m.full_name = f"{ctx.package.name}.{message.name}"
     m.description = ctx.GetComments()
+    m.description_html = markdown.markdown(m.description)
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
@@ -159,46 +160,6 @@ def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
         result.append(parse_service(service, ctx.ExtendPath(i)))
 
     return result
-
-
-def parse_proto_descriptor(file_name):
-    packages = dict()
-    all_messages = []
-    all_enums = []
-    with open(file_name, mode="rb") as proto_descriptor_file:
-        fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
-        for file in fds.file:
-
-            comments = build_comment_map(file.source_code_info)
-
-            package = packages.get(file.package, Package())
-            package.name = file.package
-
-            ctx = ParseContext.New(package, comments)
-
-            package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
-            # pprint.pprint(comments)
-
-            #package.enums.extend(parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX)))
-            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX))
-            #package.messages.extend(parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX)))
-            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX))
-            package.services.extend(parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX)))
-
-            all_messages.extend(package.messages)
-            all_enums.extend(package.enums)
-
-            packages[file.package] = package
-            print(file.name)
-
-        add_package_to_message_fields(all_messages, packages.values())
-
-        return SableContext(
-            sorted(
-                packages.values(),
-                key=lambda p: (p.name)),
-            all_messages,
-            all_enums)
 
 
 def add_package_to_message_fields(messages: list[Message], packages):
@@ -278,3 +239,41 @@ def to_label_name(type: FieldDescriptorProto.Label):
         case FieldDescriptorProto.Label.LABEL_REPEATED: return "repeated"
         case _: ""
 
+def parse_proto_descriptor(file_name):
+    packages = dict()
+    all_messages = []
+    all_enums = []
+    with open(file_name, mode="rb") as proto_descriptor_file:
+        fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
+        for file in fds.file:
+
+            comments = build_comment_map(file.source_code_info)
+
+            package = packages.get(file.package, Package())
+            package.name = file.package
+
+            ctx = ParseContext.New(package, comments)
+
+            package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
+            # pprint.pprint(comments)
+
+            #package.enums.extend(parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX)))
+            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX))
+            #package.messages.extend(parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX)))
+            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX))
+            package.services.extend(parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX)))
+
+            all_messages.extend(package.messages)
+            all_enums.extend(package.enums)
+
+            packages[file.package] = package
+            print(file.name)
+
+        add_package_to_message_fields(all_messages, packages.values())
+
+        return SableContext(
+            sorted(
+                packages.values(),
+                key=lambda p: (p.name)),
+            all_messages,
+            all_enums)

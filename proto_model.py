@@ -1,5 +1,6 @@
 from pprint import pformat
 
+class CodeItem
 
 class MessageField:
     def __init__(self):
@@ -7,6 +8,7 @@ class MessageField:
         self.number = 0
         self.label = ''
         self.description = ''
+        self.description_html = ''
         self.type = ''
         self.full_type = ''
         self.default_value = ''
@@ -17,11 +19,13 @@ class MessageField:
         filtered_vars = dict(filter(lambda elem: elem[0] != "package", vars(self).items()))
         return pformat(filtered_vars, indent=4, width=1)
 
+
 class Message:
     def __init__(self):
         self.name = ''
         self.full_name = ''
         self.description = ''
+        self.description_html = ''
         self.is_map_entry = False
         self.fields = []
     def __repr__(self):
@@ -32,12 +36,14 @@ class EnumValue:
         self.name = ''
         self.number = 0
         self.description = ''
+        self.description_html = ''
 
 class Enum:
     def __init__(self):
         self.name = ''
         self.full_name = ''
         self.description = ''
+        self.description_html = ''
         self.values = []
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
@@ -46,6 +52,7 @@ class ServiceMethod:
     def __init__(self):
         self.name = ''
         self.description = ''
+        self.description_html = ''
         self.request_type = ''
         self.request_full_type = ''
         self.response_type = ''
@@ -56,12 +63,14 @@ class Service:
         self.name = ''
         self.full_name = ''
         self.description = ''
+        self.description_html = ''
         self.methods = []
 
 class Package:
     def __init__(self):
         self.name = ''
         self.description = ''
+        self.description_html = ''
         self.messages = []
         self.enums = []
         self.services = []

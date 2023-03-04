@@ -1,0 +1,5367 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gRPC documentation</title>
+    <link rel="stylesheet" href="mystyles.css">
+  </head>
+  <body>
+    <div class="columns">
+      <!--<section class="main-content columns is-fullheight">-->
+
+        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
+        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
+          <ul class="menu-list">
+            <li><a href="#">Home</a><li>
+          </ul>
+          <p class="menu-label">
+            Packages
+          </p>
+          <ul class="menu-list">
+            
+            <li>
+              
+              <a class="is-active" href="google.datastore.v1.html">google.datastore.v1</a>
+              <ul class="is-size-7">
+                
+                <li><a href="google.datastore.v1.html#service-google.datastore.v1.Datastore">Service Datastore</a></li>
+                
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">Message PartitionId</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PathElement">Message PathElement</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Key">Message Key</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue">Message ArrayValue</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Value">Message Value</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertiesEntry">Message PropertiesEntry</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Entity">Message Entity</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">Message EntityResult</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Query">Message Query</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Count">Message Count</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Aggregation">Message Aggregation</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">Message AggregationQuery</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.KindExpression">Message KindExpression</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">Message PropertyReference</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Projection">Message Projection</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyOrder">Message PropertyOrder</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Filter">Message Filter</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter">Message CompositeFilter</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter">Message PropertyFilter</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.NamedBindingsEntry">Message NamedBindingsEntry</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">Message GqlQuery</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.GqlQueryParameter">Message GqlQueryParameter</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.QueryResultBatch">Message QueryResultBatch</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregatePropertiesEntry">Message AggregatePropertiesEntry</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult">Message AggregationResult</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResultBatch">Message AggregationResultBatch</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.LookupRequest">Message LookupRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.LookupResponse">Message LookupResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryRequest">Message RunQueryRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryResponse">Message RunQueryResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryRequest">Message RunAggregationQueryRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryResponse">Message RunAggregationQueryResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionRequest">Message BeginTransactionRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionResponse">Message BeginTransactionResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RollbackRequest">Message RollbackRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse">Message RollbackResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CommitRequest">Message CommitRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CommitResponse">Message CommitResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsRequest">Message AllocateIdsRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsResponse">Message AllocateIdsResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsRequest">Message ReserveIdsRequest</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsResponse">Message ReserveIdsResponse</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Mutation">Message Mutation</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.MutationResult">Message MutationResult</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">Message ReadOptions</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReadWrite">Message ReadWrite</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReadOnly">Message ReadOnly</a></li>
+                
+                <li><a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">Message TransactionOptions</a></li>
+                
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.ResultType">Enum ResultType</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.Direction">Enum Direction</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.Operator">Enum Operator</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.Operator">Enum Operator</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.MoreResultsType">Enum MoreResultsType</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.Mode">Enum Mode</a></li>
+                
+                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.ReadConsistency">Enum ReadConsistency</a></li>
+                
+              </ul>
+              
+            </li>
+            
+          </ul>
+        </aside>
+
+        <div class="container column is-10 section" style="display: inline-block">
+          
+  <h3 class="title is-3">
+    Package <code>google.datastore.v1</code>
+  </h3>
+
+  <div class="block">
+    
+    <p>
+      <a href="#service-google.datastore.v1.Datastore">
+        <span class="tag" style="min-width: 6em">Service</span>
+        <code>Datastore</code> 
+      </a>
+    </p>
+    
+
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.PartitionId">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PartitionId</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.PathElement">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PathElement</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Key">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Key</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ArrayValue">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ArrayValue</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Value">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Value</code> 
+        </a>
+      </p>
+      
+    
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Entity">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Entity</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.EntityResult">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>EntityResult</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Query">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Query</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Count">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Count</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Aggregation">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Aggregation</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.AggregationQuery">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AggregationQuery</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.KindExpression">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>KindExpression</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.PropertyReference">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PropertyReference</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Projection">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Projection</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.PropertyOrder">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PropertyOrder</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Filter">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Filter</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.CompositeFilter">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CompositeFilter</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.PropertyFilter">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PropertyFilter</code> 
+        </a>
+      </p>
+      
+    
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.GqlQuery">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GqlQuery</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.GqlQueryParameter">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GqlQueryParameter</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.QueryResultBatch">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>QueryResultBatch</code> 
+        </a>
+      </p>
+      
+    
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.AggregationResult">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AggregationResult</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.AggregationResultBatch">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AggregationResultBatch</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.LookupRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>LookupRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.LookupResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>LookupResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RunQueryRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RunQueryRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RunQueryResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RunQueryResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RunAggregationQueryRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RunAggregationQueryRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RunAggregationQueryResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RunAggregationQueryResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.BeginTransactionRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>BeginTransactionRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.BeginTransactionResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>BeginTransactionResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RollbackRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RollbackRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.RollbackResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RollbackResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.CommitRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CommitRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.CommitResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CommitResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.AllocateIdsRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AllocateIdsRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.AllocateIdsResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AllocateIdsResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ReserveIdsRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ReserveIdsRequest</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ReserveIdsResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ReserveIdsResponse</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.Mutation">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Mutation</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.MutationResult">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>MutationResult</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ReadOptions">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ReadOptions</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ReadWrite">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ReadWrite</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.ReadOnly">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ReadOnly</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.datastore.v1.TransactionOptions">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>TransactionOptions</code> 
+        </a>
+      </p>
+      
+    
+
+    
+      <p>
+        <a href="#enum-google.datastore.v1.ResultType">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>ResultType</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.Direction">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>Direction</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.Operator">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>Operator</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.Operator">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>Operator</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.MoreResultsType">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>MoreResultsType</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.Mode">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>Mode</code> 
+        </a>
+      </p>
+    
+      <p>
+        <a href="#enum-google.datastore.v1.ReadConsistency">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>ReadConsistency</code> 
+        </a>
+      </p>
+    
+  </div>
+
+  <div class="block">
+      
+  </div>
+
+  
+
+  <div class="block">
+    <h4 class="title is-4">
+      Services
+    </h4>
+
+    
+    <div>
+      <h5 class="title is-5" id="service-google.datastore.v1.Datastore">
+  <a href="#service-google.datastore.v1.Datastore">service <code title="google.datastore.v1.Datastore">Datastore</code></a>
+</h5>
+<div class="block">
+  <p>Each RPC normalizes the partition IDs of the keys in its input entities,
+ and always returns entities with keys with normalized partition IDs.
+ This applies to all keys and entities, including those in values, except keys
+ with both an empty path and an empty or unset partition ID. Normalization of
+ input keys sets the project ID (if not already set) to the project ID from
+ the request.</p>
+</div>
+
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>Lookup (LookupRequest) -> LookupResponse</code></h6>
+  
+  <div class="block">
+    <p>Looks up entities by key.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>RunQuery (RunQueryRequest) -> RunQueryResponse</code></h6>
+  
+  <div class="block">
+    <p>Queries for entities.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>RunAggregationQuery (RunAggregationQueryRequest) -> RunAggregationQueryResponse</code></h6>
+  
+  <div class="block">
+    <p>Runs an aggregation query.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>BeginTransaction (BeginTransactionRequest) -> BeginTransactionResponse</code></h6>
+  
+  <div class="block">
+    <p>Begins a new transaction.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>Commit (CommitRequest) -> CommitResponse</code></h6>
+  
+  <div class="block">
+    <p>Commits a transaction, optionally creating, deleting or modifying some
+ entities.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>Rollback (RollbackRequest) -> RollbackResponse</code></h6>
+  
+  <div class="block">
+    <p>Rolls back a transaction.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>AllocateIds (AllocateIdsRequest) -> AllocateIdsResponse</code></h6>
+  
+  <div class="block">
+    <p>Allocates IDs for the given keys, which is useful for referencing an entity
+ before it is inserted.</p>
+  </div>
+  
+</div>
+
+<div class="box">
+  <h6 class="title is-6">rpc <code>ReserveIds (ReserveIdsRequest) -> ReserveIdsResponse</code></h6>
+  
+  <div class="block">
+    <p>Prevents the supplied keys&#39; IDs from being auto-allocated by Cloud
+ Datastore.</p>
+  </div>
+  
+</div>
+ 
+    </div>
+    
+  </div>
+
+  
+
+  
+
+    <h4 class="title is-4">
+      Messages
+    </h4>
+
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.PartitionId">
+  <!--<a href="#message-google.datastore.v1.PartitionId">message <code title="google.datastore.v1.PartitionId">PartitionId</code></a>-->
+  <a href="#message-google.datastore.v1.PartitionId">message <span title="google.datastore.v1.PartitionId">PartitionId</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A partition ID identifies a grouping of entities. The grouping is always
+ by project and namespace, however the namespace ID may be empty.
+
+ A partition ID contains several dimensions:
+ project ID and namespace ID.
+
+ Partition dimensions:
+
+ - May be `&#34;&#34;`.
+ - Must be valid UTF-8 bytes.
+ - Must have values that match regex `[A-Za-z\d\.\-_]{1,100}`
+ If the value of any dimension matches regex `__.*__`, the partition is
+ reserved/read-only.
+ A reserved/read-only partition ID is forbidden in certain documented
+ contexts.
+
+ Foreign partition IDs (in which the project ID does
+ not match the context project ID ) are discouraged.
+ Reads and writes of foreign partition IDs may fail if the project is not in
+ an active state.</p>-->
+  <p>A partition ID identifies a grouping of entities. The grouping is always
+ by project and namespace, however the namespace ID may be empty.</p>
+<p>A partition ID contains several dimensions:
+ project ID and namespace ID.</p>
+<p>Partition dimensions:</p>
+<ul>
+<li>May be <code>""</code>.</li>
+<li>Must be valid UTF-8 bytes.</li>
+<li>Must have values that match regex <code>[A-Za-z\d\.\-_]{1,100}</code>
+ If the value of any dimension matches regex <code>__.*__</code>, the partition is
+ reserved/read-only.
+ A reserved/read-only partition ID is forbidden in certain documented
+ contexts.</li>
+</ul>
+<p>Foreign partition IDs (in which the project ID does
+ not match the context project ID ) are discouraged.
+ Reads and writes of foreign partition IDs may fail if the project is not in
+ an active state.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the project to which the entities belong.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>If not empty, the ID of the database to which the entities
+ belong.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        namespace_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>If not empty, the ID of the namespace to which the entities belong.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.PathElement">
+  <!--<a href="#message-google.datastore.v1.PathElement">message <code title="google.datastore.v1.PathElement">PathElement</code></a>-->
+  <a href="#message-google.datastore.v1.PathElement">message <span title="google.datastore.v1.PathElement">PathElement</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;"></p>-->
+  
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        kind
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        id
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        name
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Key">
+  <!--<a href="#message-google.datastore.v1.Key">message <code title="google.datastore.v1.Key">Key</code></a>-->
+  <a href="#message-google.datastore.v1.Key">message <span title="google.datastore.v1.Key">Key</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A unique identifier for an entity.
+ If a key&#39;s partition ID or any of its path kinds or names are
+ reserved/read-only, the key is reserved/read-only.
+ A reserved/read-only key is forbidden in certain documented contexts.</p>-->
+  <p>A unique identifier for an entity.
+ If a key's partition ID or any of its path kinds or names are
+ reserved/read-only, the key is reserved/read-only.
+ A reserved/read-only key is forbidden in certain documented contexts.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        partition_id
+      </td>
+      <td>
+        <code title="google.datastore.v1.PartitionId">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
+    
+      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Entities are partitioned into subsets, currently identified by a project
+ ID and namespace ID.
+ Queries are scoped to a single partition.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        path
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key.PathElement">
+          
+            repeated
+          
+          
+  <span>google.datastore.v1.Key.PathElement</span>
+  
+        </code>
+      </td>
+      <td>The entity path.
+ An entity path consists of one or more elements composed of a kind and a
+ string or numerical identifier, which identify entities. The first
+ element identifies a _root entity_, the second element identifies
+ a _child_ of the root entity, the third element identifies a child of the
+ second entity, and so forth. The entities identified by all prefixes of
+ the path are called the element&#39;s _ancestors_.
+
+ An entity path is always fully complete: *all* of the entity&#39;s ancestors
+ are required to be in the path along with the entity identifier itself.
+ The only exception is that in some documented cases, the identifier in the
+ last path element (for the entity) itself may be omitted. For example,
+ the last path element of the key of `Mutation.insert` may have no
+ identifier.
+
+ A path can never be empty, and a path can have at most 100 elements.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ArrayValue">
+  <!--<a href="#message-google.datastore.v1.ArrayValue">message <code title="google.datastore.v1.ArrayValue">ArrayValue</code></a>-->
+  <a href="#message-google.datastore.v1.ArrayValue">message <span title="google.datastore.v1.ArrayValue">ArrayValue</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">An array value.</p>-->
+  <p>An array value.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        values
+      </td>
+      <td>
+        <code title="google.datastore.v1.Value">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
+    
+      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Values in the array.
+ The order of values in an array is preserved as long as all values have
+ identical settings for &#39;exclude_from_indexes&#39;.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Value">
+  <!--<a href="#message-google.datastore.v1.Value">message <code title="google.datastore.v1.Value">Value</code></a>-->
+  <a href="#message-google.datastore.v1.Value">message <span title="google.datastore.v1.Value">Value</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A message that can hold any of the supported value types and associated
+ metadata.</p>-->
+  <p>A message that can hold any of the supported value types and associated
+ metadata.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>11</td>
+      <td>
+        null_value
+      </td>
+      <td>
+        <code title="google.protobuf.NullValue">
+          
+          
+  <span>google.protobuf.NullValue</span>
+  
+        </code>
+      </td>
+      <td>A null value.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        boolean_value
+      </td>
+      <td>
+        <code title="bool">
+          
+          
+  <span>bool</span>
+  
+        </code>
+      </td>
+      <td>A boolean value.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        integer_value
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td>An integer value.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        double_value
+      </td>
+      <td>
+        <code title="double">
+          
+          
+  <span>double</span>
+  
+        </code>
+      </td>
+      <td>A double value.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        timestamp_value
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>A timestamp value.
+ When stored in the Datastore, precise only to microseconds;
+ any additional precision is rounded down.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        key_value
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A key value.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>17</td>
+      <td>
+        string_value
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>A UTF-8 encoded string value.
+ When `exclude_from_indexes` is false (it is indexed) , may have at most
+ 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>18</td>
+      <td>
+        blob_value
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A blob value.
+ May have at most 1,000,000 bytes.
+ When `exclude_from_indexes` is false, may have at most 1500 bytes.
+ In JSON requests, must be base64-encoded.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        geo_point_value
+      </td>
+      <td>
+        <code title="google.type.LatLng">
+          
+          
+  <span>google.type.LatLng</span>
+  
+        </code>
+      </td>
+      <td>A geo point value representing a point on the surface of Earth.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        entity_value
+      </td>
+      <td>
+        <code title="google.datastore.v1.Entity">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
+    
+      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>An entity value.
+
+ - May have no key.
+ - May have a key with an incomplete key path.
+ - May have a reserved/read-only key.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        array_value
+      </td>
+      <td>
+        <code title="google.datastore.v1.ArrayValue">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue">
+    
+      <span title="google.datastore.v1.ArrayValue">google.datastore.v1.ArrayValue</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>An array value.
+ Cannot contain another array value.
+ A `Value` instance that sets field `array_value` must not set fields
+ `meaning` or `exclude_from_indexes`.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>14</td>
+      <td>
+        meaning
+      </td>
+      <td>
+        <code title="int32">
+          
+          
+  <span>int32</span>
+  
+        </code>
+      </td>
+      <td>The `meaning` field should only be populated for backwards compatibility.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>19</td>
+      <td>
+        exclude_from_indexes
+      </td>
+      <td>
+        <code title="bool">
+          
+          
+  <span>bool</span>
+  
+        </code>
+      </td>
+      <td>If the value should be excluded from all indexes including those defined
+ explicitly.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Entity">
+  <!--<a href="#message-google.datastore.v1.Entity">message <code title="google.datastore.v1.Entity">Entity</code></a>-->
+  <a href="#message-google.datastore.v1.Entity">message <span title="google.datastore.v1.Entity">Entity</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A Datastore data object.
+
+ An entity is limited to 1 megabyte when stored. That _roughly_
+ corresponds to a limit of 1 megabyte for the serialized form of this
+ message.</p>-->
+  <p>A Datastore data object.</p>
+<p>An entity is limited to 1 megabyte when stored. That <em>roughly</em>
+ corresponds to a limit of 1 megabyte for the serialized form of this
+ message.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        key
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The entity&#39;s key.
+
+ An entity must have a key, unless otherwise documented (for example,
+ an entity in `Value.entity_value` may have no key).
+ An entity&#39;s kind is its key path&#39;s last element&#39;s kind,
+ or null if it has no key.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        properties
+      </td>
+      <td>
+        <code title="map&lt;string, Value&gt;">
+          
+          
+  <span>map&lt;string, Value&gt;</span>
+  
+        </code>
+      </td>
+      <td>The entity&#39;s properties.
+ The map&#39;s keys are property names.
+ A property name matching regex `__.*__` is reserved.
+ A reserved property name is forbidden in certain documented contexts.
+ The name must not contain more than 500 characters.
+ The name cannot be `&#34;&#34;`.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.EntityResult">
+  <!--<a href="#message-google.datastore.v1.EntityResult">message <code title="google.datastore.v1.EntityResult">EntityResult</code></a>-->
+  <a href="#message-google.datastore.v1.EntityResult">message <span title="google.datastore.v1.EntityResult">EntityResult</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The result of fetching an entity from Datastore.</p>-->
+  <p>The result of fetching an entity from Datastore.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        entity
+      </td>
+      <td>
+        <code title="google.datastore.v1.Entity">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
+    
+      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The resulting entity.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        version
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td>The version of the entity, a strictly positive number that monotonically
+ increases with changes to the entity.
+
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+
+ For [missing][google.datastore.v1.LookupResponse.missing] entities in
+ `LookupResponse`, this is the version of the snapshot that was used to look
+ up the entity, and it is always set except for eventually consistent reads.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        create_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The time at which the entity was created.
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+ If this entity is missing, this field will not be set.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        update_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The time at which the entity was last changed.
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+ If this entity is missing, this field will not be set.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A cursor that points to the position after the result entity.
+ Set only when the `EntityResult` is part of a `QueryResultBatch` message.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Query">
+  <!--<a href="#message-google.datastore.v1.Query">message <code title="google.datastore.v1.Query">Query</code></a>-->
+  <a href="#message-google.datastore.v1.Query">message <span title="google.datastore.v1.Query">Query</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A query for entities.</p>-->
+  <p>A query for entities.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        projection
+      </td>
+      <td>
+        <code title="google.datastore.v1.Projection">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Projection">
+    
+      <span title="google.datastore.v1.Projection">google.datastore.v1.Projection</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The projection to return. Defaults to returning all properties.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        kind
+      </td>
+      <td>
+        <code title="google.datastore.v1.KindExpression">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.KindExpression">
+    
+      <span title="google.datastore.v1.KindExpression">google.datastore.v1.KindExpression</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The kinds to query (if empty, returns entities of all kinds).
+ Currently at most 1 kind may be specified.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        filter
+      </td>
+      <td>
+        <code title="google.datastore.v1.Filter">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Filter">
+    
+      <span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The filter to apply.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        order
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyOrder">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyOrder">
+    
+      <span title="google.datastore.v1.PropertyOrder">google.datastore.v1.PropertyOrder</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The order to apply to the query results (if empty, order is unspecified).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        distinct_on
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
+    
+      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The properties to make distinct. The query results will contain the first
+ result for each distinct combination of values for the given properties
+ (if empty, all results are returned).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        start_cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A starting point for the query results. Query cursors are
+ returned in query result batches and
+ [can only be used to continue the same
+ query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        end_cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>An ending point for the query results. Query cursors are
+ returned in query result batches and
+ [can only be used to limit the same
+ query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        offset
+      </td>
+      <td>
+        <code title="int32">
+          
+          
+  <span>int32</span>
+  
+        </code>
+      </td>
+      <td>The number of results to skip. Applies before limit, but after all other
+ constraints. Optional. Must be &gt;= 0 if specified.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>12</td>
+      <td>
+        limit
+      </td>
+      <td>
+        <code title="google.protobuf.Int32Value">
+          
+          
+  <span>google.protobuf.Int32Value</span>
+  
+        </code>
+      </td>
+      <td>The maximum number of results to return. Applies after all other
+ constraints. Optional.
+ Unspecified is interpreted as no limit.
+ Must be &gt;= 0 if specified.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Count">
+  <!--<a href="#message-google.datastore.v1.Count">message <code title="google.datastore.v1.Count">Count</code></a>-->
+  <a href="#message-google.datastore.v1.Count">message <span title="google.datastore.v1.Count">Count</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;"></p>-->
+  
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        up_to
+      </td>
+      <td>
+        <code title="google.protobuf.Int64Value">
+          
+          
+  <span>google.protobuf.Int64Value</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Aggregation">
+  <!--<a href="#message-google.datastore.v1.Aggregation">message <code title="google.datastore.v1.Aggregation">Aggregation</code></a>-->
+  <a href="#message-google.datastore.v1.Aggregation">message <span title="google.datastore.v1.Aggregation">Aggregation</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;"></p>-->
+  
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        count
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationQuery.Aggregation.Count">
+          
+          
+  <span>google.datastore.v1.AggregationQuery.Aggregation.Count</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        alias
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.AggregationQuery">
+  <!--<a href="#message-google.datastore.v1.AggregationQuery">message <code title="google.datastore.v1.AggregationQuery">AggregationQuery</code></a>-->
+  <a href="#message-google.datastore.v1.AggregationQuery">message <span title="google.datastore.v1.AggregationQuery">AggregationQuery</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">Datastore query for running an aggregation over a
+ [Query][google.datastore.v1.Query].</p>-->
+  <p>Datastore query for running an aggregation over a
+ [Query][google.datastore.v1.Query].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        nested_query
+      </td>
+      <td>
+        <code title="google.datastore.v1.Query">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
+    
+      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Nested query for aggregation</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        aggregations
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationQuery.Aggregation">
+          
+            repeated
+          
+          
+  <span>google.datastore.v1.AggregationQuery.Aggregation</span>
+  
+        </code>
+      </td>
+      <td>Optional. Series of aggregations to apply over the results of the
+ `nested_query`.
+
+ Requires:
+
+ * A minimum of one and maximum of five aggregations per query.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.KindExpression">
+  <!--<a href="#message-google.datastore.v1.KindExpression">message <code title="google.datastore.v1.KindExpression">KindExpression</code></a>-->
+  <a href="#message-google.datastore.v1.KindExpression">message <span title="google.datastore.v1.KindExpression">KindExpression</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A representation of a kind.</p>-->
+  <p>A representation of a kind.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        name
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The name of the kind.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.PropertyReference">
+  <!--<a href="#message-google.datastore.v1.PropertyReference">message <code title="google.datastore.v1.PropertyReference">PropertyReference</code></a>-->
+  <a href="#message-google.datastore.v1.PropertyReference">message <span title="google.datastore.v1.PropertyReference">PropertyReference</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A reference to a property relative to the kind expressions.</p>-->
+  <p>A reference to a property relative to the kind expressions.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        name
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The name of the property.
+ If name includes &#34;.&#34;s, it may be interpreted as a property name path.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Projection">
+  <!--<a href="#message-google.datastore.v1.Projection">message <code title="google.datastore.v1.Projection">Projection</code></a>-->
+  <a href="#message-google.datastore.v1.Projection">message <span title="google.datastore.v1.Projection">Projection</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A representation of a property in a projection.</p>-->
+  <p>A representation of a property in a projection.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        property
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
+    
+      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The property to project.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.PropertyOrder">
+  <!--<a href="#message-google.datastore.v1.PropertyOrder">message <code title="google.datastore.v1.PropertyOrder">PropertyOrder</code></a>-->
+  <a href="#message-google.datastore.v1.PropertyOrder">message <span title="google.datastore.v1.PropertyOrder">PropertyOrder</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The desired order for a specific property.</p>-->
+  <p>The desired order for a specific property.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        property
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
+    
+      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The property to order by.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        direction
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyOrder.Direction">
+          
+          
+  <span>google.datastore.v1.PropertyOrder.Direction</span>
+  
+        </code>
+      </td>
+      <td>The direction to order by. Defaults to `ASCENDING`.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Filter">
+  <!--<a href="#message-google.datastore.v1.Filter">message <code title="google.datastore.v1.Filter">Filter</code></a>-->
+  <a href="#message-google.datastore.v1.Filter">message <span title="google.datastore.v1.Filter">Filter</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A holder for any type of filter.</p>-->
+  <p>A holder for any type of filter.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        composite_filter
+      </td>
+      <td>
+        <code title="google.datastore.v1.CompositeFilter">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter">
+    
+      <span title="google.datastore.v1.CompositeFilter">google.datastore.v1.CompositeFilter</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A composite filter.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        property_filter
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyFilter">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter">
+    
+      <span title="google.datastore.v1.PropertyFilter">google.datastore.v1.PropertyFilter</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A filter on a property.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.CompositeFilter">
+  <!--<a href="#message-google.datastore.v1.CompositeFilter">message <code title="google.datastore.v1.CompositeFilter">CompositeFilter</code></a>-->
+  <a href="#message-google.datastore.v1.CompositeFilter">message <span title="google.datastore.v1.CompositeFilter">CompositeFilter</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A filter that merges multiple other filters using the given operator.</p>-->
+  <p>A filter that merges multiple other filters using the given operator.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        op
+      </td>
+      <td>
+        <code title="google.datastore.v1.CompositeFilter.Operator">
+          
+          
+  <span>google.datastore.v1.CompositeFilter.Operator</span>
+  
+        </code>
+      </td>
+      <td>The operator for combining multiple filters.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        filters
+      </td>
+      <td>
+        <code title="google.datastore.v1.Filter">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Filter">
+    
+      <span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The list of filters to combine.
+
+ Requires:
+
+ * At least one filter is present.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.PropertyFilter">
+  <!--<a href="#message-google.datastore.v1.PropertyFilter">message <code title="google.datastore.v1.PropertyFilter">PropertyFilter</code></a>-->
+  <a href="#message-google.datastore.v1.PropertyFilter">message <span title="google.datastore.v1.PropertyFilter">PropertyFilter</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A filter on a specific property.</p>-->
+  <p>A filter on a specific property.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        property
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
+    
+      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The property to filter by.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        op
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyFilter.Operator">
+          
+          
+  <span>google.datastore.v1.PropertyFilter.Operator</span>
+  
+        </code>
+      </td>
+      <td>The operator to filter by.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        value
+      </td>
+      <td>
+        <code title="google.datastore.v1.Value">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
+    
+      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The value to compare the property to.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.GqlQuery">
+  <!--<a href="#message-google.datastore.v1.GqlQuery">message <code title="google.datastore.v1.GqlQuery">GqlQuery</code></a>-->
+  <a href="#message-google.datastore.v1.GqlQuery">message <span title="google.datastore.v1.GqlQuery">GqlQuery</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A [GQL
+ query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).</p>-->
+  <p>A <a href="https://cloud.google.com/datastore/docs/apis/gql/gql_reference">GQL
+ query</a>.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        query_string
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>A string of the format described
+ [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        allow_literals
+      </td>
+      <td>
+        <code title="bool">
+          
+          
+  <span>bool</span>
+  
+        </code>
+      </td>
+      <td>When false, the query string must not contain any literals and instead must
+ bind all values. For example,
+ `SELECT * FROM Kind WHERE a = &#39;string literal&#39;` is not allowed, while
+ `SELECT * FROM Kind WHERE a = @value` is.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        named_bindings
+      </td>
+      <td>
+        <code title="map&lt;string, GqlQueryParameter&gt;">
+          
+          
+  <span>map&lt;string, GqlQueryParameter&gt;</span>
+  
+        </code>
+      </td>
+      <td>For each non-reserved named binding site in the query string, there must be
+ a named parameter with that name, but not necessarily the inverse.
+
+ Key must match regex `[A-Za-z_$][A-Za-z_$0-9]*`, must not match regex
+ `__.*__`, and must not be `&#34;&#34;`.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        positional_bindings
+      </td>
+      <td>
+        <code title="google.datastore.v1.GqlQueryParameter">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQueryParameter">
+    
+      <span title="google.datastore.v1.GqlQueryParameter">google.datastore.v1.GqlQueryParameter</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Numbered binding site @1 references the first numbered parameter,
+ effectively using 1-based indexing, rather than the usual 0.
+
+ For each binding site numbered i in `query_string`, there must be an i-th
+ numbered parameter. The inverse must also be true.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.GqlQueryParameter">
+  <!--<a href="#message-google.datastore.v1.GqlQueryParameter">message <code title="google.datastore.v1.GqlQueryParameter">GqlQueryParameter</code></a>-->
+  <a href="#message-google.datastore.v1.GqlQueryParameter">message <span title="google.datastore.v1.GqlQueryParameter">GqlQueryParameter</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A binding parameter for a GQL query.</p>-->
+  <p>A binding parameter for a GQL query.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        value
+      </td>
+      <td>
+        <code title="google.datastore.v1.Value">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
+    
+      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A value parameter.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A query cursor. Query cursors are returned in query
+ result batches.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.QueryResultBatch">
+  <!--<a href="#message-google.datastore.v1.QueryResultBatch">message <code title="google.datastore.v1.QueryResultBatch">QueryResultBatch</code></a>-->
+  <a href="#message-google.datastore.v1.QueryResultBatch">message <span title="google.datastore.v1.QueryResultBatch">QueryResultBatch</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A batch of results produced by a query.</p>-->
+  <p>A batch of results produced by a query.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        skipped_results
+      </td>
+      <td>
+        <code title="int32">
+          
+          
+  <span>int32</span>
+  
+        </code>
+      </td>
+      <td>The number of results skipped, typically because of an offset.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        skipped_cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A cursor that points to the position after the last skipped result.
+ Will be set when `skipped_results` != 0.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        entity_result_type
+      </td>
+      <td>
+        <code title="google.datastore.v1.EntityResult.ResultType">
+          
+          
+  <span>google.datastore.v1.EntityResult.ResultType</span>
+  
+        </code>
+      </td>
+      <td>The result type for every entity in `entity_results`.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        entity_results
+      </td>
+      <td>
+        <code title="google.datastore.v1.EntityResult">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
+    
+      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The results for this batch.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        end_cursor
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>A cursor that points to the position after the last result in the batch.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        more_results
+      </td>
+      <td>
+        <code title="google.datastore.v1.QueryResultBatch.MoreResultsType">
+          
+          
+  <span>google.datastore.v1.QueryResultBatch.MoreResultsType</span>
+  
+        </code>
+      </td>
+      <td>The state of the query after the current batch.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        snapshot_version
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td>The version number of the snapshot this batch was returned from.
+ This applies to the range of results from the query&#39;s `start_cursor` (or
+ the beginning of the query if no cursor was given) to this batch&#39;s
+ `end_cursor` (not the query&#39;s `end_cursor`).
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater snapshot version number. Each batch&#39;s snapshot version
+ is valid for all preceding batches.
+ The value will be zero for eventually consistent queries.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        read_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>Read timestamp this batch was returned from.
+ This applies to the range of results from the query&#39;s `start_cursor` (or
+ the beginning of the query if no cursor was given) to this batch&#39;s
+ `end_cursor` (not the query&#39;s `end_cursor`).
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater timestamp. Each batch&#39;s read timestamp
+ is valid for all preceding batches.
+ This value will not be set for eventually consistent queries in Cloud
+ Datastore.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.AggregationResult">
+  <!--<a href="#message-google.datastore.v1.AggregationResult">message <code title="google.datastore.v1.AggregationResult">AggregationResult</code></a>-->
+  <a href="#message-google.datastore.v1.AggregationResult">message <span title="google.datastore.v1.AggregationResult">AggregationResult</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The result of a single bucket from a Datastore aggregation query.
+
+ The keys of `aggregate_properties` are the same for all results in an
+ aggregation query, unlike entity queries which can have different fields
+ present for each result.</p>-->
+  <p>The result of a single bucket from a Datastore aggregation query.</p>
+<p>The keys of <code>aggregate_properties</code> are the same for all results in an
+ aggregation query, unlike entity queries which can have different fields
+ present for each result.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        aggregate_properties
+      </td>
+      <td>
+        <code title="map&lt;string, Value&gt;">
+          
+          
+  <span>map&lt;string, Value&gt;</span>
+  
+        </code>
+      </td>
+      <td>The result of the aggregation functions, ex: `COUNT(*) AS total_entities`.
+
+ The key is the
+ [alias][google.datastore.v1.AggregationQuery.Aggregation.alias] assigned to
+ the aggregation function on input and the size of this map equals the
+ number of aggregation functions in the query.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.AggregationResultBatch">
+  <!--<a href="#message-google.datastore.v1.AggregationResultBatch">message <code title="google.datastore.v1.AggregationResultBatch">AggregationResultBatch</code></a>-->
+  <a href="#message-google.datastore.v1.AggregationResultBatch">message <span title="google.datastore.v1.AggregationResultBatch">AggregationResultBatch</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A batch of aggregation results produced by an aggregation query.</p>-->
+  <p>A batch of aggregation results produced by an aggregation query.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        aggregation_results
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationResult">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult">
+    
+      <span title="google.datastore.v1.AggregationResult">google.datastore.v1.AggregationResult</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The aggregation results for this batch.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        more_results
+      </td>
+      <td>
+        <code title="google.datastore.v1.QueryResultBatch.MoreResultsType">
+          
+          
+  <span>google.datastore.v1.QueryResultBatch.MoreResultsType</span>
+  
+        </code>
+      </td>
+      <td>The state of the query after the current batch.
+ Only COUNT(*) aggregations are supported in the initial launch. Therefore,
+ expected result type is limited to `NO_MORE_RESULTS`.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        read_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>Read timestamp this batch was returned from.
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater timestamp. Each batch&#39;s read timestamp
+ is valid for all preceding batches.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.LookupRequest">
+  <!--<a href="#message-google.datastore.v1.LookupRequest">message <code title="google.datastore.v1.LookupRequest">LookupRequest</code></a>-->
+  <a href="#message-google.datastore.v1.LookupRequest">message <span title="google.datastore.v1.LookupRequest">LookupRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].</p>-->
+  <p>The request for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_options
+      </td>
+      <td>
+        <code title="google.datastore.v1.ReadOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
+    
+      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The options for this lookup request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        keys
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Required. Keys of entities to look up.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.LookupResponse">
+  <!--<a href="#message-google.datastore.v1.LookupResponse">message <code title="google.datastore.v1.LookupResponse">LookupResponse</code></a>-->
+  <a href="#message-google.datastore.v1.LookupResponse">message <span title="google.datastore.v1.LookupResponse">LookupResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].</p>-->
+  <p>The response for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        found
+      </td>
+      <td>
+        <code title="google.datastore.v1.EntityResult">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
+    
+      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Entities found as `ResultType.FULL` entities. The order of results in this
+ field is undefined and has no relation to the order of the keys in the
+ input.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        missing
+      </td>
+      <td>
+        <code title="google.datastore.v1.EntityResult">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
+    
+      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Entities not found as `ResultType.KEY_ONLY` entities. The order of results
+ in this field is undefined and has no relation to the order of the keys
+ in the input.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        deferred
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A list of keys that were not looked up due to resource constraints. The
+ order of results in this field is undefined and has no relation to the
+ order of the keys in the input.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The identifier of the transaction that was started as part of this Lookup
+ request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [LookupRequest.read_options][google.datastore.v1.LookupRequest.read_options].</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        read_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The time at which these entities were read or found missing.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RunQueryRequest">
+  <!--<a href="#message-google.datastore.v1.RunQueryRequest">message <code title="google.datastore.v1.RunQueryRequest">RunQueryRequest</code></a>-->
+  <a href="#message-google.datastore.v1.RunQueryRequest">message <span title="google.datastore.v1.RunQueryRequest">RunQueryRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>-->
+  <p>The request for [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        partition_id
+      </td>
+      <td>
+        <code title="google.datastore.v1.PartitionId">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
+    
+      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Entities are partitioned into subsets, identified by a partition ID.
+ Queries are scoped to a single partition.
+ This partition ID is normalized with the standard default context
+ partition ID.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_options
+      </td>
+      <td>
+        <code title="google.datastore.v1.ReadOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
+    
+      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The options for this query.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        query
+      </td>
+      <td>
+        <code title="google.datastore.v1.Query">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
+    
+      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The query to run.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        gql_query
+      </td>
+      <td>
+        <code title="google.datastore.v1.GqlQuery">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">
+    
+      <span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The GQL query to run. This query must be a non-aggregation query.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RunQueryResponse">
+  <!--<a href="#message-google.datastore.v1.RunQueryResponse">message <code title="google.datastore.v1.RunQueryResponse">RunQueryResponse</code></a>-->
+  <a href="#message-google.datastore.v1.RunQueryResponse">message <span title="google.datastore.v1.RunQueryResponse">RunQueryResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>-->
+  <p>The response for
+ [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        batch
+      </td>
+      <td>
+        <code title="google.datastore.v1.QueryResultBatch">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.QueryResultBatch">
+    
+      <span title="google.datastore.v1.QueryResultBatch">google.datastore.v1.QueryResultBatch</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A batch of query results (always present).</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        query
+      </td>
+      <td>
+        <code title="google.datastore.v1.Query">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
+    
+      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The parsed form of the `GqlQuery` from the request, if it was set.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The identifier of the transaction that was started as part of this
+ RunQuery request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [RunQueryRequest.read_options][google.datastore.v1.RunQueryRequest.read_options].</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RunAggregationQueryRequest">
+  <!--<a href="#message-google.datastore.v1.RunAggregationQueryRequest">message <code title="google.datastore.v1.RunAggregationQueryRequest">RunAggregationQueryRequest</code></a>-->
+  <a href="#message-google.datastore.v1.RunAggregationQueryRequest">message <span title="google.datastore.v1.RunAggregationQueryRequest">RunAggregationQueryRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>-->
+  <p>The request for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        partition_id
+      </td>
+      <td>
+        <code title="google.datastore.v1.PartitionId">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
+    
+      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Entities are partitioned into subsets, identified by a partition ID.
+ Queries are scoped to a single partition.
+ This partition ID is normalized with the standard default context
+ partition ID.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_options
+      </td>
+      <td>
+        <code title="google.datastore.v1.ReadOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
+    
+      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The options for this query.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        aggregation_query
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationQuery">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">
+    
+      <span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The query to run.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        gql_query
+      </td>
+      <td>
+        <code title="google.datastore.v1.GqlQuery">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">
+    
+      <span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The GQL query to run. This query must be an aggregation query.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RunAggregationQueryResponse">
+  <!--<a href="#message-google.datastore.v1.RunAggregationQueryResponse">message <code title="google.datastore.v1.RunAggregationQueryResponse">RunAggregationQueryResponse</code></a>-->
+  <a href="#message-google.datastore.v1.RunAggregationQueryResponse">message <span title="google.datastore.v1.RunAggregationQueryResponse">RunAggregationQueryResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>-->
+  <p>The response for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        batch
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationResultBatch">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResultBatch">
+    
+      <span title="google.datastore.v1.AggregationResultBatch">google.datastore.v1.AggregationResultBatch</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>A batch of aggregation results. Always present.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        query
+      </td>
+      <td>
+        <code title="google.datastore.v1.AggregationQuery">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">
+    
+      <span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The parsed form of the `GqlQuery` from the request, if it was set.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The identifier of the transaction that was started as part of this
+ RunAggregationQuery request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [RunAggregationQueryRequest.read_options][google.datastore.v1.RunAggregationQueryRequest.read_options].</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.BeginTransactionRequest">
+  <!--<a href="#message-google.datastore.v1.BeginTransactionRequest">message <code title="google.datastore.v1.BeginTransactionRequest">BeginTransactionRequest</code></a>-->
+  <a href="#message-google.datastore.v1.BeginTransactionRequest">message <span title="google.datastore.v1.BeginTransactionRequest">BeginTransactionRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>-->
+  <p>The request for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        transaction_options
+      </td>
+      <td>
+        <code title="google.datastore.v1.TransactionOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
+    
+      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Options for a new transaction.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.BeginTransactionResponse">
+  <!--<a href="#message-google.datastore.v1.BeginTransactionResponse">message <code title="google.datastore.v1.BeginTransactionResponse">BeginTransactionResponse</code></a>-->
+  <a href="#message-google.datastore.v1.BeginTransactionResponse">message <span title="google.datastore.v1.BeginTransactionResponse">BeginTransactionResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>-->
+  <p>The response for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The transaction identifier (always present).</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RollbackRequest">
+  <!--<a href="#message-google.datastore.v1.RollbackRequest">message <code title="google.datastore.v1.RollbackRequest">RollbackRequest</code></a>-->
+  <a href="#message-google.datastore.v1.RollbackRequest">message <span title="google.datastore.v1.RollbackRequest">RollbackRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for [Datastore.Rollback][google.datastore.v1.Datastore.Rollback].</p>-->
+  <p>The request for [Datastore.Rollback][google.datastore.v1.Datastore.Rollback].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>Required. The transaction identifier, returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.RollbackResponse">
+  <!--<a href="#message-google.datastore.v1.RollbackResponse">message <code title="google.datastore.v1.RollbackResponse">RollbackResponse</code></a>-->
+  <a href="#message-google.datastore.v1.RollbackResponse">message <span title="google.datastore.v1.RollbackResponse">RollbackResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.Rollback][google.datastore.v1.Datastore.Rollback]. (an empty
+ message).</p>-->
+  <p>The response for
+ [Datastore.Rollback][google.datastore.v1.Datastore.Rollback]. (an empty
+ message).</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.CommitRequest">
+  <!--<a href="#message-google.datastore.v1.CommitRequest">message <code title="google.datastore.v1.CommitRequest">CommitRequest</code></a>-->
+  <a href="#message-google.datastore.v1.CommitRequest">message <span title="google.datastore.v1.CommitRequest">CommitRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for [Datastore.Commit][google.datastore.v1.Datastore.Commit].</p>-->
+  <p>The request for [Datastore.Commit][google.datastore.v1.Datastore.Commit].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        mode
+      </td>
+      <td>
+        <code title="google.datastore.v1.CommitRequest.Mode">
+          
+          
+  <span>google.datastore.v1.CommitRequest.Mode</span>
+  
+        </code>
+      </td>
+      <td>The type of commit to perform. Defaults to `TRANSACTIONAL`.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The identifier of the transaction associated with the commit. A
+ transaction identifier is returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        single_use_transaction
+      </td>
+      <td>
+        <code title="google.datastore.v1.TransactionOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
+    
+      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Options for beginning a new transaction for this request.
+ The transaction is committed when the request completes. If specified,
+ [TransactionOptions.mode][google.datastore.v1.TransactionOptions] must be
+ [TransactionOptions.ReadWrite][google.datastore.v1.TransactionOptions.ReadWrite].</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        mutations
+      </td>
+      <td>
+        <code title="google.datastore.v1.Mutation">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Mutation">
+    
+      <span title="google.datastore.v1.Mutation">google.datastore.v1.Mutation</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The mutations to perform.
+
+ When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+ applied in order. The following sequences of mutations affecting a single
+ entity are not permitted in a single `Commit` request:
+
+ - `insert` followed by `insert`
+ - `update` followed by `insert`
+ - `upsert` followed by `insert`
+ - `delete` followed by `update`
+
+ When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single
+ entity.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.CommitResponse">
+  <!--<a href="#message-google.datastore.v1.CommitResponse">message <code title="google.datastore.v1.CommitResponse">CommitResponse</code></a>-->
+  <a href="#message-google.datastore.v1.CommitResponse">message <span title="google.datastore.v1.CommitResponse">CommitResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for [Datastore.Commit][google.datastore.v1.Datastore.Commit].</p>-->
+  <p>The response for [Datastore.Commit][google.datastore.v1.Datastore.Commit].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        mutation_results
+      </td>
+      <td>
+        <code title="google.datastore.v1.MutationResult">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.MutationResult">
+    
+      <span title="google.datastore.v1.MutationResult">google.datastore.v1.MutationResult</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The result of performing the mutations.
+ The i-th mutation result corresponds to the i-th mutation in the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        index_updates
+      </td>
+      <td>
+        <code title="int32">
+          
+          
+  <span>int32</span>
+  
+        </code>
+      </td>
+      <td>The number of index entries updated during the commit, or zero if none were
+ updated.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        commit_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The transaction commit timestamp. Not set for non-transactional commits.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.AllocateIdsRequest">
+  <!--<a href="#message-google.datastore.v1.AllocateIdsRequest">message <code title="google.datastore.v1.AllocateIdsRequest">AllocateIdsRequest</code></a>-->
+  <a href="#message-google.datastore.v1.AllocateIdsRequest">message <span title="google.datastore.v1.AllocateIdsRequest">AllocateIdsRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>-->
+  <p>The request for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        keys
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Required. A list of keys with incomplete key paths for which to allocate
+ IDs. No key may be reserved/read-only.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.AllocateIdsResponse">
+  <!--<a href="#message-google.datastore.v1.AllocateIdsResponse">message <code title="google.datastore.v1.AllocateIdsResponse">AllocateIdsResponse</code></a>-->
+  <a href="#message-google.datastore.v1.AllocateIdsResponse">message <span title="google.datastore.v1.AllocateIdsResponse">AllocateIdsResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>-->
+  <p>The response for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        keys
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The keys specified in the request (in the same order), each with
+ its key path completed with a newly allocated ID.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ReserveIdsRequest">
+  <!--<a href="#message-google.datastore.v1.ReserveIdsRequest">message <code title="google.datastore.v1.ReserveIdsRequest">ReserveIdsRequest</code></a>-->
+  <a href="#message-google.datastore.v1.ReserveIdsRequest">message <span title="google.datastore.v1.ReserveIdsRequest">ReserveIdsRequest</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The request for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>-->
+  <p>The request for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        project_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>Required. The ID of the project against which to make the request.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        database_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td>The ID of the database against which to make the request.
+
+ &#39;(default)&#39; is not allowed; please use empty string &#39;&#39; to refer the default
+ database.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        keys
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+            repeated
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Required. A list of keys with complete key paths whose numeric IDs should
+ not be auto-allocated.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ReserveIdsResponse">
+  <!--<a href="#message-google.datastore.v1.ReserveIdsResponse">message <code title="google.datastore.v1.ReserveIdsResponse">ReserveIdsResponse</code></a>-->
+  <a href="#message-google.datastore.v1.ReserveIdsResponse">message <span title="google.datastore.v1.ReserveIdsResponse">ReserveIdsResponse</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The response for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>-->
+  <p>The response for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.Mutation">
+  <!--<a href="#message-google.datastore.v1.Mutation">message <code title="google.datastore.v1.Mutation">Mutation</code></a>-->
+  <a href="#message-google.datastore.v1.Mutation">message <span title="google.datastore.v1.Mutation">Mutation</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">A mutation to apply to an entity.</p>-->
+  <p>A mutation to apply to an entity.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        insert
+      </td>
+      <td>
+        <code title="google.datastore.v1.Entity">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
+    
+      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The entity to insert. The entity must not already exist.
+ The entity key&#39;s final path element may be incomplete.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        update
+      </td>
+      <td>
+        <code title="google.datastore.v1.Entity">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
+    
+      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The entity to update. The entity must already exist.
+ Must have a complete key path.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        upsert
+      </td>
+      <td>
+        <code title="google.datastore.v1.Entity">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
+    
+      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The entity to upsert. The entity may or may not already exist.
+ The entity key&#39;s final path element may be incomplete.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        delete
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The key of the entity to delete. The entity may or may not already exist.
+ Must have a complete key path and must not be reserved/read-only.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        base_version
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td>The version of the entity that this mutation is being applied
+ to. If this does not match the current version on the server, the
+ mutation conflicts.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>11</td>
+      <td>
+        update_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The update time of the entity that this mutation is being applied
+ to. If this does not match the current update time on the server, the
+ mutation conflicts.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.MutationResult">
+  <!--<a href="#message-google.datastore.v1.MutationResult">message <code title="google.datastore.v1.MutationResult">MutationResult</code></a>-->
+  <a href="#message-google.datastore.v1.MutationResult">message <span title="google.datastore.v1.MutationResult">MutationResult</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The result of applying a mutation.</p>-->
+  <p>The result of applying a mutation.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        key
+      </td>
+      <td>
+        <code title="google.datastore.v1.Key">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
+    
+      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>The automatically allocated key.
+ Set only when the mutation allocated a key.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        version
+      </td>
+      <td>
+        <code title="int64">
+          
+          
+  <span>int64</span>
+  
+        </code>
+      </td>
+      <td>The version of the entity on the server after processing the mutation. If
+ the mutation doesn&#39;t change anything on the server, then the version will
+ be the version of the current entity or, if no entity is present, a version
+ that is strictly greater than the version of any previous entity and less
+ than the version of any possible future entity.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        create_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The create time of the entity. This field will not be set after a &#39;delete&#39;.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        update_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>The update time of the entity on the server after processing the mutation.
+ If the mutation doesn&#39;t change anything on the server, then the timestamp
+ will be the update timestamp of the current entity. This field will not be
+ set after a &#39;delete&#39;.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        conflict_detected
+      </td>
+      <td>
+        <code title="bool">
+          
+          
+  <span>bool</span>
+  
+        </code>
+      </td>
+      <td>Whether a conflict was detected for this mutation. Always false when a
+ conflict detection strategy field is not set in the mutation.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ReadOptions">
+  <!--<a href="#message-google.datastore.v1.ReadOptions">message <code title="google.datastore.v1.ReadOptions">ReadOptions</code></a>-->
+  <a href="#message-google.datastore.v1.ReadOptions">message <span title="google.datastore.v1.ReadOptions">ReadOptions</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">The options shared by read requests.</p>-->
+  <p>The options shared by read requests.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_consistency
+      </td>
+      <td>
+        <code title="google.datastore.v1.ReadOptions.ReadConsistency">
+          
+          
+  <span>google.datastore.v1.ReadOptions.ReadConsistency</span>
+  
+        </code>
+      </td>
+      <td>The non-transactional read consistency to use.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td>The identifier of the transaction in which to read. A
+ transaction identifier is returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        new_transaction
+      </td>
+      <td>
+        <code title="google.datastore.v1.TransactionOptions">
+          
+          
+    
+      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
+    
+      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+    </a>
+  
+        </code>
+      </td>
+      <td>Options for beginning a new transaction for this request.
+
+ The new transaction identifier will be returned in the corresponding
+ response as either
+ [LookupResponse.transaction][google.datastore.v1.LookupResponse.transaction]
+ or
+ [RunQueryResponse.transaction][google.datastore.v1.RunQueryResponse.transaction].</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        read_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td>Reads entities as they were at the given time. This may not be older
+ than 270 seconds.  This value is only supported for Cloud Firestore in
+ Datastore mode.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ReadWrite">
+  <!--<a href="#message-google.datastore.v1.ReadWrite">message <code title="google.datastore.v1.ReadWrite">ReadWrite</code></a>-->
+  <a href="#message-google.datastore.v1.ReadWrite">message <span title="google.datastore.v1.ReadWrite">ReadWrite</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;"></p>-->
+  
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        previous_transaction
+      </td>
+      <td>
+        <code title="bytes">
+          
+          
+  <span>bytes</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.ReadOnly">
+  <!--<a href="#message-google.datastore.v1.ReadOnly">message <code title="google.datastore.v1.ReadOnly">ReadOnly</code></a>-->
+  <a href="#message-google.datastore.v1.ReadOnly">message <span title="google.datastore.v1.ReadOnly">ReadOnly</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;"></p>-->
+  
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_time
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-google.datastore.v1.TransactionOptions">
+  <!--<a href="#message-google.datastore.v1.TransactionOptions">message <code title="google.datastore.v1.TransactionOptions">TransactionOptions</code></a>-->
+  <a href="#message-google.datastore.v1.TransactionOptions">message <span title="google.datastore.v1.TransactionOptions">TransactionOptions</span></a>
+</h5>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">Options for beginning a new transaction.
+
+ Transactions can be created explicitly with calls to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction]
+ or implicitly by setting
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ in read requests.</p>-->
+  <p>Options for beginning a new transaction.</p>
+<p>Transactions can be created explicitly with calls to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction]
+ or implicitly by setting
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ in read requests.</p>
+</div>
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        read_write
+      </td>
+      <td>
+        <code title="google.datastore.v1.TransactionOptions.ReadWrite">
+          
+          
+  <span>google.datastore.v1.TransactionOptions.ReadWrite</span>
+  
+        </code>
+      </td>
+      <td>The transaction should allow both reads and writes.</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        read_only
+      </td>
+      <td>
+        <code title="google.datastore.v1.TransactionOptions.ReadOnly">
+          
+          
+  <span>google.datastore.v1.TransactionOptions.ReadOnly</span>
+  
+        </code>
+      </td>
+      <td>The transaction should only allow reads.</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+      </div>
+      
+    
+
+  
+
+  
+
+    <h4 class="title is-4">
+      Enums
+    </h4>
+
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.ResultType">
+  <a href="#enum-google.datastore.v1.ResultType">enum <code title="google.datastore.v1.ResultType">ResultType</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>RESULT_TYPE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>FULL</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>PROJECTION</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>KEY_ONLY</code></td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.Direction">
+  <a href="#enum-google.datastore.v1.Direction">enum <code title="google.datastore.v1.Direction">Direction</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>DIRECTION_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>ASCENDING</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>DESCENDING</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.Operator">
+  <a href="#enum-google.datastore.v1.Operator">enum <code title="google.datastore.v1.Operator">Operator</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>OPERATOR_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>AND</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>OR</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.Operator">
+  <a href="#enum-google.datastore.v1.Operator">enum <code title="google.datastore.v1.Operator">Operator</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>OPERATOR_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>LESS_THAN</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>LESS_THAN_OR_EQUAL</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>GREATER_THAN</code></td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>GREATER_THAN_OR_EQUAL</code></td>
+      <td>4</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>EQUAL</code></td>
+      <td>5</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>IN</code></td>
+      <td>6</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>NOT_EQUAL</code></td>
+      <td>9</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>HAS_ANCESTOR</code></td>
+      <td>11</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>NOT_IN</code></td>
+      <td>13</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.MoreResultsType">
+  <a href="#enum-google.datastore.v1.MoreResultsType">enum <code title="google.datastore.v1.MoreResultsType">MoreResultsType</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>MORE_RESULTS_TYPE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>NOT_FINISHED</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>MORE_RESULTS_AFTER_LIMIT</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>MORE_RESULTS_AFTER_CURSOR</code></td>
+      <td>4</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>NO_MORE_RESULTS</code></td>
+      <td>3</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.Mode">
+  <a href="#enum-google.datastore.v1.Mode">enum <code title="google.datastore.v1.Mode">Mode</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>MODE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>TRANSACTIONAL</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>NON_TRANSACTIONAL</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="box">
+      <h5 class="title is-5" id="enum-google.datastore.v1.ReadConsistency">
+  <a href="#enum-google.datastore.v1.ReadConsistency">enum <code title="google.datastore.v1.ReadConsistency">ReadConsistency</code></a>
+</h5>
+<div class="block">
+  <p></p>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>READ_CONSISTENCY_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>STRONG</code></td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td><code>EVENTUAL</code></td>
+      <td>2</td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+
+  
+
+
+        </div>
+      <!--</section>-->
+    </div>
+    <footer class="footer">
+      <div class="content has-text-centered">
+        
+        <p>
+          © 2023 Mark Vincze. All rights reserved.
+        </p>
+        
+        <p>
+          Built with <strong>Sable</strong>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

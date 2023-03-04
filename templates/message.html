@@ -3,8 +3,9 @@
   <!--<a href="#message-{{ message.full_name }}">message <code title="{{ message.full_name }}">{{ message.name }}</code></a>-->
   <a href="#message-{{ message.full_name }}">message <span title="{{ message.full_name }}">{{ message.name }}</span></a>
 </h5>
-<div class="block">
-  <p>{{ message.description }}</p>
+<div class="block content">
+  <!--<p style="white-space: pre-wrap;">{{ message.description }}</p>-->
+  {{ message.description_html | safe }}
 </div>
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
