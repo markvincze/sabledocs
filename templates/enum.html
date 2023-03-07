@@ -1,8 +1,8 @@
 <h5 class="title is-5" id="enum-{{ enum.full_name }}">
   <a href="#enum-{{ enum.full_name }}">enum <code title="{{ enum.full_name }}">{{ enum.name }}</code></a>
 </h5>
-<div class="block">
-  <p>{{ enum.description }}</p>
+<div class="block content">
+  <p>{{ enum.description_html | safe }}</p>
 </div>
 <table class="table">
   <thead>
@@ -17,7 +17,7 @@
     <tr>
       <td><code>{{ enum_value.name }}</code></td>
       <td>{{ enum_value.number }}</td>
-      <td>{{ enum_value.description }}</td>
+      <td class="content">{{ enum_value.description_html | safe }}</td>
     </tr>
     {% endfor %}
   </tbody>

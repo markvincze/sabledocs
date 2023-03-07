@@ -1,14 +1,18 @@
 from pprint import pformat
 
-class CodeItem
 
-class MessageField:
+class CodeItem:
     def __init__(self):
         self.name = ''
-        self.number = 0
-        self.label = ''
         self.description = ''
         self.description_html = ''
+
+
+class MessageField(CodeItem):
+    def __init__(self):
+        CodeItem.__init__(self)
+        self.number = 0
+        self.label = ''
         self.type = ''
         self.full_type = ''
         self.default_value = ''
@@ -20,65 +24,63 @@ class MessageField:
         return pformat(filtered_vars, indent=4, width=1)
 
 
-class Message:
+class Message(CodeItem):
     def __init__(self):
-        self.name = ''
+        CodeItem.__init__(self)
         self.full_name = ''
-        self.description = ''
-        self.description_html = ''
         self.is_map_entry = False
         self.fields = []
+
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
 
-class EnumValue:
+
+class EnumValue(CodeItem):
     def __init__(self):
-        self.name = ''
+        CodeItem.__init__(self)
         self.number = 0
-        self.description = ''
-        self.description_html = ''
 
-class Enum:
+
+class Enum(CodeItem):
     def __init__(self):
-        self.name = ''
+        CodeItem.__init__(self)
         self.full_name = ''
-        self.description = ''
-        self.description_html = ''
         self.values = []
+
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
 
-class ServiceMethod:
+
+class ServiceMethod(CodeItem):
     def __init__(self):
-        self.name = ''
-        self.description = ''
-        self.description_html = ''
+        CodeItem.__init__(self)
         self.request_type = ''
         self.request_full_type = ''
         self.response_type = ''
         self.response_full_type = ''
 
-class Service:
+
+class Service(CodeItem):
     def __init__(self):
-        self.name = ''
+        CodeItem.__init__(self)
         self.full_name = ''
-        self.description = ''
-        self.description_html = ''
         self.methods = []
 
-class Package:
+
+class Package(CodeItem):
     def __init__(self):
-        self.name = ''
-        self.description = ''
-        self.description_html = ''
+        CodeItem.__init__(self)
         self.messages = []
         self.enums = []
         self.services = []
+
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
+
 
 class SableContext:
     def __init__(self, packages, all_messages, all_enums):
         self.packages = packages
         self.all_messages = all_messages
         self.all_enums = all_enums
+

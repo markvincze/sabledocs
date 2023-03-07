@@ -2,15 +2,15 @@
   <a href="#service-{{ service.full_name }}">service <code title="{{ service.full_name }}">{{ service.name }}</code></a>
 </h5>
 <div class="block">
-  <p>{{ service.description }}</p>
+  <p>{{ service.description_html | safe }}</p>
 </div>
 
 {% for method in service.methods %}
 <div class="box">
   <h6 class="title is-6">rpc <code>{{ method.name }} ({{ method.request_type }}) -> {{ method.response_type }}</code></h6>
-  {% if method.description %}
+  {% if method.description_html %}
   <div class="block">
-    <p>{{ method.description }}</p>
+    <p>{{ method.description_html | safe }}</p>
   </div>
   {% endif %}
 </div>

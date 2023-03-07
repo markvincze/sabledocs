@@ -9,9 +9,9 @@
     <h4 class="title is-4">
       <a href="{{ p.name }}.html">{{ p.name }}</a>
     </h4>
-    {% if p.description %}
+    {% if p.description_html %}
     <div style="margin-top: -0.5rem; margin-bottom: 2.5rem">
-      {{ p.description }}
+      {{ p.description_html | safe }}
     </div>
     {% endif %}
   {% endfor %}
