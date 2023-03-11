@@ -249,6 +249,7 @@ def parse_proto_descriptor(file_name):
     with open(file_name, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:
+            print(f"Processing {file.name}")
 
             comments = build_comment_map(file.source_code_info)
 
@@ -268,7 +269,6 @@ def parse_proto_descriptor(file_name):
             all_enums.extend(package.enums)
 
             packages[file.package] = package
-            print(file.name)
 
         add_package_to_message_fields(all_messages, packages.values())
 
@@ -279,3 +279,4 @@ def parse_proto_descriptor(file_name):
                 key=lambda p: (p.name)),
             all_messages,
             all_enums)
+
