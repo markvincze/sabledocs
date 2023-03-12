@@ -14,6 +14,8 @@ from proto_model import Service
 from proto_model import Package
 from proto_model import LocationInfo
 from proto_model import SableContext
+from sable_config import RepositoryType
+from sable_config import SableConfig
 import pprint
 import markdown
 
@@ -36,22 +38,32 @@ FIELD_TYPE_MESSAGE = 11
 FIELD_TYPE_ENUM = 14
 
 
+def build_source_code_url(repository_url, repository_type, repository_branch, file_path, line_number):
+    match repository_type:
+        case RepositoryType.GITHUB:
+            return f"{repository_url.strip('/')}/blob/{repository_branch}/{file_path}#L{line_number}"
+        case RepositoryType.BITBUCKET:
+            return f"{repository_url.strip('/')}/src/{repository_branch}/{file_path}#lines-{line_number}"
+    return ""
+
+
 class ParseContext:
-    def __init__(self, package, source_file_path, path, locations):
+    def __init__(self, config, package, source_file_path, path, locations):
+        self.config = config
         self.package = package
         self.source_file_path = source_file_path
         self.path = path
         self.locations = locations
 
     @classmethod
-    def New(cls, package, source_file_path, locations):
-        return ParseContext(package, source_file_path, "", locations)
+    def New(cls, config, package, source_file_path, locations):
+        return ParseContext(config, package, source_file_path, "", locations)
 
     def WithPath(self, path):
-        return ParseContext(self.package, self.source_file_path, path, self.locations)
+        return ParseContext(self.config, self.package, self.source_file_path, path, self.locations)
 
     def ExtendPath(self, *path):
-        return ParseContext(self.package, self.source_file_path, f"{self.path}.{'.'.join(map(str, path))}", self.locations)
+        return ParseContext(self.config, self.package, self.source_file_path, f"{self.path}.{'.'.join(map(str, path))}", self.locations)
 
     def GetComments(self, path=""):
         location = self.locations.get(self.path if path == "" else path, None)
@@ -78,7 +90,14 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: 
     e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}"
     e.description = ctx.GetComments()
     e.description_html = markdown.markdown(e.description)
+    e.source_file_path = ctx.source_file_path
     e.line_number = ctx.GetLineNumber()
+    e.repository_url = build_source_code_url(
+        ctx.config.repository_url,
+        ctx.config.repository_type,
+        ctx.config.repository_branch,
+        e.source_file_path,
+        e.line_number)
     for i, ev in enumerate(enum.value):
         e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i)))
 
@@ -136,6 +155,12 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain
     m.description_html = markdown.markdown(m.description)
     m.source_file_path = ctx.source_file_path
     m.line_number = ctx.GetLineNumber()
+    m.repository_url = build_source_code_url(
+        ctx.config.repository_url,
+        ctx.config.repository_type,
+        ctx.config.repository_branch,
+        m.source_file_path,
+        m.line_number)
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
@@ -146,8 +171,6 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain
 
 
 def parse_messages(messages: list[DescriptorProto], ctx: ParseContext, nested_type_chain: str):
-    # print(f"GetLocations type in parse_messages {type(ctx.GetLocations()).__name__}")
-    # print(f"GetComments type in parse_messages {type(ctx.GetComments()).__name__}")
     for (i, message) in enumerate(messages):
         ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), nested_type_chain))
 
@@ -174,7 +197,14 @@ def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s.full_name = f"{ctx.package.name}.{service.name}"
     s.description = ctx.GetComments()
     s.description_html = markdown.markdown(s.description)
+    s.source_file_path = ctx.source_file_path
     s.line_number = ctx.GetLineNumber()
+    s.repository_url = build_source_code_url(
+        ctx.config.repository_url,
+        ctx.config.repository_type,
+        ctx.config.repository_branch,
+        s.source_file_path,
+        s.line_number)
     for i, service_method in enumerate(service.method):
         s.methods.append(parse_service_method(service_method, ctx.ExtendPath(COMMENT_SERVICE_METHOD_INDEX, i)))
 
@@ -199,11 +229,7 @@ def add_package_to_message_fields(messages: list[Message], packages):
                 mf.package = package
 
 
-# def build_comment_map(source_code_info):
 def build_location_map(source_code_info):
-    def has_comments(location):
-        return location.leading_comments != '' or location.trailing_comments != ''
-
     def build_key(path):
         return '.'.join(map(lambda i: str(i), path))
 
@@ -226,8 +252,6 @@ def build_location_map(source_code_info):
     location_infos = {}
     for loc in source_code_info.location:
         location_infos[build_key(loc.path)] = build_location_info(loc)
-        # if has_comments(l):
-        #     comments[build_key(l.path)] = build_comment(l)
 
     return location_infos
 
@@ -264,7 +288,7 @@ def to_label_name(type):
         case _: ""
 
 
-def parse_proto_descriptor(file_name):
+def parse_proto_descriptor(file_name: str, sable_config: SableConfig):
     packages = dict()
     all_messages = []
     all_enums = []
@@ -274,18 +298,13 @@ def parse_proto_descriptor(file_name):
             print(f"Processing {file.name}")
 
             locations = build_location_map(file.source_code_info)
-            # print(type(locations).__name__)
-            # print(type(list(locations.items())[0][1]).__name__)
-            # for item in list(locations.items()):
-                # print(f"{type(item[0]).__name__} -> {type(item[1]).__name__}")
 
             package = packages.get(file.package, Package())
             package.name = file.package
 
-            ctx = ParseContext.New(package, file.name, locations)
+            ctx = ParseContext.New(sable_config, package, file.name, locations)
 
             package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
-            # pprint.pprint(comments)
 
             parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), "")
             parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), "")

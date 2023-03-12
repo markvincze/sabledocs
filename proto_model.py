@@ -8,6 +8,7 @@ class CodeItem:
         self.description_html = ''
         self.source_file_path = ''
         self.line_number = 0
+        self.repository_url = ''
 
 
 class MessageField(CodeItem):
@@ -81,9 +82,9 @@ class Package(CodeItem):
 
 
 class LocationInfo:
-    def __init__(self, line_number, comment):
-        self.line_number = 0
-        self.comments = ""
+    def __init__(self, line_number, comments):
+        self.line_number = line_number
+        self.comments = comments
 
 
 class SableContext:

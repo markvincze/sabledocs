@@ -1,5 +1,8 @@
 <h5 class="title is-5" id="enum-{{ enum.full_name }}">
   <a href="#enum-{{ enum.full_name }}">enum <code title="{{ enum.full_name }}">{{ enum.name }}</code></a>
+  {% if enum.repository_url %}
+  <br /><a style="font-size: 0.7em; font-weight: normal" href="{{ enum.repository_url }}">{{ enum.source_file_path }}</a>
+  {% endif %}
 </h5>
 <div class="block content">
   <p>{{ enum.description_html | safe }}</p>

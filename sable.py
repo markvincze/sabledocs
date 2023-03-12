@@ -2,14 +2,10 @@ import json
 import pprint
 import tomllib
 from proto_descriptor_parser import parse_proto_descriptor
-from sable_config import *
+from sable_config import RepositoryType
+from sable_config import SableConfig
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from os import path
-
-#sable_context = parse_proto_descriptor('descriptor.pb')
-# sable_context = parse_proto_descriptor('pubsub.pb')
-#sable_context = parse_proto_descriptor('sable-test.pb')
-sable_context = parse_proto_descriptor('datastore.pb')
 
 sable_config = SableConfig()
 
@@ -18,6 +14,24 @@ if path.exists('sable.toml'):
         config_values = tomllib.load(config_file)
         if 'footer-content' in config_values:
             sable_config.footer_content = config_values['footer-content']
+
+        if 'repository-url' in config_values:
+            sable_config.repository_url = config_values['repository-url']
+
+        if 'repository-branch' in config_values:
+            sable_config.repository_branch = config_values['repository-branch']
+
+        if 'respository-type' in config_values:
+            match config_values['respository-type']:
+                case 'github':
+                    sable_config.repository_type = RepositoryType.GITHUB
+                case 'bitbucket':
+                    sable_config.repository_type = RepositoryType.BITBUCKET
+
+#sable_context = parse_proto_descriptor('descriptor.pb')
+#sable_context = parse_proto_descriptor('pubsub.pb')
+#sable_context = parse_proto_descriptor('sable-test.pb')
+sable_context = parse_proto_descriptor('datastore.pb', sable_config)
 
 jinja_env = Environment(
     loader=FileSystemLoader(searchpath="./"),

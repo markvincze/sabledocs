@@ -1,5 +1,8 @@
 <h5 class="title is-5" id="service-{{ service.full_name }}">
-  <a href="#service-{{ service.full_name }}">service <code title="{{ service.full_name }}">{{ service.name }}</code></a>
+  <a href="#service-{{ service.full_name }}">service <span title="{{ service.full_name }}">{{ service.name }}</span></a>
+{% if service.repository_url %}
+<br /><a style="font-size: 0.7em; font-weight: normal" href="{{ service.repository_url }}">{{ service.source_file_path }}</a>
+{% endif %}
 </h5>
 <div class="block">
   <p>{{ service.description_html | safe }}</p>
