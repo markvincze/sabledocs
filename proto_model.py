@@ -6,6 +6,8 @@ class CodeItem:
         self.name = ''
         self.description = ''
         self.description_html = ''
+        self.source_file_path = ''
+        self.line_number = 0
 
 
 class MessageField(CodeItem):
@@ -76,6 +78,12 @@ class Package(CodeItem):
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
+
+
+class LocationInfo:
+    def __init__(self, line_number, comment):
+        self.line_number = 0
+        self.comments = ""
 
 
 class SableContext:

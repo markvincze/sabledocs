@@ -12,6 +12,7 @@ from proto_model import Enum
 from proto_model import ServiceMethod
 from proto_model import Service
 from proto_model import Package
+from proto_model import LocationInfo
 from proto_model import SableContext
 import pprint
 import markdown
@@ -36,23 +37,29 @@ FIELD_TYPE_ENUM = 14
 
 
 class ParseContext:
-    def __init__(self, package, path, comments):
+    def __init__(self, package, source_file_path, path, locations):
         self.package = package
+        self.source_file_path = source_file_path
         self.path = path
-        self.comments = comments
+        self.locations = locations
 
     @classmethod
-    def New(cls, package, comments):
-        return ParseContext(package, "", comments)
+    def New(cls, package, source_file_path, locations):
+        return ParseContext(package, source_file_path, "", locations)
 
     def WithPath(self, path):
-        return ParseContext(self.package, path, self.comments)
+        return ParseContext(self.package, self.source_file_path, path, self.locations)
 
     def ExtendPath(self, *path):
-        return ParseContext(self.package, f"{self.path}.{'.'.join(map(str, path))}", self.comments)
+        return ParseContext(self.package, self.source_file_path, f"{self.path}.{'.'.join(map(str, path))}", self.locations)
 
     def GetComments(self, path=""):
-        return self.comments.get(self.path if path == "" else path, "")
+        location = self.locations.get(self.path if path == "" else path, None)
+        return "" if location is None else location.comments
+
+    def GetLineNumber(self, path=""):
+        location = self.locations.get(self.path if path == "" else path, None)
+        return 0 if location is None else location.line_number
 
 
 def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: str):
@@ -62,6 +69,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: 
         ev.number = enum_value.number
         ev.description = ctx.GetComments()
         ev.description_html = markdown.markdown(ev.description)
+        ev.line_number = ctx.GetLineNumber()
 
         return ev
 
@@ -70,6 +78,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: 
     e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}"
     e.description = ctx.GetComments()
     e.description_html = markdown.markdown(e.description)
+    e.line_number = ctx.GetLineNumber()
     for i, ev in enumerate(enum.value):
         e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i)))
 
@@ -90,6 +99,7 @@ def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf.label = to_label_name(field.label)
     mf.description = ctx.GetComments()
     mf.description_html = markdown.markdown(mf.description)
+    mf.line_number = ctx.GetLineNumber()
     mf.full_type = field.type_name.strip(".") if field.type_name != "" else to_type_name(field.type)
     mf.default_value = field.default_value
     mf.type = extract_type_name_from_full_name(field.type_name.strip(".")) if field.type_name != "" else to_type_name(field.type)
@@ -124,6 +134,8 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain
     m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}"
     m.description = ctx.GetComments()
     m.description_html = markdown.markdown(m.description)
+    m.source_file_path = ctx.source_file_path
+    m.line_number = ctx.GetLineNumber()
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
@@ -134,6 +146,8 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain
 
 
 def parse_messages(messages: list[DescriptorProto], ctx: ParseContext, nested_type_chain: str):
+    # print(f"GetLocations type in parse_messages {type(ctx.GetLocations()).__name__}")
+    # print(f"GetComments type in parse_messages {type(ctx.GetComments()).__name__}")
     for (i, message) in enumerate(messages):
         ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), nested_type_chain))
 
@@ -145,6 +159,7 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
     sm.name = service_method.name
     sm.description = ctx.GetComments()
     sm.description_html = markdown.markdown(sm.description)
+    sm.line_number = ctx.GetLineNumber()
     sm.request_type = service_method.input_type[service_method.input_type.rfind(".") + 1:]
     sm.request_full_type = service_method.input_type
     sm.response_type = service_method.output_type[service_method.output_type.rfind(".") + 1:]
@@ -159,6 +174,7 @@ def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s.full_name = f"{ctx.package.name}.{service.name}"
     s.description = ctx.GetComments()
     s.description_html = markdown.markdown(s.description)
+    s.line_number = ctx.GetLineNumber()
     for i, service_method in enumerate(service.method):
         s.methods.append(parse_service_method(service_method, ctx.ExtendPath(COMMENT_SERVICE_METHOD_INDEX, i)))
 
@@ -183,7 +199,8 @@ def add_package_to_message_fields(messages: list[Message], packages):
                 mf.package = package
 
 
-def build_comment_map(source_code_info):
+# def build_comment_map(source_code_info):
+def build_location_map(source_code_info):
     def has_comments(location):
         return location.leading_comments != '' or location.trailing_comments != ''
 
@@ -203,12 +220,16 @@ def build_comment_map(source_code_info):
 
         return comment.strip()
 
-    comments = {}
-    for l in source_code_info.location:
-        if has_comments(l):
-            comments[build_key(l.path)] = build_comment(l)
+    def build_location_info(location):
+        return LocationInfo(location.span[0], build_comment(location))
 
-    return comments
+    location_infos = {}
+    for loc in source_code_info.location:
+        location_infos[build_key(loc.path)] = build_location_info(loc)
+        # if has_comments(l):
+        #     comments[build_key(l.path)] = build_comment(l)
+
+    return location_infos
 
 
 def to_type_name(type: FieldDescriptorProto.Type):
@@ -242,6 +263,7 @@ def to_label_name(type):
         case FieldDescriptorProto.Label.LABEL_REPEATED: return "repeated"
         case _: ""
 
+
 def parse_proto_descriptor(file_name):
     packages = dict()
     all_messages = []
@@ -251,12 +273,16 @@ def parse_proto_descriptor(file_name):
         for file in fds.file:
             print(f"Processing {file.name}")
 
-            comments = build_comment_map(file.source_code_info)
+            locations = build_location_map(file.source_code_info)
+            # print(type(locations).__name__)
+            # print(type(list(locations.items())[0][1]).__name__)
+            # for item in list(locations.items()):
+                # print(f"{type(item[0]).__name__} -> {type(item[1]).__name__}")
 
             package = packages.get(file.package, Package())
             package.name = file.package
 
-            ctx = ParseContext.New(package, comments)
+            ctx = ParseContext.New(package, file.name, locations)
 
             package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
             # pprint.pprint(comments)
@@ -271,7 +297,6 @@ def parse_proto_descriptor(file_name):
             packages[file.package] = package
 
         add_package_to_message_fields(all_messages, packages.values())
-
 
         return SableContext(
             sorted(
