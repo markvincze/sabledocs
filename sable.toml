@@ -1,3 +1,5 @@
+module-title = "Google Cloud Datastore"
+
 footer-content = "© 2023 Mark Vincze. All rights reserved."
 
 repository-url = "https://github.com/googleapis/googleapis"

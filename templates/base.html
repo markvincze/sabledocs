@@ -1,62 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>gRPC documentation</title>
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="mystyles.css" />
+    <script src="https://kit.fontawesome.com/4d30d3d1aa.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="columns">
-      <!--<section class="main-content columns is-fullheight">-->
+    <!--<div class="container is-10 section" style="display: inline-block">-->
+    <!--<div class="container is-max-widescreen">-->
+    <!--<section class="hero is-primary">-->
+    <!--<div class="hero-body">-->
+    <!--<p class="title">-->
+    <!--Primary hero-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</section>-->
 
-        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
-        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
-          <ul class="menu-list">
-            <li><a href="#">Home</a><li>
-          </ul>
-          <p class="menu-label">
-            Packages
+    <div class="container">
+      <nav class="level pt-6 mb-5 pb-2 bottom-border">
+        <div class="level-left">
+          <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
+            <a class="link is-info" href="index.html">{{ sable_config.module_title }}</a>
           </p>
-          <ul class="menu-list">
-            {% for p in packages %}
-            <li>
-              {% if package and p.name == package.name %}
-              <a class="is-active" href="{{ p.name }}.html">{{ p.name }}</a>
-              <ul class="is-size-7">
-                {% for service in p.services %}
-                <li><a href="{{ p.name }}.html#service-{{ service.full_name }}">Service {{ service.name }}</a></li>
-                {% endfor %}
-                {% for message in p.messages %}
-                <li><a href="{{ p.name }}.html#message-{{ message.full_name }}">Message {{ message.name }}</a></li>
-                {% endfor %}
-                {% for enum in p.enums %}
-                <li><a href="{{ p.name }}.html#enum-{{ enum.full_name }}">Enum {{ enum.name }}</a></li>
-                {% endfor %}
-              </ul>
-              {% else %}
-              <a href="{{ p.name }}.html">{{ p.name }}</a>
-              {% endif %}
-            </li>
-            {% endfor %}
-          </ul>
-        </aside>
-
-        <div class="container column is-10 section" style="display: inline-block">
-          {% block content %}{% endblock %}
         </div>
-      <!--</section>-->
+        <div class="level-right">
+          <p class="level-item has-text-centered is-size-5">
+            <a href="{{ sable_config.repository_url }}" class="link is-info">
+              {% if sable_config.repository_type | string == "RepositoryType.GITHUB" %}
+                <span class="icon">
+                  <i class="fa-brands fa-github"></i>
+                </span>
+              {% elif sable_config.repository_type | string == "RepositoryType.BITBUCKET" %}
+                <span class="icon">
+                  <i class="fa-brands fa-bitbucket"></i>
+                </span>
+              {% endif %}
+              <span>Source</span>
+            </a>
+          </p>
+        </div>
+      </nav>
     </div>
+
+    <div class="container">{% block content %}{% endblock %}</div>
     <footer class="footer">
       <div class="content has-text-centered">
         {% if sable_config.footer_content %}
-        <p>
-          {{ sable_config.footer_content | safe }}
-        </p>
+        <p>{{ sable_config.footer_content | safe }}</p>
         {% endif %}
-        <p>
-          Built with <strong>Sable</strong>.
-        </p>
+        <p>Built with <strong>Sable</strong>.</p>
       </div>
     </footer>
   </body>

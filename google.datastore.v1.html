@@ -1,160 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>gRPC documentation</title>
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="mystyles.css" />
+    <script src="https://kit.fontawesome.com/4d30d3d1aa.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="columns">
-      <!--<section class="main-content columns is-fullheight">-->
+    <!--<div class="container is-10 section" style="display: inline-block">-->
+    <!--<div class="container is-max-widescreen">-->
+    <!--<section class="hero is-primary">-->
+    <!--<div class="hero-body">-->
+    <!--<p class="title">-->
+    <!--Primary hero-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</section>-->
 
-        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
-        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
-          <ul class="menu-list">
-            <li><a href="#">Home</a><li>
-          </ul>
-          <p class="menu-label">
-            Packages
+    <div class="container">
+      <nav class="level pt-6 mb-5 pb-2 bottom-border">
+        <div class="level-left">
+          <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
+            <a class="link is-info" href="index.html">Google Cloud Datastore</a>
           </p>
-          <ul class="menu-list">
-            
-            <li>
+        </div>
+        <div class="level-right">
+          <p class="level-item has-text-centered is-size-5">
+            <a href="https://github.com/googleapis/googleapis" class="link is-info">
               
-              <a class="is-active" href="google.datastore.v1.html">google.datastore.v1</a>
-              <ul class="is-size-7">
-                
-                <li><a href="google.datastore.v1.html#service-google.datastore.v1.Datastore">Service Datastore</a></li>
-                
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult.AggregatePropertiesEntry">Message AggregatePropertiesEntry</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation">Message Aggregation</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">Message AggregationQuery</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult">Message AggregationResult</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResultBatch">Message AggregationResultBatch</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsRequest">Message AllocateIdsRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsResponse">Message AllocateIdsResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue">Message ArrayValue</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionRequest">Message BeginTransactionRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionResponse">Message BeginTransactionResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CommitRequest">Message CommitRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CommitResponse">Message CommitResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter">Message CompositeFilter</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Aggregation.Count">Message Count</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Entity">Message Entity</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">Message EntityResult</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Filter">Message Filter</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">Message GqlQuery</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.GqlQueryParameter">Message GqlQueryParameter</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Key">Message Key</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.KindExpression">Message KindExpression</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.LookupRequest">Message LookupRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.LookupResponse">Message LookupResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Mutation">Message Mutation</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.MutationResult">Message MutationResult</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery.NamedBindingsEntry">Message NamedBindingsEntry</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse.NestedMessageTest">Message NestedMessageTest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">Message PartitionId</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Key.PathElement">Message PathElement</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Projection">Message Projection</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Entity.PropertiesEntry">Message PropertiesEntry</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter">Message PropertyFilter</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyOrder">Message PropertyOrder</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">Message PropertyReference</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Query">Message Query</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.QueryResultBatch">Message QueryResultBatch</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadOnly">Message ReadOnly</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">Message ReadOptions</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadWrite">Message ReadWrite</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsRequest">Message ReserveIdsRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsResponse">Message ReserveIdsResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RollbackRequest">Message RollbackRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse">Message RollbackResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryRequest">Message RunAggregationQueryRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryResponse">Message RunAggregationQueryResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryRequest">Message RunQueryRequest</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryResponse">Message RunQueryResponse</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">Message TransactionOptions</a></li>
-                
-                <li><a href="google.datastore.v1.html#message-google.datastore.v1.Value">Message Value</a></li>
-                
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.CommentTestEnum">Enum CommentTestEnum</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyOrder.Direction">Enum Direction</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.CommitRequest.Mode">Enum Mode</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.QueryResultBatch.MoreResultsType">Enum MoreResultsType</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.CompositeFilter.Operator">Enum Operator</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyFilter.Operator">Enum Operator</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.ReadOptions.ReadConsistency">Enum ReadConsistency</a></li>
-                
-                <li><a href="google.datastore.v1.html#enum-google.datastore.v1.EntityResult.ResultType">Enum ResultType</a></li>
-                
-              </ul>
+                <span class="icon">
+                  <i class="fa-brands fa-github"></i>
+                </span>
               
-            </li>
-            
-          </ul>
-        </aside>
+              <span>Source</span>
+            </a>
+          </p>
+        </div>
+      </nav>
+    </div>
 
-        <div class="container column is-10 section" style="display: inline-block">
-          
-  <h3 class="title is-3">
+    <div class="container">
+  <p class="mb-2">
+    <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
+  </p>
+  <h4 class="title is-4">
     Package <code>google.datastore.v1</code>
-  </h3>
+  </h4>
 
   <div class="block">
     
@@ -5644,20 +5536,13 @@
 
   
 
-
-        </div>
-      <!--</section>-->
-    </div>
+</div>
     <footer class="footer">
       <div class="content has-text-centered">
         
-        <p>
-          © 2023 Mark Vincze. All rights reserved.
-        </p>
+        <p>© 2023 Mark Vincze. All rights reserved.</p>
         
-        <p>
-          Built with <strong>Sable</strong>.
-        </p>
+        <p>Built with <strong>Sable</strong>.</p>
       </div>
     </footer>
   </body>

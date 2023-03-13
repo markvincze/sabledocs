@@ -1,8 +1,11 @@
 {% extends "templates/base.html" %}
 {% block content %}
-  <h3 class="title is-3">
+  <p class="mb-2">
+    <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
+  </p>
+  <h4 class="title is-4">
     Package <code>{{ package.name }}</code>
-  </h3>
+  </h4>
 
   <div class="block">
     {% for service in package.services %}
