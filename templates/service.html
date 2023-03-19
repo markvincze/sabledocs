@@ -1,10 +1,11 @@
 <h5 class="title is-5 type-heading" id="service-{{ service.full_name }}">
-  <a href="#service-{{ service.full_name }}">service <span title="{{ service.full_name }}">{{ service.name }}</span></a>
-{% if service.repository_url %}
-<br /><a style="font-size: 0.7em; font-weight: normal" href="{{ service.repository_url }}">{{ service.source_file_path }}</a>
-{% endif %}
+  <a href="#service-{{ service.full_name }}" title="{{ service.full_name }}">service {{ service.name }}</a>
+  {% if service.repository_url %}
+    <a class="type-source-link" href="{{ service.repository_url }}">{{ service.source_file_path }}</a>
+  {% endif %}
 </h5>
-<div class="block">
+
+<div class="block content">
   <p>{{ service.description_html | safe }}</p>
 </div>
 

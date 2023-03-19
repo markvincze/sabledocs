@@ -1,86 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>gRPC documentation</title>
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="mystyles.css" />
+    <script src="https://kit.fontawesome.com/4d30d3d1aa.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="columns">
-      <!--<section class="main-content columns is-fullheight">-->
+    <!--<div class="container is-10 section" style="display: inline-block">-->
+    <!--<div class="container is-max-widescreen">-->
+    <!--<section class="hero is-primary">-->
+    <!--<div class="hero-body">-->
+    <!--<p class="title">-->
+    <!--Primary hero-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</section>-->
 
-        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
-        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
-          <ul class="menu-list">
-            <li><a href="#">Home</a><li>
-          </ul>
-          <p class="menu-label">
-            Packages
+    <div class="container">
+      <nav class="level pt-6 mb-5 pb-2 bottom-border">
+        <div class="level-left">
+          <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
+            <a class="link is-info" href="index.html">Google Cloud Datastore</a>
           </p>
-          <ul class="menu-list">
-            
-            <li>
+        </div>
+        <div class="level-right">
+          <p class="level-item has-text-centered is-size-5">
+            <a href="https://github.com/googleapis/googleapis" class="link is-info">
               
-              <a href="travix.postsale.common.v1.html">travix.postsale.common.v1</a>
+                <span class="icon">
+                  <i class="fa-brands fa-github"></i>
+                </span>
               
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.postsaleapi.v1.html">travix.postsale.postsaleapi.v1</a>
-              
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.producthub.baggagehub.v1.html">travix.postsale.producthub.baggagehub.v1</a>
-              
-            </li>
-            
-            <li>
-              
-              <a class="is-active" href="travix.postsale.producthub.common.v1.html">travix.postsale.producthub.common.v1</a>
-              <ul class="is-size-7">
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#service-travix.postsale.producthub.common.v1.ProductHubService">Service ProductHubService</a></li>
-                
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.Product">Message Product</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.Price">Message Price</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.SalesPrice">Message SalesPrice</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.PurchasePrice">Message PurchasePrice</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">Message CheckEligibilityRequest</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">Message CheckEligibilityResponse</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">Message GetEnosisProductPayloadRequest</a></li>
-                
-                <li><a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">Message GetEnosisProductPayloadResponse</a></li>
-                
-                
-              </ul>
-              
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.shoppingcart.v1.html">travix.postsale.shoppingcart.v1</a>
-              
-            </li>
-            
-          </ul>
-        </aside>
+              <span>Source</span>
+            </a>
+          </p>
+        </div>
+      </nav>
+    </div>
 
-        <div class="container column is-10 section" style="display: inline-block">
-          
-  <h3 class="title is-3">
+    <div class="container">
+  <p class="mb-2">
+    <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
+  </p>
+  <h4 class="title is-4">
     Package <code>travix.postsale.producthub.common.v1</code>
-  </h3>
+  </h4>
 
   <div class="block">
     
@@ -93,61 +59,77 @@
     
 
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.Product">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>Product</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CheckEligibilityRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.Price">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>Price</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CheckEligibilityResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.SalesPrice">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>SalesPrice</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetEnosisProductPayloadRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.PurchasePrice">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>PurchasePrice</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetEnosisProductPayloadResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>CheckEligibilityRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.Price">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Price</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>CheckEligibilityResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.Product">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Product</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetEnosisProductPayloadRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.PurchasePrice">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PurchasePrice</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetEnosisProductPayloadResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.producthub.common.v1.SalesPrice">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>SalesPrice</code> 
+        </a>
+      </p>
+      
     
 
     
@@ -166,10 +148,14 @@
 
     
     <div>
-      <h5 class="title is-5" id="service-travix.postsale.producthub.common.v1.ProductHubService">
-  <a href="#service-travix.postsale.producthub.common.v1.ProductHubService">service <code title="travix.postsale.producthub.common.v1.ProductHubService">ProductHubService</code></a>
+      <h5 class="title is-5 type-heading" id="service-travix.postsale.producthub.common.v1.ProductHubService">
+  <a href="#service-travix.postsale.producthub.common.v1.ProductHubService" title="travix.postsale.producthub.common.v1.ProductHubService">service ProductHubService</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product_hub_service.proto#L10">travix/postsale/producthub/common/v1/product_hub_service.proto</a>
+  
 </h5>
-<div class="block">
+
+<div class="block content">
   <p></p>
 </div>
 
@@ -197,525 +183,20 @@
     </h4>
 
     
-    <!--<div class="box">-->
-    <div class="block">
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.Product">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.Product">message <code title="travix.postsale.producthub.common.v1.Product">Product</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.Product">message <span title="travix.postsale.producthub.common.v1.Product">Product</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        product_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        product_type
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        display_name
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>4</td>
-      <td>
-        price
-      </td>
-      <td>
-        <code title="travix.postsale.producthub.common.v1.Price">
-          
-          
-    
-      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.Price">
-    
-      <span title="travix.postsale.producthub.common.v1.Price">travix.postsale.producthub.common.v1.Price</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>5</td>
-      <td>
-        product_payload
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>6</td>
-      <td>
-        created
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          
-  <span>google.protobuf.Timestamp</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        last_modified
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          
-  <span>google.protobuf.Timestamp</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>8</td>
-      <td>
-        code
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>9</td>
-      <td>
-        pnr_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>10</td>
-      <td>
-        passenger_index
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.Price">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.Price">message <code title="travix.postsale.producthub.common.v1.Price">Price</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.Price">message <span title="travix.postsale.producthub.common.v1.Price">Price</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        sales_price
-      </td>
-      <td>
-        <code title="travix.postsale.producthub.common.v1.SalesPrice">
-          
-          
-    
-      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.SalesPrice">
-    
-      <span title="travix.postsale.producthub.common.v1.SalesPrice">travix.postsale.producthub.common.v1.SalesPrice</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        purchase_price
-      </td>
-      <td>
-        <code title="travix.postsale.producthub.common.v1.PurchasePrice">
-          
-          
-    
-      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.PurchasePrice">
-    
-      <span title="travix.postsale.producthub.common.v1.PurchasePrice">travix.postsale.producthub.common.v1.PurchasePrice</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        margin
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.SalesPrice">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.SalesPrice">message <code title="travix.postsale.producthub.common.v1.SalesPrice">SalesPrice</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.SalesPrice">message <span title="travix.postsale.producthub.common.v1.SalesPrice">SalesPrice</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        base
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        tax
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        discount
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>4</td>
-      <td>
-        pre_discount_total
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>5</td>
-      <td>
-        total
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.PurchasePrice">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.PurchasePrice">message <code title="travix.postsale.producthub.common.v1.PurchasePrice">PurchasePrice</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.PurchasePrice">message <span title="travix.postsale.producthub.common.v1.PurchasePrice">PurchasePrice</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        base
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        tax
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        total
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">message <code title="travix.postsale.producthub.common.v1.CheckEligibilityRequest">CheckEligibilityRequest</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest">message <span title="travix.postsale.producthub.common.v1.CheckEligibilityRequest">CheckEligibilityRequest</span></a>
+  <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityRequest" title="travix.postsale.producthub.common.v1.CheckEligibilityRequest">message CheckEligibilityRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product_hub_service.proto#L15">travix/postsale/producthub/common/v1/product_hub_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -745,24 +226,30 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
+    
+      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">message <code title="travix.postsale.producthub.common.v1.CheckEligibilityResponse">CheckEligibilityResponse</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse">message <span title="travix.postsale.producthub.common.v1.CheckEligibilityResponse">CheckEligibilityResponse</span></a>
+  <a href="#message-travix.postsale.producthub.common.v1.CheckEligibilityResponse" title="travix.postsale.producthub.common.v1.CheckEligibilityResponse">message CheckEligibilityResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product_hub_service.proto#L19">travix/postsale/producthub/common/v1/product_hub_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -792,24 +279,30 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
+    
+      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">message <code title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">GetEnosisProductPayloadRequest</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">message <span title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">GetEnosisProductPayloadRequest</span></a>
+  <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest" title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadRequest">message GetEnosisProductPayloadRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product_hub_service.proto#L23">travix/postsale/producthub/common/v1/product_hub_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -839,7 +332,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -860,24 +353,30 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
+    
+      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">
-  <!--<a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">message <code title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">GetEnosisProductPayloadResponse</code></a>-->
-  <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">message <span title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">GetEnosisProductPayloadResponse</span></a>
+  <a href="#message-travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse" title="travix.postsale.producthub.common.v1.GetEnosisProductPayloadResponse">message GetEnosisProductPayloadResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product_hub_service.proto#L28">travix/postsale/producthub/common/v1/product_hub_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -903,33 +402,561 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.Price">
+  <a href="#message-travix.postsale.producthub.common.v1.Price" title="travix.postsale.producthub.common.v1.Price">message Price</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product.proto#L22">travix/postsale/producthub/common/v1/product.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        sales_price
+      </td>
+      <td>
+        <code title="travix.postsale.producthub.common.v1.SalesPrice">
+          
+          
+    
+      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.SalesPrice">
+    
+      <span title="travix.postsale.producthub.common.v1.SalesPrice">travix.postsale.producthub.common.v1.SalesPrice</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        purchase_price
+      </td>
+      <td>
+        <code title="travix.postsale.producthub.common.v1.PurchasePrice">
+          
+          
+    
+      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.PurchasePrice">
+    
+      <span title="travix.postsale.producthub.common.v1.PurchasePrice">travix.postsale.producthub.common.v1.PurchasePrice</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        margin
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.Product">
+  <a href="#message-travix.postsale.producthub.common.v1.Product" title="travix.postsale.producthub.common.v1.Product">message Product</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product.proto#L9">travix/postsale/producthub/common/v1/product.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        product_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        product_type
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        display_name
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        price
+      </td>
+      <td>
+        <code title="travix.postsale.producthub.common.v1.Price">
+          
+          
+    
+      <a href="travix.postsale.producthub.common.v1.html#message-travix.postsale.producthub.common.v1.Price">
+    
+      <span title="travix.postsale.producthub.common.v1.Price">travix.postsale.producthub.common.v1.Price</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        product_payload
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        created
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        last_modified
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        code
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        pnr_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        passenger_index
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.PurchasePrice">
+  <a href="#message-travix.postsale.producthub.common.v1.PurchasePrice" title="travix.postsale.producthub.common.v1.PurchasePrice">message PurchasePrice</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product.proto#L36">travix/postsale/producthub/common/v1/product.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        base
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        tax
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        total
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.producthub.common.v1.SalesPrice">
+  <a href="#message-travix.postsale.producthub.common.v1.SalesPrice" title="travix.postsale.producthub.common.v1.SalesPrice">message SalesPrice</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/producthub/common/v1/product.proto#L28">travix/postsale/producthub/common/v1/product.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        base
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        tax
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        discount
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        pre_discount_total
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        total
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
     
 
   
 
   
 
-
-        </div>
-      <!--</section>-->
-    </div>
+</div>
     <footer class="footer">
       <div class="content has-text-centered">
         
-        <p>
-          © 2023 Mark Vincze. All rights reserved.
-        </p>
+        <p>© 2023 Mark Vincze. All rights reserved.</p>
         
-        <p>
-          Built with <strong>Sable</strong>.
-        </p>
+        <p>Built with <strong>Sable</strong>.</p>
       </div>
     </footer>
   </body>

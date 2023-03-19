@@ -7889,13 +7889,14 @@ code {
   padding: 0.5em 0;
   border-width: 0 0 0.06em 0;
   border-style: solid;
-  border-color: #DDDDDD; }
+  border-color: #DDDDDD;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between; }
 
-.type-heading-2 {
-  padding: 0.5em 0;
-  border-width: 0 0 0 1em;
-  border-style: solid;
-  border-color: #2266BB; }
+.type-source-link {
+  font-size: 0.7em;
+  font-weight: normal; }
 
 .bottom-border {
   border-width: 0 0 0.06em 0;

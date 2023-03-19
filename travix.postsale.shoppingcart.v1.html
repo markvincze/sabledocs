@@ -1,106 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>gRPC documentation</title>
-    <link rel="stylesheet" href="mystyles.css">
+    <link rel="stylesheet" href="mystyles.css" />
+    <script src="https://kit.fontawesome.com/4d30d3d1aa.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="columns">
-      <!--<section class="main-content columns is-fullheight">-->
+    <!--<div class="container is-10 section" style="display: inline-block">-->
+    <!--<div class="container is-max-widescreen">-->
+    <!--<section class="hero is-primary">-->
+    <!--<div class="hero-body">-->
+    <!--<p class="title">-->
+    <!--Primary hero-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</section>-->
 
-        <!--<aside class="column is-2 is-narrow-mobile is-fullheight section is-hidden-mobile">-->
-        <aside class="menu" style="position: sticky; display: inline-block; vertical-align: top; max-height: 100vh; overflow-y: auto; top: 0; bottom: 0; padding: 30px;">
-          <ul class="menu-list">
-            <li><a href="#">Home</a><li>
-          </ul>
-          <p class="menu-label">
-            Packages
+    <div class="container">
+      <nav class="level pt-6 mb-5 pb-2 bottom-border">
+        <div class="level-left">
+          <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
+            <a class="link is-info" href="index.html">Google Cloud Datastore</a>
           </p>
-          <ul class="menu-list">
-            
-            <li>
+        </div>
+        <div class="level-right">
+          <p class="level-item has-text-centered is-size-5">
+            <a href="https://github.com/googleapis/googleapis" class="link is-info">
               
-              <a href="travix.postsale.common.v1.html">travix.postsale.common.v1</a>
+                <span class="icon">
+                  <i class="fa-brands fa-github"></i>
+                </span>
               
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.postsaleapi.v1.html">travix.postsale.postsaleapi.v1</a>
-              
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.producthub.baggagehub.v1.html">travix.postsale.producthub.baggagehub.v1</a>
-              
-            </li>
-            
-            <li>
-              
-              <a href="travix.postsale.producthub.common.v1.html">travix.postsale.producthub.common.v1</a>
-              
-            </li>
-            
-            <li>
-              
-              <a class="is-active" href="travix.postsale.shoppingcart.v1.html">travix.postsale.shoppingcart.v1</a>
-              <ul class="is-size-7">
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#service-travix.postsale.shoppingcart.v1.ShoppingCartService">Service ShoppingCartService</a></li>
-                
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">Message ShoppingCartSummary</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.Product">Message Product</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.Price">Message Price</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.SalesPrice">Message SalesPrice</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.PurchasePrice">Message PurchasePrice</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">Message GetOrCreateShoppingCartRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">Message GetOrCreateShoppingCartResponse</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">Message GetShoppingCartByIdRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">Message GetShoppingCartByIdResponse</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">Message AddProductsToShoppingCartRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">Message AddProductsToShoppingCartResponse</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">Message UpdateProductInShoppingCartRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">Message UpdateProductInShoppingCartResponse</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">Message RemoveProductsFromShoppingCartRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">Message RemoveProductsFromShoppingCartResponse</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">Message FinalizeShoppingCartRequest</a></li>
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">Message FinalizeShoppingCartResponse</a></li>
-                
-                
-                <li><a href="travix.postsale.shoppingcart.v1.html#enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">Enum ShoppingCartStatus</a></li>
-                
-              </ul>
-              
-            </li>
-            
-          </ul>
-        </aside>
+              <span>Source</span>
+            </a>
+          </p>
+        </div>
+      </nav>
+    </div>
 
-        <div class="container column is-10 section" style="display: inline-block">
-          
-  <h3 class="title is-3">
+    <div class="container">
+  <p class="mb-2">
+    <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
+  </p>
+  <h4 class="title is-4">
     Package <code>travix.postsale.shoppingcart.v1</code>
-  </h3>
+  </h4>
 
   <div class="block">
     
@@ -113,124 +59,158 @@
     
 
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>ShoppingCartSummary</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AddProductsToShoppingCartRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.Product">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>Product</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AddProductsToShoppingCartResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.Price">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>Price</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>FinalizeShoppingCartRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.SalesPrice">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>SalesPrice</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>FinalizeShoppingCartResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.PurchasePrice">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>PurchasePrice</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetOrCreateShoppingCartRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetOrCreateShoppingCartRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetOrCreateShoppingCartResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetOrCreateShoppingCartResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetShoppingCartByIdRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetShoppingCartByIdRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>GetShoppingCartByIdResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>GetShoppingCartByIdResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.Price">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Price</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>AddProductsToShoppingCartRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.Product">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Product</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>AddProductsToShoppingCartResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.PurchasePrice">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PurchasePrice</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>UpdateProductInShoppingCartRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RemoveProductsFromShoppingCartRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>UpdateProductInShoppingCartResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>RemoveProductsFromShoppingCartResponse</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>RemoveProductsFromShoppingCartRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.SalesPrice">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>SalesPrice</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>RemoveProductsFromShoppingCartResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>ShoppingCartSummary</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>FinalizeShoppingCartRequest</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>UpdateProductInShoppingCartRequest</code> 
+        </a>
+      </p>
+      
     
-    <p>
-      <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">
-        <span class="tag" style="min-width: 6em">Message</span>
-        <code>FinalizeShoppingCartResponse</code> 
-      </a>
-    </p>
+      
+      <p>
+        <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>UpdateProductInShoppingCartResponse</code> 
+        </a>
+      </p>
+      
     
 
     
@@ -256,10 +236,14 @@
 
     
     <div>
-      <h5 class="title is-5" id="service-travix.postsale.shoppingcart.v1.ShoppingCartService">
-  <a href="#service-travix.postsale.shoppingcart.v1.ShoppingCartService">service <code title="travix.postsale.shoppingcart.v1.ShoppingCartService">ShoppingCartService</code></a>
+      <h5 class="title is-5 type-heading" id="service-travix.postsale.shoppingcart.v1.ShoppingCartService">
+  <a href="#service-travix.postsale.shoppingcart.v1.ShoppingCartService" title="travix.postsale.shoppingcart.v1.ShoppingCartService">service ShoppingCartService</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L8">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
 </h5>
-<div class="block">
+
+<div class="block content">
   <p></p>
 </div>
 
@@ -307,16 +291,20 @@
     </h4>
 
     
-    <!--<div class="box">-->
-    <div class="block">
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">message <code title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">ShoppingCartSummary</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">message <span title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">ShoppingCartSummary</span></a>
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">
+  <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest" title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">message AddProductsToShoppingCartRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L36">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -342,118 +330,12 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
       <td>2</td>
-      <td>
-        created
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          
-  <span>google.protobuf.Timestamp</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        original_order_number
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>4</td>
-      <td>
-        status
-      </td>
-      <td>
-        <code title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">
-          
-          
-    
-      <a href="travix.postsale.shoppingcart.v1.html#enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">
-    
-      <span title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">travix.postsale.shoppingcart.v1.ShoppingCartStatus</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>5</td>
-      <td>
-        affiliate_code
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>6</td>
-      <td>
-        channel_code
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        sales_currency_code
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>8</td>
       <td>
         products
       </td>
@@ -471,45 +353,30 @@
   
         </code>
       </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>9</td>
-      <td>
-        total_sales_price
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.Product">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.Product">message <code title="travix.postsale.shoppingcart.v1.Product">Product</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.Product">message <span title="travix.postsale.shoppingcart.v1.Product">Product</span></a>
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">
+  <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse" title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">message AddProductsToShoppingCartResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L41">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -525,7 +392,58 @@
     <tr>
       <td>1</td>
       <td>
-        product_id
+        product_ids
+      </td>
+      <td>
+        <code title="string">
+          
+            repeated
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">
+  <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest" title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">message FinalizeShoppingCartRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L63">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        post_sale_shopping_cart_id
       </td>
       <td>
         <code title="string">
@@ -535,14 +453,95 @@
   
         </code>
       </td>
+      <td class="content"></td>
       <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">
+  <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse" title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">message FinalizeShoppingCartResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L67">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">
+  <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest" title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">message GetOrCreateShoppingCartRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L17">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        order_number
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
       <td>2</td>
       <td>
-        product_type
+        affiliate_code
       </td>
       <td>
         <code title="string">
@@ -552,14 +551,14 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
       <td>3</td>
       <td>
-        display_name
+        channel_code
       </td>
       <td>
         <code title="string">
@@ -569,35 +568,14 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
       <td>4</td>
       <td>
-        price
-      </td>
-      <td>
-        <code title="travix.postsale.shoppingcart.v1.Price">
-          
-          
-    
-      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.Price">
-    
-      <span title="travix.postsale.shoppingcart.v1.Price">travix.postsale.shoppingcart.v1.Price</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>5</td>
-      <td>
-        product_payload
+        sales_currency_code
       </td>
       <td>
         <code title="string">
@@ -607,109 +585,185 @@
   
         </code>
       </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>6</td>
-      <td>
-        created
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          
-  <span>google.protobuf.Timestamp</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        last_modified
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          
-  <span>google.protobuf.Timestamp</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>8</td>
-      <td>
-        code
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>9</td>
-      <td>
-        pnr_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>10</td>
-      <td>
-        passenger_index
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.Price">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.Price">message <code title="travix.postsale.shoppingcart.v1.Price">Price</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.Price">message <span title="travix.postsale.shoppingcart.v1.Price">Price</span></a>
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">
+  <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse" title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">message GetOrCreateShoppingCartResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L24">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        shopping_cart_summary
+      </td>
+      <td>
+        <code title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+          
+          
+    
+      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+    
+      <span title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">travix.postsale.shoppingcart.v1.ShoppingCartSummary</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">
+  <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest" title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">message GetShoppingCartByIdRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L28">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        post_sale_shopping_cart_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">
+  <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse" title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">message GetShoppingCartByIdResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L32">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        shopping_cart_summary
+      </td>
+      <td>
+        <code title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+          
+          
+    
+      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+    
+      <span title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">travix.postsale.shoppingcart.v1.ShoppingCartSummary</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.Price">
+  <a href="#message-travix.postsale.shoppingcart.v1.Price" title="travix.postsale.shoppingcart.v1.Price">message Price</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L40">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -739,7 +793,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -760,7 +814,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -781,24 +835,236 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.SalesPrice">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.SalesPrice">message <code title="travix.postsale.shoppingcart.v1.SalesPrice">SalesPrice</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.SalesPrice">message <span title="travix.postsale.shoppingcart.v1.SalesPrice">SalesPrice</span></a>
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.Product">
+  <a href="#message-travix.postsale.shoppingcart.v1.Product" title="travix.postsale.shoppingcart.v1.Product">message Product</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L27">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        product_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        product_type
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        display_name
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        price
+      </td>
+      <td>
+        <code title="travix.postsale.shoppingcart.v1.Price">
+          
+          
+    
+      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.Price">
+    
+      <span title="travix.postsale.shoppingcart.v1.Price">travix.postsale.shoppingcart.v1.Price</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
+      <td>
+        product_payload
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        created
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        last_modified
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>8</td>
+      <td>
+        code
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        pnr_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>10</td>
+      <td>
+        passenger_index
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.PurchasePrice">
+  <a href="#message-travix.postsale.shoppingcart.v1.PurchasePrice" title="travix.postsale.shoppingcart.v1.PurchasePrice">message PurchasePrice</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L54">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -828,7 +1094,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -849,7 +1115,202 @@
   
         </code>
       </td>
+      <td class="content"></td>
       <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        total
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">
+  <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest" title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">message RemoveProductsFromShoppingCartRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L54">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        post_sale_shopping_cart_id
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        product_ids_list
+      </td>
+      <td>
+        <code title="string">
+          
+            repeated
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">
+  <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse" title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">message RemoveProductsFromShoppingCartResponse</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L59">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.SalesPrice">
+  <a href="#message-travix.postsale.shoppingcart.v1.SalesPrice" title="travix.postsale.shoppingcart.v1.SalesPrice">message SalesPrice</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L46">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
+</h5>
+
+<div class="block content">
+  
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        base
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        tax
+      </td>
+      <td>
+        <code title="travix.postsale.common.v1.Amount">
+          
+          
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -870,7 +1331,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -891,7 +1352,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -912,24 +1373,30 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.PurchasePrice">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.PurchasePrice">message <code title="travix.postsale.shoppingcart.v1.PurchasePrice">PurchasePrice</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.PurchasePrice">message <span title="travix.postsale.shoppingcart.v1.PurchasePrice">PurchasePrice</span></a>
+    
+      
+      <div class="block">
+        
+<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
+  <a href="#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary" title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">message ShoppingCartSummary</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L9">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -945,96 +1412,7 @@
     <tr>
       <td>1</td>
       <td>
-        base
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        tax
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        total
-      </td>
-      <td>
-        <code title="travix.postsale.common.v1.Amount">
-          
-          
-    
-      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
-    
-      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">message <code title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">GetOrCreateShoppingCartRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">message <span title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartRequest">GetOrCreateShoppingCartRequest</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        order_number
+        post_sale_shopping_cart_id
       </td>
       <td>
         <code title="string">
@@ -1044,12 +1422,67 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
       <td>2</td>
+      <td>
+        created
+      </td>
+      <td>
+        <code title="google.protobuf.Timestamp">
+          
+          
+  <span>google.protobuf.Timestamp</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        original_order_number
+      </td>
+      <td>
+        <code title="string">
+          
+          
+  <span>string</span>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>4</td>
+      <td>
+        status
+      </td>
+      <td>
+        <code title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">
+          
+          
+    
+      <a href="travix.postsale.shoppingcart.v1.html#enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">
+    
+      <span title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">travix.postsale.shoppingcart.v1.ShoppingCartStatus</span>
+    </a>
+  
+        </code>
+      </td>
+      <td class="content"></td>
+      <td></td>
+    </tr>
+    
+    <tr>
+      <td>5</td>
       <td>
         affiliate_code
       </td>
@@ -1061,12 +1494,12 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
-      <td>3</td>
+      <td>6</td>
       <td>
         channel_code
       </td>
@@ -1078,12 +1511,12 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
-      <td>4</td>
+      <td>7</td>
       <td>
         sales_currency_code
       </td>
@@ -1095,192 +1528,12 @@
   
         </code>
       </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">message <code title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">GetOrCreateShoppingCartResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">message <span title="travix.postsale.shoppingcart.v1.GetOrCreateShoppingCartResponse">GetOrCreateShoppingCartResponse</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        shopping_cart_summary
-      </td>
-      <td>
-        <code title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-          
-          
-    
-      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-    
-      <span title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">travix.postsale.shoppingcart.v1.ShoppingCartSummary</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">message <code title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">GetShoppingCartByIdRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">message <span title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdRequest">GetShoppingCartByIdRequest</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        post_sale_shopping_cart_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">message <code title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">GetShoppingCartByIdResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">message <span title="travix.postsale.shoppingcart.v1.GetShoppingCartByIdResponse">GetShoppingCartByIdResponse</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        shopping_cart_summary
-      </td>
-      <td>
-        <code title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-          
-          
-    
-      <a href="travix.postsale.shoppingcart.v1.html#message-travix.postsale.shoppingcart.v1.ShoppingCartSummary">
-    
-      <span title="travix.postsale.shoppingcart.v1.ShoppingCartSummary">travix.postsale.shoppingcart.v1.ShoppingCartSummary</span>
-    </a>
-  
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">message <code title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">AddProductsToShoppingCartRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">message <span title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartRequest">AddProductsToShoppingCartRequest</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        post_sale_shopping_cart_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
-  
-        </code>
-      </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
     <tr>
-      <td>2</td>
+      <td>8</td>
       <td>
         products
       </td>
@@ -1298,69 +1551,51 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">message <code title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">AddProductsToShoppingCartResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">message <span title="travix.postsale.shoppingcart.v1.AddProductsToShoppingCartResponse">AddProductsToShoppingCartResponse</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
     <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
+      <td>9</td>
       <td>
-        product_ids
+        total_sales_price
       </td>
       <td>
-        <code title="string">
-          
-            repeated
+        <code title="travix.postsale.common.v1.Amount">
           
           
-  <span>string</span>
+    
+      <a href="travix.postsale.common.v1.html#message-travix.postsale.common.v1.Amount">
+    
+      <span title="travix.postsale.common.v1.Amount">travix.postsale.common.v1.Amount</span>
+    </a>
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
+    
+      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">message <code title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">UpdateProductInShoppingCartRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">message <span title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">UpdateProductInShoppingCartRequest</span></a>
+  <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest" title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartRequest">message UpdateProductInShoppingCartRequest</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L45">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
+  
 </h5>
-<div class="block">
-  <p></p>
+
+<div class="block content">
+  
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -1386,7 +1621,7 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
@@ -1407,181 +1642,30 @@
   
         </code>
       </td>
-      <td></td>
+      <td class="content"></td>
       <td></td>
     </tr>
     
   </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
+</table>
+ 
+      </div>
       
+    
+      
+      <div class="block">
+        
 <h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">message <code title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">UpdateProductInShoppingCartResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">message <span title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">UpdateProductInShoppingCartResponse</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">message <code title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">RemoveProductsFromShoppingCartRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">message <span title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartRequest">RemoveProductsFromShoppingCartRequest</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        post_sale_shopping_cart_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
+  <a href="#message-travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse" title="travix.postsale.shoppingcart.v1.UpdateProductInShoppingCartResponse">message UpdateProductInShoppingCartResponse</a>
   
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        product_ids_list
-      </td>
-      <td>
-        <code title="string">
-          
-            repeated
-          
-          
-  <span>string</span>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_service.proto#L50">travix/postsale/shoppingcart/v1/shopping_cart_service.proto</a>
   
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">message <code title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">RemoveProductsFromShoppingCartResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">message <span title="travix.postsale.shoppingcart.v1.RemoveProductsFromShoppingCartResponse">RemoveProductsFromShoppingCartResponse</span></a>
 </h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">message <code title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">FinalizeShoppingCartRequest</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">message <span title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartRequest">FinalizeShoppingCartRequest</span></a>
-</h5>
-<div class="block">
-  <p></p>
-</div>
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        post_sale_shopping_cart_id
-      </td>
-      <td>
-        <code title="string">
-          
-          
-  <span>string</span>
+
+<div class="block content">
   
-        </code>
-      </td>
-      <td></td>
-      <td></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <!--<div class="box">-->
-    <div class="block">
-      
-<h5 class="title is-5 type-heading" id="message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">
-  <!--<a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">message <code title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">FinalizeShoppingCartResponse</code></a>-->
-  <a href="#message-travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">message <span title="travix.postsale.shoppingcart.v1.FinalizeShoppingCartResponse">FinalizeShoppingCartResponse</span></a>
-</h5>
-<div class="block">
-  <p></p>
 </div>
+
 <table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
@@ -1595,8 +1679,10 @@
   <tbody>
     
   </tbody>
-</table> 
-    </div>
+</table>
+ 
+      </div>
+      
     
 
   
@@ -1608,14 +1694,19 @@
     </h4>
 
     
-    <div class="box">
-      <h5 class="title is-5" id="enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">
-  <a href="#enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">enum <code title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">ShoppingCartStatus</code></a>
+    <div class="block">
+      <h5 class="title is-5 type-heading" id="enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus">
+  <a href="#enum-travix.postsale.shoppingcart.v1.ShoppingCartStatus" title="travix.postsale.shoppingcart.v1.ShoppingCartStatus">enum ShoppingCartStatus</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/travix/postsale/shoppingcart/v1/shopping_cart_summary.proto#L21">travix/postsale/shoppingcart/v1/shopping_cart_summary.proto</a>
+  
 </h5>
-<div class="block">
+
+<div class="block content">
   <p></p>
 </div>
-<table class="table">
+
+<table class="table is-fullwidth is-hoverable is-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -1628,19 +1719,19 @@
     <tr>
       <td><code>SHOPPING_CART_STATUS_UNSPECIFIED</code></td>
       <td>0</td>
-      <td></td>
+      <td class="content"></td>
     </tr>
     
     <tr>
       <td><code>SHOPPING_CART_STATUS_OPEN</code></td>
       <td>1</td>
-      <td></td>
+      <td class="content"></td>
     </tr>
     
     <tr>
       <td><code>SHOPPING_CART_STATUS_FINALIZED</code></td>
       <td>2</td>
-      <td></td>
+      <td class="content"></td>
     </tr>
     
   </tbody>
@@ -1650,20 +1741,13 @@
 
   
 
-
-        </div>
-      <!--</section>-->
-    </div>
+</div>
     <footer class="footer">
       <div class="content has-text-centered">
         
-        <p>
-          © 2023 Mark Vincze. All rights reserved.
-        </p>
+        <p>© 2023 Mark Vincze. All rights reserved.</p>
         
-        <p>
-          Built with <strong>Sable</strong>.
-        </p>
+        <p>Built with <strong>Sable</strong>.</p>
       </div>
     </footer>
   </body>
