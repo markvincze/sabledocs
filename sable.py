@@ -7,10 +7,10 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 sable_config = SableConfig("sable.toml")
 
-sable_context = parse_proto_descriptor('descriptor.pb', sable_config)
+# sable_context = parse_proto_descriptor('descriptor.pb', sable_config)
 # sable_context = parse_proto_descriptor('pubsub.pb', sable_config)
 #sable_context = parse_proto_descriptor('sable-test.pb')
-#sable_context = parse_proto_descriptor('datastore.pb', sable_config)
+sable_context = parse_proto_descriptor('datastore.pb', sable_config)
 
 jinja_env = Environment(
     loader=FileSystemLoader(searchpath="./"),

@@ -5,37 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>gRPC documentation</title>
     <link rel="stylesheet" href="mystyles.css" />
-    <script src="https://kit.fontawesome.com/4d30d3d1aa.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/4d30d3d1aa.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <!--<div class="container is-10 section" style="display: inline-block">-->
-    <!--<div class="container is-max-widescreen">-->
-    <!--<section class="hero is-primary">-->
-    <!--<div class="hero-body">-->
-    <!--<p class="title">-->
-    <!--Primary hero-->
-    <!--</p>-->
-    <!--</div>-->
-    <!--</section>-->
-
     <div class="container">
       <nav class="level pt-6 mb-5 pb-2 bottom-border">
         <div class="level-left">
           <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
-            <a class="link is-info" href="index.html">{{ sable_config.module_title }}</a>
+            <a class="link is-info" href="index.html">
+              {{ sable_config.module_title }}
+            </a>
           </p>
         </div>
         <div class="level-right">
           <p class="level-item has-text-centered is-size-5">
             <a href="{{ sable_config.repository_url }}" class="link is-info">
               {% if sable_config.repository_type | string == "RepositoryType.GITHUB" %}
-                <span class="icon">
-                  <i class="fa-brands fa-github"></i>
-                </span>
+              <span class="icon">
+                <i class="fa-brands fa-github"></i>
+              </span>
               {% elif sable_config.repository_type | string == "RepositoryType.BITBUCKET" %}
-                <span class="icon">
-                  <i class="fa-brands fa-bitbucket"></i>
-                </span>
+              <span class="icon">
+                <i class="fa-brands fa-bitbucket"></i>
+              </span>
               {% endif %}
               <span>Source</span>
             </a>
@@ -44,11 +39,12 @@
       </nav>
     </div>
 
-    <div class="container">{% block content %}{% endblock %}</div>
+    <div class="container mb-6">{% block content %}{% endblock %}</div>
+
     <footer class="footer">
       <div class="content has-text-centered">
         {% if sable_config.footer_content %}
-        <p>{{ sable_config.footer_content | safe }}</p>
+          <p>{{ sable_config.footer_content | safe }}</p>
         {% endif %}
         <p>Built with <strong>Sable</strong>.</p>
       </div>
