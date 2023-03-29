@@ -33,6 +33,13 @@ class Message(CodeItem):
         self.full_name = ''
         self.is_map_entry = False
         self.fields = []
+        self.parent_message = None
+        self.package = None
+        self.type_kind = "MESSAGE"
+
+    @property
+    def full_type(self):
+        return self.full_name
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
@@ -49,18 +56,28 @@ class Enum(CodeItem):
         CodeItem.__init__(self)
         self.full_name = ''
         self.values = []
+        self.parent_message = None
+        self.package = None
+        self.type_kind = "ENUM"
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
 
 
+class ServiceMethodArgument(CodeItem):
+    def __init__(self, type: str, full_type: str, type_kind: str):
+        CodeItem.__init__(self)
+        self.type = type
+        self.full_type = full_type
+        self.type_kind = type_kind
+        self.package = None
+
+
 class ServiceMethod(CodeItem):
     def __init__(self):
         CodeItem.__init__(self)
-        self.request_type = ''
-        self.request_full_type = ''
-        self.response_type = ''
-        self.response_full_type = ''
+        self.request = ServiceMethodArgument("", "", "")
+        self.response = ServiceMethodArgument("", "", "")
 
 
 class Service(CodeItem):

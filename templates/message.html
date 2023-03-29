@@ -1,6 +1,12 @@
 {% import "templates/type_name.html" as common %}
+
 <h5 class="title is-5 type-heading" id="message-{{ message.full_name }}">
-  <a href="#message-{{ message.full_name }}" title="{{ message.full_name }}">message {{ message.name }}</a>
+  <span>
+    <a href="#message-{{ message.full_name }}" title="{{ message.full_name }}">message {{ message.name }}</a>
+  {% if message.parent_message %}
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in {{ common.type_name(message.parent_message) }})</span>
+  {% endif %}
+  </span>
   {% if message.repository_url %}
     <a class="type-source-link" href="{{ message.repository_url }}">{{ message.source_file_path }}</a>
   {% endif %}

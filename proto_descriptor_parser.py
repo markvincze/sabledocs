@@ -10,6 +10,7 @@ from proto_model import Message
 from proto_model import EnumValue
 from proto_model import Enum
 from proto_model import ServiceMethod
+from proto_model import ServiceMethodArgument
 from proto_model import Service
 from proto_model import Package
 from proto_model import LocationInfo
@@ -74,7 +75,7 @@ class ParseContext:
         return 0 if location is None else location.line_number
 
 
-def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: str):
+def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str):
     def parse_enum_value(enum_value: EnumValueDescriptorProto, ctx: ParseContext):
         ev = EnumValue()
         ev.name = enum_value.name
@@ -88,6 +89,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: 
     e = Enum()
     e.name = enum.name
     e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}"
+    e.parent_message = parent_message
     e.description = ctx.GetComments()
     e.description_html = markdown.markdown(e.description)
     e.source_file_path = ctx.source_file_path
@@ -98,15 +100,16 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, nested_type_chain: 
         ctx.config.repository_branch,
         e.source_file_path,
         e.line_number)
+
     for i, ev in enumerate(enum.value):
         e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i)))
 
     return e
 
 
-def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext, nested_type_chain: str):
+def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str):
     for (i, enum) in enumerate(enums):
-        ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i), nested_type_chain))
+        ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i), parent_message, nested_type_chain))
 
     ctx.package.enums.sort(key=lambda e: e.name)
 
@@ -141,16 +144,14 @@ def extract_type_name_from_full_name(full_type_name: str):
         return full_type_name[last_dot + 1:]
 
 
-def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain: str):
-    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), f"{message.name}.")
-    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), f"{message.name}.")
-
+def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str):
     if message.oneof_decl:
         pprint.pprint(message.oneof_decl)
 
     m = Message()
     m.name = message.name
     m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}"
+    m.parent_message = parent_message
     m.description = ctx.GetComments()
     m.description_html = markdown.markdown(m.description)
     m.source_file_path = ctx.source_file_path
@@ -161,18 +162,22 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, nested_type_chain
         ctx.config.repository_branch,
         m.source_file_path,
         m.line_number)
+
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
 
     m.fields.sort(key=lambda mf: mf.number)
 
+    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, f"{message.name}.")
+    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, f"{message.name}.")
+
     return m
 
 
-def parse_messages(messages: list[DescriptorProto], ctx: ParseContext, nested_type_chain: str):
+def parse_messages(messages: list[DescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str):
     for (i, message) in enumerate(messages):
-        ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), nested_type_chain))
+        ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), parent_message, nested_type_chain))
 
     ctx.package.messages.sort(key=lambda m: m.name)
 
@@ -183,10 +188,17 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
     sm.description = ctx.GetComments()
     sm.description_html = markdown.markdown(sm.description)
     sm.line_number = ctx.GetLineNumber()
-    sm.request_type = service_method.input_type[service_method.input_type.rfind(".") + 1:]
-    sm.request_full_type = service_method.input_type
-    sm.response_type = service_method.output_type[service_method.output_type.rfind(".") + 1:]
-    sm.response_full_type = service_method.output_type
+    sm.request = ServiceMethodArgument(
+        service_method.input_type[service_method.input_type.rfind(".") + 1:],
+        service_method.input_type.strip("."),
+        "MESSAGE"
+    )
+
+    sm.response = ServiceMethodArgument(
+        service_method.output_type[service_method.output_type.rfind(".") + 1:],
+        service_method.output_type.strip("."),
+        "MESSAGE"
+    )
 
     return sm
 
@@ -218,8 +230,12 @@ def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
     ctx.package.services.sort(key=lambda s: s.name)
 
 
-def add_package_to_message_fields(messages: list[Message], packages):
+def add_package_references(messages: list[Message], services: list[Service], packages):
     for m in messages:
+        package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
+        if package is not None:
+            m.package = package
+
         for mf in m.fields:
             if mf.full_type == "":
                 continue
@@ -227,6 +243,20 @@ def add_package_to_message_fields(messages: list[Message], packages):
             package = next(filter(lambda p: mf.full_type.startswith(p.name), packages), None)
             if package is not None:
                 mf.package = package
+
+            package = next(filter(lambda p: mf.full_type.startswith(p.name), packages), None)
+            if package is not None:
+                mf.package = package
+
+    for s in services:
+        for sm in s.methods:
+            requestPackage = next(filter(lambda p: sm.request.full_type.startswith(p.name), packages), None)
+            if requestPackage is not None:
+                sm.request.package = requestPackage
+
+            responsePackage = next(filter(lambda p: sm.response.full_type.startswith(p.name), packages), None)
+            if responsePackage is not None:
+                sm.response.package = responsePackage
 
 
 def build_location_map(source_code_info):
@@ -292,6 +322,7 @@ def parse_proto_descriptor(file_name: str, sable_config: SableConfig):
     packages = dict()
     all_messages = []
     all_enums = []
+    all_services = []
     with open(file_name, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:
@@ -306,16 +337,17 @@ def parse_proto_descriptor(file_name: str, sable_config: SableConfig):
 
             package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
 
-            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), "")
-            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), "")
+            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), None, "")
+            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), None, "")
             parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX))
 
             all_messages.extend(package.messages)
             all_enums.extend(package.enums)
+            all_services.extend(package.services)
 
             packages[file.package] = package
 
-        add_package_to_message_fields(all_messages, packages.values())
+        add_package_references(all_messages, all_services, packages.values())
 
         return SableContext(
             sorted(
