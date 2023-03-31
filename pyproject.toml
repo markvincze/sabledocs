@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sable"
+version = "0.0.1"
+authors = [
+  { name="Mark Vincze", email="mrk.vincze@gmail.com" },
+]
+description = "Static documentation generator for Protobuf and gRPC"
+readme = "README.md"
+requires-python = ">=3.11.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/markvincze/sable"
+"Bug Tracker" = "https://github.com/markvincze/sable/issues"

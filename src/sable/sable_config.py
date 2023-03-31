@@ -15,6 +15,8 @@ class SableConfig:
         self.repository_url = ""
         self.repository_branch = ""
         self.repository_type = RepositoryType.GITHUB
+        self.output_dir = "output"
+        self.template = "_default"
 
         if path.exists(config_file_path):
             print("Sable config found")
@@ -24,6 +26,12 @@ class SableConfig:
                 print(config_values)
                 if 'module-title' in config_values:
                     self.module_title = config_values['module-title']
+
+                if 'output-dir' in config_values:
+                    self.output_dir = config_values['output-dir'].rstrip("/\\")
+
+                if 'template' in config_values:
+                    self.template = config_values['template'].rstrip("/\\")
 
                 if 'footer-content' in config_values:
                     self.footer_content = config_values['footer-content']
