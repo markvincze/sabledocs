@@ -5,18 +5,8 @@ from google.protobuf.descriptor_pb2 import DescriptorProto
 from google.protobuf.descriptor_pb2 import FieldDescriptorProto
 from google.protobuf.descriptor_pb2 import ServiceDescriptorProto
 from google.protobuf.descriptor_pb2 import MethodDescriptorProto
-from proto_model import MessageField
-from proto_model import Message
-from proto_model import EnumValue
-from proto_model import Enum
-from proto_model import ServiceMethod
-from proto_model import ServiceMethodArgument
-from proto_model import Service
-from proto_model import Package
-from proto_model import LocationInfo
-from proto_model import SableContext
-from sable_config import RepositoryType
-from sable_config import SableConfig
+from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, ServiceMethod, ServiceMethodArgument, Service, Package, LocationInfo, SableContext
+from sabledocs.sable_config import RepositoryType, SableConfig
 import pprint
 import markdown
 

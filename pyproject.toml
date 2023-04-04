@@ -3,7 +3,7 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "sable"
+name = "sabledocs"
 version = "0.0.1"
 authors = [
   { name="Mark Vincze", email="mrk.vincze@gmail.com" },
@@ -20,3 +20,17 @@ classifiers = [
 [project.urls]
 "Homepage" = "https://github.com/markvincze/sable"
 "Bug Tracker" = "https://github.com/markvincze/sable/issues"
+
+[project.scripts]
+sabledocs = "sabledocs.__main__:cli"
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools]
+include-package-data = true
+
+#[tool.setuptools.package-data]
+#"sabledocs.templates" = ["*.html"]
+

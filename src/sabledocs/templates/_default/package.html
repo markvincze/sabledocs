@@ -1,4 +1,4 @@
-{% extends "templates/_default/base.html" %}
+{% extends "base.html" %}
 {% block content %}
   <p class="mb-2">
     <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
@@ -51,7 +51,7 @@
 
     {% for service in package.services %}
     <div>
-      {% include 'templates/_default/service.html' %} 
+      {% include 'service.html' %} 
     </div>
     {% endfor %}
   </div>
@@ -67,7 +67,7 @@
     {% for message in package.messages %}
       {% if not message.is_map_entry %}
       <div class="block">
-        {% include 'templates/_default/message.html' %} 
+        {% include 'message.html' %} 
       </div>
       {% endif %}
     {% endfor %}
@@ -82,7 +82,7 @@
 
     {% for enum in package.enums %}
     <div class="block">
-      {% include 'templates/_default/enum.html' %} 
+      {% include 'enum.html' %} 
     </div>
     {% endfor %}
 
