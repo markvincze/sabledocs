@@ -19,7 +19,7 @@ jobs:
       - persist_to_workspace:
           root: dist
           paths:
-            - *
+            - "*"
   publish_testpypi:
     docker:
       - image: cimg/python:3.10.2
