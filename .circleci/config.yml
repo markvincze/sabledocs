@@ -24,7 +24,7 @@ jobs:
       - run:
           command: |
             pip install twine
-            python -m twine upload --repository testpypi dist/*
+            python -m twine upload --repository testpypi ~/project/dist/*
 
 workflows:
   build-and-publish:
