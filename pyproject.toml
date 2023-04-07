@@ -31,6 +31,3 @@ where = ["src"]
 [tool.setuptools]
 include-package-data = true
 
-#[tool.setuptools.package-data]
-#"sabledocs.templates" = ["*.html"]
-

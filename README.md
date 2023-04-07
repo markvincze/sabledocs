@@ -17,3 +17,9 @@ Publish with twine:
 ```
 python -m twine upload --repository testpypi dist/*
 ```
+
+Install from the local folder:
+
+```
+pip install ../sabledocs
+```
