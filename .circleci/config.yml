@@ -20,7 +20,7 @@ jobs:
     docker:
       - image: cimg/python:3.10.2
     steps:
-      - checkout
+      #- checkout
       - run:
           command: |
             pip install twine
