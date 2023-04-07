@@ -23,8 +23,8 @@ jobs:
           pkg-manager: pip
           app-dir: ~/src/sabledocs/ # If you're requirements.txt isn't in the root directory.
       - run:
-        command: |
-          python -m build
+          command: |
+            python -m build
   publish_testpypi:
     docker:
       - image: cimg/python:3.10.2
