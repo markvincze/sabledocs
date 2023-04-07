@@ -16,16 +16,21 @@ jobs:
           command: |
             pip install build
             python -m build
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - *
   publish_testpypi:
     docker:
       - image: cimg/python:3.10.2
     steps:
       #- checkout
+      - attach_workspace:
+          at: dist
       - run:
           command: |
             pip install twine
             python -m twine upload --repository testpypi ~/project/dist/*
-
 workflows:
   build-and-publish:
     jobs:
