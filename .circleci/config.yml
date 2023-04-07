@@ -24,6 +24,7 @@ jobs:
           app-dir: ~/project/src/sabledocs/ # If you're requirements.txt isn't in the root directory.
       - run:
           command: |
+            pip install build
             python -m build
   publish_testpypi:
     docker:
