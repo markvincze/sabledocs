@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>gRPC documentation</title>
+    <title>{{ sable_config.module_title }}</title>
     <link rel="stylesheet" href="static/mystyles.css" />
     <script
       src="https://kit.fontawesome.com/4d30d3d1aa.js"
@@ -46,7 +46,7 @@
         {% if sable_config.footer_content %}
           <p>{{ sable_config.footer_content | safe }}</p>
         {% endif %}
-        <p>Built with <strong>Sable</strong>.</p>
+        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs">sabledocs</a></strong>.</p>
       </div>
     </footer>
   </body>

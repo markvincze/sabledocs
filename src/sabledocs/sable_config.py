@@ -4,17 +4,18 @@ import tomllib
 
 
 class RepositoryType(Enum):
-    GITHUB = 1
-    BITBUCKET = 2
+    NONE = 1
+    GITHUB = 2
+    BITBUCKET = 3
 
 
 class SableConfig:
     def __init__(self, config_file_path):
-        self.module_title = "Module"
+        self.module_title = "Protobuf module documentation"
         self.footer_content = ""
         self.repository_url = ""
         self.repository_branch = ""
-        self.repository_type = RepositoryType.GITHUB
+        self.repository_type = RepositoryType.NONE
         self.input_descriptor_file = "descriptor.pb"
         self.output_dir = "sabledocs_output"
         self.template = "_default"

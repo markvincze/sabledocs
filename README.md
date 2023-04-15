@@ -36,6 +36,37 @@ sabledocs
 
 The documentation will be generated into a folder `sabledocs_output`, its main page can be opened with `index.html`.
 
+### Customization
+
+For further customization, create a `sabledocs.toml` file in the folder where the Protobuf descriptor file is located and from which the `sabledocs` CLI is executed.
+You can customize the following options. Any omitted field will use its default value.
+
+```
+# Configures the main title of the documentation site.
+# Default value: "Protobuf module documentation"
+module-title = "My Awesome Module"
+
+# Specifies the name of the Protobuf descriptor file.
+# Default value: "descriptor.pb"
+input-descriptor-file = "myawesomemodule.pb"
+
+# The output folder to which the documentation is generated.
+# Default value: "sabledocs_output"
+output-dir = "docs"
+
+# Copyright message displayed in the footer.
+# Default value: ""
+footer-content = "© 2023 Jane Doe. All rights reserved."
+
+# The following 3 fields configure the source control repository of the project.
+# It is used to generate deeplink for the components of the Proto model pointing to the original source code.
+# By default these fields are not configured, and source code links are not included in the docs.
+# The repository-type field supports two possible values, "github" and "bitbucket", and repository-url and `repository-branch` should be configured accordingly.
+repository-type = "github"
+repository-url = "https://github.com/janedoe/myawesomeproject"
+repository-branch = "master"
+```
+
 ## For maintainers
 
 Build the Python package:

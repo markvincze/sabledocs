@@ -31,6 +31,8 @@ FIELD_TYPE_ENUM = 14
 
 def build_source_code_url(repository_url, repository_type, repository_branch, file_path, line_number):
     match repository_type:
+        case RepositoryType.NONE:
+            return None
         case RepositoryType.GITHUB:
             return f"{repository_url.strip('/')}/blob/{repository_branch}/{file_path}#L{line_number}"
         case RepositoryType.BITBUCKET:
