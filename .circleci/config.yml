@@ -20,6 +20,7 @@ jobs:
           root: dist
           paths:
             - "*"
+
   build_stable:
     docker:
       - image: cimg/python:3.10.2
@@ -36,6 +37,7 @@ jobs:
           root: dist
           paths:
             - "*"
+
   publish_pypi:
     docker:
       - image: cimg/python:3.10.2
@@ -46,8 +48,9 @@ jobs:
           command: |
             pip install twine
             python -m twine upload -u __token__ -p ${PYPI_API_TOKEN} ~/project/dist/*
+
   generate_sample_docs:
-    docker
+    docker:
       - image: cimg/python:3.10.2
     steps:
       - checkout
@@ -80,4 +83,3 @@ workflows:
       - generate_sample_docs:
           requires:
             - publish_pypi
-
