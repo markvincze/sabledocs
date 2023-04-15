@@ -59,6 +59,8 @@ jobs:
           app-dir: ~/project/src/sabledocs/
       - run:
           command: |
+            git config --global user.email "mrk.vincze@gmail.com"
+            git config --global user.name "sabledocs CI"
             chmod +x generate_sample_docs.sh
             ./generate_sample_docs.sh
 
