@@ -15,7 +15,8 @@ class SableConfig:
         self.repository_url = ""
         self.repository_branch = ""
         self.repository_type = RepositoryType.GITHUB
-        self.output_dir = "output"
+        self.input_descriptor_file = "descriptor.pb"
+        self.output_dir = "sabledocs_output"
         self.template = "_default"
 
         if path.exists(config_file_path):
@@ -26,6 +27,9 @@ class SableConfig:
                 print(config_values)
                 if 'module-title' in config_values:
                     self.module_title = config_values['module-title']
+
+                if 'input-descriptor-file' in config_values:
+                    self.input_descriptor_file = config_values['input-descriptor-file']
 
                 if 'output-dir' in config_values:
                     self.output_dir = config_values['output-dir'].rstrip("/\\")

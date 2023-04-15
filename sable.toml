@@ -1,5 +1,7 @@
 module-title = "Google Cloud Datastore"
 
+input-descriptor-file = "descriptor.pb"
+
 output-dir = "output"
 
 footer-content = "© 2023 Mark Vincze. All rights reserved."

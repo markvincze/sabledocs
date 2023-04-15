@@ -16,7 +16,8 @@ def cli():
     # sable_context = parse_proto_descriptor('descriptor.pb', sable_config)
     # sable_context = parse_proto_descriptor('pubsub.pb', sable_config)
     # sable_context = parse_proto_descriptor('sable-test.pb')
-    sable_context = parse_proto_descriptor('datastore.pb', sable_config)
+    # sable_context = parse_proto_descriptor('datastore.pb', sable_config)
+    sable_context = parse_proto_descriptor(sable_config)
 
     template_base_dir = path.join(path.dirname(__file__), "templates", "_default") if sable_config.template == "_default" else f"templates/{sable_config.template}"
 

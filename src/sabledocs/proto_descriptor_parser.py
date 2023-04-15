@@ -308,12 +308,12 @@ def to_label_name(type):
         case _: ""
 
 
-def parse_proto_descriptor(file_name: str, sable_config: SableConfig):
+def parse_proto_descriptor(sable_config: SableConfig):
     packages = dict()
     all_messages = []
     all_enums = []
     all_services = []
-    with open(file_name, mode="rb") as proto_descriptor_file:
+    with open(sable_config.input_descriptor_file, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:
             print(f"Processing {file.name}")
