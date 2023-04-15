@@ -21,10 +21,12 @@ cd $TEMP_REPO_DIR
 git rm -r *
 
 echo "Copy documentation into the repo"
-cp -r $SOURCE_DIR/sample/output/* .
+mkdir demo
+cp -r $SOURCE_DIR/sample/output/* ./demo
 cp $SOURCE_DIR/README.md .
 
 echo "Push the new docs to the remote branch"
 git add . -A
 git commit -m "Update generated documentation"
 git push origin gh-pages
+

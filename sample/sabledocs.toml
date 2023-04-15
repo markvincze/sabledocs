@@ -4,7 +4,7 @@ input-descriptor-file = "pubsub.pb"
 
 output-dir = "output"
 
-footer-content = "© 2023 Google. All rights reserved."
+footer-content = "© Example 2023"
 
 repository-url = "https://github.com/googleapis/googleapis"
 repository-type = "github"

@@ -46,6 +46,17 @@ jobs:
           command: |
             pip install twine
             python -m twine upload -u __token__ -p ${PYPI_API_TOKEN} ~/project/dist/*
+  generate_sample_docs:
+    docker
+      - image: cimg/python:3.10.2
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          app-dir: ~/project/src/sabledocs/
+      - run:
+          command: |
+            ./generate_sample_docs.sh
 
 workflows:
   build-and-publish:
@@ -66,3 +77,7 @@ workflows:
       - publish_pypi:
           requires:
             - build_stable
+      - generate_sample_docs:
+          requires:
+            - publish_pypi
+
