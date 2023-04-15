@@ -6,7 +6,7 @@ orbs:
 jobs:
   build_dev:
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.11.3
     steps:
       - checkout
       - python/install-packages:
@@ -23,7 +23,7 @@ jobs:
 
   build_stable:
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.11.3
     steps:
       - checkout
       - python/install-packages:
@@ -40,7 +40,7 @@ jobs:
 
   publish_pypi:
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.11.3
     steps:
       - attach_workspace:
           at: dist
@@ -51,7 +51,7 @@ jobs:
 
   generate_sample_docs:
     docker:
-      - image: cimg/python:3.10.2
+      - image: cimg/python:3.11.3
     steps:
       - checkout
       - python/install-packages:
