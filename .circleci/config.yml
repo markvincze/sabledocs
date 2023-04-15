@@ -60,6 +60,7 @@ jobs:
           app-dir: ~/project/src/sabledocs/
       - run:
           command: |
+            chmod +x generate_sample_docs.sh
             ./generate_sample_docs.sh
 
 workflows:
