@@ -1,9 +1,10 @@
-test:
-  override:
-    - echo "test"
+version: 2.1
+
+orbs:
+  python: circleci/python@1.5.0
 
 jobs:
-  dummy:
+  build_dev:
     docker:
       - image: cimg/python:3.11.3
     steps:
