@@ -71,4 +71,7 @@ workflows:
                 - main
       - publish_pypi:
           requires:
-            - build
+            - build_dev
+      - publish_pypi:
+          requires:
+            - build_stable
