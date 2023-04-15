@@ -15,7 +15,7 @@ jobs:
       - run:
           command: |
             pip install build
-            python -m build -C--global-option=egg_info -C--global-option=--tag-build="dev${CIRCLE_BUILD_NUM}"
+            python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
       - persist_to_workspace:
           root: dist
           paths:
@@ -33,6 +33,7 @@ jobs:
           command: |
             pip install build
             python -m build
+            python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}"
       - persist_to_workspace:
           root: dist
           paths:
