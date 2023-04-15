@@ -1,3 +1,10 @@
 test:
   override:
     - echo "test"
+
+jobs:
+  dummy:
+    docker:
+      - image: cimg/python:3.11.3
+    steps:
+      - checkout
