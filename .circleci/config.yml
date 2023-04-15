@@ -75,11 +75,13 @@ workflows:
               only:
                 - main
       - publish_pypi:
+          name: publish_pypi_dev
           requires:
             - build_dev
       - publish_pypi:
+          name: publish_pypi_stable
           requires:
             - build_stable
       - generate_sample_docs:
           requires:
-            - publish_pypi
+            - publish_pypi_stable
