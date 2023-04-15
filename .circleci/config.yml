@@ -15,7 +15,7 @@ jobs:
       - run:
           command: |
             pip install build
-            python -m build
+            python -m build -C--global-option=egg_info -C--global-option=--tag-build="dev${CIRCLE_BUILD_NUM}"
       - persist_to_workspace:
           root: dist
           paths:
@@ -24,13 +24,22 @@ jobs:
     docker:
       - image: cimg/python:3.10.2
     steps:
-      #- checkout
       - attach_workspace:
           at: dist
       - run:
           command: |
             pip install twine
-            python -m twine upload --repository testpypi ~/project/dist/*
+            python -m twine upload -u __token__ -p ${PYPI_API_TOKEN_TEST} --repository testpypi ~/project/dist/*
+  publish_pypi:
+    docker:
+      - image: cimg/python:3.10.2
+    steps:
+      - attach_workspace:
+          at: dist
+      - run:
+          command: |
+            pip install twine
+            python -m twine upload -u __token__ -p ${PYPI_API_TOKEN} ~/project/dist/*
 workflows:
   build-and-publish:
     jobs:
@@ -38,3 +47,10 @@ workflows:
       - publish_testpypi:
           requires:
             - build
+      - publish_pypi:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - main
