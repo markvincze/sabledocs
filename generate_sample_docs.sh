@@ -27,6 +27,6 @@ cp $SOURCE_DIR/README.md .
 
 echo "Push the new docs to the remote branch"
 git add . -A
-git commit -m "Update generated documentation [ci skip]"
+git commit --allow-empty -m "Update generated documentation [ci skip]"
 git push origin gh-pages
 
