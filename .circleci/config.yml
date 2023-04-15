@@ -54,6 +54,9 @@ jobs:
       - image: cimg/python:3.11.3
     steps:
       - checkout
+      - add_ssh_keys:
+        fingerprints:
+          - "d5:12:33:42:6b:cd:57:b7:7f:08:2c:7a:a2:c4:54:6d"
       - python/install-packages:
           pkg-manager: pip
           app-dir: ~/project/src/sabledocs/
