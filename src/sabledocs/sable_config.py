@@ -20,7 +20,7 @@ class SableConfig:
         self.template = "_default"
 
         if path.exists(config_file_path):
-            print("Sable config found")
+            print(f"Configuration found in {config_file_path}")
             with open(config_file_path, mode='rb') as config_file:
                 print("TOML file parsed")
                 config_values = tomllib.load(config_file)
@@ -53,3 +53,5 @@ class SableConfig:
                             self.repository_type = RepositoryType.GITHUB
                         case 'bitbucket':
                             self.repository_type = RepositoryType.BITBUCKET
+        else:
+            print("sabledocs.toml file not found, using default configuration.")
