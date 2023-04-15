@@ -61,10 +61,11 @@ footer-content = "© 2023 Jane Doe. All rights reserved."
 # The following 3 fields configure the source control repository of the project.
 # It is used to generate deeplink for the components of the Proto model pointing to the original source code.
 # By default these fields are not configured, and source code links are not included in the docs.
-# The repository-type field supports two possible values, "github" and "bitbucket", and repository-url and `repository-branch` should be configured accordingly.
+# The repository-type field supports two possible values, "github" and "bitbucket".
+# The fields repository-url and `repository-branch` should be configured to point to the correct repository.
 repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
-repository-branch = "master"
+repository-branch = "main"
 ```
 
 ## For maintainers
