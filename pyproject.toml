@@ -18,8 +18,8 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/markvincze/sable"
-"Bug Tracker" = "https://github.com/markvincze/sable/issues"
+"Homepage" = "https://github.com/markvincze/sabledocs"
+"Bug Tracker" = "https://github.com/markvincze/sabledocs/issues"
 
 [project.scripts]
 sabledocs = "sabledocs.__main__:cli"

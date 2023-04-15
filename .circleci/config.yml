@@ -4,7 +4,7 @@ orbs:
   python: circleci/python@1.5.0
 
 jobs:
-  build:
+  build_dev:
     docker:
       - image: cimg/python:3.10.2
     steps:
@@ -20,16 +20,32 @@ jobs:
           root: dist
           paths:
             - "*"
-  publish_testpypi:
+  build_stable:
     docker:
       - image: cimg/python:3.10.2
     steps:
-      - attach_workspace:
-          at: dist
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          app-dir: ~/project/src/sabledocs/
       - run:
           command: |
-            pip install twine
-            python -m twine upload -u __token__ -p ${PYPI_API_TOKEN_TEST} --repository testpypi ~/project/dist/*
+            pip install build
+            python -m build
+      - persist_to_workspace:
+          root: dist
+          paths:
+            - "*"
+  #publish_testpypi:
+  #docker:
+  #- image: cimg/python:3.10.2
+  #steps:
+  #- attach_workspace:
+  #at: dist
+  #- run:
+  #command: |
+  #pip install twine
+  #python -m twine upload -u __token__ -p ${PYPI_API_TOKEN_TEST} --repository testpypi ~/project/dist/*
   publish_pypi:
     docker:
       - image: cimg/python:3.10.2
@@ -43,14 +59,16 @@ jobs:
 workflows:
   build-and-publish:
     jobs:
-      - build
-      - publish_testpypi:
-          requires:
-            - build
-      - publish_pypi:
-          requires:
-            - build
+      - build_dev:
+          filters:
+            branches:
+              ignore:
+                - main
+      - build_stable:
           filters:
             branches:
               only:
                 - main
+      - publish_pypi:
+          requires:
+            - build
