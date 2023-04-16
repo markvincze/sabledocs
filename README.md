@@ -2,7 +2,7 @@
 
 [![CircleCI](https://dl.circleci.com/status-badge/img/gh/markvincze/sabledocs/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/gh/markvincze/sabledocs/tree/main)
 [![PyPi](https://img.shields.io/pypi/v/sabledocs.svg)](https://pypi.org/project/sabledocs/)
-[![Python versions](https://img.shields.io/pypi/pyversions/Markdown.svg)](https://pypi.org/project/sabledocs/)
+[![Python versions](https://img.shields.io/pypi/pyversions/sabledocs.svg)](https://pypi.org/project/sabledocs/)
 
 A simple static documentation generator for Protobuf and gRPC contracts.
 
