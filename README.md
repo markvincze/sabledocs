@@ -6,7 +6,7 @@
 
 A simple static documentation generator for Protobuf and gRPC contracts.
 
-**Demo**: You can check out this [demo](https://markvincze.github.io/sabledocs/demo/) showing the generated documentation for the [Google Cloud Pub/Sub contracts](https://github.com/googleapis/googleapis/tree/master/google/pubsub/v1).
+**Demo**: You can check out this [demo](https://markvincze.github.io/sabledocs/demo/) showing the generated documentation for some of the [Google Cloud SDK contracts](https://github.com/googleapis/googleapis/tree/master/google/pubsub/v1).
 
 ## How to use
 
