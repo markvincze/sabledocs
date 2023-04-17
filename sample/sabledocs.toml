@@ -1,6 +1,6 @@
-module-title = "Google Cloud Pub/Sub"
+module-title = "Google Cloud SDK"
 
-input-descriptor-file = "pubsub.pb"
+input-descriptor-file = "google-cloud-sdk.pb"
 
 output-dir = "output"
 
