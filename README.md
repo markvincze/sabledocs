@@ -45,7 +45,7 @@ The documentation will be generated into a folder `sabledocs_output`, its main p
 For further customization, create a `sabledocs.toml` file in the folder where the Protobuf descriptor file is located and from which the `sabledocs` CLI is executed.
 You can customize the following options. Any omitted field will use its default value.
 
-```
+```toml
 # Configures the main title of the documentation site.
 # Default value: "Protobuf module documentation"
 module-title = "My Awesome Module"
