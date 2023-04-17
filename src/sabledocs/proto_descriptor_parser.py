@@ -137,8 +137,8 @@ def extract_type_name_from_full_name(full_type_name: str):
 
 
 def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str):
-    if message.oneof_decl:
-        pprint.pprint(message.oneof_decl)
+    #if message.oneof_decl:
+        #pprint.pprint(message.oneof_decl)
 
     m = Message()
     m.name = message.name
