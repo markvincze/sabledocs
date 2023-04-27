@@ -1,10 +1,14 @@
-import pprint
+import json
 import os
+import pprint
 from distutils.dir_util import copy_tree
 from re import template
+
+from jinja2 import Environment, FileSystemLoader, select_autoescape
+
+from sabledocs.lunr_search import build_search_index
 from sabledocs.proto_descriptor_parser import parse_proto_descriptor
 from sabledocs.sable_config import SableConfig
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def cli():
@@ -25,6 +29,7 @@ def cli():
     if not os.path.exists(sable_config.output_dir):
         os.makedirs(sable_config.output_dir)
 
+    # NOTE: When the output files are generated, the encode('utf-8') option has to be used, otherwise Unicode characters like © can end up garbled.
     for package in sable_context.packages:
         with open(os.path.join(sable_config.output_dir, f'{package.name}.html'), 'wb') as fh:
             output = package_template.render(
@@ -32,7 +37,7 @@ def cli():
                 package=package,
                 packages=sable_context.packages,
                 all_messages=sable_context.all_messages,
-                all_enums=sable_context.all_enums).encode('utf-8') # Without encode('utf-8'), Unicode characters like © ended up garbled.
+                all_enums=sable_context.all_enums).encode('utf-8')
 
             fh.write(output)
 
@@ -41,7 +46,7 @@ def cli():
             sable_config = sable_config,
             packages=sable_context.packages,
             all_messages=sable_context.all_messages,
-            all_enums=sable_context.all_enums).encode('utf-8') # Without encode('utf-8'), Unicode characters like © ended up garbled.
+            all_enums=sable_context.all_enums).encode('utf-8')
 
         fh.write(output)
 
@@ -49,6 +54,17 @@ def cli():
 
     index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
     print(f"Building documentation done. It can be opened with {index_abs_path}")
+
+    idx = build_search_index()
+    serialized_index = json.dumps(idx.serialize())
+    print(f"Search index: {serialized_index}")
+
+    with open(os.path.join(sable_config.output_dir, 'search.html'), 'wb') as fh:
+        output = jinja_env.get_template("search.html").render(
+            sable_config = sable_config,
+            serialized_index = serialized_index).encode('utf-8')
+
+        fh.write(output)
 
 if __name__ == '__main__':  # pragma: no cover
     cli()

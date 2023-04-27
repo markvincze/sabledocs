@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ sable_config.module_title }}</title>
+    <title>Google Cloud SDK</title>
     <link rel="stylesheet" href="static/mystyles.css" />
     <script
       src="https://kit.fontawesome.com/4d30d3d1aa.js"
@@ -17,22 +17,18 @@
         <div class="level-left">
           <p class="level-item has-text-centered is-size-3 has-text-weight-medium">
             <a class="link is-info" href="index.html">
-              {{ sable_config.module_title }}
+              Google Cloud SDK
             </a>
           </p>
         </div>
         <div class="level-right">
           <p class="level-item has-text-centered is-size-5">
-            <a href="{{ sable_config.repository_url }}" class="link is-info">
-              {% if sable_config.repository_type | string == "RepositoryType.GITHUB" %}
+            <a href="https://github.com/googleapis/googleapis" class="link is-info">
+              
               <span class="icon">
                 <i class="fa-brands fa-github"></i>
               </span>
-              {% elif sable_config.repository_type | string == "RepositoryType.BITBUCKET" %}
-              <span class="icon">
-                <i class="fa-brands fa-bitbucket"></i>
-              </span>
-              {% endif %}
+              
               <span>Source</span>
             </a>
           </p>
@@ -40,13 +36,31 @@
       </nav>
     </div>
 
-    <div class="container mb-6">{% block content %}{% endblock %}</div>
+    <div class="container mb-6">
+  <h3 class="title is-3">
+    Packages
+  </h3>
+  <div class="block">This site contains the documentation for the following Protobuf packages.</div>
+  <div class="block">
+  
+    <h5 class="title is-5">
+      <a href="google.datastore.v1.html">google.datastore.v1</a>
+    </h4>
+    
+  
+    <h5 class="title is-5">
+      <a href="google.pubsub.v1.html">google.pubsub.v1</a>
+    </h4>
+    
+  
+  </div>
+</div>
 
     <footer class="footer">
       <div class="content has-text-centered">
-        {% if sable_config.footer_content %}
-          <p>{{ sable_config.footer_content | safe }}</p>
-        {% endif %}
+        
+          <p>© Example 2023</p>
+        
         <p>Built with <strong><a href="https://github.com/markvincze/sabledocs">sabledocs</a></strong>.</p>
       </div>
     </footer>
