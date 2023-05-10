@@ -21,7 +21,13 @@
             </a>
           </p>
         </div>
+
         <div class="level-right">
+          <form action="search.html">
+            <input type="text" name="query" class="input mr-3 navbar-search-query-input" placeholder="Search">
+            <input type="submit" class="button is-primary mr-5" value="Search" />
+          </form>
+
           <p class="level-item has-text-centered is-size-5">
             <a href="{{ sable_config.repository_url }}" class="link is-info">
               {% if sable_config.repository_type | string == "RepositoryType.GITHUB" %}

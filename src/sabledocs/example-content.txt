@@ -1,0 +1,925 @@
+"google.datastore.v1
+
+google.datastore.v1.Datastore
+Each RPC normalizes the partition IDs of the keys in its input entities,
+ and always returns entities with keys with normalized partition IDs.
+ This applies to all keys and entities, including those in values, except keys
+ with both an empty path and an empty or unset partition ID. Normalization of
+ input keys sets the project ID (if not already set) to the project ID from
+ the request.
+Lookup
+Looks up entities by key.
+google.datastore.v1.LookupRequest
+google.datastore.v1.LookupResponse
+RunQuery
+Queries for entities.
+google.datastore.v1.RunQueryRequest
+google.datastore.v1.RunQueryResponse
+RunAggregationQuery
+Runs an aggregation query.
+google.datastore.v1.RunAggregationQueryRequest
+google.datastore.v1.RunAggregationQueryResponse
+BeginTransaction
+Begins a new transaction.
+google.datastore.v1.BeginTransactionRequest
+google.datastore.v1.BeginTransactionResponse
+Commit
+Commits a transaction, optionally creating, deleting or modifying some
+ entities.
+google.datastore.v1.CommitRequest
+google.datastore.v1.CommitResponse
+Rollback
+Rolls back a transaction.
+google.datastore.v1.RollbackRequest
+google.datastore.v1.RollbackResponse
+AllocateIds
+Allocates IDs for the given keys, which is useful for referencing an entity
+ before it is inserted.
+google.datastore.v1.AllocateIdsRequest
+google.datastore.v1.AllocateIdsResponse
+ReserveIds
+Prevents the supplied keys' IDs from being auto-allocated by Cloud
+ Datastore.
+google.datastore.v1.ReserveIdsRequest
+google.datastore.v1.ReserveIdsResponse
+google.datastore.v1.AggregationResult.AggregatePropertiesEntry
+
+key
+
+value
+
+google.datastore.v1.AggregationQuery.Aggregation
+Defines a aggregation that produces a single result.
+count
+Count aggregator.
+alias
+Optional. Optional name of the property to store the result of the
+ aggregation.
+
+ If not provided, Datastore will pick a default name following the format
+ `property_<incremental_id++>`. For example:
+
+ ```
+ AGGREGATE
+   COUNT_UP_TO(1) AS count_up_to_1,
+   COUNT_UP_TO(2),
+   COUNT_UP_TO(3) AS count_up_to_3,
+   COUNT_UP_TO(4)
+ OVER (
+   ...
+ );
+ ```
+
+ becomes:
+
+ ```
+ AGGREGATE
+   COUNT_UP_TO(1) AS count_up_to_1,
+   COUNT_UP_TO(2) AS property_1,
+   COUNT_UP_TO(3) AS count_up_to_3,
+   COUNT_UP_TO(4) AS property_2
+ OVER (
+   ...
+ );
+ ```
+
+ Requires:
+
+ * Must be unique across all aggregation aliases.
+ * Conform to [entity property
+ name][google.datastore.v1.Entity.properties] limitations.
+google.datastore.v1.AggregationQuery
+Datastore query for running an aggregation over a
+ [Query][google.datastore.v1.Query].
+nested_query
+Nested query for aggregation
+aggregations
+Optional. Series of aggregations to apply over the results of the
+ `nested_query`.
+
+ Requires:
+
+ * A minimum of one and maximum of five aggregations per query.
+google.datastore.v1.AggregationResult
+The result of a single bucket from a Datastore aggregation query.
+
+ The keys of `aggregate_properties` are the same for all results in an
+ aggregation query, unlike entity queries which can have different fields
+ present for each result.
+aggregate_properties
+The result of the aggregation functions, ex: `COUNT(*) AS total_entities`.
+
+ The key is the
+ [alias][google.datastore.v1.AggregationQuery.Aggregation.alias] assigned to
+ the aggregation function on input and the size of this map equals the
+ number of aggregation functions in the query.
+google.datastore.v1.AggregationResultBatch
+A batch of aggregation results produced by an aggregation query.
+aggregation_results
+The aggregation results for this batch.
+more_results
+The state of the query after the current batch.
+ Only COUNT(*) aggregations are supported in the initial launch. Therefore,
+ expected result type is limited to `NO_MORE_RESULTS`.
+read_time
+Read timestamp this batch was returned from.
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater timestamp. Each batch's read timestamp
+ is valid for all preceding batches.
+google.datastore.v1.AllocateIdsRequest
+The request for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].
+keys
+Required. A list of keys with incomplete key paths for which to allocate
+ IDs. No key may be reserved/read-only.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.AllocateIdsResponse
+The response for
+ [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].
+keys
+The keys specified in the request (in the same order), each with
+ its key path completed with a newly allocated ID.
+google.datastore.v1.ArrayValue
+An array value.
+values
+Values in the array.
+ The order of values in an array is preserved as long as all values have
+ identical settings for 'exclude_from_indexes'.
+google.datastore.v1.BeginTransactionRequest
+The request for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+transaction_options
+Options for a new transaction.
+google.datastore.v1.BeginTransactionResponse
+The response for
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].
+transaction
+The transaction identifier (always present).
+google.datastore.v1.CommitRequest
+The request for [Datastore.Commit][google.datastore.v1.Datastore.Commit].
+transaction
+The identifier of the transaction associated with the commit. A
+ transaction identifier is returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].
+mode
+The type of commit to perform. Defaults to `TRANSACTIONAL`.
+mutations
+The mutations to perform.
+
+ When mode is `TRANSACTIONAL`, mutations affecting a single entity are
+ applied in order. The following sequences of mutations affecting a single
+ entity are not permitted in a single `Commit` request:
+
+ - `insert` followed by `insert`
+ - `update` followed by `insert`
+ - `upsert` followed by `insert`
+ - `delete` followed by `update`
+
+ When mode is `NON_TRANSACTIONAL`, no two mutations may affect a single
+ entity.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+single_use_transaction
+Options for beginning a new transaction for this request.
+ The transaction is committed when the request completes. If specified,
+ [TransactionOptions.mode][google.datastore.v1.TransactionOptions] must be
+ [TransactionOptions.ReadWrite][google.datastore.v1.TransactionOptions.ReadWrite].
+google.datastore.v1.CommitResponse
+The response for [Datastore.Commit][google.datastore.v1.Datastore.Commit].
+mutation_results
+The result of performing the mutations.
+ The i-th mutation result corresponds to the i-th mutation in the request.
+index_updates
+The number of index entries updated during the commit, or zero if none were
+ updated.
+commit_time
+The transaction commit timestamp. Not set for non-transactional commits.
+google.datastore.v1.CompositeFilter
+A filter that merges multiple other filters using the given operator.
+op
+The operator for combining multiple filters.
+filters
+The list of filters to combine.
+
+ Requires:
+
+ * At least one filter is present.
+google.datastore.v1.Aggregation.Count
+Count of entities that match the query.
+
+ The `COUNT(*)` aggregation function operates on the entire entity
+ so it does not require a field reference.
+up_to
+Optional. Optional constraint on the maximum number of entities to
+ count.
+
+ This provides a way to set an upper bound on the number of entities
+ to scan, limiting latency and cost.
+
+ Unspecified is interpreted as no bound.
+
+ If a zero value is provided, a count result of zero should always be
+ expected.
+
+ High-Level Example:
+
+ ```
+ AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
+ ```
+
+ Requires:
+
+ * Must be non-negative when present.
+google.datastore.v1.Entity
+A Datastore data object.
+
+ An entity is limited to 1 megabyte when stored. That _roughly_
+ corresponds to a limit of 1 megabyte for the serialized form of this
+ message.
+key
+The entity's key.
+
+ An entity must have a key, unless otherwise documented (for example,
+ an entity in `Value.entity_value` may have no key).
+ An entity's kind is its key path's last element's kind,
+ or null if it has no key.
+properties
+The entity's properties.
+ The map's keys are property names.
+ A property name matching regex `__.*__` is reserved.
+ A reserved property name is forbidden in certain documented contexts.
+ The name must not contain more than 500 characters.
+ The name cannot be `\"\"`.
+google.datastore.v1.EntityResult
+The result of fetching an entity from Datastore.
+entity
+The resulting entity.
+cursor
+A cursor that points to the position after the result entity.
+ Set only when the `EntityResult` is part of a `QueryResultBatch` message.
+version
+The version of the entity, a strictly positive number that monotonically
+ increases with changes to the entity.
+
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+
+ For [missing][google.datastore.v1.LookupResponse.missing] entities in
+ `LookupResponse`, this is the version of the snapshot that was used to look
+ up the entity, and it is always set except for eventually consistent reads.
+update_time
+The time at which the entity was last changed.
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+ If this entity is missing, this field will not be set.
+create_time
+The time at which the entity was created.
+ This field is set for
+ [`FULL`][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+ If this entity is missing, this field will not be set.
+google.datastore.v1.Filter
+A holder for any type of filter.
+composite_filter
+A composite filter.
+property_filter
+A filter on a property.
+google.datastore.v1.GqlQuery
+A [GQL
+ query](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+query_string
+A string of the format described
+ [here](https://cloud.google.com/datastore/docs/apis/gql/gql_reference).
+allow_literals
+When false, the query string must not contain any literals and instead must
+ bind all values. For example,
+ `SELECT * FROM Kind WHERE a = 'string literal'` is not allowed, while
+ `SELECT * FROM Kind WHERE a = @value` is.
+positional_bindings
+Numbered binding site @1 references the first numbered parameter,
+ effectively using 1-based indexing, rather than the usual 0.
+
+ For each binding site numbered i in `query_string`, there must be an i-th
+ numbered parameter. The inverse must also be true.
+named_bindings
+For each non-reserved named binding site in the query string, there must be
+ a named parameter with that name, but not necessarily the inverse.
+
+ Key must match regex `[A-Za-z_$][A-Za-z_$0-9]*`, must not match regex
+ `__.*__`, and must not be `\"\"`.
+google.datastore.v1.GqlQueryParameter
+A binding parameter for a GQL query.
+value
+A value parameter.
+cursor
+A query cursor. Query cursors are returned in query
+ result batches.
+google.datastore.v1.Key
+A unique identifier for an entity.
+ If a key's partition ID or any of its path kinds or names are
+ reserved/read-only, the key is reserved/read-only.
+ A reserved/read-only key is forbidden in certain documented contexts.
+partition_id
+Entities are partitioned into subsets, currently identified by a project
+ ID and namespace ID.
+ Queries are scoped to a single partition.
+path
+The entity path.
+ An entity path consists of one or more elements composed of a kind and a
+ string or numerical identifier, which identify entities. The first
+ element identifies a _root entity_, the second element identifies
+ a _child_ of the root entity, the third element identifies a child of the
+ second entity, and so forth. The entities identified by all prefixes of
+ the path are called the element's _ancestors_.
+
+ An entity path is always fully complete: *all* of the entity's ancestors
+ are required to be in the path along with the entity identifier itself.
+ The only exception is that in some documented cases, the identifier in the
+ last path element (for the entity) itself may be omitted. For example,
+ the last path element of the key of `Mutation.insert` may have no
+ identifier.
+
+ A path can never be empty, and a path can have at most 100 elements.
+google.datastore.v1.KindExpression
+A representation of a kind.
+name
+The name of the kind.
+google.datastore.v1.LookupRequest
+The request for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].
+read_options
+The options for this lookup request.
+keys
+Required. Keys of entities to look up.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.LookupResponse
+The response for [Datastore.Lookup][google.datastore.v1.Datastore.Lookup].
+found
+Entities found as `ResultType.FULL` entities. The order of results in this
+ field is undefined and has no relation to the order of the keys in the
+ input.
+missing
+Entities not found as `ResultType.KEY_ONLY` entities. The order of results
+ in this field is undefined and has no relation to the order of the keys
+ in the input.
+deferred
+A list of keys that were not looked up due to resource constraints. The
+ order of results in this field is undefined and has no relation to the
+ order of the keys in the input.
+transaction
+The identifier of the transaction that was started as part of this Lookup
+ request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [LookupRequest.read_options][google.datastore.v1.LookupRequest.read_options].
+read_time
+The time at which these entities were read or found missing.
+google.datastore.v1.Mutation
+A mutation to apply to an entity.
+insert
+The entity to insert. The entity must not already exist.
+ The entity key's final path element may be incomplete.
+update
+The entity to update. The entity must already exist.
+ Must have a complete key path.
+upsert
+The entity to upsert. The entity may or may not already exist.
+ The entity key's final path element may be incomplete.
+delete
+The key of the entity to delete. The entity may or may not already exist.
+ Must have a complete key path and must not be reserved/read-only.
+base_version
+The version of the entity that this mutation is being applied
+ to. If this does not match the current version on the server, the
+ mutation conflicts.
+update_time
+The update time of the entity that this mutation is being applied
+ to. If this does not match the current update time on the server, the
+ mutation conflicts.
+google.datastore.v1.MutationResult
+The result of applying a mutation.
+key
+The automatically allocated key.
+ Set only when the mutation allocated a key.
+version
+The version of the entity on the server after processing the mutation. If
+ the mutation doesn't change anything on the server, then the version will
+ be the version of the current entity or, if no entity is present, a version
+ that is strictly greater than the version of any previous entity and less
+ than the version of any possible future entity.
+conflict_detected
+Whether a conflict was detected for this mutation. Always false when a
+ conflict detection strategy field is not set in the mutation.
+update_time
+The update time of the entity on the server after processing the mutation.
+ If the mutation doesn't change anything on the server, then the timestamp
+ will be the update timestamp of the current entity. This field will not be
+ set after a 'delete'.
+create_time
+The create time of the entity. This field will not be set after a 'delete'.
+google.datastore.v1.GqlQuery.NamedBindingsEntry
+
+key
+
+value
+
+google.datastore.v1.RollbackResponse.NestedMessageTest
+Comment on NestedMessageTest
+foo
+Comment on Nested type foo field
+google.datastore.v1.PartitionId
+A partition ID identifies a grouping of entities. The grouping is always
+ by project and namespace, however the namespace ID may be empty.
+
+ A partition ID contains several dimensions:
+ project ID and namespace ID.
+
+ Partition dimensions:
+
+ - May be `\"\"`.
+ - Must be valid UTF-8 bytes.
+ - Must have values that match regex `[A-Za-z\\d\\.\\-_]{1,100}`
+ If the value of any dimension matches regex `__.*__`, the partition is
+ reserved/read-only.
+ A reserved/read-only partition ID is forbidden in certain documented
+ contexts.
+
+ Foreign partition IDs (in which the project ID does
+ not match the context project ID ) are discouraged.
+ Reads and writes of foreign partition IDs may fail if the project is not in
+ an active state.
+project_id
+The ID of the project to which the entities belong.
+database_id
+If not empty, the ID of the database to which the entities
+ belong.
+namespace_id
+If not empty, the ID of the namespace to which the entities belong.
+google.datastore.v1.Key.PathElement
+A (kind, ID/name) pair used to construct a key path.
+
+ If either name or ID is set, the element is complete.
+ If neither is set, the element is incomplete.
+kind
+The kind of the entity.
+
+ A kind matching regex `__.*__` is reserved/read-only.
+ A kind must not contain more than 1500 bytes when UTF-8 encoded.
+ Cannot be `\"\"`.
+
+ Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
+ encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the
+ bytes.
+id
+The auto-allocated ID of the entity.
+
+ Never equal to zero. Values less than zero are discouraged and may not
+ be supported in the future.
+name
+The name of the entity.
+
+ A name matching regex `__.*__` is reserved/read-only.
+ A name must not be more than 1500 bytes when UTF-8 encoded.
+ Cannot be `\"\"`.
+
+ Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
+ encoded as `__bytes<X>__` where `<X>` is the base-64 encoding of the
+ bytes.
+google.datastore.v1.Projection
+A representation of a property in a projection.
+property
+The property to project.
+google.datastore.v1.Entity.PropertiesEntry
+
+key
+
+value
+
+google.datastore.v1.PropertyFilter
+A filter on a specific property.
+property
+The property to filter by.
+op
+The operator to filter by.
+value
+The value to compare the property to.
+google.datastore.v1.PropertyOrder
+The desired order for a specific property.
+property
+The property to order by.
+direction
+The direction to order by. Defaults to `ASCENDING`.
+google.datastore.v1.PropertyReference
+A reference to a property relative to the kind expressions.
+name
+The name of the property.
+ If name includes \".\"s, it may be interpreted as a property name path.
+google.datastore.v1.Query
+A query for entities.
+projection
+The projection to return. Defaults to returning all properties.
+kind
+The kinds to query (if empty, returns entities of all kinds).
+ Currently at most 1 kind may be specified.
+filter
+The filter to apply.
+order
+The order to apply to the query results (if empty, order is unspecified).
+distinct_on
+The properties to make distinct. The query results will contain the first
+ result for each distinct combination of values for the given properties
+ (if empty, all results are returned).
+start_cursor
+A starting point for the query results. Query cursors are
+ returned in query result batches and
+ [can only be used to continue the same
+ query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
+end_cursor
+An ending point for the query results. Query cursors are
+ returned in query result batches and
+ [can only be used to limit the same
+ query](https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets).
+offset
+The number of results to skip. Applies before limit, but after all other
+ constraints. Optional. Must be >= 0 if specified.
+limit
+The maximum number of results to return. Applies after all other
+ constraints. Optional.
+ Unspecified is interpreted as no limit.
+ Must be >= 0 if specified.
+google.datastore.v1.QueryResultBatch
+A batch of results produced by a query.
+entity_result_type
+The result type for every entity in `entity_results`.
+entity_results
+The results for this batch.
+skipped_cursor
+A cursor that points to the position after the last skipped result.
+ Will be set when `skipped_results` != 0.
+end_cursor
+A cursor that points to the position after the last result in the batch.
+more_results
+The state of the query after the current batch.
+skipped_results
+The number of results skipped, typically because of an offset.
+snapshot_version
+The version number of the snapshot this batch was returned from.
+ This applies to the range of results from the query's `start_cursor` (or
+ the beginning of the query if no cursor was given) to this batch's
+ `end_cursor` (not the query's `end_cursor`).
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater snapshot version number. Each batch's snapshot version
+ is valid for all preceding batches.
+ The value will be zero for eventually consistent queries.
+read_time
+Read timestamp this batch was returned from.
+ This applies to the range of results from the query's `start_cursor` (or
+ the beginning of the query if no cursor was given) to this batch's
+ `end_cursor` (not the query's `end_cursor`).
+
+ In a single transaction, subsequent query result batches for the same query
+ can have a greater timestamp. Each batch's read timestamp
+ is valid for all preceding batches.
+ This value will not be set for eventually consistent queries in Cloud
+ Datastore.
+google.datastore.v1.TransactionOptions.ReadOnly
+Options specific to read-only transactions.
+read_time
+Reads entities at the given time.
+ This may not be older than 60 seconds.
+google.datastore.v1.ReadOptions
+The options shared by read requests.
+read_consistency
+The non-transactional read consistency to use.
+transaction
+The identifier of the transaction in which to read. A
+ transaction identifier is returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].
+new_transaction
+Options for beginning a new transaction for this request.
+
+ The new transaction identifier will be returned in the corresponding
+ response as either
+ [LookupResponse.transaction][google.datastore.v1.LookupResponse.transaction]
+ or
+ [RunQueryResponse.transaction][google.datastore.v1.RunQueryResponse.transaction].
+read_time
+Reads entities as they were at the given time. This may not be older
+ than 270 seconds.  This value is only supported for Cloud Firestore in
+ Datastore mode.
+google.datastore.v1.TransactionOptions.ReadWrite
+Options specific to read / write transactions.
+previous_transaction
+The transaction identifier of the transaction being retried.
+google.datastore.v1.ReserveIdsRequest
+The request for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].
+keys
+Required. A list of keys with complete key paths whose numeric IDs should
+ not be auto-allocated.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.ReserveIdsResponse
+The response for
+ [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].
+google.datastore.v1.RollbackRequest
+The request for [Datastore.Rollback][google.datastore.v1.Datastore.Rollback].
+transaction
+Required. The transaction identifier, returned by a call to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.RollbackResponse
+The response for
+ [Datastore.Rollback][google.datastore.v1.Datastore.Rollback]. (an empty
+ message).
+google.datastore.v1.RunAggregationQueryRequest
+The request for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].
+read_options
+The options for this query.
+partition_id
+Entities are partitioned into subsets, identified by a partition ID.
+ Queries are scoped to a single partition.
+ This partition ID is normalized with the standard default context
+ partition ID.
+aggregation_query
+The query to run.
+gql_query
+The GQL query to run. This query must be an aggregation query.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.RunAggregationQueryResponse
+The response for
+ [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].
+batch
+A batch of aggregation results. Always present.
+query
+The parsed form of the `GqlQuery` from the request, if it was set.
+transaction
+The identifier of the transaction that was started as part of this
+ RunAggregationQuery request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [RunAggregationQueryRequest.read_options][google.datastore.v1.RunAggregationQueryRequest.read_options].
+google.datastore.v1.RunQueryRequest
+The request for [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].
+read_options
+The options for this query.
+partition_id
+Entities are partitioned into subsets, identified by a partition ID.
+ Queries are scoped to a single partition.
+ This partition ID is normalized with the standard default context
+ partition ID.
+query
+The query to run.
+gql_query
+The GQL query to run. This query must be a non-aggregation query.
+project_id
+Required. The ID of the project against which to make the request.
+database_id
+The ID of the database against which to make the request.
+
+ '(default)' is not allowed; please use empty string '' to refer the default
+ database.
+google.datastore.v1.RunQueryResponse
+The response for
+ [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].
+batch
+A batch of query results (always present).
+query
+The parsed form of the `GqlQuery` from the request, if it was set.
+transaction
+The identifier of the transaction that was started as part of this
+ RunQuery request.
+
+ Set only when
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ was set in
+ [RunQueryRequest.read_options][google.datastore.v1.RunQueryRequest.read_options].
+google.datastore.v1.TransactionOptions
+Options for beginning a new transaction.
+
+ Transactions can be created explicitly with calls to
+ [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction]
+ or implicitly by setting
+ [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+ in read requests.
+read_write
+The transaction should allow both reads and writes.
+read_only
+The transaction should only allow reads.
+google.datastore.v1.Value
+A message that can hold any of the supported value types and associated
+ metadata.
+boolean_value
+A boolean value.
+integer_value
+An integer value.
+double_value
+A double value.
+key_value
+A key value.
+entity_value
+An entity value.
+
+ - May have no key.
+ - May have a key with an incomplete key path.
+ - May have a reserved/read-only key.
+geo_point_value
+A geo point value representing a point on the surface of Earth.
+array_value
+An array value.
+ Cannot contain another array value.
+ A `Value` instance that sets field `array_value` must not set fields
+ `meaning` or `exclude_from_indexes`.
+timestamp_value
+A timestamp value.
+ When stored in the Datastore, precise only to microseconds;
+ any additional precision is rounded down.
+null_value
+A null value.
+meaning
+The `meaning` field should only be populated for backwards compatibility.
+string_value
+A UTF-8 encoded string value.
+ When `exclude_from_indexes` is false (it is indexed) , may have at most
+ 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.
+blob_value
+A blob value.
+ May have at most 1,000,000 bytes.
+ When `exclude_from_indexes` is false, may have at most 1500 bytes.
+ In JSON requests, must be base64-encoded.
+exclude_from_indexes
+If the value should be excluded from all indexes including those defined
+ explicitly.
+google.datastore.v1.CommentTestEnum
+Comment on the CommentTestEnum
+COMMENT_TEST_ENUM_UNSPECIFIED
+Comment on Unspecified
+COMMENT_TEST_ENUM_FOO
+Comment on Foo
+google.datastore.v1.PropertyOrder.Direction
+The sort direction.
+DIRECTION_UNSPECIFIED
+Unspecified. This value must not be used.
+ASCENDING
+Ascending.
+DESCENDING
+Descending.
+google.datastore.v1.CommitRequest.Mode
+The modes available for commits.
+MODE_UNSPECIFIED
+Unspecified. This value must not be used.
+TRANSACTIONAL
+Transactional: The mutations are either all applied, or none are applied.
+ Learn about transactions
+ [here](https://cloud.google.com/datastore/docs/concepts/transactions).
+NON_TRANSACTIONAL
+Non-transactional: The mutations may not apply as all or none.
+google.datastore.v1.QueryResultBatch.MoreResultsType
+The possible values for the `more_results` field.
+MORE_RESULTS_TYPE_UNSPECIFIED
+Unspecified. This value is never used.
+NOT_FINISHED
+There may be additional batches to fetch from this query.
+MORE_RESULTS_AFTER_LIMIT
+The query is finished, but there may be more results after the limit.
+MORE_RESULTS_AFTER_CURSOR
+The query is finished, but there may be more results after the end
+ cursor.
+NO_MORE_RESULTS
+The query is finished, and there are no more results.
+google.datastore.v1.CompositeFilter.Operator
+A composite filter operator.
+OPERATOR_UNSPECIFIED
+Unspecified. This value must not be used.
+AND
+The results are required to satisfy each of the combined filters.
+OR
+Documents are required to satisfy at least one of the combined filters.
+google.datastore.v1.PropertyFilter.Operator
+A property filter operator.
+OPERATOR_UNSPECIFIED
+Unspecified. This value must not be used.
+LESS_THAN
+The given `property` is less than the given `value`.
+
+ Requires:
+
+ * That `property` comes first in `order_by`.
+LESS_THAN_OR_EQUAL
+The given `property` is less than or equal to the given `value`.
+
+ Requires:
+
+ * That `property` comes first in `order_by`.
+GREATER_THAN
+The given `property` is greater than the given `value`.
+
+ Requires:
+
+ * That `property` comes first in `order_by`.
+GREATER_THAN_OR_EQUAL
+The given `property` is greater than or equal to the given `value`.
+
+ Requires:
+
+ * That `property` comes first in `order_by`.
+EQUAL
+The given `property` is equal to the given `value`.
+IN
+The given `property` is equal to at least one value in the given array.
+
+ Requires:
+
+ * That `value` is a non-empty `ArrayValue` with at most 10 values.
+ * No other `IN` or `NOT_IN` is in the same query.
+NOT_EQUAL
+The given `property` is not equal to the given `value`.
+
+ Requires:
+
+ * No other `NOT_EQUAL` or `NOT_IN` is in the same query.
+ * That `property` comes first in the `order_by`.
+HAS_ANCESTOR
+Limit the result set to the given entity and its descendants.
+
+ Requires:
+
+ * That `value` is an entity key.
+ * No other `HAS_ANCESTOR` is in the same query.
+NOT_IN
+The value of the `property` is not in the given array.
+
+ Requires:
+
+ * That `value` is a non-empty `ArrayValue` with at most 10 values.
+ * No other `IN`, `NOT_IN`, `NOT_EQUAL` is in the same query.
+ * That `field` comes first in the `order_by`.
+google.datastore.v1.ReadOptions.ReadConsistency
+The possible values for read consistencies.
+READ_CONSISTENCY_UNSPECIFIED
+Unspecified. This value must not be used.
+STRONG
+Strong consistency.
+EVENTUAL
+Eventual consistency.
+google.datastore.v1.EntityResult.ResultType
+Specifies what data the 'entity' field contains.
+ A `ResultType` is either implied (for example, in `LookupResponse.missing`
+ from `datastore.proto`, it is always `KEY_ONLY`) or specified by context
+ (for example, in message `QueryResultBatch`, field `entity_result_type`
+ specifies a `ResultType` for all the values in field `entity_results`).
+RESULT_TYPE_UNSPECIFIED
+Unspecified. This value is never used.
+FULL
+The key and properties.
+PROJECTION
+A projected subset of properties. The entity may have no key.
+KEY_ONLY
+Only the key.
+"

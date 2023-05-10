@@ -15,6 +15,7 @@ def cli():
     print("Starting documentation generation.")
     sable_config = SableConfig("sabledocs.toml")
 
+    # Execute the main processing of the Proto contracts.
     sable_context = parse_proto_descriptor(sable_config)
 
     template_base_dir = os.path.join(os.path.dirname(__file__), "templates", "_default") if sable_config.template == "_default" else f"templates/{sable_config.template}"
@@ -52,19 +53,20 @@ def cli():
 
     copy_tree(os.path.join(template_base_dir, "static"), os.path.join(sable_config.output_dir, "static"))
 
-    index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
-    print(f"Building documentation done. It can be opened with {index_abs_path}")
+    (search_documents, search_index) = build_search_index(sable_context)
 
-    idx = build_search_index()
-    serialized_index = json.dumps(idx.serialize())
-    print(f"Search index: {serialized_index}")
+    print(f"Search index: {json.dumps(search_index.serialize())}")
 
     with open(os.path.join(sable_config.output_dir, 'search.html'), 'wb') as fh:
         output = jinja_env.get_template("search.html").render(
             sable_config = sable_config,
-            serialized_index = serialized_index).encode('utf-8')
+            search_documents = json.dumps(search_documents),
+            search_index = json.dumps(search_index.serialize())).encode('utf-8')
 
         fh.write(output)
+
+    index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
+    print(f"Building documentation done. It can be opened with {index_abs_path}")
 
 if __name__ == '__main__':  # pragma: no cover
     cli()
