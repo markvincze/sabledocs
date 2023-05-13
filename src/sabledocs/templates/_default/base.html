@@ -23,10 +23,12 @@
         </div>
 
         <div class="level-right">
+          {% if sable_config.enable_lunr_search  %}
           <form action="search.html">
             <input type="text" name="query" class="input mr-3 navbar-search-query-input" placeholder="Search">
             <input type="submit" class="button is-primary mr-5" value="Search" />
           </form>
+          {% endif %}
 
           <p class="level-item has-text-centered is-size-5">
             <a href="{{ sable_config.repository_url }}" class="link is-info">

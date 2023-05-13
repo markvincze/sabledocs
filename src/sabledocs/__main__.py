@@ -53,17 +53,16 @@ def cli():
 
     copy_tree(os.path.join(template_base_dir, "static"), os.path.join(sable_config.output_dir, "static"))
 
-    (search_documents, search_index) = build_search_index(sable_context)
+    if sable_config.enable_lunr_search:
+        (search_documents, search_index) = build_search_index(sable_context)
 
-    print(f"Search index: {json.dumps(search_index.serialize())}")
+        with open(os.path.join(sable_config.output_dir, 'search.html'), 'wb') as fh:
+            output = jinja_env.get_template("search.html").render(
+                sable_config = sable_config,
+                search_documents = json.dumps(search_documents),
+                search_index = json.dumps(search_index.serialize())).encode('utf-8')
 
-    with open(os.path.join(sable_config.output_dir, 'search.html'), 'wb') as fh:
-        output = jinja_env.get_template("search.html").render(
-            sable_config = sable_config,
-            search_documents = json.dumps(search_documents),
-            search_index = json.dumps(search_index.serialize())).encode('utf-8')
-
-        fh.write(output)
+            fh.write(output)
 
     index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
     print(f"Building documentation done. It can be opened with {index_abs_path}")

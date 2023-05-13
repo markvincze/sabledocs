@@ -58,6 +58,10 @@ input-descriptor-file = "myawesomemodule.pb"
 # Default value: "sabledocs_output"
 output-dir = "docs"
 
+# Controls whether the the search functionality is enabled with a prebuilt Lunr index.
+# Default value: true
+enable-lunr-search = true
+
 # Copyright message displayed in the footer.
 # Default value: ""
 footer-content = "© 2023 Jane Doe. All rights reserved."
