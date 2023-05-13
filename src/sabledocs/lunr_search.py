@@ -14,25 +14,8 @@ def build_search_index(sable_context: SableContext) -> tuple[dict[str, dict[str,
 
         documents.append(doc)
 
-    # documents = [{
-    #          "package": "postsaleapi",
-    #          "content": """Mr. Green killed Colonel Mustard in the study with the
-    #  candlestick. Mr. Green is not a very nice fellow.""",
-    #          "url": "/google.datastore.v1.html"
-    #      }, {
-    #          "package": "baggagehub",
-    #          "content": "Professor Plumb has a green and a yellow plant in his study",
-    #          "url": "/google.pubsub.v1.html"
-    #      }, {
-    #          "package": "seathub",
-    #          "content": """Miss Scarlett watered Professor Plumbs green plant
-    #  while he was away on his murdering holiday.""",
-    #          "url": "/google.datastore.v1.html"
-    #      }]
-
     builder = lunr.get_default_builder()
     builder.metadata_whitelist.append("position")
-    # builder.
 
     idx = lunr.lunr(
         ref="package", fields=("content", "content", "url"), documents=documents, builder=builder
