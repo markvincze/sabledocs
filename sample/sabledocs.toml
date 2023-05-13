@@ -4,6 +4,8 @@ input-descriptor-file = "google-cloud-sdk.pb"
 
 output-dir = "output"
 
+enable-lunr-search = true
+
 footer-content = "© Example 2023"
 
 repository-url = "https://github.com/googleapis/googleapis"

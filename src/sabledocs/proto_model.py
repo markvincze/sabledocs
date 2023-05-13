@@ -32,7 +32,7 @@ class Message(CodeItem):
         CodeItem.__init__(self)
         self.full_name = ''
         self.is_map_entry = False
-        self.fields = []
+        self.fields: list[MessageField] = []
         self.parent_message = None
         self.package = None
         self.type_kind = "MESSAGE"
@@ -55,7 +55,7 @@ class Enum(CodeItem):
     def __init__(self):
         CodeItem.__init__(self)
         self.full_name = ''
-        self.values = []
+        self.values: list[EnumValue] = []
         self.parent_message = None
         self.package = None
         self.type_kind = "ENUM"
@@ -84,7 +84,7 @@ class Service(CodeItem):
     def __init__(self):
         CodeItem.__init__(self)
         self.full_name = ''
-        self.methods = []
+        self.methods: list[ServiceMethod] = []
 
 
 class Package(CodeItem):
@@ -105,7 +105,7 @@ class LocationInfo:
 
 
 class SableContext:
-    def __init__(self, packages, all_messages, all_enums):
+    def __init__(self, packages: list[Package], all_messages: list[Message], all_enums: list[Enum]):
         self.packages = packages
         self.all_messages = all_messages
         self.all_enums = all_enums

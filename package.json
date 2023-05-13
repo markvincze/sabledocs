@@ -4,7 +4,7 @@
   "description": "",
   "main": "sass/mystyles.scss",
   "scripts": {
-    "css-build": "node-sass sass/mystyles.scss --omit-source-map-url mystyles.css",
+    "css-build": "node-sass sass/mystyles.scss --omit-source-map-url src/sabledocs/templates/_default/static/mystyles.css",
     "css-watch": "npm run css-build -- --watch",
     "start": "npm run css-watch"
   },
