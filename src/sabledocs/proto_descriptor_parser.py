@@ -36,7 +36,7 @@ def build_source_code_url(repository_url, repository_type, repository_branch, fi
         case RepositoryType.GITHUB:
             return f"{repository_url.strip('/')}/blob/{repository_branch}/{file_path}#L{line_number}"
         case RepositoryType.BITBUCKET:
-            return f"{repository_url.strip('/')}/src/{repository_branch}/{file_path}#lines-{line_number}"
+            return f"{repository_url.strip('/')}/src/{repository_branch}/{file_path}#lines-{line_number + 1}"
     return ""
 
 
