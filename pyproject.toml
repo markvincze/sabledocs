@@ -15,6 +15,7 @@ dependencies = [
   "Jinja2==3.1.2",
   "Markdown==3.4.1",
   "protobuf==4.21.6",
+  "lunr==0.6.2",
 ]
 classifiers = [
     "Programming Language :: Python :: 3.11",
