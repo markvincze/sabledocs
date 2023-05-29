@@ -1,4 +1,5 @@
 import json
+import markdown
 import os
 import pprint
 from distutils.dir_util import copy_tree
@@ -42,12 +43,22 @@ def cli():
 
             fh.write(output)
 
+    main_page_content = ""
+
+    print(f"config main page: {sable_config.main_page_content_file}")
+
+    if sable_config.main_page_content_file != "" and os.path.exists(sable_config.main_page_content_file):
+        print("Found main content page")
+        with open(sable_config.main_page_content_file, mode='r') as main_page_content_file:
+            main_page_content = markdown.markdown(main_page_content_file.read())
+
     with open(os.path.join(sable_config.output_dir, 'index.html'), 'wb') as fh:
         output = jinja_env.get_template("index.html").render(
             sable_config = sable_config,
-            packages=sable_context.packages,
-            all_messages=sable_context.all_messages,
-            all_enums=sable_context.all_enums).encode('utf-8')
+            main_page_content = main_page_content,
+            packages = sable_context.packages,
+            all_messages = sable_context.all_messages,
+            all_enums = sable_context.all_enums).encode('utf-8')
 
         fh.write(output)
 

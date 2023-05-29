@@ -15,7 +15,7 @@ def build_search_index(sable_context: SableContext) -> tuple[dict[str, dict[str,
         documents.append(doc)
 
     builder = lunr.get_default_builder()
-    builder.metadata_whitelist.append("position")
+    #builder.metadata_whitelist.append("position") This can be enabled to get position information in the search results, not used yet.
 
     idx = lunr.lunr(
         ref="package", fields=("content", "content", "url"), documents=documents, builder=builder

@@ -54,6 +54,10 @@ module-title = "My Awesome Module"
 # Default value: "descriptor.pb"
 input-descriptor-file = "myawesomemodule.pb"
 
+# Specifies the file which contains the content to display on the main page above the package list.
+# Default value: ""
+main-page-content-file = "intro.md"
+
 # The output folder to which the documentation is generated.
 # Default value: "sabledocs_output"
 output-dir = "docs"
@@ -75,6 +79,17 @@ repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
 ```
+
+#### Main page content
+
+Custom introduction content can be specified in a separate file, which can be displayed above the packages list on the main page of the documentation.  
+Then the name of the file has to be specified in the `main-page-content-file` configuration setting.
+
+```toml
+main-page-content-file = "intro.md"
+```
+
+See the example on the main page of the [demo site](https://markvincze.github.io/sabledocs/demo/).
 
 ## For maintainers
 

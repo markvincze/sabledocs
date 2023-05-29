@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-  <h3 class="title is-3">
+  {% if main_page_content %}
+    <p class="mb-2">
+      <a style="font-size: 0.9em" href="#packages">↓ Packages</a>
+    </p>
+    <div class="block content">{{ main_page_content | safe }}</div>
+  {% endif %}
+  <h3 id="packages" class="title is-3">
     Packages
   </h3>
   <div class="block">This site contains the documentation for the following Protobuf packages.</div>

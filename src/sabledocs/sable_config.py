@@ -15,6 +15,7 @@ class SableConfig:
         self.input_descriptor_file = "descriptor.pb"
         self.template = "_default"
         self.footer_content = ""
+        self.main_page_content_file = ""
         self.output_dir = "sabledocs_output"
         self.enable_lunr_search = True
         self.repository_url = ""
@@ -34,6 +35,8 @@ class SableConfig:
 
                 self.footer_content = config_values.get('footer-content', self.footer_content)
 
+                self.main_page_content_file = config_values.get('main-page-content-file', self.main_page_content_file)
+
                 self.output_dir = config_values.get('output-dir', self.output_dir).rstrip("/\\")
 
                 self.enable_lunr_search = config_values.get('enable-lunr-search', True)
@@ -43,7 +46,6 @@ class SableConfig:
                 self.repository_branch = config_values.get('repository-branch', self.repository_branch)
 
                 if 'repository-type' in config_values:
-                    print("repository-type found")
                     match config_values['repository-type']:
                         case 'github':
                             self.repository_type = RepositoryType.GITHUB
