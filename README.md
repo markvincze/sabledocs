@@ -26,7 +26,7 @@ The generated `descriptor.pb` file will be the input needed to build the documen
 
 ### Build the documetation
 
-Install the `sabledocs` package.
+Install the `sabledocs` package. It requires [Python](https://www.python.org/downloads/) (version 3.11 or higher) to be installed.
 
 ```
 pip install sabledocs
