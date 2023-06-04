@@ -7905,3 +7905,65 @@ code {
 
 .navbar-search-query-input {
   width: 13em; }
+
+body {
+  min-height: 100vh; }
+
+body .subtitle,
+body .title {
+  color: #181818; }
+
+body.dark,
+body.dark .box,
+body.dark table {
+  background-color: #181818;
+  color: whitesmoke; }
+
+body.dark th {
+  color: whitesmoke; }
+
+body.dark .table.is-hoverable tbody tr:not(.is-selected):hover {
+  background-color: #252525; }
+
+body.dark a:hover {
+  color: whitesmoke; }
+
+body.dark .box,
+body.dark .type-heading,
+body.dark td,
+body.dark th {
+  border-color: #444444; }
+
+body.dark .subtitle,
+body.dark .title {
+  color: whitesmoke; }
+
+body.dark footer {
+  background-color: #101010; }
+
+.section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center; }
+
+button {
+  cursor: pointer;
+  border: none;
+  color: whitesmoke;
+  padding: .8rem;
+  background: #181818;
+  border-radius: 6px; }
+
+body.dark button {
+  background: whitesmoke;
+  color: #181818; }
+
+body.dark code {
+  background: #2A2A2A;
+  color: #016FB9; }
+
+body.dark .tag {
+  background: #2A2A2A;
+  color: whitesmoke; }

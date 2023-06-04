@@ -7,9 +7,33 @@
     <link rel="stylesheet" href="static/mystyles.css" />
     <script
       src="https://kit.fontawesome.com/4d30d3d1aa.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
       <script src="https://unpkg.com/lunr@2.3.9/lunr.js"></script>
+      <script>
+        window.addEventListener(
+          'load',
+          function() {
+            const body = document.querySelector('body');
+
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme === 'dark') {
+              body.className = "dark"
+            }
+
+            const toggle = document.getElementById('toggle');
+
+            toggle.addEventListener("click", () => {
+                const bodyCheck = body.classList.contains('dark');
+                if (bodyCheck) {
+                    body.className = ''
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.className = "dark"
+                    localStorage.setItem('theme', 'dark');
+              }
+            });
+           });
+      </script>
   </head>
   <body>
     <div class="container">
@@ -44,6 +68,9 @@
               <span>Source</span>
             </a>
           </p>
+                          <button id='toggle'>
+                    Toggle Theme
+                </button>
         </div>
       </nav>
     </div>

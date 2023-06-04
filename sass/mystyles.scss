@@ -49,3 +49,86 @@ code {
 .navbar-search-query-input {
     width: 13em;
 }
+
+
+
+body {
+    // background-color: $light;
+    min-height: 100vh;
+    // transition: all 0.2s ease;
+}
+
+// Some styling 
+$dark: #181818;
+
+body .subtitle,
+body .title {
+    color: $dark;
+}
+
+body.dark,
+body.dark .box,
+body.dark table {
+    background-color: $dark;
+    color: $light;
+}
+
+body.dark th {
+    color: $light;
+}
+
+body.dark .table.is-hoverable tbody tr:not(.is-selected):hover {
+    background-color: #252525;
+}
+
+body.dark a:hover {
+    color: $light;
+}
+
+body.dark .box,
+body.dark .type-heading,
+body.dark td,
+body.dark th {
+    border-color: #444444
+}
+
+body.dark .subtitle,
+body.dark .title {
+    color: $light;
+}
+
+body.dark footer {
+    background-color: #101010;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+button{
+    cursor: pointer;
+    border: none;
+    color: $light;
+    padding: .8rem;
+    background: $dark;
+    border-radius: 6px;
+}
+
+body.dark button {
+    background: $light;
+    color: $dark;
+}
+
+body.dark code {
+  background: #2A2A2A;
+  color: $primary;
+}
+
+body.dark .tag {
+  background: #2A2A2A;
+  color: $light;
+}
