@@ -80,7 +80,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
 
     e = Enum()
     e.name = enum.name
-    e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}"
+    e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}".lstrip(".")
     e.parent_message = parent_message
     e.description = ctx.GetComments()
     e.description_html = markdown.markdown(e.description)
@@ -142,7 +142,7 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
 
     m = Message()
     m.name = message.name
-    m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}"
+    m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}".lstrip(".")
     m.parent_message = parent_message
     m.description = ctx.GetComments()
     m.description_html = markdown.markdown(m.description)
@@ -198,7 +198,7 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
 def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s = Service()
     s.name = service.name
-    s.full_name = f"{ctx.package.name}.{service.name}"
+    s.full_name = f"{ctx.package.name}.{service.name}".lstrip(".")
     s.description = ctx.GetComments()
     s.description_html = markdown.markdown(s.description)
     s.source_file_path = ctx.source_file_path
