@@ -24,7 +24,7 @@ protoc *.proto -o descriptor.pb --include_source_info
 
 The generated `descriptor.pb` file will be the input needed to build the documentation site.
 
-### Build the documetation
+### Build the documentation
 
 Install the `sabledocs` package. It requires [Python](https://www.python.org/downloads/) (version 3.11 or higher) to be installed.
 
