@@ -222,6 +222,14 @@ def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
     ctx.package.services.sort(key=lambda s: s.name)
 
 
+def extract_package_name_from_full_name(full_type_name: str):
+    last_dot = full_type_name.rfind(".")
+    if last_dot == -1:
+        return ""
+    else:
+        return full_type_name[:last_dot]
+
+
 def add_package_references(messages: list[Message], services: list[Service], packages):
     for m in messages:
         package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
@@ -242,11 +250,11 @@ def add_package_references(messages: list[Message], services: list[Service], pac
 
     for s in services:
         for sm in s.methods:
-            requestPackage = next(filter(lambda p: sm.request.full_type.startswith(p.name), packages), None)
+            requestPackage = next(filter(lambda p: extract_package_name_from_full_name(sm.request.full_type) == p.name, packages), None)
             if requestPackage is not None:
                 sm.request.package = requestPackage
 
-            responsePackage = next(filter(lambda p: sm.response.full_type.startswith(p.name), packages), None)
+            responsePackage = next(filter(lambda p: extract_package_name_from_full_name(sm.response.full_type) == p.name, packages), None)
             if responsePackage is not None:
                 sm.response.package = responsePackage
 
