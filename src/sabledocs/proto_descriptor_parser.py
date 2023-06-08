@@ -80,7 +80,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
 
     e = Enum()
     e.name = enum.name
-    e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}"
+    e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}".lstrip(".")
     e.parent_message = parent_message
     e.description = ctx.GetComments()
     e.description_html = markdown.markdown(e.description)
@@ -142,7 +142,7 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
 
     m = Message()
     m.name = message.name
-    m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}"
+    m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}".lstrip(".")
     m.parent_message = parent_message
     m.description = ctx.GetComments()
     m.description_html = markdown.markdown(m.description)
@@ -198,7 +198,7 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
 def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s = Service()
     s.name = service.name
-    s.full_name = f"{ctx.package.name}.{service.name}"
+    s.full_name = f"{ctx.package.name}.{service.name}".lstrip(".")
     s.description = ctx.GetComments()
     s.description_html = markdown.markdown(s.description)
     s.source_file_path = ctx.source_file_path
@@ -222,6 +222,14 @@ def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext):
     ctx.package.services.sort(key=lambda s: s.name)
 
 
+def extract_package_name_from_full_name(full_type_name: str):
+    last_dot = full_type_name.rfind(".")
+    if last_dot == -1:
+        return ""
+    else:
+        return full_type_name[:last_dot]
+
+
 def add_package_references(messages: list[Message], services: list[Service], packages):
     for m in messages:
         package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
@@ -242,11 +250,11 @@ def add_package_references(messages: list[Message], services: list[Service], pac
 
     for s in services:
         for sm in s.methods:
-            requestPackage = next(filter(lambda p: sm.request.full_type.startswith(p.name), packages), None)
+            requestPackage = next(filter(lambda p: extract_package_name_from_full_name(sm.request.full_type) == p.name, packages), None)
             if requestPackage is not None:
                 sm.request.package = requestPackage
 
-            responsePackage = next(filter(lambda p: sm.response.full_type.startswith(p.name), packages), None)
+            responsePackage = next(filter(lambda p: extract_package_name_from_full_name(sm.response.full_type) == p.name, packages), None)
             if responsePackage is not None:
                 sm.response.package = responsePackage
 

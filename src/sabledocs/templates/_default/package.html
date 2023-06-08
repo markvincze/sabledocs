@@ -4,7 +4,11 @@
     <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
   </p>
   <h4 class="title is-4">
+    {% if package.name %}
     Package <code>{{ package.name }}</code>
+    {% else %}
+    Default package
+    {% endif %}
   </h4>
 
   <div class="block">

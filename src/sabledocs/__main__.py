@@ -33,7 +33,7 @@ def cli():
 
     # NOTE: When the output files are generated, the encode('utf-8') option has to be used, otherwise Unicode characters like © can end up garbled.
     for package in sable_context.packages:
-        with open(os.path.join(sable_config.output_dir, f'{package.name}.html'), 'wb') as fh:
+        with open(os.path.join(sable_config.output_dir, f'{package.name if package.name else "__default"}.html'), 'wb') as fh:
             output = package_template.render(
                 sable_config=sable_config,
                 package=package,
