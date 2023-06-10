@@ -10,31 +10,7 @@
       crossorigin="anonymous"></script>
       <script src="https://unpkg.com/lunr@2.3.9/lunr.js"></script>
       <script>
-        window.addEventListener(
-          'load',
-          function() {
-            const body = document.querySelector('body');
-
-            const storedTheme = localStorage.getItem('theme');
-            if (storedTheme === 'dark') {
-              body.className = "dark"
-            }
-
-            const toggle = document.getElementById('toggle');
-
-            toggle.addEventListener("click", () => {
-                const bodyCheck = body.classList.contains('dark');
-                if (bodyCheck) {
-                    body.className = ''
-                    localStorage.setItem('theme', 'light');
-                } else {
-                    body.className = "dark"
-                    localStorage.setItem('theme', 'dark');
-              }
-            });
-           });
-
-           const storageKey = 'theme-preference'
+          const storageKey = 'theme-preference'
 
           const onClick = () => {
             // flip current value
@@ -114,14 +90,14 @@
 
         <div class="level-right">
           {% if sable_config.enable_lunr_search  %}
-          <form action="search.html">
+          <form action="search.html" class="mr-2">
             <input type="text" name="query" class="input mr-3 navbar-search-query-input" placeholder="Search">
             <input type="submit" class="button is-primary mr-5" value="Search" />
           </form>
           {% endif %}
 
-          <p class="level-item has-text-centered is-size-5">
-            <a href="{{ sable_config.repository_url }}" class="link is-info">
+          <p class="level-item has-text-centered is-size-5 mr-5">
+            <a href="{{ sable_config.repository_url }}" class="link is-info" target="_blank">
               {% if sable_config.repository_type | string == "RepositoryType.GITHUB" %}
               <span class="icon">
                 <i class="fa-brands fa-github"></i>
@@ -134,6 +110,7 @@
               <span>Source</span>
             </a>
           </p>
+
           <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
             <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
               <mask class="moon" id="moon-mask">
@@ -153,9 +130,6 @@
               </g>
             </svg>
           </button>
-          <button id='toggle'>
-            Toggle Theme
-          </button>
         </div>
       </nav>
     </div>
@@ -167,7 +141,7 @@
         {% if sable_config.footer_content %}
           <p>{{ sable_config.footer_content | safe }}</p>
         {% endif %}
-        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs">sabledocs</a></strong>.</p>
+        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs" target="_blank">sabledocs</a></strong>.</p>
       </div>
     </footer>
   </body>

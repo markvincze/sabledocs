@@ -7942,6 +7942,9 @@ body.dark .title {
 body.dark footer {
   background-color: #101010; }
 
+body.dark .bottom-border {
+  border-color: #444444; }
+
 .section {
   display: flex;
   align-items: center;
@@ -7949,13 +7952,12 @@ body.dark footer {
   height: 100vh;
   text-align: center; }
 
-body.dark button {
-  background: whitesmoke;
-  color: #181818; }
-
 body.dark code {
   background: #2A2A2A;
-  color: #016FB9; }
+  color: #569cd6; }
+
+body.dark code a {
+  color: #569cd6; }
 
 body.dark .tag {
   background: #2A2A2A;
@@ -7963,8 +7965,8 @@ body.dark .tag {
 
 .theme-toggle {
   --size: 2rem;
-  --icon-fill: hsl(210 10% 30%);
-  --icon-fill-hover: hsl(210 10% 15%);
+  --icon-fill: #016FB9;
+  --icon-fill-hover: #363636;
   background: none;
   border: none;
   padding: 0;
@@ -7981,6 +7983,9 @@ body.dark .tag {
   inline-size: 100%;
   block-size: 100%;
   stroke-linecap: round; }
+
+[data-theme=dark] .theme-toggle {
+  --icon-fill-hover: whitesmoke; }
 
 .sun-and-moon > :is(.moon, .sun, .sun-beams) {
   transform-origin: center; }

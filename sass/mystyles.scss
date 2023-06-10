@@ -51,7 +51,6 @@ code {
 }
 
 
-
 body {
     // background-color: $light;
     min-height: 100vh;
@@ -101,6 +100,10 @@ body.dark footer {
     background-color: #101010;
 }
 
+body.dark .bottom-border {
+  border-color: #444444
+}
+
 .section {
     display: flex;
     align-items: center;
@@ -118,14 +121,19 @@ body.dark footer {
 //     border-radius: 6px;
 // }
 
-body.dark button {
-    background: $light;
-    color: $dark;
-}
+// body.dark button {
+//     background: $light;
+//     color: $dark;
+// }
 
 body.dark code {
   background: #2A2A2A;
-  color: $primary;
+  color: #569cd6;
+  // color: $primary;
+}
+
+body.dark code a {
+  color: #569cd6;
 }
 
 body.dark .tag {
@@ -138,8 +146,8 @@ body.dark .tag {
 
 .theme-toggle {
     --size: 2rem;
-    --icon-fill: hsl(210 10% 30%);
-    --icon-fill-hover: hsl(210 10% 15%);
+    --icon-fill: #016FB9;
+    --icon-fill-hover: #363636;
     background: none;
     border: none;
     padding: 0;
@@ -157,6 +165,12 @@ body.dark .tag {
     inline-size: 100%;
     block-size: 100%;
     stroke-linecap: round
+}
+
+
+[data-theme=dark] .theme-toggle {
+    // --icon-fill: hsl(210 10% 70%);
+    --icon-fill-hover: whitesmoke;
 }
 
 .sun-and-moon > :is(.moon, .sun, .sun-beams) {
