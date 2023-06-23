@@ -7,9 +7,74 @@
     <link rel="stylesheet" href="static/mystyles.css" />
     <script
       src="https://kit.fontawesome.com/4d30d3d1aa.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
       <script src="https://unpkg.com/lunr@2.3.9/lunr.js"></script>
+      <script>
+          const storageKey = 'theme-preference'
+
+          const onClick = () => {
+            // flip current value
+            theme.value = theme.value === 'light'
+              ? 'dark'
+              : 'light'
+
+            setPreference()
+          }
+
+          const getColorPreference = () => {
+            if (localStorage.getItem(storageKey))
+              return localStorage.getItem(storageKey)
+            else
+              return window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          }
+
+          const setPreference = () => {
+            localStorage.setItem(storageKey, theme.value)
+            reflectPreference()
+          }
+
+          const reflectPreference = () => {
+            const body = document.querySelector('body');
+            if (theme.value === 'dark') {
+                body.className = 'dark';
+            } else {
+                body.className = '';
+            }
+
+            document.firstElementChild
+              .setAttribute('data-theme', theme.value)
+
+            document
+              .querySelector('#theme-toggle')
+              ?.setAttribute('aria-label', theme.value)
+          }
+
+          const theme = {
+            value: getColorPreference(),
+          }
+
+          window.addEventListener(
+            "load",
+            () => {
+            // set on load so screen readers can see latest value on the button
+            reflectPreference()
+
+            // now this script can find and listen for clicks on the control
+            document
+              .querySelector('#theme-toggle')
+              .addEventListener('click', onClick)
+          });
+
+          // sync with system changes
+          window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+              theme.value = isDark ? 'dark' : 'light'
+              setPreference()
+            });
+      </script>
   </head>
   <body>
     <div class="container">
@@ -24,14 +89,14 @@
 
         <div class="level-right">
           
-          <form action="search.html">
+          <form action="search.html" class="mr-2">
             <input type="text" name="query" class="input mr-3 navbar-search-query-input" placeholder="Search">
             <input type="submit" class="button is-primary mr-5" value="Search" />
           </form>
           
 
-          <p class="level-item has-text-centered is-size-5">
-            <a href="https://github.com/googleapis/googleapis" class="link is-info">
+          <p class="level-item has-text-centered is-size-5 mr-5">
+            <a href="https://github.com/googleapis/googleapis" class="link is-info" target="_blank">
               
               <span class="icon">
                 <i class="fa-brands fa-github"></i>
@@ -40,6 +105,26 @@
               <span>Source</span>
             </a>
           </p>
+
+          <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+              <mask class="moon" id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+              </mask>
+              <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+              <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </g>
+            </svg>
+          </button>
         </div>
       </nav>
     </div>
@@ -735,19 +820,10 @@
 
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>CreateTopic (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>CreateTopic (<a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Creates the given topic with the given name. See the [resource name rules]
@@ -757,19 +833,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>UpdateTopic (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateTopicRequest">
-    
-      <span title="google.pubsub.v1.UpdateTopicRequest">google.pubsub.v1.UpdateTopicRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>UpdateTopic (<a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateTopicRequest"><span title="google.pubsub.v1.UpdateTopicRequest">google.pubsub.v1.UpdateTopicRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Updates an existing topic. Note that certain properties of a
@@ -779,19 +846,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Publish (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PublishRequest">
-    
-      <span title="google.pubsub.v1.PublishRequest">google.pubsub.v1.PublishRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PublishResponse">
-    
-      <span title="google.pubsub.v1.PublishResponse">google.pubsub.v1.PublishResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Publish (<a href="google.pubsub.v1.html#message-google.pubsub.v1.PublishRequest"><span title="google.pubsub.v1.PublishRequest">google.pubsub.v1.PublishRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.PublishResponse"><span title="google.pubsub.v1.PublishResponse">google.pubsub.v1.PublishResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Adds one or more messages to the topic. Returns <code>NOT_FOUND</code> if the topic
@@ -801,19 +859,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>GetTopic (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.GetTopicRequest">
-    
-      <span title="google.pubsub.v1.GetTopicRequest">google.pubsub.v1.GetTopicRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>GetTopic (<a href="google.pubsub.v1.html#message-google.pubsub.v1.GetTopicRequest"><span title="google.pubsub.v1.GetTopicRequest">google.pubsub.v1.GetTopicRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Gets the configuration of a topic.</p></p>
@@ -822,19 +871,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListTopics (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicsRequest">
-    
-      <span title="google.pubsub.v1.ListTopicsRequest">google.pubsub.v1.ListTopicsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicsResponse">
-    
-      <span title="google.pubsub.v1.ListTopicsResponse">google.pubsub.v1.ListTopicsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListTopics (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicsRequest"><span title="google.pubsub.v1.ListTopicsRequest">google.pubsub.v1.ListTopicsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicsResponse"><span title="google.pubsub.v1.ListTopicsResponse">google.pubsub.v1.ListTopicsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists matching topics.</p></p>
@@ -843,19 +883,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListTopicSubscriptions (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSubscriptionsRequest">
-    
-      <span title="google.pubsub.v1.ListTopicSubscriptionsRequest">google.pubsub.v1.ListTopicSubscriptionsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSubscriptionsResponse">
-    
-      <span title="google.pubsub.v1.ListTopicSubscriptionsResponse">google.pubsub.v1.ListTopicSubscriptionsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListTopicSubscriptions (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSubscriptionsRequest"><span title="google.pubsub.v1.ListTopicSubscriptionsRequest">google.pubsub.v1.ListTopicSubscriptionsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSubscriptionsResponse"><span title="google.pubsub.v1.ListTopicSubscriptionsResponse">google.pubsub.v1.ListTopicSubscriptionsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists the names of the attached subscriptions on this topic.</p></p>
@@ -864,19 +895,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListTopicSnapshots (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSnapshotsRequest">
-    
-      <span title="google.pubsub.v1.ListTopicSnapshotsRequest">google.pubsub.v1.ListTopicSnapshotsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSnapshotsResponse">
-    
-      <span title="google.pubsub.v1.ListTopicSnapshotsResponse">google.pubsub.v1.ListTopicSnapshotsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListTopicSnapshots (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSnapshotsRequest"><span title="google.pubsub.v1.ListTopicSnapshotsRequest">google.pubsub.v1.ListTopicSnapshotsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListTopicSnapshotsResponse"><span title="google.pubsub.v1.ListTopicSnapshotsResponse">google.pubsub.v1.ListTopicSnapshotsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists the names of the snapshots on this topic. Snapshots are used in
@@ -889,15 +911,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DeleteTopic (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteTopicRequest">
-    
-      <span title="google.pubsub.v1.DeleteTopicRequest">google.pubsub.v1.DeleteTopicRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DeleteTopic (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteTopicRequest"><span title="google.pubsub.v1.DeleteTopicRequest">google.pubsub.v1.DeleteTopicRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Deletes the topic with the given name. Returns <code>NOT_FOUND</code> if the topic
@@ -910,19 +926,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DetachSubscription (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DetachSubscriptionRequest">
-    
-      <span title="google.pubsub.v1.DetachSubscriptionRequest">google.pubsub.v1.DetachSubscriptionRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DetachSubscriptionResponse">
-    
-      <span title="google.pubsub.v1.DetachSubscriptionResponse">google.pubsub.v1.DetachSubscriptionResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DetachSubscription (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DetachSubscriptionRequest"><span title="google.pubsub.v1.DetachSubscriptionRequest">google.pubsub.v1.DetachSubscriptionRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.DetachSubscriptionResponse"><span title="google.pubsub.v1.DetachSubscriptionResponse">google.pubsub.v1.DetachSubscriptionResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Detaches a subscription from this topic. All messages retained in the
@@ -951,19 +958,10 @@
 
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>CreateSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.CreateSchemaRequest">
-    
-      <span title="google.pubsub.v1.CreateSchemaRequest">google.pubsub.v1.CreateSchemaRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>CreateSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.CreateSchemaRequest"><span title="google.pubsub.v1.CreateSchemaRequest">google.pubsub.v1.CreateSchemaRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Creates a schema.</p></p>
@@ -972,19 +970,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>GetSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSchemaRequest">
-    
-      <span title="google.pubsub.v1.GetSchemaRequest">google.pubsub.v1.GetSchemaRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>GetSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSchemaRequest"><span title="google.pubsub.v1.GetSchemaRequest">google.pubsub.v1.GetSchemaRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Gets a schema.</p></p>
@@ -993,19 +982,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListSchemas (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemasRequest">
-    
-      <span title="google.pubsub.v1.ListSchemasRequest">google.pubsub.v1.ListSchemasRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemasResponse">
-    
-      <span title="google.pubsub.v1.ListSchemasResponse">google.pubsub.v1.ListSchemasResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListSchemas (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemasRequest"><span title="google.pubsub.v1.ListSchemasRequest">google.pubsub.v1.ListSchemasRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemasResponse"><span title="google.pubsub.v1.ListSchemasResponse">google.pubsub.v1.ListSchemasResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists schemas in a project.</p></p>
@@ -1014,19 +994,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListSchemaRevisions (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemaRevisionsRequest">
-    
-      <span title="google.pubsub.v1.ListSchemaRevisionsRequest">google.pubsub.v1.ListSchemaRevisionsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemaRevisionsResponse">
-    
-      <span title="google.pubsub.v1.ListSchemaRevisionsResponse">google.pubsub.v1.ListSchemaRevisionsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListSchemaRevisions (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemaRevisionsRequest"><span title="google.pubsub.v1.ListSchemaRevisionsRequest">google.pubsub.v1.ListSchemaRevisionsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSchemaRevisionsResponse"><span title="google.pubsub.v1.ListSchemaRevisionsResponse">google.pubsub.v1.ListSchemaRevisionsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists all schema revisions for the named schema.</p></p>
@@ -1035,19 +1006,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>CommitSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.CommitSchemaRequest">
-    
-      <span title="google.pubsub.v1.CommitSchemaRequest">google.pubsub.v1.CommitSchemaRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>CommitSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.CommitSchemaRequest"><span title="google.pubsub.v1.CommitSchemaRequest">google.pubsub.v1.CommitSchemaRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Commits a new schema revision to an existing schema.</p></p>
@@ -1056,19 +1018,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>RollbackSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.RollbackSchemaRequest">
-    
-      <span title="google.pubsub.v1.RollbackSchemaRequest">google.pubsub.v1.RollbackSchemaRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>RollbackSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.RollbackSchemaRequest"><span title="google.pubsub.v1.RollbackSchemaRequest">google.pubsub.v1.RollbackSchemaRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Creates a new schema revision that is a copy of the provided revision_id.</p></p>
@@ -1077,19 +1030,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DeleteSchemaRevision (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSchemaRevisionRequest">
-    
-      <span title="google.pubsub.v1.DeleteSchemaRevisionRequest">google.pubsub.v1.DeleteSchemaRevisionRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DeleteSchemaRevision (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSchemaRevisionRequest"><span title="google.pubsub.v1.DeleteSchemaRevisionRequest">google.pubsub.v1.DeleteSchemaRevisionRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Deletes a specific schema revision.</p></p>
@@ -1098,15 +1042,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DeleteSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSchemaRequest">
-    
-      <span title="google.pubsub.v1.DeleteSchemaRequest">google.pubsub.v1.DeleteSchemaRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DeleteSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSchemaRequest"><span title="google.pubsub.v1.DeleteSchemaRequest">google.pubsub.v1.DeleteSchemaRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Deletes a schema.</p></p>
@@ -1115,19 +1053,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ValidateSchema (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateSchemaRequest">
-    
-      <span title="google.pubsub.v1.ValidateSchemaRequest">google.pubsub.v1.ValidateSchemaRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateSchemaResponse">
-    
-      <span title="google.pubsub.v1.ValidateSchemaResponse">google.pubsub.v1.ValidateSchemaResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ValidateSchema (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateSchemaRequest"><span title="google.pubsub.v1.ValidateSchemaRequest">google.pubsub.v1.ValidateSchemaRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateSchemaResponse"><span title="google.pubsub.v1.ValidateSchemaResponse">google.pubsub.v1.ValidateSchemaResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Validates a schema.</p></p>
@@ -1136,19 +1065,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ValidateMessage (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateMessageRequest">
-    
-      <span title="google.pubsub.v1.ValidateMessageRequest">google.pubsub.v1.ValidateMessageRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateMessageResponse">
-    
-      <span title="google.pubsub.v1.ValidateMessageResponse">google.pubsub.v1.ValidateMessageResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ValidateMessage (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateMessageRequest"><span title="google.pubsub.v1.ValidateMessageRequest">google.pubsub.v1.ValidateMessageRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ValidateMessageResponse"><span title="google.pubsub.v1.ValidateMessageResponse">google.pubsub.v1.ValidateMessageResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Validates a message against a schema.</p></p>
@@ -1176,19 +1096,10 @@
 
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>CreateSubscription (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>CreateSubscription (<a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Creates a subscription to a given topic. See the [resource name rules]
@@ -1206,19 +1117,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>GetSubscription (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSubscriptionRequest">
-    
-      <span title="google.pubsub.v1.GetSubscriptionRequest">google.pubsub.v1.GetSubscriptionRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>GetSubscription (<a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSubscriptionRequest"><span title="google.pubsub.v1.GetSubscriptionRequest">google.pubsub.v1.GetSubscriptionRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Gets the configuration details of a subscription.</p></p>
@@ -1227,19 +1129,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>UpdateSubscription (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateSubscriptionRequest">
-    
-      <span title="google.pubsub.v1.UpdateSubscriptionRequest">google.pubsub.v1.UpdateSubscriptionRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>UpdateSubscription (<a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateSubscriptionRequest"><span title="google.pubsub.v1.UpdateSubscriptionRequest">google.pubsub.v1.UpdateSubscriptionRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Updates an existing subscription. Note that certain properties of a
@@ -1249,19 +1142,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListSubscriptions (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSubscriptionsRequest">
-    
-      <span title="google.pubsub.v1.ListSubscriptionsRequest">google.pubsub.v1.ListSubscriptionsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSubscriptionsResponse">
-    
-      <span title="google.pubsub.v1.ListSubscriptionsResponse">google.pubsub.v1.ListSubscriptionsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListSubscriptions (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSubscriptionsRequest"><span title="google.pubsub.v1.ListSubscriptionsRequest">google.pubsub.v1.ListSubscriptionsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSubscriptionsResponse"><span title="google.pubsub.v1.ListSubscriptionsResponse">google.pubsub.v1.ListSubscriptionsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists matching subscriptions.</p></p>
@@ -1270,15 +1154,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DeleteSubscription (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSubscriptionRequest">
-    
-      <span title="google.pubsub.v1.DeleteSubscriptionRequest">google.pubsub.v1.DeleteSubscriptionRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DeleteSubscription (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSubscriptionRequest"><span title="google.pubsub.v1.DeleteSubscriptionRequest">google.pubsub.v1.DeleteSubscriptionRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Deletes an existing subscription. All messages retained in the subscription
@@ -1291,15 +1169,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ModifyAckDeadline (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ModifyAckDeadlineRequest">
-    
-      <span title="google.pubsub.v1.ModifyAckDeadlineRequest">google.pubsub.v1.ModifyAckDeadlineRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ModifyAckDeadline (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ModifyAckDeadlineRequest"><span title="google.pubsub.v1.ModifyAckDeadlineRequest">google.pubsub.v1.ModifyAckDeadlineRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Modifies the ack deadline for a specific message. This method is useful
@@ -1312,15 +1184,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Acknowledge (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.AcknowledgeRequest">
-    
-      <span title="google.pubsub.v1.AcknowledgeRequest">google.pubsub.v1.AcknowledgeRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Acknowledge (<a href="google.pubsub.v1.html#message-google.pubsub.v1.AcknowledgeRequest"><span title="google.pubsub.v1.AcknowledgeRequest">google.pubsub.v1.AcknowledgeRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Acknowledges the messages associated with the <code>ack_ids</code> in the
@@ -1334,19 +1200,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Pull (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PullRequest">
-    
-      <span title="google.pubsub.v1.PullRequest">google.pubsub.v1.PullRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PullResponse">
-    
-      <span title="google.pubsub.v1.PullResponse">google.pubsub.v1.PullResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Pull (<a href="google.pubsub.v1.html#message-google.pubsub.v1.PullRequest"><span title="google.pubsub.v1.PullRequest">google.pubsub.v1.PullRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.PullResponse"><span title="google.pubsub.v1.PullResponse">google.pubsub.v1.PullResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Pulls messages from the server.</p></p>
@@ -1355,19 +1212,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>StreamingPull (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullRequest">
-    
-      <span title="google.pubsub.v1.StreamingPullRequest">google.pubsub.v1.StreamingPullRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>StreamingPull (<a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullRequest"><span title="google.pubsub.v1.StreamingPullRequest">google.pubsub.v1.StreamingPullRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse"><span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Establishes a stream with the server, which sends messages down to the
@@ -1382,15 +1230,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ModifyPushConfig (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ModifyPushConfigRequest">
-    
-      <span title="google.pubsub.v1.ModifyPushConfigRequest">google.pubsub.v1.ModifyPushConfigRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ModifyPushConfig (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ModifyPushConfigRequest"><span title="google.pubsub.v1.ModifyPushConfigRequest">google.pubsub.v1.ModifyPushConfigRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Modifies the <code>PushConfig</code> for a specified subscription.</p>
@@ -1403,19 +1245,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>GetSnapshot (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSnapshotRequest">
-    
-      <span title="google.pubsub.v1.GetSnapshotRequest">google.pubsub.v1.GetSnapshotRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot">
-    
-      <span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>GetSnapshot (<a href="google.pubsub.v1.html#message-google.pubsub.v1.GetSnapshotRequest"><span title="google.pubsub.v1.GetSnapshotRequest">google.pubsub.v1.GetSnapshotRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot"><span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Gets the configuration details of a snapshot. Snapshots are used in
@@ -1428,19 +1261,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ListSnapshots (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSnapshotsRequest">
-    
-      <span title="google.pubsub.v1.ListSnapshotsRequest">google.pubsub.v1.ListSnapshotsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSnapshotsResponse">
-    
-      <span title="google.pubsub.v1.ListSnapshotsResponse">google.pubsub.v1.ListSnapshotsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ListSnapshots (<a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSnapshotsRequest"><span title="google.pubsub.v1.ListSnapshotsRequest">google.pubsub.v1.ListSnapshotsRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.ListSnapshotsResponse"><span title="google.pubsub.v1.ListSnapshotsResponse">google.pubsub.v1.ListSnapshotsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Lists the existing snapshots. Snapshots are used in <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations, which
@@ -1452,19 +1276,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>CreateSnapshot (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.CreateSnapshotRequest">
-    
-      <span title="google.pubsub.v1.CreateSnapshotRequest">google.pubsub.v1.CreateSnapshotRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot">
-    
-      <span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>CreateSnapshot (<a href="google.pubsub.v1.html#message-google.pubsub.v1.CreateSnapshotRequest"><span title="google.pubsub.v1.CreateSnapshotRequest">google.pubsub.v1.CreateSnapshotRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot"><span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Creates a snapshot from the requested subscription. Snapshots are used in
@@ -1488,19 +1303,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>UpdateSnapshot (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateSnapshotRequest">
-    
-      <span title="google.pubsub.v1.UpdateSnapshotRequest">google.pubsub.v1.UpdateSnapshotRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot">
-    
-      <span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>UpdateSnapshot (<a href="google.pubsub.v1.html#message-google.pubsub.v1.UpdateSnapshotRequest"><span title="google.pubsub.v1.UpdateSnapshotRequest">google.pubsub.v1.UpdateSnapshotRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot"><span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Updates an existing snapshot. Snapshots are used in
@@ -1513,15 +1319,9 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>DeleteSnapshot (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSnapshotRequest">
-    
-      <span title="google.pubsub.v1.DeleteSnapshotRequest">google.pubsub.v1.DeleteSnapshotRequest</span>
-    </a>
-  ) -> 
-  <span>google.protobuf.Empty</span>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>DeleteSnapshot (<a href="google.pubsub.v1.html#message-google.pubsub.v1.DeleteSnapshotRequest"><span title="google.pubsub.v1.DeleteSnapshotRequest">google.pubsub.v1.DeleteSnapshotRequest</span>
+    </a>) -> <span>google.protobuf.Empty</span></code></h6>
+
   
   <div class="block">
     <p><p>Removes an existing snapshot. Snapshots are used in [Seek]
@@ -1538,19 +1338,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Seek (
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.SeekRequest">
-    
-      <span title="google.pubsub.v1.SeekRequest">google.pubsub.v1.SeekRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.SeekResponse">
-    
-      <span title="google.pubsub.v1.SeekResponse">google.pubsub.v1.SeekResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Seek (<a href="google.pubsub.v1.html#message-google.pubsub.v1.SeekRequest"><span title="google.pubsub.v1.SeekRequest">google.pubsub.v1.SeekRequest</span>
+    </a>) -> <a href="google.pubsub.v1.html#message-google.pubsub.v1.SeekResponse"><span title="google.pubsub.v1.SeekResponse">google.pubsub.v1.SeekResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Seeks an existing subscription to a point in time or to a given snapshot,
@@ -1585,13 +1376,8 @@
   <span>
     <a href="#message-google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation" title="google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation">message AcknowledgeConfirmation</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse"><span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
+    </a>)</span>
   
   </span>
   
@@ -1626,9 +1412,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Successfully processed acknowledgement IDs.</p></td>
@@ -1645,9 +1429,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that were malformed or whose acknowledgement
@@ -1665,9 +1447,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that were out of order.</p></td>
@@ -1684,9 +1464,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that failed processing with temporary issues.</p></td>
@@ -1737,9 +1515,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription whose message is being acknowledged.
@@ -1757,9 +1533,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The acknowledgment ID for the messages being acknowledged that
@@ -1816,9 +1590,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the table to which to write data, of the form
@@ -1834,9 +1606,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>When true, use the topic's schema as the columns to write to in BigQuery,
@@ -1852,9 +1622,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>When true, write the subscription name, message_id, publish_time,
@@ -1873,9 +1641,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>When true and use_topic_schema is true, any fields that are a part of the
@@ -1894,13 +1660,8 @@
       <td>
         <code title="google.pubsub.v1.BigQueryConfig.State">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.BigQueryConfig.State">
-    
-      <span title="google.pubsub.v1.BigQueryConfig.State">google.pubsub.v1.BigQueryConfig.State</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.BigQueryConfig.State"><span title="google.pubsub.v1.BigQueryConfig.State">google.pubsub.v1.BigQueryConfig.State</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Output only. An output-only field that indicates whether or not the
@@ -1952,9 +1713,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema we are revising.
@@ -1970,13 +1729,8 @@
       <td>
         <code title="google.pubsub.v1.Schema">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The schema revision to commit.</p></td>
@@ -2027,9 +1781,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to create the schema.
@@ -2045,13 +1797,8 @@
       <td>
         <code title="google.pubsub.v1.Schema">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The schema object to create.</p>
@@ -2069,9 +1816,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID to use for the schema, which will become the final component of
@@ -2125,9 +1870,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. User-provided name for this snapshot. If the name is not provided
@@ -2147,9 +1890,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription whose backlog the snapshot retains.
@@ -2172,9 +1913,7 @@
       <td>
         <code title="map&lt;string, string&gt;">
           
-          
-  <span>map&lt;string, string&gt;</span>
-  
+          <span>map&lt;string, string&gt;</span>
         </code>
       </td>
       <td class="content"><p>See <a href="https://cloud.google.com/pubsub/docs/labels">Creating and managing
@@ -2229,9 +1968,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the topic to which dead letter messages should be published.
@@ -2253,9 +1990,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The maximum number of delivery attempts for any message. The value must be
@@ -2314,9 +2049,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. Name of the schema to delete.
@@ -2368,9 +2101,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema revision to be deleted, with a revision ID
@@ -2387,9 +2118,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Optional. This field is deprecated and should not be used for specifying
@@ -2442,9 +2171,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the snapshot to delete.
@@ -2496,9 +2223,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription to delete.
@@ -2550,9 +2275,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. Name of the topic to delete.
@@ -2604,9 +2327,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription to detach.
@@ -2696,9 +2417,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>Specifies the "time-to-live" duration for an associated resource. The
@@ -2754,9 +2473,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema to get.
@@ -2772,13 +2489,8 @@
       <td>
         <code title="google.pubsub.v1.SchemaView">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView">
-    
-      <span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView"><span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The set of fields to return in the response. If not set, returns a Schema
@@ -2830,9 +2542,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the snapshot to get.
@@ -2884,9 +2594,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription to get.
@@ -2938,9 +2646,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic to get.
@@ -3000,9 +2706,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema to list revisions for.</p></td>
@@ -3017,13 +2721,8 @@
       <td>
         <code title="google.pubsub.v1.SchemaView">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView">
-    
-      <span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView"><span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The set of Schema fields to return in the response. If not set, returns
@@ -3040,9 +2739,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The maximum number of revisions to return per page.</p></td>
@@ -3057,9 +2754,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The page token, received from a previous ListSchemaRevisions call.
@@ -3113,13 +2808,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The revisions of the schema.</p></td>
@@ -3134,9 +2824,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A token that can be sent as <code>page_token</code> to retrieve the next page.
@@ -3188,9 +2876,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list schemas.
@@ -3206,13 +2892,8 @@
       <td>
         <code title="google.pubsub.v1.SchemaView">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView">
-    
-      <span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.SchemaView"><span title="google.pubsub.v1.SchemaView">google.pubsub.v1.SchemaView</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The set of Schema fields to return in the response. If not set, returns
@@ -3229,9 +2910,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of schemas to return.</p></td>
@@ -3246,9 +2925,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSchemasResponse</code>; indicates that
@@ -3303,13 +2980,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The resulting schemas.</p></td>
@@ -3324,9 +2996,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more schemas that match the
@@ -3378,9 +3048,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list snapshots.
@@ -3396,9 +3064,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of snapshots to return.</p></td>
@@ -3413,9 +3079,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSnapshotsResponse</code>; indicates that this
@@ -3470,13 +3134,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot">
-    
-      <span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot"><span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The resulting snapshots.</p></td>
@@ -3491,9 +3150,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more snapshot that match the
@@ -3545,9 +3202,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list subscriptions.
@@ -3563,9 +3218,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of subscriptions to return.</p></td>
@@ -3580,9 +3233,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSubscriptionsResponse</code>; indicates that
@@ -3637,13 +3288,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The subscriptions that match the request.</p></td>
@@ -3658,9 +3304,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more subscriptions that match
@@ -3713,9 +3357,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic that snapshots are attached to.
@@ -3731,9 +3373,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of snapshot names to return.</p></td>
@@ -3748,9 +3388,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicSnapshotsResponse</code>; indicates
@@ -3805,9 +3443,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The names of the snapshots that match the request.</p></td>
@@ -3822,9 +3458,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more snapshots that match
@@ -3877,9 +3511,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic that subscriptions are attached to.
@@ -3895,9 +3527,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of subscription names to return.</p></td>
@@ -3912,9 +3542,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicSubscriptionsResponse</code>; indicates
@@ -3969,9 +3597,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The names of subscriptions attached to the topic specified in the request.</p></td>
@@ -3986,9 +3612,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more subscriptions that match
@@ -4041,9 +3665,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list topics.
@@ -4059,9 +3681,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Maximum number of topics to return.</p></td>
@@ -4076,9 +3696,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicsResponse</code>; indicates that this is
@@ -4133,13 +3751,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The resulting topics.</p></td>
@@ -4154,9 +3767,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more topics that match the
@@ -4210,9 +3821,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A list of IDs of GCP regions where messages that are published to the topic
@@ -4237,13 +3846,8 @@
   <span>
     <a href="#message-google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation" title="google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation">message ModifyAckDeadlineConfirmation</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse"><span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
+    </a>)</span>
   
   </span>
   
@@ -4278,9 +3882,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Successfully processed acknowledgement IDs.</p></td>
@@ -4297,9 +3899,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that were malformed or whose acknowledgement
@@ -4317,9 +3917,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that failed processing with temporary issues.</p></td>
@@ -4370,9 +3968,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription.
@@ -4388,9 +3984,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Required. The new ack deadline with respect to the time this request was
@@ -4414,9 +4008,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. List of acknowledgment IDs.</p></td>
@@ -4467,9 +4059,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription.
@@ -4485,13 +4075,8 @@
       <td>
         <code title="google.pubsub.v1.PushConfig">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig">
-    
-      <span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig"><span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The push configuration for future deliveries.</p>
@@ -4516,13 +4101,8 @@
   <span>
     <a href="#message-google.pubsub.v1.PushConfig.OidcToken" title="google.pubsub.v1.PushConfig.OidcToken">message OidcToken</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig">
-    
-      <span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig"><span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
+    </a>)</span>
   
   </span>
   
@@ -4556,9 +4136,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p><a href="https://cloud.google.com/iam/docs/service-accounts">Service account
@@ -4577,9 +4155,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Audience to be used when generating OIDC token. The audience claim
@@ -4635,9 +4211,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The messages in the request will be published on this topic.
@@ -4655,13 +4229,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage">
-    
-      <span title="google.pubsub.v1.PubsubMessage">google.pubsub.v1.PubsubMessage</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage"><span title="google.pubsub.v1.PubsubMessage">google.pubsub.v1.PubsubMessage</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The messages to publish.</p></td>
@@ -4714,9 +4283,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The server-assigned ID of each published message, in the same order as
@@ -4776,9 +4343,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The message data field. If this field is empty, the message must contain
@@ -4796,13 +4361,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage.AttributesEntry">
-    
-      <span title="google.pubsub.v1.PubsubMessage.AttributesEntry">google.pubsub.v1.PubsubMessage.AttributesEntry</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage.AttributesEntry"><span title="google.pubsub.v1.PubsubMessage.AttributesEntry">google.pubsub.v1.PubsubMessage.AttributesEntry</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Attributes for this message. If this field is empty, the message must
@@ -4819,9 +4379,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>ID of this message, assigned by the server when the message is published.
@@ -4839,9 +4397,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The time at which the message was published, populated by the server when
@@ -4858,9 +4414,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If non-empty, identifies related messages for which publish order should be
@@ -4918,9 +4472,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription from which messages should be pulled.
@@ -4936,9 +4488,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>Optional. If this field set to true, the system will respond immediately
@@ -4959,9 +4509,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Required. The maximum number of messages to return for this request. Must
@@ -5016,13 +4564,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ReceivedMessage">
-    
-      <span title="google.pubsub.v1.ReceivedMessage">google.pubsub.v1.ReceivedMessage</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.ReceivedMessage"><span title="google.pubsub.v1.ReceivedMessage">google.pubsub.v1.ReceivedMessage</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Received Pub/Sub messages. The list will be empty if there are no more
@@ -5077,9 +4620,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A URL locating the endpoint to which messages should be pushed.
@@ -5095,9 +4636,7 @@
       <td>
         <code title="map&lt;string, string&gt;">
           
-          
-  <span>map&lt;string, string&gt;</span>
-  
+          <span>map&lt;string, string&gt;</span>
         </code>
       </td>
       <td class="content"><p>Endpoint configuration attributes that can be used to control different
@@ -5129,13 +4668,8 @@
       <td>
         <code title="google.pubsub.v1.PushConfig.OidcToken">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig.OidcToken">
-    
-      <span title="google.pubsub.v1.PushConfig.OidcToken">google.pubsub.v1.PushConfig.OidcToken</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig.OidcToken"><span title="google.pubsub.v1.PushConfig.OidcToken">google.pubsub.v1.PushConfig.OidcToken</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>If specified, Pub/Sub will generate and attach an OIDC JWT token as an
@@ -5187,9 +4721,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>This ID can be used to acknowledge the received message.</p></td>
@@ -5204,13 +4736,8 @@
       <td>
         <code title="google.pubsub.v1.PubsubMessage">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage">
-    
-      <span title="google.pubsub.v1.PubsubMessage">google.pubsub.v1.PubsubMessage</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PubsubMessage"><span title="google.pubsub.v1.PubsubMessage">google.pubsub.v1.PubsubMessage</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The message.</p></td>
@@ -5225,9 +4752,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The approximate number of times that Cloud Pub/Sub has attempted to deliver
@@ -5296,9 +4821,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>The minimum delay between consecutive deliveries of a given message.
@@ -5314,9 +4837,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>The maximum delay between consecutive deliveries of a given message.
@@ -5368,9 +4889,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The schema being rolled back with revision id.</p></td>
@@ -5385,9 +4904,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The revision ID to roll back to.
@@ -5440,9 +4957,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. Name of the schema.
@@ -5458,13 +4973,8 @@
       <td>
         <code title="google.pubsub.v1.Schema.Type">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Schema.Type">
-    
-      <span title="google.pubsub.v1.Schema.Type">google.pubsub.v1.Schema.Type</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Schema.Type"><span title="google.pubsub.v1.Schema.Type">google.pubsub.v1.Schema.Type</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The type of the schema definition.</p></td>
@@ -5479,9 +4989,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The definition of the schema. This should contain a string representing
@@ -5498,9 +5006,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Output only. Immutable. The revision ID of the schema.</p></td>
@@ -5515,9 +5021,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>Output only. The timestamp that the revision was created.</p></td>
@@ -5568,9 +5072,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema that messages published should be
@@ -5588,13 +5090,8 @@
       <td>
         <code title="google.pubsub.v1.Encoding">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Encoding">
-    
-      <span title="google.pubsub.v1.Encoding">google.pubsub.v1.Encoding</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Encoding"><span title="google.pubsub.v1.Encoding">google.pubsub.v1.Encoding</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The encoding of messages validated against <code>schema</code>.</p></td>
@@ -5609,9 +5106,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The minimum (inclusive) revision allowed for validating messages. If empty
@@ -5628,9 +5123,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The maximum (inclusive) revision allowed for validating messages. If empty
@@ -5683,9 +5176,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription to affect.</p></td>
@@ -5700,9 +5191,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The time to seek to.
@@ -5727,9 +5216,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The snapshot to seek to. The snapshot's topic must be the same as that of
@@ -5822,9 +5309,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the snapshot.</p></td>
@@ -5839,9 +5324,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the topic from which this snapshot is retaining messages.</p></td>
@@ -5856,9 +5339,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The snapshot is guaranteed to exist up until this time.
@@ -5882,9 +5363,7 @@
       <td>
         <code title="map&lt;string, string&gt;">
           
-          
-  <span>map&lt;string, string&gt;</span>
-  
+          <span>map&lt;string, string&gt;</span>
         </code>
       </td>
       <td class="content"><p>See [Creating and managing labels]
@@ -5938,9 +5417,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The subscription for which to initialize the new stream. This
@@ -5960,9 +5437,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs for acknowledging previously received messages
@@ -5983,9 +5458,7 @@
           
             repeated
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The list of new ack deadlines for the IDs listed in
@@ -6012,9 +5485,7 @@
           
             repeated
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs whose deadline will be modified based on the
@@ -6033,9 +5504,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>Required. The ack deadline to use for the stream. This must be provided in
@@ -6053,9 +5522,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A unique identifier that is used to distinguish client instances from each
@@ -6075,9 +5542,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>Flow control settings for the maximum number of outstanding messages. When
@@ -6100,9 +5565,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>Flow control settings for the maximum number of outstanding bytes. When
@@ -6164,13 +5627,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ReceivedMessage">
-    
-      <span title="google.pubsub.v1.ReceivedMessage">google.pubsub.v1.ReceivedMessage</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.ReceivedMessage"><span title="google.pubsub.v1.ReceivedMessage">google.pubsub.v1.ReceivedMessage</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Received Pub/Sub messages. This will not be empty.</p></td>
@@ -6185,13 +5643,8 @@
       <td>
         <code title="google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation">google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation"><span title="google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation">google.pubsub.v1.StreamingPullResponse.ModifyAckDeadlineConfirmation</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>This field will only be set if <code>enable_exactly_once_delivery</code> is set to
@@ -6207,13 +5660,8 @@
       <td>
         <code title="google.pubsub.v1.StreamingPullResponse.SubscriptionProperties">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.SubscriptionProperties">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse.SubscriptionProperties">google.pubsub.v1.StreamingPullResponse.SubscriptionProperties</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.SubscriptionProperties"><span title="google.pubsub.v1.StreamingPullResponse.SubscriptionProperties">google.pubsub.v1.StreamingPullResponse.SubscriptionProperties</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Properties associated with this subscription.</p></td>
@@ -6228,13 +5676,8 @@
       <td>
         <code title="google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation">google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation"><span title="google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation">google.pubsub.v1.StreamingPullResponse.AcknowledgeConfirmation</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>This field will only be set if <code>enable_exactly_once_delivery</code> is set to
@@ -6288,9 +5731,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription. It must have the format
@@ -6310,9 +5751,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic from which this subscription is receiving
@@ -6329,13 +5768,8 @@
       <td>
         <code title="google.pubsub.v1.PushConfig">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig">
-    
-      <span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig"><span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>If push delivery is used with this subscription, this field is
@@ -6351,9 +5785,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The approximate amount of time (on a best-effort basis) Pub/Sub waits for
@@ -6384,9 +5816,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>Indicates whether to retain acknowledged messages. If true, then
@@ -6406,9 +5836,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>How long to retain unacknowledged messages in the subscription's backlog,
@@ -6428,9 +5856,7 @@
       <td>
         <code title="map&lt;string, string&gt;">
           
-          
-  <span>map&lt;string, string&gt;</span>
-  
+          <span>map&lt;string, string&gt;</span>
         </code>
       </td>
       <td class="content"><p>See <a href="https://cloud.google.com/pubsub/docs/labels">Creating and managing
@@ -6446,9 +5872,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>If true, messages published with the same <code>ordering_key</code> in <code>PubsubMessage</code>
@@ -6466,13 +5890,8 @@
       <td>
         <code title="google.pubsub.v1.ExpirationPolicy">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.ExpirationPolicy">
-    
-      <span title="google.pubsub.v1.ExpirationPolicy">google.pubsub.v1.ExpirationPolicy</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.ExpirationPolicy"><span title="google.pubsub.v1.ExpirationPolicy">google.pubsub.v1.ExpirationPolicy</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A policy that specifies the conditions for this subscription's expiration.
@@ -6493,9 +5912,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>An expression written in the Pub/Sub <a href="https://cloud.google.com/pubsub/docs/filtering">filter
@@ -6514,13 +5931,8 @@
       <td>
         <code title="google.pubsub.v1.DeadLetterPolicy">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeadLetterPolicy">
-    
-      <span title="google.pubsub.v1.DeadLetterPolicy">google.pubsub.v1.DeadLetterPolicy</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.DeadLetterPolicy"><span title="google.pubsub.v1.DeadLetterPolicy">google.pubsub.v1.DeadLetterPolicy</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A policy that specifies the conditions for dead lettering messages in
@@ -6541,13 +5953,8 @@
       <td>
         <code title="google.pubsub.v1.RetryPolicy">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.RetryPolicy">
-    
-      <span title="google.pubsub.v1.RetryPolicy">google.pubsub.v1.RetryPolicy</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.RetryPolicy"><span title="google.pubsub.v1.RetryPolicy">google.pubsub.v1.RetryPolicy</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A policy that specifies how Pub/Sub retries message delivery for this
@@ -6567,9 +5974,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>Indicates whether the subscription is detached from its topic. Detached
@@ -6588,9 +5993,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>If true, Pub/Sub provides the following guarantees for the delivery of
@@ -6615,9 +6018,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>Output only. Indicates the minimum duration for which a message is retained
@@ -6637,13 +6038,8 @@
       <td>
         <code title="google.pubsub.v1.BigQueryConfig">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.BigQueryConfig">
-    
-      <span title="google.pubsub.v1.BigQueryConfig">google.pubsub.v1.BigQueryConfig</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.BigQueryConfig"><span title="google.pubsub.v1.BigQueryConfig">google.pubsub.v1.BigQueryConfig</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>If delivery to BigQuery is used with this subscription, this field is
@@ -6659,13 +6055,8 @@
       <td>
         <code title="google.pubsub.v1.Subscription.State">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Subscription.State">
-    
-      <span title="google.pubsub.v1.Subscription.State">google.pubsub.v1.Subscription.State</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Subscription.State"><span title="google.pubsub.v1.Subscription.State">google.pubsub.v1.Subscription.State</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Output only. An output-only field indicating whether or not the
@@ -6687,13 +6078,8 @@
   <span>
     <a href="#message-google.pubsub.v1.StreamingPullResponse.SubscriptionProperties" title="google.pubsub.v1.StreamingPullResponse.SubscriptionProperties">message SubscriptionProperties</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse">
-    
-      <span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.StreamingPullResponse"><span title="google.pubsub.v1.StreamingPullResponse">google.pubsub.v1.StreamingPullResponse</span>
+    </a>)</span>
   
   </span>
   
@@ -6725,9 +6111,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>True iff exactly once delivery is enabled for this subscription.</p></td>
@@ -6742,9 +6126,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>True iff message ordering is enabled for this subscription.</p></td>
@@ -6795,9 +6177,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic. It must have the format
@@ -6819,13 +6199,8 @@
           
             repeated
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic.LabelsEntry">
-    
-      <span title="google.pubsub.v1.Topic.LabelsEntry">google.pubsub.v1.Topic.LabelsEntry</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic.LabelsEntry"><span title="google.pubsub.v1.Topic.LabelsEntry">google.pubsub.v1.Topic.LabelsEntry</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>See [Creating and managing labels]
@@ -6841,13 +6216,8 @@
       <td>
         <code title="google.pubsub.v1.MessageStoragePolicy">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.MessageStoragePolicy">
-    
-      <span title="google.pubsub.v1.MessageStoragePolicy">google.pubsub.v1.MessageStoragePolicy</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.MessageStoragePolicy"><span title="google.pubsub.v1.MessageStoragePolicy">google.pubsub.v1.MessageStoragePolicy</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Policy constraining the set of Google Cloud Platform regions where messages
@@ -6864,9 +6234,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The resource name of the Cloud KMS CryptoKey to be used to protect access
@@ -6883,13 +6251,8 @@
       <td>
         <code title="google.pubsub.v1.SchemaSettings">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.SchemaSettings">
-    
-      <span title="google.pubsub.v1.SchemaSettings">google.pubsub.v1.SchemaSettings</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.SchemaSettings"><span title="google.pubsub.v1.SchemaSettings">google.pubsub.v1.SchemaSettings</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Settings for validating messages published against a schema.</p></td>
@@ -6904,9 +6267,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>Reserved for future use. This field is set only in responses from the
@@ -6922,9 +6283,7 @@
       <td>
         <code title="google.protobuf.Duration">
           
-          
-  <span>google.protobuf.Duration</span>
-  
+          <span>google.protobuf.Duration</span>
         </code>
       </td>
       <td class="content"><p>Indicates the minimum duration to retain a message after it is published to
@@ -6982,13 +6341,8 @@
       <td>
         <code title="google.pubsub.v1.Snapshot">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot">
-    
-      <span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Snapshot"><span title="google.pubsub.v1.Snapshot">google.pubsub.v1.Snapshot</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The updated snapshot object.</p></td>
@@ -7003,9 +6357,7 @@
       <td>
         <code title="google.protobuf.FieldMask">
           
-          
-  <span>google.protobuf.FieldMask</span>
-  
+          <span>google.protobuf.FieldMask</span>
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided snapshot to update.
@@ -7057,13 +6409,8 @@
       <td>
         <code title="google.pubsub.v1.Subscription">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription">
-    
-      <span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Subscription"><span title="google.pubsub.v1.Subscription">google.pubsub.v1.Subscription</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The updated subscription object.</p></td>
@@ -7078,9 +6425,7 @@
       <td>
         <code title="google.protobuf.FieldMask">
           
-          
-  <span>google.protobuf.FieldMask</span>
-  
+          <span>google.protobuf.FieldMask</span>
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided subscription to update.
@@ -7132,13 +6477,8 @@
       <td>
         <code title="google.pubsub.v1.Topic">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic">
-    
-      <span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Topic"><span title="google.pubsub.v1.Topic">google.pubsub.v1.Topic</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The updated topic object.</p></td>
@@ -7153,9 +6493,7 @@
       <td>
         <code title="google.protobuf.FieldMask">
           
-          
-  <span>google.protobuf.FieldMask</span>
-  
+          <span>google.protobuf.FieldMask</span>
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided topic to update. Must be
@@ -7210,9 +6548,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to validate schemas.
@@ -7228,9 +6564,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Name of the schema against which to validate.</p>
@@ -7246,13 +6580,8 @@
       <td>
         <code title="google.pubsub.v1.Schema">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Ad-hoc schema against which to validate</p></td>
@@ -7267,9 +6596,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>Message to validate against the provided <code>schema_spec</code>.</p></td>
@@ -7284,13 +6611,8 @@
       <td>
         <code title="google.pubsub.v1.Encoding">
           
-          
-    
-      <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Encoding">
-    
-      <span title="google.pubsub.v1.Encoding">google.pubsub.v1.Encoding</span>
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.Encoding"><span title="google.pubsub.v1.Encoding">google.pubsub.v1.Encoding</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The encoding expected for messages</p></td>
@@ -7378,9 +6700,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to validate schemas.
@@ -7396,13 +6716,8 @@
       <td>
         <code title="google.pubsub.v1.Schema">
           
-          
-    
-      <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema">
-    
-      <span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.Schema"><span title="google.pubsub.v1.Schema">google.pubsub.v1.Schema</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. The schema object to validate.</p></td>
@@ -7713,7 +7028,7 @@
         
           <p>© Example 2023</p>
         
-        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs">sabledocs</a></strong>.</p>
+        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs" target="_blank">sabledocs</a></strong>.</p>
       </div>
     </footer>
   </body>

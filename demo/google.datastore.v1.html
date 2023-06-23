@@ -7,9 +7,74 @@
     <link rel="stylesheet" href="static/mystyles.css" />
     <script
       src="https://kit.fontawesome.com/4d30d3d1aa.js"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
       <script src="https://unpkg.com/lunr@2.3.9/lunr.js"></script>
+      <script>
+          const storageKey = 'theme-preference'
+
+          const onClick = () => {
+            // flip current value
+            theme.value = theme.value === 'light'
+              ? 'dark'
+              : 'light'
+
+            setPreference()
+          }
+
+          const getColorPreference = () => {
+            if (localStorage.getItem(storageKey))
+              return localStorage.getItem(storageKey)
+            else
+              return window.matchMedia('(prefers-color-scheme: dark)').matches
+                ? 'dark'
+                : 'light'
+          }
+
+          const setPreference = () => {
+            localStorage.setItem(storageKey, theme.value)
+            reflectPreference()
+          }
+
+          const reflectPreference = () => {
+            const body = document.querySelector('body');
+            if (theme.value === 'dark') {
+                body.className = 'dark';
+            } else {
+                body.className = '';
+            }
+
+            document.firstElementChild
+              .setAttribute('data-theme', theme.value)
+
+            document
+              .querySelector('#theme-toggle')
+              ?.setAttribute('aria-label', theme.value)
+          }
+
+          const theme = {
+            value: getColorPreference(),
+          }
+
+          window.addEventListener(
+            "load",
+            () => {
+            // set on load so screen readers can see latest value on the button
+            reflectPreference()
+
+            // now this script can find and listen for clicks on the control
+            document
+              .querySelector('#theme-toggle')
+              .addEventListener('click', onClick)
+          });
+
+          // sync with system changes
+          window
+            .matchMedia('(prefers-color-scheme: dark)')
+            .addEventListener('change', ({matches:isDark}) => {
+              theme.value = isDark ? 'dark' : 'light'
+              setPreference()
+            });
+      </script>
   </head>
   <body>
     <div class="container">
@@ -24,14 +89,14 @@
 
         <div class="level-right">
           
-          <form action="search.html">
+          <form action="search.html" class="mr-2">
             <input type="text" name="query" class="input mr-3 navbar-search-query-input" placeholder="Search">
             <input type="submit" class="button is-primary mr-5" value="Search" />
           </form>
           
 
-          <p class="level-item has-text-centered is-size-5">
-            <a href="https://github.com/googleapis/googleapis" class="link is-info">
+          <p class="level-item has-text-centered is-size-5 mr-5">
+            <a href="https://github.com/googleapis/googleapis" class="link is-info" target="_blank">
               
               <span class="icon">
                 <i class="fa-brands fa-github"></i>
@@ -40,6 +105,26 @@
               <span>Source</span>
             </a>
           </p>
+
+          <button class="theme-toggle" id="theme-toggle" title="Toggles light & dark" aria-label="auto" aria-live="polite">
+            <svg class="sun-and-moon" aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
+              <mask class="moon" id="moon-mask">
+                <rect x="0" y="0" width="100%" height="100%" fill="white" />
+                <circle cx="24" cy="10" r="6" fill="black" />
+              </mask>
+              <circle class="sun" cx="12" cy="12" r="6" mask="url(#moon-mask)" fill="currentColor" />
+              <g class="sun-beams" stroke="currentColor">
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </g>
+            </svg>
+          </button>
         </div>
       </nav>
     </div>
@@ -578,19 +663,10 @@
 
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Lookup (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.LookupRequest">
-    
-      <span title="google.datastore.v1.LookupRequest">google.datastore.v1.LookupRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.LookupResponse">
-    
-      <span title="google.datastore.v1.LookupResponse">google.datastore.v1.LookupResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Lookup (<a href="google.datastore.v1.html#message-google.datastore.v1.LookupRequest"><span title="google.datastore.v1.LookupRequest">google.datastore.v1.LookupRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.LookupResponse"><span title="google.datastore.v1.LookupResponse">google.datastore.v1.LookupResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Looks up entities by key.</p></p>
@@ -599,19 +675,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>RunQuery (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryRequest">
-    
-      <span title="google.datastore.v1.RunQueryRequest">google.datastore.v1.RunQueryRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryResponse">
-    
-      <span title="google.datastore.v1.RunQueryResponse">google.datastore.v1.RunQueryResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>RunQuery (<a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryRequest"><span title="google.datastore.v1.RunQueryRequest">google.datastore.v1.RunQueryRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.RunQueryResponse"><span title="google.datastore.v1.RunQueryResponse">google.datastore.v1.RunQueryResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Queries for entities.</p></p>
@@ -620,19 +687,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>RunAggregationQuery (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryRequest">
-    
-      <span title="google.datastore.v1.RunAggregationQueryRequest">google.datastore.v1.RunAggregationQueryRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryResponse">
-    
-      <span title="google.datastore.v1.RunAggregationQueryResponse">google.datastore.v1.RunAggregationQueryResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>RunAggregationQuery (<a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryRequest"><span title="google.datastore.v1.RunAggregationQueryRequest">google.datastore.v1.RunAggregationQueryRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.RunAggregationQueryResponse"><span title="google.datastore.v1.RunAggregationQueryResponse">google.datastore.v1.RunAggregationQueryResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Runs an aggregation query.</p></p>
@@ -641,19 +699,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>BeginTransaction (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionRequest">
-    
-      <span title="google.datastore.v1.BeginTransactionRequest">google.datastore.v1.BeginTransactionRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionResponse">
-    
-      <span title="google.datastore.v1.BeginTransactionResponse">google.datastore.v1.BeginTransactionResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>BeginTransaction (<a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionRequest"><span title="google.datastore.v1.BeginTransactionRequest">google.datastore.v1.BeginTransactionRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.BeginTransactionResponse"><span title="google.datastore.v1.BeginTransactionResponse">google.datastore.v1.BeginTransactionResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Begins a new transaction.</p></p>
@@ -662,19 +711,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Commit (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.CommitRequest">
-    
-      <span title="google.datastore.v1.CommitRequest">google.datastore.v1.CommitRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.CommitResponse">
-    
-      <span title="google.datastore.v1.CommitResponse">google.datastore.v1.CommitResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Commit (<a href="google.datastore.v1.html#message-google.datastore.v1.CommitRequest"><span title="google.datastore.v1.CommitRequest">google.datastore.v1.CommitRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.CommitResponse"><span title="google.datastore.v1.CommitResponse">google.datastore.v1.CommitResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Commits a transaction, optionally creating, deleting or modifying some
@@ -684,19 +724,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>Rollback (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackRequest">
-    
-      <span title="google.datastore.v1.RollbackRequest">google.datastore.v1.RollbackRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse">
-    
-      <span title="google.datastore.v1.RollbackResponse">google.datastore.v1.RollbackResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>Rollback (<a href="google.datastore.v1.html#message-google.datastore.v1.RollbackRequest"><span title="google.datastore.v1.RollbackRequest">google.datastore.v1.RollbackRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse"><span title="google.datastore.v1.RollbackResponse">google.datastore.v1.RollbackResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Rolls back a transaction.</p></p>
@@ -705,19 +736,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>AllocateIds (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsRequest">
-    
-      <span title="google.datastore.v1.AllocateIdsRequest">google.datastore.v1.AllocateIdsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsResponse">
-    
-      <span title="google.datastore.v1.AllocateIdsResponse">google.datastore.v1.AllocateIdsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>AllocateIds (<a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsRequest"><span title="google.datastore.v1.AllocateIdsRequest">google.datastore.v1.AllocateIdsRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.AllocateIdsResponse"><span title="google.datastore.v1.AllocateIdsResponse">google.datastore.v1.AllocateIdsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Allocates IDs for the given keys, which is useful for referencing an entity
@@ -727,19 +749,10 @@
 </div>
 
 <div class="box">
-  <h6 class="title is-6">rpc <code>ReserveIds (
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsRequest">
-    
-      <span title="google.datastore.v1.ReserveIdsRequest">google.datastore.v1.ReserveIdsRequest</span>
-    </a>
-  ) -> 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsResponse">
-    
-      <span title="google.datastore.v1.ReserveIdsResponse">google.datastore.v1.ReserveIdsResponse</span>
-    </a>
-  </code></h6>
+  <h6 class="title is-6">rpc <code>ReserveIds (<a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsRequest"><span title="google.datastore.v1.ReserveIdsRequest">google.datastore.v1.ReserveIdsRequest</span>
+    </a>) -> <a href="google.datastore.v1.html#message-google.datastore.v1.ReserveIdsResponse"><span title="google.datastore.v1.ReserveIdsResponse">google.datastore.v1.ReserveIdsResponse</span>
+    </a></code></h6>
+
   
   <div class="block">
     <p><p>Prevents the supplied keys' IDs from being auto-allocated by Cloud
@@ -771,13 +784,8 @@
   <span>
     <a href="#message-google.datastore.v1.AggregationQuery.Aggregation" title="google.datastore.v1.AggregationQuery.Aggregation">message Aggregation</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">
-    
-      <span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery"><span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+    </a>)</span>
   
   </span>
   
@@ -809,13 +817,8 @@
       <td>
         <code title="google.datastore.v1.AggregationQuery.Aggregation.Count">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Count">
-    
-      <span title="google.datastore.v1.AggregationQuery.Aggregation.Count">google.datastore.v1.AggregationQuery.Aggregation.Count</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Count"><span title="google.datastore.v1.AggregationQuery.Aggregation.Count">google.datastore.v1.AggregationQuery.Aggregation.Count</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Count aggregator.</p></td>
@@ -830,9 +833,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Optional. Optional name of the property to store the result of the
@@ -910,13 +911,8 @@
       <td>
         <code title="google.datastore.v1.Query">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
-    
-      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Nested query for aggregation</p></td>
@@ -933,13 +929,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation">
-    
-      <span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Optional. Series of aggregations to apply over the results of the
@@ -1000,13 +991,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult.AggregatePropertiesEntry">
-    
-      <span title="google.datastore.v1.AggregationResult.AggregatePropertiesEntry">google.datastore.v1.AggregationResult.AggregatePropertiesEntry</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult.AggregatePropertiesEntry"><span title="google.datastore.v1.AggregationResult.AggregatePropertiesEntry">google.datastore.v1.AggregationResult.AggregatePropertiesEntry</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The result of the aggregation functions, ex: <code>COUNT(*) AS total_entities</code>.</p>
@@ -1063,13 +1049,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult">
-    
-      <span title="google.datastore.v1.AggregationResult">google.datastore.v1.AggregationResult</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResult"><span title="google.datastore.v1.AggregationResult">google.datastore.v1.AggregationResult</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The aggregation results for this batch.</p></td>
@@ -1084,13 +1065,8 @@
       <td>
         <code title="google.datastore.v1.QueryResultBatch.MoreResultsType">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.QueryResultBatch.MoreResultsType">
-    
-      <span title="google.datastore.v1.QueryResultBatch.MoreResultsType">google.datastore.v1.QueryResultBatch.MoreResultsType</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.QueryResultBatch.MoreResultsType"><span title="google.datastore.v1.QueryResultBatch.MoreResultsType">google.datastore.v1.QueryResultBatch.MoreResultsType</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The state of the query after the current batch.
@@ -1107,9 +1083,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>Read timestamp this batch was returned from.</p>
@@ -1166,13 +1140,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. A list of keys with incomplete key paths for which to allocate
@@ -1188,9 +1157,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -1205,9 +1172,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -1263,13 +1228,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The keys specified in the request (in the same order), each with
@@ -1323,13 +1283,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
-    
-      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Value"><span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Values in the array.
@@ -1383,9 +1338,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -1400,9 +1353,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -1419,13 +1370,8 @@
       <td>
         <code title="google.datastore.v1.TransactionOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
-    
-      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Options for a new transaction.</p></td>
@@ -1477,9 +1423,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The transaction identifier (always present).</p></td>
@@ -1530,9 +1474,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction associated with the commit. A
@@ -1549,13 +1491,8 @@
       <td>
         <code title="google.datastore.v1.CommitRequest.Mode">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.CommitRequest.Mode">
-    
-      <span title="google.datastore.v1.CommitRequest.Mode">google.datastore.v1.CommitRequest.Mode</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.CommitRequest.Mode"><span title="google.datastore.v1.CommitRequest.Mode">google.datastore.v1.CommitRequest.Mode</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The type of commit to perform. Defaults to <code>TRANSACTIONAL</code>.</p></td>
@@ -1572,13 +1509,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Mutation">
-    
-      <span title="google.datastore.v1.Mutation">google.datastore.v1.Mutation</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Mutation"><span title="google.datastore.v1.Mutation">google.datastore.v1.Mutation</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The mutations to perform.</p>
@@ -1604,9 +1536,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -1621,9 +1551,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -1640,13 +1568,8 @@
       <td>
         <code title="google.datastore.v1.TransactionOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
-    
-      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Options for beginning a new transaction for this request.
@@ -1702,13 +1625,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.MutationResult">
-    
-      <span title="google.datastore.v1.MutationResult">google.datastore.v1.MutationResult</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.MutationResult"><span title="google.datastore.v1.MutationResult">google.datastore.v1.MutationResult</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The result of performing the mutations.
@@ -1724,9 +1642,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The number of index entries updated during the commit, or zero if none were
@@ -1742,9 +1658,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The transaction commit timestamp. Not set for non-transactional commits.</p></td>
@@ -1795,13 +1709,8 @@
       <td>
         <code title="google.datastore.v1.CompositeFilter.Operator">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.CompositeFilter.Operator">
-    
-      <span title="google.datastore.v1.CompositeFilter.Operator">google.datastore.v1.CompositeFilter.Operator</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.CompositeFilter.Operator"><span title="google.datastore.v1.CompositeFilter.Operator">google.datastore.v1.CompositeFilter.Operator</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The operator for combining multiple filters.</p></td>
@@ -1818,13 +1727,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Filter">
-    
-      <span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Filter"><span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The list of filters to combine.</p>
@@ -1849,13 +1753,8 @@
   <span>
     <a href="#message-google.datastore.v1.Aggregation.Count" title="google.datastore.v1.Aggregation.Count">message Count</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation">
-    
-      <span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
+    </a>)</span>
   
   </span>
   
@@ -1889,9 +1788,7 @@
       <td>
         <code title="google.protobuf.Int64Value">
           
-          
-  <span>google.protobuf.Int64Value</span>
-  
+          <span>google.protobuf.Int64Value</span>
         </code>
       </td>
       <td class="content"><p>Optional. Optional constraint on the maximum number of entities to
@@ -1957,13 +1854,8 @@
       <td>
         <code title="google.datastore.v1.Key">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity's key.</p>
@@ -1984,13 +1876,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity.PropertiesEntry">
-    
-      <span title="google.datastore.v1.Entity.PropertiesEntry">google.datastore.v1.Entity.PropertiesEntry</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity.PropertiesEntry"><span title="google.datastore.v1.Entity.PropertiesEntry">google.datastore.v1.Entity.PropertiesEntry</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity's properties.
@@ -2046,13 +1933,8 @@
       <td>
         <code title="google.datastore.v1.Entity">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
-    
-      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The resulting entity.</p></td>
@@ -2067,9 +1949,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A cursor that points to the position after the result entity.
@@ -2085,9 +1965,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>The version of the entity, a strictly positive number that monotonically
@@ -2108,9 +1986,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The time at which the entity was last changed.
@@ -2128,9 +2004,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The time at which the entity was created.
@@ -2184,13 +2058,8 @@
       <td>
         <code title="google.datastore.v1.CompositeFilter">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter">
-    
-      <span title="google.datastore.v1.CompositeFilter">google.datastore.v1.CompositeFilter</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter"><span title="google.datastore.v1.CompositeFilter">google.datastore.v1.CompositeFilter</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A composite filter.</p></td>
@@ -2205,13 +2074,8 @@
       <td>
         <code title="google.datastore.v1.PropertyFilter">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter">
-    
-      <span title="google.datastore.v1.PropertyFilter">google.datastore.v1.PropertyFilter</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter"><span title="google.datastore.v1.PropertyFilter">google.datastore.v1.PropertyFilter</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A filter on a property.</p></td>
@@ -2263,9 +2127,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A string of the format described
@@ -2281,9 +2143,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>When false, the query string must not contain any literals and instead must
@@ -2303,13 +2163,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQueryParameter">
-    
-      <span title="google.datastore.v1.GqlQueryParameter">google.datastore.v1.GqlQueryParameter</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQueryParameter"><span title="google.datastore.v1.GqlQueryParameter">google.datastore.v1.GqlQueryParameter</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Numbered binding site @1 references the first numbered parameter,
@@ -2329,13 +2184,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery.NamedBindingsEntry">
-    
-      <span title="google.datastore.v1.GqlQuery.NamedBindingsEntry">google.datastore.v1.GqlQuery.NamedBindingsEntry</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery.NamedBindingsEntry"><span title="google.datastore.v1.GqlQuery.NamedBindingsEntry">google.datastore.v1.GqlQuery.NamedBindingsEntry</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>For each non-reserved named binding site in the query string, there must be
@@ -2389,13 +2239,8 @@
       <td>
         <code title="google.datastore.v1.Value">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
-    
-      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Value"><span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A value parameter.</p></td>
@@ -2410,9 +2255,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A query cursor. Query cursors are returned in query
@@ -2467,13 +2310,8 @@
       <td>
         <code title="google.datastore.v1.PartitionId">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
-    
-      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId"><span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, currently identified by a project
@@ -2492,13 +2330,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key.PathElement">
-    
-      <span title="google.datastore.v1.Key.PathElement">google.datastore.v1.Key.PathElement</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key.PathElement"><span title="google.datastore.v1.Key.PathElement">google.datastore.v1.Key.PathElement</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity path.
@@ -2562,9 +2395,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the kind.</p></td>
@@ -2615,13 +2446,8 @@
       <td>
         <code title="google.datastore.v1.ReadOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
-    
-      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions"><span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The options for this lookup request.</p></td>
@@ -2638,13 +2464,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. Keys of entities to look up.</p></td>
@@ -2659,9 +2480,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -2676,9 +2495,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -2733,13 +2550,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
-    
-      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult"><span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Entities found as <code>ResultType.FULL</code> entities. The order of results in this
@@ -2758,13 +2570,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
-    
-      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult"><span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Entities not found as <code>ResultType.KEY_ONLY</code> entities. The order of results
@@ -2783,13 +2590,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A list of keys that were not looked up due to resource constraints. The
@@ -2806,9 +2608,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this Lookup
@@ -2828,9 +2628,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The time at which these entities were read or found missing.</p></td>
@@ -2881,13 +2679,8 @@
       <td>
         <code title="google.datastore.v1.Entity">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
-    
-      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity to insert. The entity must not already exist.
@@ -2903,13 +2696,8 @@
       <td>
         <code title="google.datastore.v1.Entity">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
-    
-      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity to update. The entity must already exist.
@@ -2925,13 +2713,8 @@
       <td>
         <code title="google.datastore.v1.Entity">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
-    
-      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The entity to upsert. The entity may or may not already exist.
@@ -2947,13 +2730,8 @@
       <td>
         <code title="google.datastore.v1.Key">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The key of the entity to delete. The entity may or may not already exist.
@@ -2969,9 +2747,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>The version of the entity that this mutation is being applied
@@ -2988,9 +2764,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The update time of the entity that this mutation is being applied
@@ -3043,13 +2817,8 @@
       <td>
         <code title="google.datastore.v1.Key">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The automatically allocated key.
@@ -3065,9 +2834,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>The version of the entity on the server after processing the mutation. If
@@ -3086,9 +2853,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>Whether a conflict was detected for this mutation. Always false when a
@@ -3104,9 +2869,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The update time of the entity on the server after processing the mutation.
@@ -3124,9 +2887,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>The create time of the entity. This field will not be set after a 'delete'.</p></td>
@@ -3149,13 +2910,8 @@
   <span>
     <a href="#message-google.datastore.v1.RollbackResponse.NestedMessageTest" title="google.datastore.v1.RollbackResponse.NestedMessageTest">message NestedMessageTest</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse">
-    
-      <span title="google.datastore.v1.RollbackResponse">google.datastore.v1.RollbackResponse</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse"><span title="google.datastore.v1.RollbackResponse">google.datastore.v1.RollbackResponse</span>
+    </a>)</span>
   
   </span>
   
@@ -3187,9 +2943,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Comment on Nested type foo field</p></td>
@@ -3257,9 +3011,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the project to which the entities belong.</p></td>
@@ -3274,9 +3026,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, the ID of the database to which the entities
@@ -3292,9 +3042,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>If not empty, the ID of the namespace to which the entities belong.</p></td>
@@ -3315,13 +3063,8 @@
   <span>
     <a href="#message-google.datastore.v1.Key.PathElement" title="google.datastore.v1.Key.PathElement">message PathElement</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>)</span>
   
   </span>
   
@@ -3355,9 +3098,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The kind of the entity.</p>
@@ -3378,9 +3119,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>The auto-allocated ID of the entity.</p>
@@ -3397,9 +3136,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the entity.</p>
@@ -3456,13 +3193,8 @@
       <td>
         <code title="google.datastore.v1.PropertyReference">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
-    
-      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The property to project.</p></td>
@@ -3515,13 +3247,8 @@
       <td>
         <code title="google.datastore.v1.PropertyReference">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
-    
-      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The property to filter by.</p></td>
@@ -3536,13 +3263,8 @@
       <td>
         <code title="google.datastore.v1.PropertyFilter.Operator">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyFilter.Operator">
-    
-      <span title="google.datastore.v1.PropertyFilter.Operator">google.datastore.v1.PropertyFilter.Operator</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyFilter.Operator"><span title="google.datastore.v1.PropertyFilter.Operator">google.datastore.v1.PropertyFilter.Operator</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The operator to filter by.</p></td>
@@ -3557,13 +3279,8 @@
       <td>
         <code title="google.datastore.v1.Value">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Value">
-    
-      <span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Value"><span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The value to compare the property to.</p></td>
@@ -3614,13 +3331,8 @@
       <td>
         <code title="google.datastore.v1.PropertyReference">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
-    
-      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The property to order by.</p></td>
@@ -3635,13 +3347,8 @@
       <td>
         <code title="google.datastore.v1.PropertyOrder.Direction">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyOrder.Direction">
-    
-      <span title="google.datastore.v1.PropertyOrder.Direction">google.datastore.v1.PropertyOrder.Direction</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.PropertyOrder.Direction"><span title="google.datastore.v1.PropertyOrder.Direction">google.datastore.v1.PropertyOrder.Direction</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The direction to order by. Defaults to <code>ASCENDING</code>.</p></td>
@@ -3692,9 +3399,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The name of the property.
@@ -3748,13 +3453,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Projection">
-    
-      <span title="google.datastore.v1.Projection">google.datastore.v1.Projection</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Projection"><span title="google.datastore.v1.Projection">google.datastore.v1.Projection</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The projection to return. Defaults to returning all properties.</p></td>
@@ -3771,13 +3471,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.KindExpression">
-    
-      <span title="google.datastore.v1.KindExpression">google.datastore.v1.KindExpression</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.KindExpression"><span title="google.datastore.v1.KindExpression">google.datastore.v1.KindExpression</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The kinds to query (if empty, returns entities of all kinds).
@@ -3793,13 +3488,8 @@
       <td>
         <code title="google.datastore.v1.Filter">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Filter">
-    
-      <span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Filter"><span title="google.datastore.v1.Filter">google.datastore.v1.Filter</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The filter to apply.</p></td>
@@ -3816,13 +3506,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyOrder">
-    
-      <span title="google.datastore.v1.PropertyOrder">google.datastore.v1.PropertyOrder</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyOrder"><span title="google.datastore.v1.PropertyOrder">google.datastore.v1.PropertyOrder</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The order to apply to the query results (if empty, order is unspecified).</p></td>
@@ -3839,13 +3524,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference">
-    
-      <span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The properties to make distinct. The query results will contain the first
@@ -3862,9 +3542,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A starting point for the query results. Query cursors are
@@ -3882,9 +3560,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>An ending point for the query results. Query cursors are
@@ -3902,9 +3578,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The number of results to skip. Applies before limit, but after all other
@@ -3920,9 +3594,7 @@
       <td>
         <code title="google.protobuf.Int32Value">
           
-          
-  <span>google.protobuf.Int32Value</span>
-  
+          <span>google.protobuf.Int32Value</span>
         </code>
       </td>
       <td class="content"><p>The maximum number of results to return. Applies after all other
@@ -3976,13 +3648,8 @@
       <td>
         <code title="google.datastore.v1.EntityResult.ResultType">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.EntityResult.ResultType">
-    
-      <span title="google.datastore.v1.EntityResult.ResultType">google.datastore.v1.EntityResult.ResultType</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.EntityResult.ResultType"><span title="google.datastore.v1.EntityResult.ResultType">google.datastore.v1.EntityResult.ResultType</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The result type for every entity in <code>entity_results</code>.</p></td>
@@ -3999,13 +3666,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult">
-    
-      <span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.EntityResult"><span title="google.datastore.v1.EntityResult">google.datastore.v1.EntityResult</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The results for this batch.</p></td>
@@ -4020,9 +3682,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A cursor that points to the position after the last skipped result.
@@ -4038,9 +3698,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A cursor that points to the position after the last result in the batch.</p></td>
@@ -4055,13 +3713,8 @@
       <td>
         <code title="google.datastore.v1.QueryResultBatch.MoreResultsType">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.QueryResultBatch.MoreResultsType">
-    
-      <span title="google.datastore.v1.QueryResultBatch.MoreResultsType">google.datastore.v1.QueryResultBatch.MoreResultsType</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.QueryResultBatch.MoreResultsType"><span title="google.datastore.v1.QueryResultBatch.MoreResultsType">google.datastore.v1.QueryResultBatch.MoreResultsType</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The state of the query after the current batch.</p></td>
@@ -4076,9 +3729,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The number of results skipped, typically because of an offset.</p></td>
@@ -4093,9 +3744,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>The version number of the snapshot this batch was returned from.
@@ -4117,9 +3766,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>Read timestamp this batch was returned from.
@@ -4148,13 +3795,8 @@
   <span>
     <a href="#message-google.datastore.v1.TransactionOptions.ReadOnly" title="google.datastore.v1.TransactionOptions.ReadOnly">message ReadOnly</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
-    
-      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+    </a>)</span>
   
   </span>
   
@@ -4186,9 +3828,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>Reads entities at the given time.
@@ -4240,13 +3880,8 @@
       <td>
         <code title="google.datastore.v1.ReadOptions.ReadConsistency">
           
-          
-    
-      <a href="google.datastore.v1.html#enum-google.datastore.v1.ReadOptions.ReadConsistency">
-    
-      <span title="google.datastore.v1.ReadOptions.ReadConsistency">google.datastore.v1.ReadOptions.ReadConsistency</span>
+          <a href="google.datastore.v1.html#enum-google.datastore.v1.ReadOptions.ReadConsistency"><span title="google.datastore.v1.ReadOptions.ReadConsistency">google.datastore.v1.ReadOptions.ReadConsistency</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The non-transactional read consistency to use.</p></td>
@@ -4261,9 +3896,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction in which to read. A
@@ -4280,13 +3913,8 @@
       <td>
         <code title="google.datastore.v1.TransactionOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
-    
-      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Options for beginning a new transaction for this request.</p>
@@ -4306,9 +3934,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>Reads entities as they were at the given time. This may not be older
@@ -4331,13 +3957,8 @@
   <span>
     <a href="#message-google.datastore.v1.TransactionOptions.ReadWrite" title="google.datastore.v1.TransactionOptions.ReadWrite">message ReadWrite</a>
   
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in 
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions">
-    
-      <span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
-    </a>
-  )</span>
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+    </a>)</span>
   
   </span>
   
@@ -4369,9 +3990,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The transaction identifier of the transaction being retried.</p></td>
@@ -4425,13 +4044,8 @@
           
             repeated
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Required. A list of keys with complete key paths whose numeric IDs should
@@ -4447,9 +4061,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -4464,9 +4076,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -4556,9 +4166,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>Required. The transaction identifier, returned by a call to
@@ -4574,9 +4182,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -4591,9 +4197,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -4685,13 +4289,8 @@
       <td>
         <code title="google.datastore.v1.ReadOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
-    
-      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions"><span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The options for this query.</p></td>
@@ -4706,13 +4305,8 @@
       <td>
         <code title="google.datastore.v1.PartitionId">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
-    
-      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId"><span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, identified by a partition ID.
@@ -4730,13 +4324,8 @@
       <td>
         <code title="google.datastore.v1.AggregationQuery">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">
-    
-      <span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery"><span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The query to run.</p></td>
@@ -4751,13 +4340,8 @@
       <td>
         <code title="google.datastore.v1.GqlQuery">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">
-    
-      <span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The GQL query to run. This query must be an aggregation query.</p></td>
@@ -4772,9 +4356,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -4789,9 +4371,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -4845,13 +4425,8 @@
       <td>
         <code title="google.datastore.v1.AggregationResultBatch">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResultBatch">
-    
-      <span title="google.datastore.v1.AggregationResultBatch">google.datastore.v1.AggregationResultBatch</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationResultBatch"><span title="google.datastore.v1.AggregationResultBatch">google.datastore.v1.AggregationResultBatch</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A batch of aggregation results. Always present.</p></td>
@@ -4866,13 +4441,8 @@
       <td>
         <code title="google.datastore.v1.AggregationQuery">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery">
-    
-      <span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery"><span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The parsed form of the <code>GqlQuery</code> from the request, if it was set.</p></td>
@@ -4887,9 +4457,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this
@@ -4945,13 +4513,8 @@
       <td>
         <code title="google.datastore.v1.ReadOptions">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions">
-    
-      <span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.ReadOptions"><span title="google.datastore.v1.ReadOptions">google.datastore.v1.ReadOptions</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The options for this query.</p></td>
@@ -4966,13 +4529,8 @@
       <td>
         <code title="google.datastore.v1.PartitionId">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId">
-    
-      <span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PartitionId"><span title="google.datastore.v1.PartitionId">google.datastore.v1.PartitionId</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, identified by a partition ID.
@@ -4990,13 +4548,8 @@
       <td>
         <code title="google.datastore.v1.Query">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
-    
-      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The query to run.</p></td>
@@ -5011,13 +4564,8 @@
       <td>
         <code title="google.datastore.v1.GqlQuery">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery">
-    
-      <span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The GQL query to run. This query must be a non-aggregation query.</p></td>
@@ -5032,9 +4580,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>Required. The ID of the project against which to make the request.</p></td>
@@ -5049,9 +4595,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
@@ -5105,13 +4649,8 @@
       <td>
         <code title="google.datastore.v1.QueryResultBatch">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.QueryResultBatch">
-    
-      <span title="google.datastore.v1.QueryResultBatch">google.datastore.v1.QueryResultBatch</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.QueryResultBatch"><span title="google.datastore.v1.QueryResultBatch">google.datastore.v1.QueryResultBatch</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A batch of query results (always present).</p></td>
@@ -5126,13 +4665,8 @@
       <td>
         <code title="google.datastore.v1.Query">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Query">
-    
-      <span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The parsed form of the <code>GqlQuery</code> from the request, if it was set.</p></td>
@@ -5147,9 +4681,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this
@@ -5210,13 +4742,8 @@
       <td>
         <code title="google.datastore.v1.TransactionOptions.ReadWrite">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadWrite">
-    
-      <span title="google.datastore.v1.TransactionOptions.ReadWrite">google.datastore.v1.TransactionOptions.ReadWrite</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadWrite"><span title="google.datastore.v1.TransactionOptions.ReadWrite">google.datastore.v1.TransactionOptions.ReadWrite</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The transaction should allow both reads and writes.</p></td>
@@ -5231,13 +4758,8 @@
       <td>
         <code title="google.datastore.v1.TransactionOptions.ReadOnly">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadOnly">
-    
-      <span title="google.datastore.v1.TransactionOptions.ReadOnly">google.datastore.v1.TransactionOptions.ReadOnly</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadOnly"><span title="google.datastore.v1.TransactionOptions.ReadOnly">google.datastore.v1.TransactionOptions.ReadOnly</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>The transaction should only allow reads.</p></td>
@@ -5289,9 +4811,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>A boolean value.</p></td>
@@ -5306,9 +4826,7 @@
       <td>
         <code title="int64">
           
-          
-  <span>int64</span>
-  
+          <span>int64</span>
         </code>
       </td>
       <td class="content"><p>An integer value.</p></td>
@@ -5323,9 +4841,7 @@
       <td>
         <code title="double">
           
-          
-  <span>double</span>
-  
+          <span>double</span>
         </code>
       </td>
       <td class="content"><p>A double value.</p></td>
@@ -5340,13 +4856,8 @@
       <td>
         <code title="google.datastore.v1.Key">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Key">
-    
-      <span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>A key value.</p></td>
@@ -5361,13 +4872,8 @@
       <td>
         <code title="google.datastore.v1.Entity">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.Entity">
-    
-      <span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>An entity value.</p>
@@ -5387,9 +4893,7 @@
       <td>
         <code title="google.type.LatLng">
           
-          
-  <span>google.type.LatLng</span>
-  
+          <span>google.type.LatLng</span>
         </code>
       </td>
       <td class="content"><p>A geo point value representing a point on the surface of Earth.</p></td>
@@ -5404,13 +4908,8 @@
       <td>
         <code title="google.datastore.v1.ArrayValue">
           
-          
-    
-      <a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue">
-    
-      <span title="google.datastore.v1.ArrayValue">google.datastore.v1.ArrayValue</span>
+          <a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue"><span title="google.datastore.v1.ArrayValue">google.datastore.v1.ArrayValue</span>
     </a>
-  
         </code>
       </td>
       <td class="content"><p>An array value.
@@ -5428,9 +4927,7 @@
       <td>
         <code title="google.protobuf.Timestamp">
           
-          
-  <span>google.protobuf.Timestamp</span>
-  
+          <span>google.protobuf.Timestamp</span>
         </code>
       </td>
       <td class="content"><p>A timestamp value.
@@ -5447,9 +4944,7 @@
       <td>
         <code title="google.protobuf.NullValue">
           
-          
-  <span>google.protobuf.NullValue</span>
-  
+          <span>google.protobuf.NullValue</span>
         </code>
       </td>
       <td class="content"><p>A null value.</p></td>
@@ -5464,9 +4959,7 @@
       <td>
         <code title="int32">
           
-          
-  <span>int32</span>
-  
+          <span>int32</span>
         </code>
       </td>
       <td class="content"><p>The <code>meaning</code> field should only be populated for backwards compatibility.</p></td>
@@ -5481,9 +4974,7 @@
       <td>
         <code title="string">
           
-          
-  <span>string</span>
-  
+          <span>string</span>
         </code>
       </td>
       <td class="content"><p>A UTF-8 encoded string value.
@@ -5500,9 +4991,7 @@
       <td>
         <code title="bytes">
           
-          
-  <span>bytes</span>
-  
+          <span>bytes</span>
         </code>
       </td>
       <td class="content"><p>A blob value.
@@ -5520,9 +5009,7 @@
       <td>
         <code title="bool">
           
-          
-  <span>bool</span>
-  
+          <span>bool</span>
         </code>
       </td>
       <td class="content"><p>If the value should be excluded from all indexes including those defined
@@ -6006,7 +5493,7 @@
         
           <p>© Example 2023</p>
         
-        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs">sabledocs</a></strong>.</p>
+        <p>Built with <strong><a href="https://github.com/markvincze/sabledocs" target="_blank">sabledocs</a></strong>.</p>
       </div>
     </footer>
   </body>
