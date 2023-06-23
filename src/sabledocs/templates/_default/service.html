@@ -13,7 +13,8 @@
 
 {% for method in service.methods %}
 <div class="box">
-  <h6 class="title is-6">rpc <code>{{ method.name }} ({{ common.type_name(method.request) }}) -> {{ common.type_name(method.response) }}</code></h6>
+  <h6 class="title is-6">rpc <code>{{ method.name }} ({{ common.type_name(method.request) | trim }}) -> {{ common.type_name(method.response) }}</code></h6>
+
   {% if method.description_html %}
   <div class="block">
     <p>{{ method.description_html | safe }}</p>

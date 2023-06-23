@@ -1,13 +1,14 @@
-{% macro type_name(message_field) -%}
-  {% if message_field.package and message_field.type_kind != "UNKNOWN" %}
-    {% if message_field.type_kind == "MESSAGE" %}
+## The %- and -% syntax is used everywhere to trim all the whitespace, to make sure no extra unwanted spaces are around the type name, for example if it's displayed between parens.
+{%- macro type_name(message_field) -%}
+  {%- if message_field.package and message_field.type_kind != "UNKNOWN" -%}
+    {%- if message_field.type_kind == "MESSAGE" -%}
       <a href="{{ message_field.package.name if message_field.package.name else "__default" }}.html#message-{{ message_field.full_type }}">
-    {% else %}
+    {%- else -%}
       <a href="{{ message_field.package.name if message_field.package.name else "__default" }}.html#enum-{{ message_field.full_type }}">
-    {% endif %}
+    {%- endif -%}
       <span title="{{ message_field.full_type }}">{{ message_field.full_type }}</span>
     </a>
-  {% else %}
+  {%- else -%}
   <span>{{ message_field.full_type }}</span>
-  {% endif %}
-{%- endmacro %}
+  {%- endif -%}
+{%- endmacro -%}
