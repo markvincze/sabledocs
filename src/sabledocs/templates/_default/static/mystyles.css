@@ -7945,6 +7945,15 @@ body.dark footer {
 body.dark .bottom-border {
   border-color: #444444; }
 
+body.dark hr {
+  background-color: #444444; }
+
+body.dark .input, .textarea, .select select {
+  background-color: #363636;
+  border-color: #565656;
+  border-radius: 4px;
+  color: white; }
+
 body.dark code {
   background: #2A2A2A;
   color: #569cd6; }
