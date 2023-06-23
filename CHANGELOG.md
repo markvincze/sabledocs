@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.4]
+- Added dark mode support.
+
 ## [0.3]
 - Feature to customize the main page content was added.
 
