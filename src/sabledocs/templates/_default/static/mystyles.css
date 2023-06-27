@@ -7907,12 +7907,21 @@ code {
 .navbar-search-query-input {
   width: 13em; }
 
+@media screen and (max-width: 768px) {
+  .level-right .level-item {
+    margin-top: 0.8em; } }
+
 body {
-  min-height: 100vh; }
+  min-height: 100vh;
+  padding-left: 0.7em;
+  padding-right: 0.7em; }
 
 body .subtitle,
 body .title {
   color: #181818; }
+
+html.dark {
+  background-color: #181818; }
 
 body.dark,
 body.dark .box,

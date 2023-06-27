@@ -50,14 +50,26 @@ code {
     width: 13em;
 }
 
+// For proper spacing of the navbar on mobile
+@media screen and (max-width: 768px) {
+  .level-right .level-item {
+    margin-top: 0.8em;
+  }
+}
 
 body {
-    min-height: 100vh;
+  min-height: 100vh;
+  padding-left: 0.7em;
+  padding-right: 0.7em;
 }
 
 body .subtitle,
 body .title {
     color: $dark;
+}
+
+html.dark {
+    background-color: $dark;
 }
 
 body.dark,
