@@ -1,11 +1,11 @@
 {% import "type_name.html" as common %}
 
-<h5 class="title is-5 type-heading" id="service-{{ service.full_name }}">
+<h4 class="title is-4 type-heading" id="service-{{ service.full_name }}">
   <a href="#service-{{ service.full_name }}" title="{{ service.full_name }}">service {{ service.name }}</a>
   {% if service.repository_url %}
     <a class="type-source-link" href="{{ service.repository_url }}">{{ service.source_file_path }}</a>
   {% endif %}
-</h5>
+</h4>
 
 <div class="block content">
   <p>{{ service.description_html | safe }}</p>
@@ -13,7 +13,15 @@
 
 {% for method in service.methods %}
 <div class="box">
-  <h6 class="title is-6">rpc <code>{{ method.name }} ({{ common.type_name(method.request) | trim }}) -> {{ common.type_name(method.response) }}</code></h6>
+  <div class="block">
+    <h5 class="title is-5" id="service-{{ service.full_name }}-{{ method.name }}">
+      <a href="#service-{{ service.full_name }}-{{ method.name }}">
+        rpc <code>{{ method.name }}</code>
+      </a>
+    </h5>
+    Request: <code>{{ common.type_name(method.request) | trim }}</code><br>
+    Response: <code>{{ common.type_name(method.response) }}</code><br>
+  </div>
 
   {% if method.description_html %}
   <div class="block">

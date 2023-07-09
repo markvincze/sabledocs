@@ -3,13 +3,13 @@
   <p class="mb-2">
     <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
   </p>
-  <h4 class="title is-4">
+  <h3 class="title is-3">
     {% if package.name %}
     Package <code>{{ package.name }}</code>
     {% else %}
     Default package
     {% endif %}
-  </h4>
+  </h3>
 
   <div class="block">
     {% for service in package.services %}
@@ -49,9 +49,9 @@
   {% if package.services %}
 
   <div class="block">
-    <h4 class="title is-4">
+    <h3 class="title is-3">
       Services
-    </h4>
+    </h3>
 
     {% for service in package.services %}
     <div>
@@ -64,9 +64,9 @@
 
   {% if package.messages %}
 
-    <h4 class="title is-4">
+    <h3 class="title is-3">
       Messages
-    </h4>
+    </h3>
 
     {% for message in package.messages %}
       {% if not message.is_map_entry %}
@@ -80,9 +80,9 @@
 
   {% if package.enums %}
 
-    <h4 class="title is-4">
+    <h3 class="title is-3">
       Enums
-    </h4>
+    </h3>
 
     {% for enum in package.enums %}
     <div class="block">
