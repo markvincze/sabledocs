@@ -60,7 +60,15 @@ class ParseContext:
 
     def GetComments(self, path=""):
         location = self.locations.get(self.path if path == "" else path, None)
-        return "" if location is None else location.comments
+        if location is None:
+            return ""
+        else:
+            comments = location.comments
+            if self.config.exclude_buf_lint:
+                comments = '\n'.join([c for c in comments.splitlines() if "buf:lint" not in c])
+            if self.config.respect_exclude:
+                comments = comments.split("@exclude")[0]
+            return comments
 
     def GetLineNumber(self, path=""):
         location = self.locations.get(self.path if path == "" else path, None)

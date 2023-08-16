@@ -21,6 +21,8 @@ class SableConfig:
         self.repository_url = ""
         self.repository_branch = ""
         self.repository_type = RepositoryType.NONE
+        self.respect_exclude = False
+        self.exclude_buf_lint = False
 
         if path.exists(config_file_path):
             print(f"Configuration found in {config_file_path}")
@@ -51,5 +53,9 @@ class SableConfig:
                             self.repository_type = RepositoryType.GITHUB
                         case 'bitbucket':
                             self.repository_type = RepositoryType.BITBUCKET
+
+                self.respect_exclude = config_values.get('respect-exclude', False)
+
+                self.exclude_buf_lint = config_values.get('exclude-buf-lint', False)
         else:
             print("sabledocs.toml file not found, using default configuration.")

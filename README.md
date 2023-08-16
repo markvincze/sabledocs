@@ -78,6 +78,12 @@ footer-content = "© 2023 Jane Doe. All rights reserved."
 repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
+
+# In each comment, ignore everything following '@exclude'.
+# Default value: false
+respect-exclude = true
+# In each comment, ignore every line containing 'buf:lint'.
+exclude_buf_lint = true
 ```
 
 #### Main page content
