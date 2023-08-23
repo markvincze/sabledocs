@@ -78,6 +78,13 @@ footer-content = "© 2023 Jane Doe. All rights reserved."
 repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
+
+# In each comment, ignore everything that comes after (until end of the comment) one of the keywords.
+# Default value: []
+ignore-comments-after = ["@exclude"]
+# In each comment, ignore all lines that contain at least one keyword from the following list.
+# Default value: []
+ignore-comment-lines-containing = ["buf:lint"]
 ```
 
 #### Main page content
