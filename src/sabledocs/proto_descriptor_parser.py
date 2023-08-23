@@ -64,10 +64,10 @@ class ParseContext:
             return ""
         else:
             comments = location.comments
-            if self.config.exclude_buf_lint:
-                comments = '\n'.join([c for c in comments.splitlines() if "buf:lint" not in c])
-            if self.config.respect_exclude:
-                comments = comments.split("@exclude")[0]
+            for ignore_after in self.config.ignore_comments_after:
+                comments = comments.split(ignore_after)[0]
+            for ignore_line in self.config.ignore_comment_lines_containing:
+                comments = '\n'.join([c for c in comments.splitlines() if ignore_line not in c])
             return comments
 
     def GetLineNumber(self, path=""):

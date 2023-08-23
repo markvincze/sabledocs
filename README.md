@@ -79,11 +79,12 @@ repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
 
-# In each comment, ignore everything following '@exclude'.
-# Default value: false
-respect-exclude = true
-# In each comment, ignore every line containing 'buf:lint'.
-exclude_buf_lint = true
+# In each comment, ignore everything that comes after (until end of the comment) one of the keywords.
+# Default value: []
+ignore-comments-after = ["@exclude"]
+# In each comment, ignore all lines that contain at least one keyword from the following list.
+# Default value: []
+ignore-comment-lines-containing = ["buf:lint"]
 ```
 
 #### Main page content

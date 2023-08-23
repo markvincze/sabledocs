@@ -1,6 +1,7 @@
 from enum import Enum
 from os import path
 import tomllib
+from typing import List
 
 
 class RepositoryType(Enum):
@@ -21,8 +22,8 @@ class SableConfig:
         self.repository_url = ""
         self.repository_branch = ""
         self.repository_type = RepositoryType.NONE
-        self.respect_exclude = False
-        self.exclude_buf_lint = False
+        self.ignore_comments_after: List[str] = []
+        self.ignore_comment_lines_containing: List[str] = []
 
         if path.exists(config_file_path):
             print(f"Configuration found in {config_file_path}")
@@ -54,8 +55,8 @@ class SableConfig:
                         case 'bitbucket':
                             self.repository_type = RepositoryType.BITBUCKET
 
-                self.respect_exclude = config_values.get('respect-exclude', False)
+                self.ignore_comments_after = config_values.get('ignore-comments-after', [])
 
-                self.exclude_buf_lint = config_values.get('exclude-buf-lint', False)
+                self.ignore_comment_lines_containing = config_values.get('ignore-comment-lines-containing', [])
         else:
             print("sabledocs.toml file not found, using default configuration.")
