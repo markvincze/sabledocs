@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.6]
+- Added options `ignore-comments-after` and `ignore-comment-lines-containing`.
+
 ## [0.4]
 - Added dark mode support.
 
