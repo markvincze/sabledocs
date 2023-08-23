@@ -60,7 +60,15 @@ class ParseContext:
 
     def GetComments(self, path=""):
         location = self.locations.get(self.path if path == "" else path, None)
-        return "" if location is None else location.comments
+        if location is None:
+            return ""
+        else:
+            comments = location.comments
+            for ignore_after in self.config.ignore_comments_after:
+                comments = comments.split(ignore_after)[0]
+            for ignore_line in self.config.ignore_comment_lines_containing:
+                comments = '\n'.join([c for c in comments.splitlines() if ignore_line not in c])
+            return comments
 
     def GetLineNumber(self, path=""):
         location = self.locations.get(self.path if path == "" else path, None)
