@@ -85,6 +85,10 @@ ignore-comments-after = ["@exclude"]
 # In each comment, ignore all lines that contain at least one keyword from the following list.
 # Default value: []
 ignore-comment-lines-containing = ["buf:lint"]
+
+# In the templates, one can now use non_hidden_packages instead of packages where the following are hidden:
+# Default value: []
+hide-packages = ["google.protobuf"]
 ```
 
 #### Main page content

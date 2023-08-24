@@ -1,5 +1,10 @@
 # Changelog
 
+## Unpublished
+- Packages can now be hidden. Added
+  - option `hide-packages` to the config and
+  - iterable `non_hidden_packages` to be used in the templates `package.html` and `index.html`
+
 ## [0.6]
 - Added options `ignore-comments-after` and `ignore-comment-lines-containing`.
 
