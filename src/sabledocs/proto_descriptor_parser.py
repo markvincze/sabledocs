@@ -331,6 +331,8 @@ def parse_proto_descriptor(sable_config: SableConfig):
     all_messages = []
     all_enums = []
     all_services = []
+
+    print()
     with open(sable_config.input_descriptor_file, mode="rb") as proto_descriptor_file:
         fds = FileDescriptorSet.FromString(proto_descriptor_file.read())
         for file in fds.file:

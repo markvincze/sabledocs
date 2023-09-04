@@ -2,8 +2,8 @@ import json
 import markdown
 import os
 import pprint
+import sys
 from distutils.dir_util import copy_tree
-from re import template
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -12,7 +12,18 @@ from sabledocs.proto_descriptor_parser import parse_proto_descriptor
 from sabledocs.sable_config import SableConfig
 
 
+def check_python_version():
+    print(f"Python {sys.version}")
+
+    if sys.version_info.major < 3 or (sys.version_info.major == 3 and sys.version_info.minor < 11):
+        print("WARNING: Sabledocs requires Python version 3.11 or higher")
+
+
 def cli():
+    print("Starting Sabledocs")
+    check_python_version()
+
+    print()
     print("Starting documentation generation.")
     sable_config = SableConfig("sabledocs.toml")
 
@@ -46,12 +57,14 @@ def cli():
 
     main_page_content = ""
 
-    print(f"config main page: {sable_config.main_page_content_file}")
-
-    if sable_config.main_page_content_file != "" and os.path.exists(sable_config.main_page_content_file):
-        print("Found main content page")
-        with open(sable_config.main_page_content_file, mode='r') as main_page_content_file:
-            main_page_content = markdown.markdown(main_page_content_file.read())
+    if sable_config.main_page_content_file != "":
+        print()
+        if os.path.exists(sable_config.main_page_content_file):
+            print(f"Found main content page, {sable_config.main_page_content_file}.")
+            with open(sable_config.main_page_content_file, mode='r') as main_page_content_file:
+                main_page_content = markdown.markdown(main_page_content_file.read())
+        else:
+            print(f"WARNING: The configured main content page, {sable_config.main_page_content_file} was not found.")
 
     with open(os.path.join(sable_config.output_dir, 'index.html'), 'wb') as fh:
         output = jinja_env.get_template("index.html").render(
@@ -78,6 +91,8 @@ def cli():
             fh.write(output)
 
     index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
+
+    print()
     print(f"Building documentation done. It can be opened with {index_abs_path}")
 
 if __name__ == '__main__':  # pragma: no cover
