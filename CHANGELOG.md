@@ -1,6 +1,6 @@
 # Changelog
 
-## Unpublished
+## [0.7]
 - Packages can now be hidden. Added
   - option `hidden-packages` to the config and
   - iterable `non_hidden_packages` to be used in the templates `package.html` and `index.html`
