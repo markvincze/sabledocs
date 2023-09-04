@@ -114,5 +114,5 @@ class SableContext:
 
     @property
     def non_hidden_packages(self):
-        return [p for p in self.packages if p.name not in self.sable_config.hide_packages]
+        return [p for p in self.packages if p.name not in self.sable_config.hidden_packages]
 
