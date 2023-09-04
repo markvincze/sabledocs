@@ -24,6 +24,7 @@ class SableConfig:
         self.repository_type = RepositoryType.NONE
         self.ignore_comments_after: List[str] = []
         self.ignore_comment_lines_containing: List[str] = []
+        self.hidden_packages: List[str] = []
 
         if path.exists(config_file_path):
             print(f"Configuration found in {config_file_path}")
@@ -58,5 +59,7 @@ class SableConfig:
                 self.ignore_comments_after = config_values.get('ignore-comments-after', [])
 
                 self.ignore_comment_lines_containing = config_values.get('ignore-comment-lines-containing', [])
+
+                self.hidden_packages = config_values.get('hidden-packages', [])
         else:
             print("sabledocs.toml file not found, using default configuration.")

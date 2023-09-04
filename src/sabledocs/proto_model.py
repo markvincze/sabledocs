@@ -1,4 +1,5 @@
 from pprint import pformat
+from sabledocs.sable_config import SableConfig
 
 
 class CodeItem:
@@ -105,8 +106,13 @@ class LocationInfo:
 
 
 class SableContext:
-    def __init__(self, packages: list[Package], all_messages: list[Message], all_enums: list[Enum]):
+    def __init__(self, packages: list[Package], all_messages: list[Message], all_enums: list[Enum], sable_config: SableConfig):
         self.packages = packages
         self.all_messages = all_messages
         self.all_enums = all_enums
+        self.sable_config = sable_config
+
+    @property
+    def non_hidden_packages(self):
+        return [p for p in self.packages if p.name not in self.sable_config.hidden_packages]
 

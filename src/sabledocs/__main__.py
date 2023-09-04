@@ -38,6 +38,7 @@ def cli():
                 sable_config=sable_config,
                 package=package,
                 packages=sable_context.packages,
+                non_hidden_packages=sable_context.non_hidden_packages,
                 all_messages=sable_context.all_messages,
                 all_enums=sable_context.all_enums).encode('utf-8')
 
@@ -57,6 +58,7 @@ def cli():
             sable_config = sable_config,
             main_page_content = main_page_content,
             packages = sable_context.packages,
+            non_hidden_packages=sable_context.non_hidden_packages,
             all_messages = sable_context.all_messages,
             all_enums = sable_context.all_enums).encode('utf-8')
 

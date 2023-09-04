@@ -362,5 +362,6 @@ def parse_proto_descriptor(sable_config: SableConfig):
                 packages.values(),
                 key=lambda p: (p.name)),
             all_messages,
-            all_enums)
+            all_enums,
+            sable_config)
 
