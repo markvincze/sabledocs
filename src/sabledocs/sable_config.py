@@ -14,7 +14,7 @@ class SableConfig:
     def __init__(self, config_file_path):
         self.module_title = "Protobuf module documentation"
         self.input_descriptor_file = "descriptor.pb"
-        self.template = "_default"
+        self.template = ""
         self.footer_content = ""
         self.main_page_content_file = ""
         self.output_dir = "sabledocs_output"

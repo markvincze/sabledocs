@@ -30,7 +30,7 @@ def cli():
     # Execute the main processing of the Proto contracts.
     sable_context = parse_proto_descriptor(sable_config)
 
-    template_base_dir = os.path.join(os.path.dirname(__file__), "templates", "_default") if sable_config.template == "_default" else f"templates/{sable_config.template}"
+    template_base_dir = sable_config.template if sable_config.template else os.path.join(os.path.dirname(__file__), "templates", "_default")
 
     jinja_env = Environment(
         loader=FileSystemLoader(searchpath=template_base_dir),
