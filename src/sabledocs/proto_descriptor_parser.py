@@ -118,7 +118,7 @@ def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
     mf.number = field.number
-    mf.label = to_label_name(field.label)
+    mf.label = to_label_name(field.label, field.proto3_optional)
     mf.description = ctx.GetComments()
     mf.description_html = markdown.markdown(mf.description)
     mf.line_number = ctx.GetLineNumber()
@@ -318,12 +318,13 @@ def to_type_name(type: FieldDescriptorProto.Type):
         case _: "unknown"
 
 
-def to_label_name(type):
+def to_label_name(type, proto3_optional):
+    if proto3_optional:
+        return "optional"
     match type:
-        case FieldDescriptorProto.Label.LABEL_OPTIONAL: return "optional"
         case FieldDescriptorProto.Label.LABEL_REQUIRED: return "required"
         case FieldDescriptorProto.Label.LABEL_REPEATED: return "repeated"
-        case _: ""
+        case _: return ""
 
 
 def parse_proto_descriptor(sable_config: SableConfig):
