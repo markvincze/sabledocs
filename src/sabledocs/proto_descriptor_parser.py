@@ -347,6 +347,7 @@ def parse_proto_descriptor(sable_config: SableConfig):
             ctx = ParseContext.New(sable_config, package, file.name, locations)
 
             package.description += ctx.GetComments(str(COMMENT_PACKAGE_INDEX))
+            package.description_html = markdown.markdown(package.description)
 
             parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), None, "")
             parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), None, "")
