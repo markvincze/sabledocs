@@ -15,6 +15,7 @@ class SableConfig:
         self.module_title = "Protobuf module documentation"
         self.input_descriptor_file = "descriptor.pb"
         self.template = "_default"
+        self.template_path = ""
         self.footer_content = ""
         self.main_page_content_file = ""
         self.output_dir = "sabledocs_output"
@@ -36,6 +37,8 @@ class SableConfig:
                 self.input_descriptor_file = config_values.get('input-descriptor-file', self.input_descriptor_file)
 
                 self.template = config_values.get('template', self.template).rstrip("/\\")
+
+                self.template_path = config_values.get('template-path', self.template_path).rstrip("/\\")
 
                 self.footer_content = config_values.get('footer-content', self.footer_content)
 
