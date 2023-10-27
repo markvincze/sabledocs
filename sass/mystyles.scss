@@ -74,12 +74,11 @@ html.dark {
 
 body.dark,
 body.dark .box,
+body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6,
+body.dark table thead td,
+body.dark table thead th,
 body.dark table {
     background-color: $dark;
-    color: $light;
-}
-
-body.dark th {
     color: $light;
 }
 
