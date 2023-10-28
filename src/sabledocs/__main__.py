@@ -27,6 +27,11 @@ def cli():
     print("Starting documentation generation.")
     sable_config = SableConfig("sabledocs.toml")
 
+    if not os.path.exists(sable_config.input_descriptor_file):
+        print()
+        print(f'ERROR: The Proto descriptor file {sable_config.input_descriptor_file} does not exist. Exiting.')
+        return
+
     # Execute the main processing of the Proto contracts.
     sable_context = parse_proto_descriptor(sable_config)
 
