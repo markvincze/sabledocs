@@ -67,6 +67,23 @@ jobs:
             chmod +x generate_sample_docs.sh
             ./generate_sample_docs.sh
 
+  publish_docker_image:
+    docker:
+      - image: cimg/python:3.11.3
+    steps:
+      - checkout
+      # - add_ssh_keys:
+      #     fingerprints:
+      #       - "d5:12:33:42:6b:cd:57:b7:7f:08:2c:7a:a2:c4:54:6d"
+      # - python/install-packages:
+      #     pkg-manager: pip
+      #     app-dir: ~/project/src/sabledocs/
+      - run:
+          command: |
+            package_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
+            if [ "$CIRCLE_BRANCH" = "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev0"; fi
+            docker build -t markvincze/sabledocs:${package_version}.${revision} .
+
 workflows:
   build-and-publish:
     jobs:
@@ -89,5 +106,13 @@ workflows:
           requires:
             - build_stable
       - generate_sample_docs:
+          requires:
+            - publish_pypi_stable
+      - publish_docker_image:
+          name: publish_docker_image_dev
+          requires:
+            - publish_pypi_dev
+      - publish_docker_image:
+          name: publish_docker_image_stable
           requires:
             - publish_pypi_stable
