@@ -18,6 +18,7 @@ jobs:
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
             export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}dev0"
+            echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}dev0'" >> $BASH_ENV
       - persist_to_workspace:
           root: dist
           paths:
@@ -36,7 +37,7 @@ jobs:
             pip install build
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}"
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
-            export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}"
+            echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}'" >> $BASH_ENV
       - persist_to_workspace:
           root: dist
           paths:
