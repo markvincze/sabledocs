@@ -16,6 +16,8 @@ jobs:
           command: |
             pip install build
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
+            package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
+            export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}dev0"
       - persist_to_workspace:
           root: dist
           paths:
@@ -33,6 +35,8 @@ jobs:
           command: |
             pip install build
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}"
+            package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
+            export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}"
       - persist_to_workspace:
           root: dist
           paths:
@@ -78,14 +82,14 @@ jobs:
       # - python/install-packages:
       #     pkg-manager: pip
       #     app-dir: ~/project/src/sabledocs/
+            # package_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
+            # if [ "$CIRCLE_BRANCH" = "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev0"; fi
       - setup_remote_docker:
           version: 20.10.14
       - run:
           command: |
-            package_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
-            if [ "$CIRCLE_BRANCH" = "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev0"; fi
             protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
-            docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${package_version}.${revision} --build-arg protoc_version=${protoc_version:1} .
+            docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
 
 workflows:
   build-and-publish:
