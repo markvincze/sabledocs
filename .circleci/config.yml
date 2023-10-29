@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.5.0
+  python: circleci/python@2.1.1
 
 jobs:
   build:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - checkout
       - python/install-packages:
@@ -33,18 +33,19 @@ jobs:
 
   publish_pypi:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - attach_workspace:
           at: .
       - run:
+          name: Publish Python package to PyPi
           command: |
             pip install twine
             python -m twine upload -u __token__ -p ${PYPI_API_TOKEN} ~/project/dist/*
 
   generate_sample_docs:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -54,6 +55,7 @@ jobs:
           pkg-manager: pip
           app-dir: ~/project/src/sabledocs/
       - run:
+          name: Generate and publish the sample documentation
           command: |
             git config --global user.email "mrk.vincze@gmail.com"
             git config --global user.name "sabledocs CI"
@@ -62,7 +64,7 @@ jobs:
 
   publish_docker_image:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - checkout
       - attach_workspace:
