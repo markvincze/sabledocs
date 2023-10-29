@@ -104,7 +104,7 @@ See the example on the main page of the [demo site](https://markvincze.github.io
 
 ### Using with Docker
 
-For convenient usage in CI builds and other scenarios where a Docker image is preferable, the image [`markvincze/sabledocs`](https://hub.docker.com/r/markvincze/sabledocs) can be used, which as both the `protoc` CLI, and `sabledocs` preinstalled.
+For convenient usage in CI builds and other scenarios where a Docker image is preferable, the image [`markvincze/sabledocs`](https://hub.docker.com/r/markvincze/sabledocs) can be used, which has both the `protoc` CLI, and `sabledocs` preinstalled.
 
 ## For maintainers
 
