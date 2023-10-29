@@ -16,13 +16,13 @@ jobs:
           name: Build Python package
           command: |
             pip install build
-            if [ $CIRCLE_BRANCH == "main" ]; then revision="${CIRCLE_BUILD_NUM}dev"; else revision="${CIRCLE_BUILD_NUM}"; fi
+            if [ $CIRCLE_BRANCH == "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev"; fi
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${revision}"
       - run:
           name: Persist package version in env var
           command: |
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
-            if [ $CIRCLE_BRANCH == "main" ]; then package_version="$package_base_version.${CIRCLE_BUILD_NUM}.dev0"; else package_version="$package_base_version.${CIRCLE_BUILD_NUM}"; fi
+            if [ $CIRCLE_BRANCH == "main" ]; then package_version="$package_base_version.${CIRCLE_BUILD_NUM}"; else package_version="$package_base_version.${CIRCLE_BUILD_NUM}.dev0"; fi
             echo "export PACKAGE_VERSION='$package_version'" >> $BASH_ENV
             cp $BASH_ENV bash.env
       - persist_to_workspace:
