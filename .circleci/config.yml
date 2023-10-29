@@ -85,7 +85,7 @@ jobs:
             if [ $CIRCLE_BRANCH == "main" ]; then latest_tag="-t markvincze/sabledocs:latest"; else latest_tag=""; fi
             docker build -t ${image_tag} ${latest_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
             echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
-            docker push "${image_tag}"
+            docker push --all-tags "${image_tag}"
 
 workflows:
   build-and-publish:
