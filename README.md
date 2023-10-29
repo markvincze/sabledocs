@@ -91,7 +91,7 @@ ignore-comment-lines-containing = ["buf:lint"]
 hidden-packages = ["google.protobuf"]
 ```
 
-#### Main page content
+### Main page content
 
 Custom introduction content can be specified in a separate file, which can be displayed above the packages list on the main page of the documentation.  
 Then the name of the file has to be specified in the `main-page-content-file` configuration setting.
@@ -105,6 +105,52 @@ See the example on the main page of the [demo site](https://markvincze.github.io
 ### Using with Docker
 
 For convenient usage in CI builds and other scenarios where a Docker image is preferable, the image [`markvincze/sabledocs`](https://hub.docker.com/r/markvincze/sabledocs) can be used, which has both the `protoc` CLI, and `sabledocs` preinstalled.
+
+### Markdown support
+
+Markdown can be used both in the main content page, and also in the Protobuf comments.  
+Code blocks can be defined both with indentation, and with the ``` fence.
+
+It's important that if we use fenced code blocks in the Protobuf comments, there must be no spaces between the foreslashes at the start of the line, and the backticks.  
+For example this code block will not work.
+
+```
+// These are the comments for SearchRequest
+//
+// ```
+// namespace Test
+// {
+//     public class Foo {
+//         public string Bar { get; set; }
+//     }
+// }
+// ```
+message SearchRequest {
+  string query = 1;
+  int32 page_number = 2;
+  int32 results_per_page = 3;
+}
+```
+
+The spaces between the foreslash and the backtick have to be removed, then the code blocks will correctly appear.
+
+```
+// These are the comments for SearchRequest
+//
+//```
+//namespace Test
+//{
+//    public class Foo {
+//        public string Bar { get; set; }
+//    }
+//}
+//```
+message SearchRequest {
+  string query = 1;
+  int32 page_number = 2;
+  int32 results_per_page = 3;
+}
+```
 
 ## For maintainers
 
@@ -124,4 +170,14 @@ Install from the local folder:
 
 ```
 pip install .
+```
+
+Build the library and the sample documentation, from the `sample` folder:
+
+```
+# PowerShell
+npm run css-build; pip install ..; sabledocs; .\output\index.html
+
+# Bash
+npm run css-build && pip install .. && sabledocs && .\output\index.html
 ```
