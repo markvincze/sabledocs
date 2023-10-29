@@ -84,7 +84,8 @@ jobs:
           command: |
             package_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
             if [ "$CIRCLE_BRANCH" = "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev0"; fi
-            docker build -t markvincze/sabledocs:${package_version}.${revision} .
+            protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
+            docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${package_version}.${revision} --build-arg protoc_version=${protoc_version:1} .
 
 workflows:
   build-and-publish:
