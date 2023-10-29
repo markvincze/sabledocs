@@ -101,9 +101,11 @@ jobs:
           version: 20.10.14
       - run:
           command: |
+            cat bash.env
+            echo $BASH_ENV
             cat bash.env >> $BASH_ENV
             protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
-            echo "docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} ."
+            echo "docker build -t markvincze/sabledocs:${PACKAGE_VERSION} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} ."
             docker build -t markvincze/sabledocs:${PACKAGE_VERSION} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
 
 workflows:
