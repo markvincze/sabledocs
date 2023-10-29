@@ -20,7 +20,7 @@ jobs:
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
             echo "Determining package version"
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
-            echo "Package version: ${package_version}"
+            echo "Package version: ${package_base_version}"
             echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}dev0'" >> $BASH_ENV
             printenv PACKAGE_VERSION
             cp $BASH_ENV bash.env
