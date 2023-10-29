@@ -78,6 +78,8 @@ jobs:
       # - python/install-packages:
       #     pkg-manager: pip
       #     app-dir: ~/project/src/sabledocs/
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
           command: |
             package_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
