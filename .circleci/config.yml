@@ -1,57 +1,51 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.5.0
+  python: circleci/python@2.1.1
 
 jobs:
-  build_dev:
+  build:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - checkout
       - python/install-packages:
           pkg-manager: pip
           app-dir: ~/project/src/sabledocs/
       - run:
+          name: Build Python package
           command: |
             pip install build
-            python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
-      - persist_to_workspace:
-          root: dist
-          paths:
-            - "*"
-
-  build_stable:
-    docker:
-      - image: cimg/python:3.11.3
-    steps:
-      - checkout
-      - python/install-packages:
-          pkg-manager: pip
-          app-dir: ~/project/src/sabledocs/
+            if [ $CIRCLE_BRANCH == "main" ]; then revision="${CIRCLE_BUILD_NUM}"; else revision="${CIRCLE_BUILD_NUM}dev"; fi
+            python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${revision}"
       - run:
+          name: Persist package version in env var
           command: |
-            pip install build
-            python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}"
+            package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
+            if [ $CIRCLE_BRANCH == "main" ]; then package_version="$package_base_version.${CIRCLE_BUILD_NUM}"; else package_version="$package_base_version.${CIRCLE_BUILD_NUM}.dev0"; fi
+            echo "export PACKAGE_VERSION='$package_version'" >> $BASH_ENV
+            cp $BASH_ENV bash.env
       - persist_to_workspace:
-          root: dist
+          root: .
           paths:
-            - "*"
+            - "dist/*"
+            - "bash.env"
 
   publish_pypi:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - attach_workspace:
-          at: dist
+          at: .
       - run:
+          name: Publish Python package to PyPi
           command: |
             pip install twine
             python -m twine upload -u __token__ -p ${PYPI_API_TOKEN} ~/project/dist/*
 
   generate_sample_docs:
     docker:
-      - image: cimg/python:3.11.3
+      - image: cimg/python:3.12.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -61,21 +55,49 @@ jobs:
           pkg-manager: pip
           app-dir: ~/project/src/sabledocs/
       - run:
+          name: Generate and publish the sample documentation
           command: |
             git config --global user.email "mrk.vincze@gmail.com"
             git config --global user.name "sabledocs CI"
             chmod +x generate_sample_docs.sh
             ./generate_sample_docs.sh
 
+  publish_docker_image:
+    docker:
+      - image: cimg/python:3.12.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - setup_remote_docker:
+          version: 20.10.14
+      - run:
+          name: Restore environment variables
+          command: |
+            cat bash.env
+            echo $BASH_ENV
+            cat bash.env >> $BASH_ENV
+      - run:
+          name: Build and publish Docker image
+          command: |
+            protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
+            image_tag=markvincze/sabledocs:${PACKAGE_VERSION}
+            if [ $CIRCLE_BRANCH == "main" ]; then latest_tag="-t markvincze/sabledocs:latest"; else latest_tag=""; fi
+            docker build -t ${image_tag} ${latest_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
+            echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
+            docker push "${image_tag}"
+
 workflows:
   build-and-publish:
     jobs:
-      - build_dev:
+      - build:
+          name: build_dev
           filters:
             branches:
               ignore:
                 - main
-      - build_stable:
+      - build:
+          name: build_stable
           filters:
             branches:
               only:
@@ -89,5 +111,13 @@ workflows:
           requires:
             - build_stable
       - generate_sample_docs:
+          requires:
+            - publish_pypi_stable
+      - publish_docker_image:
+          name: publish_docker_image_dev
+          requires:
+            - publish_pypi_dev
+      - publish_docker_image:
+          name: publish_docker_image_stable
           requires:
             - publish_pypi_stable
