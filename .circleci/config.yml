@@ -12,17 +12,21 @@ jobs:
       - python/install-packages:
           pkg-manager: pip
           app-dir: ~/project/src/sabledocs/
+          # export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}dev0"
+          # echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}dev0'" >> $BASH_ENV
       - run:
           command: |
             pip install build
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}dev"
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
-            export PACKAGE_VERSION="$package_base_version.${CIRCLE_BUILD_NUM}dev0"
             echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}dev0'" >> $BASH_ENV
+            printenv PACKAGE_VERSION
+            cp $BASH_ENV bash.env
       - persist_to_workspace:
-          root: dist
+          root: .
           paths:
-            - "*"
+            - "dist/*"
+            - "bash.env"
 
   build_stable:
     docker:
@@ -38,17 +42,20 @@ jobs:
             python -m build -C--global-option=egg_info -C--global-option=--tag-build=".${CIRCLE_BUILD_NUM}"
             package_base_version=$(grep 'version =' pyproject.toml | sed -e 's/version = "\(.*\)"/\1/')
             echo "export PACKAGE_VERSION='$package_base_version.${CIRCLE_BUILD_NUM}'" >> $BASH_ENV
+            printenv PACKAGE_VERSION
+            cp $BASH_ENV bash.env
       - persist_to_workspace:
-          root: dist
+          root: .
           paths:
-            - "*"
+            - "dist/*"
+            - "bash.env"
 
   publish_pypi:
     docker:
       - image: cimg/python:3.11.3
     steps:
       - attach_workspace:
-          at: dist
+          at: .
       - run:
           command: |
             pip install twine
@@ -76,6 +83,8 @@ jobs:
     docker:
       - image: cimg/python:3.11.3
     steps:
+      - attach_workspace:
+          at: .
       - checkout
       # - add_ssh_keys:
       #     fingerprints:
@@ -89,9 +98,10 @@ jobs:
           version: 20.10.14
       - run:
           command: |
+            cat bash.env >> $BASH_ENV
             protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
             echo "docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} ."
-            docker build -t markvincze/sabledocs:${package_version}.${revision} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
+            docker build -t markvincze/sabledocs:${PACKAGE_VERSION} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
 
 workflows:
   build-and-publish:
