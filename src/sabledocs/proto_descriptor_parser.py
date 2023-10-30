@@ -153,7 +153,6 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
     m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}".lstrip(".")
     m.parent_message = parent_message
     m.description = ctx.GetComments()
-    print(f'Description: {m.description}')
     m.description_html = markdown_to_html(m.description)
     m.source_file_path = ctx.source_file_path
     m.line_number = ctx.GetLineNumber()
@@ -372,4 +371,4 @@ def parse_proto_descriptor(sable_config: SableConfig):
 
 
 def markdown_to_html(md):
-    markdown.markdown(md, extensions=['fenced_code'])
+    return markdown.markdown(md, extensions=['fenced_code'])
