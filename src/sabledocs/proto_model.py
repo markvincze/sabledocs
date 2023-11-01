@@ -22,6 +22,7 @@ class MessageField(CodeItem):
         self.default_value = ''
         self.package = None
         self.type_kind = "UNKNOWN"
+        self.oneof_name = None
 
     def __repr__(self):
         filtered_vars = dict(filter(lambda elem: elem[0] != "package", vars(self).items()))

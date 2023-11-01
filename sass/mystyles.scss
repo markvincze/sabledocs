@@ -57,10 +57,13 @@ code {
   }
 }
 
-body {
-  min-height: 100vh;
+#main-content {
   padding-left: 0.7em;
   padding-right: 0.7em;
+}
+
+body {
+  min-height: 100vh;
 }
 
 body .subtitle,

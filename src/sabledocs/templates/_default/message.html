@@ -34,6 +34,9 @@
       <td>{{ field.number }}</td>
       <td>
         {{ field.name }}
+        {% if field.oneof_name %}
+          (in oneof {{ field.oneof_name }})
+        {% endif %}
       </td>
       <td>
         <code title="{{ field.full_type }}">

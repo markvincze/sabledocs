@@ -7911,10 +7911,12 @@ code {
   .level-right .level-item {
     margin-top: 0.8em; } }
 
-body {
-  min-height: 100vh;
+#main-content {
   padding-left: 0.7em;
   padding-right: 0.7em; }
+
+body {
+  min-height: 100vh; }
 
 body .subtitle,
 body .title {
