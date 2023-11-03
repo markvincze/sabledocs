@@ -105,7 +105,7 @@ jobs:
                   default_variant_tag=markvincze/sabledocs:${PACKAGE_VERSION}
                   docker tag ${specific_image_tag} ${default_variant_tag}
                   echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
-                  docker push ${specific_image_tag}
+                  docker push ${default_variant_tag}
       - when:
           condition: << parameters.add_latest_tag >>
           steps:
