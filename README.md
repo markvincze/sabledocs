@@ -89,6 +89,12 @@ ignore-comment-lines-containing = ["buf:lint"]
 # In the templates, one can now use non_hidden_packages instead of packages where the following are hidden:
 # Default value: []
 hidden-packages = ["google.protobuf"]
+
+# By default, packages and members in a package are ordered alphabetically.
+# By setting the member-ordering option to "preserve", the original order present in the Protobuf definitions will be preserved.
+# When using the "preserve" option and having multiple proto input files, the order of the members will depend not just on the
+# physical order in the Protobuf files,but also on the order in which the files were listed in the input when `protoc` was executed.
+member-ordering = "preserve"
 ```
 
 ### Main page content
