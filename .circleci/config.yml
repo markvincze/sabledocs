@@ -65,6 +65,16 @@ jobs:
   publish_docker_image:
     docker:
       - image: cimg/python:3.12.0
+    parameters:
+      variant:
+        type: string
+        default: bookworm
+      is_default_variant:
+        type: boolean
+        default: false
+      add_latest_tag:
+        type: boolean
+        default: false
     steps:
       - checkout
       - attach_workspace:
@@ -74,19 +84,38 @@ jobs:
       - run:
           name: Restore environment variables
           command: |
-            cat bash.env
-            echo $BASH_ENV
+            # cat bash.env
+            # echo $BASH_ENV
             cat bash.env >> $BASH_ENV
       - run:
           name: Build and publish Docker image
           command: |
             protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
-            image_tag=markvincze/sabledocs:${PACKAGE_VERSION}
-            if [ $CIRCLE_BRANCH == "main" ]; then latest_tag="-t markvincze/sabledocs:latest"; else latest_tag=""; fi
-            docker build -t ${image_tag} ${latest_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} .
+            image_tag=markvincze/sabledocs:${PACKAGE_VERSION}-<< parameters.variant >>
+            docker build -t ${image_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} ./docker/<< parameters.variant >>
             echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
             docker push "${image_tag}"
-            if [ $CIRCLE_BRANCH == "main" ]; then docker push markvincze/sabledocs:latest; fi
+      - when:
+          condition: << parameters.is_default_variant >>
+          steps:
+            - run:
+                name: Tag default variant version
+                command: |
+                  specific_image_tag=markvincze/sabledocs:${PACKAGE_VERSION}-<< parameters.variant >>
+                  default_variant_tag=markvincze/sabledocs:${PACKAGE_VERSION}
+                  docker tag ${specific_image_tag} ${default_variant_tag}
+                  echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
+                  docker push ${specific_image_tag}
+      - when:
+          condition: << parameters.add_latest_tag >>
+          steps:
+            - run:
+                name: Add latest tag
+                command: |
+                  specific_image_tag=markvincze/sabledocs:${PACKAGE_VERSION}-<< parameters.variant >>
+                  docker tag ${specific_image_tag} markvincze/sabledocs:latest
+                  echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
+                  docker push markvincze/sabledocs:latest
 
 workflows:
   build-and-publish:
@@ -115,10 +144,35 @@ workflows:
           requires:
             - publish_pypi_stable
       - publish_docker_image:
-          name: publish_docker_image_dev
+          name: publish_docker_image_bookworm_dev
+          variant: bookworm
+          is_default_variant: true
           requires:
             - publish_pypi_dev
       - publish_docker_image:
-          name: publish_docker_image_stable
+          name: publish_docker_image_slim_dev
+          variant: slim
+          requires:
+            - publish_pypi_dev
+      - publish_docker_image:
+          name: publish_docker_image_alpine_dev
+          variant: alpine
+          requires:
+            - publish_pypi_dev
+      - publish_docker_image:
+          name: publish_docker_image_bookworm_stable
+          variant: bookworm
+          is_default_variant: true
+          add_latest_tag: true
+          requires:
+            - publish_pypi_stable
+      - publish_docker_image:
+          name: publish_docker_image_slim_stable
+          variant: slim
+          requires:
+            - publish_pypi_stable
+      - publish_docker_image:
+          name: publish_docker_image_alpine_stable
+          variant: alpine
           requires:
             - publish_pypi_stable

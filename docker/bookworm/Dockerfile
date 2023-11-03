@@ -1,4 +1,4 @@
-FROM python:3.12.0
+FROM python:3.12.0-bookworm
 
 ARG sabledocs_version
 ARG protoc_version
