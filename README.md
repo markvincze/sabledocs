@@ -71,10 +71,10 @@ enable-lunr-search = true
 footer-content = "© 2023 Jane Doe. All rights reserved."
 
 # The following 3 fields configure the source control repository of the project.
-# It is used to generate deeplink for the components of the Proto model pointing to the original source code.
-# By default these fields are not configured, and source code links are not included in the docs.
+# They are used to generate deeplinks for the members of the Proto model pointing to the original source
+# code. By default these fields are not configured, and source code links are not included in the docs.
 # The repository-type field supports two possible values, "github" and "bitbucket".
-# The fields repository-url and `repository-branch` should be configured to point to the correct repository.
+# The fields repository-url and repository-branch should be configured to point to the correct repository.
 repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
@@ -86,9 +86,20 @@ ignore-comments-after = ["@exclude"]
 # Default value: []
 ignore-comment-lines-containing = ["buf:lint"]
 
-# In the templates, one can now use non_hidden_packages instead of packages where the following are hidden:
+# Packages can be hidden from the generated documentation by adding them to the hidden-packages
+# collection. In the templates, the field non_hidden_packages can be used to access the packages which are
+# not listed in hidden-packages. (And the packages field returns all packages.)
 # Default value: []
 hidden-packages = ["google.protobuf"]
+
+# By default, packages and members in a package are ordered alphabetically.
+# By setting the member-ordering option to "preserve", the original order present in the Protobuf
+# definitions will be preserved.
+# When using the "preserve" option and having multiple proto input files, the order of the members will
+# depend not just on the physical order in the Protobuf files, but also on the order in which the files
+# were listed in the input when `protoc` was executed.
+# Default value: ""
+member-ordering = "preserve"
 ```
 
 ### Main page content
