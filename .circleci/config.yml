@@ -90,9 +90,8 @@ jobs:
       - run:
           name: Build and publish Docker image
           command: |
-            protoc_version=$(curl -sL https://api.github.com/repos/protocolbuffers/protobuf/releases/latest | jq -r ".tag_name")
             image_tag=markvincze/sabledocs:${PACKAGE_VERSION}-<< parameters.variant >>
-            docker build -t ${image_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} --build-arg protoc_version=${protoc_version:1} ./docker/<< parameters.variant >>
+            docker build -t ${image_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} ./docker/<< parameters.variant >>
             echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
             docker push "${image_tag}"
       - when:
