@@ -100,6 +100,10 @@ hidden-packages = ["google.protobuf"]
 # were listed in the input when `protoc` was executed.
 # Default value: ""
 member-ordering = "preserve"
+
+# By default, message documentation includes the "Default Value" column. Set show-default-value to
+# false if you don't want that column.
+show-default-value = true
 ```
 
 ### Main page content

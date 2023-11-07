@@ -23,7 +23,9 @@
       <th>Field</th>
       <th>Type</th>
       <th>Description</th>
+      {% if sable_config.show_default_value %}
       <th>Default Value</th>
+      {% endif %}
     </tr>
   </thead>
   <tbody>
@@ -42,7 +44,9 @@
         </code>
       </td>
       <td class="content">{{ field.description_html | safe }}</td>
+      {% if sable_config.show_default_value %}
       <td>{{ field.default_value }}</td>
+      {% endif %}
     </tr>
     {% endfor %}
   </tbody>

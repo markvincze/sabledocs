@@ -32,6 +32,7 @@ class SableConfig:
         self.ignore_comment_lines_containing: List[str] = []
         self.hidden_packages: List[str] = []
         self.member_ordering = MemberOrdering.ALPHABETICAL
+        self.show_default_value = True
 
         if path.exists(config_file_path):
             print(f"Configuration found in {config_file_path}")
@@ -63,5 +64,7 @@ class SableConfig:
                 if 'member-ordering' in config_values:
                     if config_values["member-ordering"] == "preserve":
                         self.member_ordering = MemberOrdering.PRESERVE_ORIGINAL
+
+                self.show_default_value = config_values.get('show-default-value', self.show_default_value)
         else:
             print("sabledocs.toml file not found, using default configuration.")
