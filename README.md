@@ -75,9 +75,11 @@ footer-content = "© 2023 Jane Doe. All rights reserved."
 # code. By default these fields are not configured, and source code links are not included in the docs.
 # The repository-type field supports two possible values, "github" and "bitbucket".
 # The fields repository-url and repository-branch should be configured to point to the correct repository.
+# repository-dir should be set only if the root of your Protobuf module is in a specific directory inside your repository.
 repository-type = "github"
 repository-url = "https://github.com/janedoe/myawesomeproject"
 repository-branch = "main"
+repository-dir = "proto"
 
 # In each comment, ignore everything that comes after (until end of the comment) one of the keywords.
 # Default value: []
