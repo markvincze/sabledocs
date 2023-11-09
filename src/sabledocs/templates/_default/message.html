@@ -29,7 +29,7 @@
     </tr>
   </thead>
   <tbody>
-    {% for field in message.fields %}
+    {% for field in message.non_oneof_fields %}
     <tr>
       <td>{{ field.number }}</td>
       <td>
@@ -51,6 +51,30 @@
       <td>{{ field.default_value }}</td>
       {% endif %}
     </tr>
+    {% endfor %}
+    {% for oneof_field_group in message.oneof_field_groups %}
+      {{ oneof_field_group.name }}
+      {% for field in oneof_field_group.fields %}
+      <tr>
+        <td>{{ field.number }}</td>
+        <td>
+          {{ field.name }}
+          {% if field.oneof_name %}
+            (in oneof {{ field.oneof_name }})
+          {% endif %}
+        </td>
+        <td>
+          <code title="{{ field.full_type }}">
+            {% if field.label != "" %}
+              {{ field.label }}
+            {% endif %}
+            {{ common.type_name(field) }}
+          </code>
+        </td>
+        <td class="content">{{ field.description_html | safe }}</td>
+        <td>{{ field.default_value }}</td>
+      </tr>
+      {% endfor %}
     {% endfor %}
   </tbody>
 </table>
