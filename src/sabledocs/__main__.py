@@ -3,7 +3,7 @@ import markdown
 import os
 import pprint
 import sys
-from distutils.dir_util import copy_tree
+from shutil import copytree, rmtree
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -87,7 +87,13 @@ def cli():
 
         fh.write(output)
 
-    copy_tree(os.path.join(template_base_dir, "static"), os.path.join(sable_config.output_dir, "static"))
+    output_static_path = os.path.join(sable_config.output_dir, "static")
+
+    if os.path.exists(output_static_path):
+        # This is needed, because shutils.copytree cannot copy to a target folder which already exists.
+        rmtree(output_static_path)
+
+    copytree(os.path.join(template_base_dir, "static"), output_static_path)
 
     if sable_config.enable_lunr_search:
         (search_documents, search_index) = build_search_index(sable_context)
