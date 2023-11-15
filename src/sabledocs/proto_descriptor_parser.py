@@ -9,6 +9,7 @@ from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, Servic
 from sabledocs.sable_config import MemberOrdering, RepositoryType, SableConfig
 import pprint
 import markdown
+from furl import furl
 
 COMMENT_PACKAGE_INDEX = 2
 COMMENT_MESSAGE_INDEX = 4
@@ -29,14 +30,23 @@ FIELD_TYPE_MESSAGE = 11
 FIELD_TYPE_ENUM = 14
 
 
-def build_source_code_url(repository_url, repository_type, repository_branch, file_path, line_number):
+def build_source_code_url(repository_url, repository_type, repository_branch, repository_dir, file_path, line_number):
+
     match repository_type:
         case RepositoryType.NONE:
             return None
         case RepositoryType.GITHUB:
-            return f"{repository_url.strip('/')}/blob/{repository_branch}/{file_path}#L{line_number}"
+            # ex: https://git.example.com/blob/main/myrepodir/foo/bar.proto#L41
+            u = furl(repository_url) / 'blob' / repository_branch / repository_dir / file_path
+            u.fragment.add(f"L{line_number}")
+            u.path.normalize()
+            return u.url
         case RepositoryType.BITBUCKET:
-            return f"{repository_url.strip('/')}/src/{repository_branch}/{file_path}#lines-{line_number + 1}"
+            # ex: https://git.example.com/src/main/foo/bar.proto#lines-42
+            u = furl(repository_url) / 'src' / repository_branch / repository_dir / file_path
+            u.fragment.add(f"lines-{line_number + 1}")
+            u.path.normalize()
+            return u.url
     return ""
 
 
@@ -98,6 +108,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
         ctx.config.repository_url,
         ctx.config.repository_type,
         ctx.config.repository_branch,
+        ctx.config.repository_dir,
         e.source_file_path,
         e.line_number)
 
@@ -161,6 +172,7 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
         ctx.config.repository_url,
         ctx.config.repository_type,
         ctx.config.repository_branch,
+        ctx.config.repository_dir,
         m.source_file_path,
         m.line_number)
 
@@ -218,6 +230,7 @@ def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
         ctx.config.repository_url,
         ctx.config.repository_type,
         ctx.config.repository_branch,
+        ctx.config.repository_dir,
         s.source_file_path,
         s.line_number)
     for i, service_method in enumerate(service.method):
