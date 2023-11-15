@@ -4,6 +4,20 @@ orbs:
   python: circleci/python@2.1.1
 
 jobs:
+  test:
+    docker:
+      - image: cimg/python:3.12.0
+    steps:
+      - checkout
+      - python/install-packages:
+          pkg-manager: pip
+          app-dir: ~/project/src/sabledocs/
+      - run:
+          name: Run the unit tests
+          command: |
+            pip install .
+            python -m unittest discover tests
+
   build:
     docker:
       - image: cimg/python:3.12.0
@@ -84,13 +98,12 @@ jobs:
       - run:
           name: Restore environment variables
           command: |
-            # cat bash.env
-            # echo $BASH_ENV
             cat bash.env >> $BASH_ENV
       - run:
           name: Build and publish Docker image
           command: |
             image_tag=markvincze/sabledocs:${PACKAGE_VERSION}-<< parameters.variant >>
+            sleep 60s # Sleeping to wait for the new package being available on PyPi.
             docker build -t ${image_tag} --build-arg sabledocs_version=${PACKAGE_VERSION} ./docker/<< parameters.variant >>
             echo "${DOCKERHUB_ACCESS_TOKEN}" | docker login --username "${DOCKERHUB_USERNAME}" --password-stdin
             docker push "${image_tag}"
@@ -119,14 +132,24 @@ jobs:
 workflows:
   build-and-publish:
     jobs:
+      - test:
+          name: test
+          filters:
+            branches:
+              ignore:
+                - main
       - build:
           name: build_dev
+          requires:
+            - test
           filters:
             branches:
               ignore:
                 - main
       - build:
           name: build_stable
+          requires:
+            - test
           filters:
             branches:
               only:
