@@ -27,6 +27,7 @@ class SableConfig:
         self.enable_lunr_search = True
         self.repository_url = ""
         self.repository_branch = ""
+        self.repository_dir = ""
         self.repository_type = RepositoryType.NONE
         self.ignore_comments_after: List[str] = []
         self.ignore_comment_lines_containing: List[str] = []
@@ -48,6 +49,7 @@ class SableConfig:
                 self.enable_lunr_search = config_values.get('enable-lunr-search', True)
                 self.repository_url = config_values.get('repository-url', self.repository_url)
                 self.repository_branch = config_values.get('repository-branch', self.repository_branch)
+                self.repository_dir = config_values.get('repository-dir', self.repository_dir)
 
                 if 'repository-type' in config_values:
                     match config_values['repository-type']:
