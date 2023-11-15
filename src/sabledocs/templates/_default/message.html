@@ -53,10 +53,19 @@
     </tr>
     {% endfor %}
     {% for oneof_field_group in message.oneof_field_groups %}
-      {{ oneof_field_group.name }}
       {% for field in oneof_field_group.fields %}
       <tr>
-        <td>{{ field.number }}</td>
+        <td>
+          {% if loop.first %}
+            <div style="position: relative; top:0px; left:0px">
+              Oneof {{ oneof_field_group.name }}
+            </div>
+          {% endif %}
+
+          <div>
+            {{ field.number }}
+          </div>
+        </td>
         <td>
           {{ field.name }}
           {% if field.oneof_name %}
