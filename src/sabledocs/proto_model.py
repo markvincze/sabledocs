@@ -41,6 +41,10 @@ class Message(CodeItem):
     @property
     def full_type(self):
         return self.full_name
+    
+    @property
+    def has_any_fields_with_default_value(self):
+        return any(filter(lambda f: f.default_value, self.fields))
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
