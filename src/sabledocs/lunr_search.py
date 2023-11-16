@@ -43,20 +43,26 @@ def build_package_content(package: Package):
 
 
 def append_service_content(acc: str, service: Service):
-    acc += service.full_name + "\n"
+    for name_segment in service.full_name.split("."):
+        acc += name_segment + "\n"
+
     acc += service.description + "\n"
     for method in service.methods:
         acc += method.name + "\n"
         acc += method.description + "\n"
-        acc += method.request.full_type + "\n"
-        acc += method.response.full_type + "\n"
+        for name_segment in method.request.full_type.split("."):
+            acc += name_segment + "\n"
+
+        for name_segment in method.response.full_type.split("."):
+            acc += name_segment + "\n"
     
     return acc
 
 
 def append_message_content(acc: str, message: Message):
-    acc += message.full_name + "\n"
-    acc += message.description + "\n"
+    for name_segment in message.full_name.split("."):
+        acc += name_segment + "\n"
+
     for field in message.fields:
         acc += field.name + "\n"
         acc += field.description + "\n"
@@ -65,7 +71,9 @@ def append_message_content(acc: str, message: Message):
 
 
 def append_enum_content(acc: str, enum: Enum):
-    acc += enum.full_name + "\n"
+    for name_segment in enum.full_name.split("."):
+        acc += name_segment + "\n"
+
     acc += enum.description + "\n"
     for value in enum.values:
         acc += value.name + "\n"
