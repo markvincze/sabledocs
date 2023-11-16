@@ -134,10 +134,6 @@ workflows:
     jobs:
       - test:
           name: test
-          filters:
-            branches:
-              ignore:
-                - main
       - build:
           name: build_dev
           requires:
