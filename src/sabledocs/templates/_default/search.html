@@ -13,7 +13,7 @@
             document.getElementById('mainInputQuery').value = query;
 
             const results = idx.query(function (q) {
-              words = query.split(" ");
+              words = query.toLowerCase().split(" "); // toLowerCase() is needed to make the search case insensitive.
               for (n in words) {
                 const word = words[n];
 
