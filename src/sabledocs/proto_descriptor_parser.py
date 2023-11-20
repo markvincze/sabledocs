@@ -7,8 +7,9 @@ from google.protobuf.descriptor_pb2 import ServiceDescriptorProto
 from google.protobuf.descriptor_pb2 import MethodDescriptorProto
 from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, ServiceMethod, ServiceMethodArgument, Service, Package, LocationInfo, SableContext
 from sabledocs.sable_config import MemberOrdering, RepositoryType, SableConfig
-import pprint
 import markdown
+import pprint
+import re
 from furl import furl
 
 COMMENT_PACKAGE_INDEX = 2
@@ -185,6 +186,8 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
 
     parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, f"{message.name}.", config)
     parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, f"{message.name}.", config)
+
+    # print(m.description)
 
     return m
 
@@ -387,5 +390,21 @@ def parse_proto_descriptor(sable_config: SableConfig):
             sable_config)
 
 
-def markdown_to_html(md):
+def markdown_to_html(md: str):
+    # We trim single spaces at the beginning of lines, because those are most probably due to the common pattern of
+    # having a single space between // and the start of the comment line in code comments.
+    # And the single leading space causes problems with the markdown parsing, particularly with fenced code blocks.
+    # But removing every leading space is not always correct, because the comments might look like this:
+    # //This is a comment
+    # //
+    # //    This is a code block
+    # //
+    # //This is after the code block
+    # If we always removed one leading space from every line, in the above example that would change the indentation
+    # from 4 spaces to 3, thus the code block would not work.
+    # Due to this, we only do this if every line has at least one leading space, that's a strong indication that
+    # they should be trimmed.
+    if all(map(lambda l: l == "" or l.startswith(" "), md.split("\n")[1:])):
+        md = re.sub(r"^ ", r"", md, flags=re.MULTILINE)
+
     return markdown.markdown(md, extensions=['fenced_code'])
