@@ -124,9 +124,6 @@ For convenient usage in CI builds and other scenarios where a Docker image is pr
 Markdown can be used both in the main content page, and also in the Protobuf comments.  
 Code blocks can be defined both with indentation, and with the ``` fence.
 
-It's important that if we use fenced code blocks in the Protobuf comments, there must be no spaces between the foreslashes at the start of the line, and the backticks.  
-For example this code block will not work.
-
 ```
 // These are the comments for SearchRequest
 //
@@ -145,25 +142,7 @@ message SearchRequest {
 }
 ```
 
-The spaces between the foreslash and the backtick have to be removed, then the code blocks will correctly appear.
-
-```
-// These are the comments for SearchRequest
-//
-//```
-//namespace Test
-//{
-//    public class Foo {
-//        public string Bar { get; set; }
-//    }
-//}
-//```
-message SearchRequest {
-  string query = 1;
-  int32 page_number = 2;
-  int32 results_per_page = 3;
-}
-```
+(If you include code blocks in a comment, then it's better to use single-line comments (`// ...`) as opposed to block comments (`/* ... */`), because the `protoc` compiler trims all leading whitespace from the lines in block comments, thus the indentation in code blocks gets lost.)
 
 ## For maintainers
 
@@ -182,7 +161,7 @@ python -m twine upload --repository testpypi dist/*
 Install from the local folder:
 
 ```
-pip install .
+pip install -e .
 ```
 
 Build the library and the sample documentation, from the `sample` folder:

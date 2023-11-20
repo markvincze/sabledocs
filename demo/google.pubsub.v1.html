@@ -819,7 +819,7 @@
 
 <div class="block content">
   <p><p>The service that an application uses to manipulate topics, and to send
- messages to a topic.</p></p>
+messages to a topic.</p></p>
 </div>
 
 
@@ -839,7 +839,7 @@
   
   <div class="block">
     <p><p>Creates the given topic with the given name. See the [resource name rules]
- (https://cloud.google.com/pubsub/docs/admin#resource_names).</p></p>
+(https://cloud.google.com/pubsub/docs/admin#resource_names).</p></p>
   </div>
   
 </div>
@@ -860,7 +860,7 @@
   
   <div class="block">
     <p><p>Updates an existing topic. Note that certain properties of a
- topic are not modifiable.</p></p>
+topic are not modifiable.</p></p>
   </div>
   
 </div>
@@ -881,7 +881,7 @@
   
   <div class="block">
     <p><p>Adds one or more messages to the topic. Returns <code>NOT_FOUND</code> if the topic
- does not exist.</p></p>
+does not exist.</p></p>
   </div>
   
 </div>
@@ -962,10 +962,10 @@
   
   <div class="block">
     <p><p>Lists the names of the snapshots on this topic. Snapshots are used in
- <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
- which allow you to manage message acknowledgments in bulk. That is, you can
- set the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.</p></p>
+<a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
+which allow you to manage message acknowledgments in bulk. That is, you can
+set the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.</p></p>
   </div>
   
 </div>
@@ -985,10 +985,10 @@
   
   <div class="block">
     <p><p>Deletes the topic with the given name. Returns <code>NOT_FOUND</code> if the topic
- does not exist. After a topic is deleted, a new topic may be created with
- the same name; this is an entirely new topic with none of the old
- configuration or subscriptions. Existing subscriptions to this topic are
- not deleted, but their <code>topic</code> field is set to <code>_deleted-topic_</code>.</p></p>
+does not exist. After a topic is deleted, a new topic may be created with
+the same name; this is an entirely new topic with none of the old
+configuration or subscriptions. Existing subscriptions to this topic are
+not deleted, but their <code>topic</code> field is set to <code>_deleted-topic_</code>.</p></p>
   </div>
   
 </div>
@@ -1009,9 +1009,9 @@
   
   <div class="block">
     <p><p>Detaches a subscription from this topic. All messages retained in the
- subscription are dropped. Subsequent <code>Pull</code> and <code>StreamingPull</code> requests
- will return FAILED_PRECONDITION. If the subscription is a push
- subscription, pushes to the endpoint will stop.</p></p>
+subscription are dropped. Subsequent <code>Pull</code> and <code>StreamingPull</code> requests
+will return FAILED_PRECONDITION. If the subscription is a push
+subscription, pushes to the endpoint will stop.</p></p>
   </div>
   
 </div>
@@ -1246,8 +1246,8 @@
 
 <div class="block content">
   <p><p>The service that an application uses to manipulate subscriptions and to
- consume messages from a subscription via the <code>Pull</code> method or by
- establishing a bi-directional stream using the <code>StreamingPull</code> method.</p></p>
+consume messages from a subscription via the <code>Pull</code> method or by
+establishing a bi-directional stream using the <code>StreamingPull</code> method.</p></p>
 </div>
 
 
@@ -1267,15 +1267,15 @@
   
   <div class="block">
     <p><p>Creates a subscription to a given topic. See the [resource name rules]
- (https://cloud.google.com/pubsub/docs/admin#resource_names).
- If the subscription already exists, returns <code>ALREADY_EXISTS</code>.
- If the corresponding topic doesn't exist, returns <code>NOT_FOUND</code>.</p>
+(https://cloud.google.com/pubsub/docs/admin#resource_names).
+If the subscription already exists, returns <code>ALREADY_EXISTS</code>.
+If the corresponding topic doesn't exist, returns <code>NOT_FOUND</code>.</p>
 <p>If the name is not provided in the request, the server will assign a random
- name for this subscription on the same project as the topic, conforming
- to the [resource name format]
- (https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
- name is populated in the returned Subscription object. Note that for REST
- API requests, you must specify a name in the request.</p></p>
+name for this subscription on the same project as the topic, conforming
+to the [resource name format]
+(https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
+name is populated in the returned Subscription object. Note that for REST
+API requests, you must specify a name in the request.</p></p>
   </div>
   
 </div>
@@ -1316,7 +1316,7 @@
   
   <div class="block">
     <p><p>Updates an existing subscription. Note that certain properties of a
- subscription, such as its topic, are not modifiable.</p></p>
+subscription, such as its topic, are not modifiable.</p></p>
   </div>
   
 </div>
@@ -1356,10 +1356,10 @@
   
   <div class="block">
     <p><p>Deletes an existing subscription. All messages retained in the subscription
- are immediately dropped. Calls to <code>Pull</code> after deletion will return
- <code>NOT_FOUND</code>. After a subscription is deleted, a new one may be created with
- the same name, but the new one has no association with the old
- subscription or its topic unless the same topic is specified.</p></p>
+are immediately dropped. Calls to <code>Pull</code> after deletion will return
+<code>NOT_FOUND</code>. After a subscription is deleted, a new one may be created with
+the same name, but the new one has no association with the old
+subscription or its topic unless the same topic is specified.</p></p>
   </div>
   
 </div>
@@ -1379,10 +1379,10 @@
   
   <div class="block">
     <p><p>Modifies the ack deadline for a specific message. This method is useful
- to indicate that more time is needed to process a message by the
- subscriber, or to make the message available for redelivery if the
- processing was interrupted. Note that this does not modify the
- subscription-level <code>ackDeadlineSeconds</code> used for subsequent messages.</p></p>
+to indicate that more time is needed to process a message by the
+subscriber, or to make the message available for redelivery if the
+processing was interrupted. Note that this does not modify the
+subscription-level <code>ackDeadlineSeconds</code> used for subsequent messages.</p></p>
   </div>
   
 </div>
@@ -1402,11 +1402,11 @@
   
   <div class="block">
     <p><p>Acknowledges the messages associated with the <code>ack_ids</code> in the
- <code>AcknowledgeRequest</code>. The Pub/Sub system can remove the relevant messages
- from the subscription.</p>
+<code>AcknowledgeRequest</code>. The Pub/Sub system can remove the relevant messages
+from the subscription.</p>
 <p>Acknowledging a message whose ack deadline has expired may succeed,
- but such a message may be redelivered later. Acknowledging a message more
- than once will not result in an error.</p></p>
+but such a message may be redelivered later. Acknowledging a message more
+than once will not result in an error.</p></p>
   </div>
   
 </div>
@@ -1447,12 +1447,12 @@
   
   <div class="block">
     <p><p>Establishes a stream with the server, which sends messages down to the
- client. The client streams acknowledgements and ack deadline modifications
- back to the server. The server will close the stream and return the status
- on any error. The server may close the stream with status <code>UNAVAILABLE</code> to
- reassign server-side resources, in which case, the client should
- re-establish the stream. Flow control can be achieved by configuring the
- underlying RPC channel.</p></p>
+client. The client streams acknowledgements and ack deadline modifications
+back to the server. The server will close the stream and return the status
+on any error. The server may close the stream with status <code>UNAVAILABLE</code> to
+reassign server-side resources, in which case, the client should
+re-establish the stream. Flow control can be achieved by configuring the
+underlying RPC channel.</p></p>
   </div>
   
 </div>
@@ -1473,9 +1473,9 @@
   <div class="block">
     <p><p>Modifies the <code>PushConfig</code> for a specified subscription.</p>
 <p>This may be used to change a push subscription to a pull one (signified by
- an empty <code>PushConfig</code>) or vice versa, or change the endpoint URL and other
- attributes of a push subscription. Messages will accumulate for delivery
- continuously through the call regardless of changes to the <code>PushConfig</code>.</p></p>
+an empty <code>PushConfig</code>) or vice versa, or change the endpoint URL and other
+attributes of a push subscription. Messages will accumulate for delivery
+continuously through the call regardless of changes to the <code>PushConfig</code>.</p></p>
   </div>
   
 </div>
@@ -1496,10 +1496,10 @@
   
   <div class="block">
     <p><p>Gets the configuration details of a snapshot. Snapshots are used in
- <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
- which allow you to manage message acknowledgments in bulk. That is, you can
- set the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.</p></p>
+<a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
+which allow you to manage message acknowledgments in bulk. That is, you can
+set the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.</p></p>
   </div>
   
 </div>
@@ -1520,9 +1520,9 @@
   
   <div class="block">
     <p><p>Lists the existing snapshots. Snapshots are used in <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations, which
- allow you to manage message acknowledgments in bulk. That is, you can set
- the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.</p></p>
+allow you to manage message acknowledgments in bulk. That is, you can set
+the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.</p></p>
   </div>
   
 </div>
@@ -1543,21 +1543,21 @@
   
   <div class="block">
     <p><p>Creates a snapshot from the requested subscription. Snapshots are used in
- <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
- which allow you to manage message acknowledgments in bulk. That is, you can
- set the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.
- If the snapshot already exists, returns <code>ALREADY_EXISTS</code>.
- If the requested subscription doesn't exist, returns <code>NOT_FOUND</code>.
- If the backlog in the subscription is too old -- and the resulting snapshot
- would expire in less than 1 hour -- then <code>FAILED_PRECONDITION</code> is returned.
- See also the <code>Snapshot.expire_time</code> field. If the name is not provided in
- the request, the server will assign a random
- name for this snapshot on the same project as the subscription, conforming
- to the [resource name format]
- (https://cloud.google.com/pubsub/docs/admin#resource_names). The
- generated name is populated in the returned Snapshot object. Note that for
- REST API requests, you must specify a name in the request.</p></p>
+<a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
+which allow you to manage message acknowledgments in bulk. That is, you can
+set the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.
+If the snapshot already exists, returns <code>ALREADY_EXISTS</code>.
+If the requested subscription doesn't exist, returns <code>NOT_FOUND</code>.
+If the backlog in the subscription is too old -- and the resulting snapshot
+would expire in less than 1 hour -- then <code>FAILED_PRECONDITION</code> is returned.
+See also the <code>Snapshot.expire_time</code> field. If the name is not provided in
+the request, the server will assign a random
+name for this snapshot on the same project as the subscription, conforming
+to the [resource name format]
+(https://cloud.google.com/pubsub/docs/admin#resource_names). The
+generated name is populated in the returned Snapshot object. Note that for
+REST API requests, you must specify a name in the request.</p></p>
   </div>
   
 </div>
@@ -1578,10 +1578,10 @@
   
   <div class="block">
     <p><p>Updates an existing snapshot. Snapshots are used in
- <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
- which allow you to manage message acknowledgments in bulk. That is, you can
- set the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.</p></p>
+<a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a> operations,
+which allow you to manage message acknowledgments in bulk. That is, you can
+set the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.</p></p>
   </div>
   
 </div>
@@ -1601,14 +1601,14 @@
   
   <div class="block">
     <p><p>Removes an existing snapshot. Snapshots are used in [Seek]
- (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
- allow you to manage message acknowledgments in bulk. That is, you can set
- the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot.
- When the snapshot is deleted, all messages retained in the snapshot
- are immediately dropped. After a snapshot is deleted, a new one may be
- created with the same name, but the new one has no association with the old
- snapshot or its subscription, unless the same subscription is specified.</p></p>
+(https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+allow you to manage message acknowledgments in bulk. That is, you can set
+the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot.
+When the snapshot is deleted, all messages retained in the snapshot
+are immediately dropped. After a snapshot is deleted, a new one may be
+created with the same name, but the new one has no association with the old
+snapshot or its subscription, unless the same subscription is specified.</p></p>
   </div>
   
 </div>
@@ -1629,12 +1629,12 @@
   
   <div class="block">
     <p><p>Seeks an existing subscription to a point in time or to a given snapshot,
- whichever is provided in the request. Snapshots are used in [Seek]
- (https://cloud.google.com/pubsub/docs/replay-overview) operations, which
- allow you to manage message acknowledgments in bulk. That is, you can set
- the acknowledgment state of messages in an existing subscription to the
- state captured by a snapshot. Note that both the subscription and the
- snapshot must be on the same topic.</p></p>
+whichever is provided in the request. Snapshots are used in [Seek]
+(https://cloud.google.com/pubsub/docs/replay-overview) operations, which
+allow you to manage message acknowledgments in bulk. That is, you can set
+the acknowledgment state of messages in an existing subscription to the
+state captured by a snapshot. Note that both the subscription and the
+snapshot must be on the same topic.</p></p>
   </div>
   
 </div>
@@ -1671,7 +1671,7 @@
 
 <div class="block content">
   <p>Acknowledgement IDs sent in one or more previous requests to acknowledge a
- previously received message.</p>
+previously received message.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1717,7 +1717,7 @@
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that were malformed or whose acknowledgement
- deadline has expired.</p></td>
+deadline has expired.</p></td>
       
     </tr>
     
@@ -1803,7 +1803,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription whose message is being acknowledged.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -1821,8 +1821,8 @@
         </code>
       </td>
       <td class="content"><p>Required. The acknowledgment ID for the messages being acknowledged that
- was returned by the Pub/Sub system in the <code>Pull</code> response. Must not be
- empty.</p></td>
+was returned by the Pub/Sub system in the <code>Pull</code> response. Must not be
+empty.</p></td>
       
     </tr>
     
@@ -1878,7 +1878,7 @@
         </code>
       </td>
       <td class="content"><p>The name of the table to which to write data, of the form
- {projectId}.{datasetId}.{tableId}</p></td>
+{projectId}.{datasetId}.{tableId}</p></td>
       
     </tr>
     
@@ -1894,7 +1894,7 @@
         </code>
       </td>
       <td class="content"><p>When true, use the topic's schema as the columns to write to in BigQuery,
- if it exists.</p></td>
+if it exists.</p></td>
       
     </tr>
     
@@ -1910,10 +1910,10 @@
         </code>
       </td>
       <td class="content"><p>When true, write the subscription name, message_id, publish_time,
- attributes, and ordering_key to additional columns in the table. The
- subscription name, message_id, and publish_time fields are put in their own
- columns while all other message properties (other than data) are written to
- a JSON object in the attributes column.</p></td>
+attributes, and ordering_key to additional columns in the table. The
+subscription name, message_id, and publish_time fields are put in their own
+columns while all other message properties (other than data) are written to
+a JSON object in the attributes column.</p></td>
       
     </tr>
     
@@ -1929,10 +1929,10 @@
         </code>
       </td>
       <td class="content"><p>When true and use_topic_schema is true, any fields that are a part of the
- topic schema that are not part of the BigQuery table schema are dropped
- when writing to BigQuery. Otherwise, the schemas must be kept in sync and
- any messages with extra fields are not written and remain in the
- subscription's backlog.</p></td>
+topic schema that are not part of the BigQuery table schema are dropped
+when writing to BigQuery. Otherwise, the schemas must be kept in sync and
+any messages with extra fields are not written and remain in the
+subscription's backlog.</p></td>
       
     </tr>
     
@@ -1949,7 +1949,7 @@
         </code>
       </td>
       <td class="content"><p>Output only. An output-only field that indicates whether or not the
- subscription can receive messages.</p></td>
+subscription can receive messages.</p></td>
       
     </tr>
     
@@ -2001,7 +2001,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema we are revising.
- Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
+Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
       
     </tr>
     
@@ -2069,7 +2069,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to create the schema.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -2087,8 +2087,8 @@
       </td>
       <td class="content"><p>Required. The schema object to create.</p>
 <p>This schema's <code>name</code> parameter is ignored. The schema object returned
- by CreateSchema will have a <code>name</code> made using the given <code>parent</code> and
- <code>schema_id</code>.</p></td>
+by CreateSchema will have a <code>name</code> made using the given <code>parent</code> and
+<code>schema_id</code>.</p></td>
       
     </tr>
     
@@ -2104,9 +2104,9 @@
         </code>
       </td>
       <td class="content"><p>The ID to use for the schema, which will become the final component of
- the schema's resource name.</p>
+the schema's resource name.</p>
 <p>See https://cloud.google.com/pubsub/docs/admin#resource_names for resource
- name constraints.</p></td>
+name constraints.</p></td>
       
     </tr>
     
@@ -2158,11 +2158,11 @@
         </code>
       </td>
       <td class="content"><p>Required. User-provided name for this snapshot. If the name is not provided
- in the request, the server will assign a random name for this snapshot on
- the same project as the subscription. Note that for REST API requests, you
- must specify a name.  See the <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">resource name
- rules</a>. Format
- is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
+in the request, the server will assign a random name for this snapshot on
+the same project as the subscription. Note that for REST API requests, you
+must specify a name.  See the <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">resource name
+rules</a>. Format
+is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
       
     </tr>
     
@@ -2178,14 +2178,14 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription whose backlog the snapshot retains.
- Specifically, the created snapshot is guaranteed to retain:
-  (a) The existing backlog on the subscription. More precisely, this is
-      defined as the messages in the subscription's backlog that are
-      unacknowledged upon the successful completion of the
-      <code>CreateSnapshot</code> request; as well as:
-  (b) Any messages published to the subscription's topic following the
-      successful completion of the CreateSnapshot request.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Specifically, the created snapshot is guaranteed to retain:
+ (a) The existing backlog on the subscription. More precisely, this is
+     defined as the messages in the subscription's backlog that are
+     unacknowledged upon the successful completion of the
+     <code>CreateSnapshot</code> request; as well as:
+ (b) Any messages published to the subscription's topic following the
+     successful completion of the CreateSnapshot request.
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -2201,7 +2201,7 @@
         </code>
       </td>
       <td class="content"><p>See <a href="https://cloud.google.com/pubsub/docs/labels">Creating and managing
- labels</a>.</p></td>
+labels</a>.</p></td>
       
     </tr>
     
@@ -2227,9 +2227,9 @@
 
 <div class="block content">
   <p>Dead lettering is done on a best effort basis. The same message might be
- dead lettered multiple times.</p>
+dead lettered multiple times.</p>
 <p>If validation on any of the fields fails at subscription creation/updation,
- the create/update subscription request will fail.</p>
+the create/update subscription request will fail.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2256,13 +2256,13 @@
         </code>
       </td>
       <td class="content"><p>The name of the topic to which dead letter messages should be published.
- Format is <code>projects/{project}/topics/{topic}</code>.The Cloud Pub/Sub service
- account associated with the enclosing subscription's parent project (i.e.,
- service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
- permission to Publish() to this topic.</p>
+Format is <code>projects/{project}/topics/{topic}</code>.The Cloud Pub/Sub service
+account associated with the enclosing subscription's parent project (i.e.,
+service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+permission to Publish() to this topic.</p>
 <p>The operation will fail if the topic does not exist.
- Users should ensure that there is a subscription attached to this topic
- since messages published to a topic with no subscriptions are lost.</p></td>
+Users should ensure that there is a subscription attached to this topic
+since messages published to a topic with no subscriptions are lost.</p></td>
       
     </tr>
     
@@ -2278,12 +2278,12 @@
         </code>
       </td>
       <td class="content"><p>The maximum number of delivery attempts for any message. The value must be
- between 5 and 100.</p>
+between 5 and 100.</p>
 <p>The number of delivery attempts is defined as 1 + (the sum of number of
- NACKs and number of times the acknowledgement deadline has been exceeded
- for the message).</p>
+NACKs and number of times the acknowledgement deadline has been exceeded
+for the message).</p>
 <p>A NACK is any call to ModifyAckDeadline with a 0 deadline. Note that
- client libraries may automatically extend ack_deadlines.</p>
+client libraries may automatically extend ack_deadlines.</p>
 <p>This field will be honored on a best effort basis.</p>
 <p>If this parameter is 0, a default value of 5 is used.</p></td>
       
@@ -2337,7 +2337,7 @@
         </code>
       </td>
       <td class="content"><p>Required. Name of the schema to delete.
- Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
+Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
       
     </tr>
     
@@ -2389,7 +2389,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema revision to be deleted, with a revision ID
- explicitly included.</p>
+explicitly included.</p>
 <p>Example: <code>projects/123/schemas/my-schema@c7cfa2a8</code></p></td>
       
     </tr>
@@ -2406,8 +2406,8 @@
         </code>
       </td>
       <td class="content"><p>Optional. This field is deprecated and should not be used for specifying
- the revision ID. The revision ID should be specified via the <code>name</code>
- parameter.</p></td>
+the revision ID. The revision ID should be specified via the <code>name</code>
+parameter.</p></td>
       
     </tr>
     
@@ -2459,7 +2459,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the snapshot to delete.
- Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
+Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
       
     </tr>
     
@@ -2511,7 +2511,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription to delete.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -2563,7 +2563,7 @@
         </code>
       </td>
       <td class="content"><p>Required. Name of the topic to delete.
- Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
+Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
       
     </tr>
     
@@ -2615,7 +2615,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription to detach.
- Format is <code>projects/{project}/subscriptions/{subscription}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{subscription}</code>.</p></td>
       
     </tr>
     
@@ -2641,7 +2641,7 @@
 
 <div class="block content">
   <p>Response for the DetachSubscription method.
- Reserved for future use.</p>
+Reserved for future use.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2678,7 +2678,7 @@
 
 <div class="block content">
   <p>A policy that specifies the conditions for resource expiration (i.e.,
- automatic resource deletion).</p>
+automatic resource deletion).</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2705,11 +2705,11 @@
         </code>
       </td>
       <td class="content"><p>Specifies the "time-to-live" duration for an associated resource. The
- resource expires if it is not active for a period of <code>ttl</code>. The definition
- of "activity" depends on the type of the associated resource. The minimum
- and maximum allowed values for <code>ttl</code> depend on the type of the associated
- resource, as well. If <code>ttl</code> is not set, the associated resource never
- expires.</p></td>
+resource expires if it is not active for a period of <code>ttl</code>. The definition
+of "activity" depends on the type of the associated resource. The minimum
+and maximum allowed values for <code>ttl</code> depend on the type of the associated
+resource, as well. If <code>ttl</code> is not set, the associated resource never
+expires.</p></td>
       
     </tr>
     
@@ -2761,7 +2761,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema to get.
- Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
+Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
       
     </tr>
     
@@ -2778,7 +2778,7 @@
         </code>
       </td>
       <td class="content"><p>The set of fields to return in the response. If not set, returns a Schema
- with all fields filled out. Set to <code>BASIC</code> to omit the <code>definition</code>.</p></td>
+with all fields filled out. Set to <code>BASIC</code> to omit the <code>definition</code>.</p></td>
       
     </tr>
     
@@ -2830,7 +2830,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the snapshot to get.
- Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
+Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
       
     </tr>
     
@@ -2882,7 +2882,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription to get.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -2934,7 +2934,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic to get.
- Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
+Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
       
     </tr>
     
@@ -3010,8 +3010,8 @@
         </code>
       </td>
       <td class="content"><p>The set of Schema fields to return in the response. If not set, returns
- Schemas with <code>name</code> and <code>type</code>, but not <code>definition</code>. Set to <code>FULL</code> to
- retrieve all fields.</p></td>
+Schemas with <code>name</code> and <code>type</code>, but not <code>definition</code>. Set to <code>FULL</code> to
+retrieve all fields.</p></td>
       
     </tr>
     
@@ -3042,7 +3042,7 @@
         </code>
       </td>
       <td class="content"><p>The page token, received from a previous ListSchemaRevisions call.
- Provide this to retrieve the subsequent page.</p></td>
+Provide this to retrieve the subsequent page.</p></td>
       
     </tr>
     
@@ -3112,7 +3112,7 @@
         </code>
       </td>
       <td class="content"><p>A token that can be sent as <code>page_token</code> to retrieve the next page.
- If this field is empty, there are no subsequent pages.</p></td>
+If this field is empty, there are no subsequent pages.</p></td>
       
     </tr>
     
@@ -3164,7 +3164,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list schemas.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -3181,8 +3181,8 @@
         </code>
       </td>
       <td class="content"><p>The set of Schema fields to return in the response. If not set, returns
- Schemas with <code>name</code> and <code>type</code>, but not <code>definition</code>. Set to <code>FULL</code> to
- retrieve all fields.</p></td>
+Schemas with <code>name</code> and <code>type</code>, but not <code>definition</code>. Set to <code>FULL</code> to
+retrieve all fields.</p></td>
       
     </tr>
     
@@ -3213,8 +3213,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSchemasResponse</code>; indicates that
- this is a continuation of a prior <code>ListSchemas</code> call, and that the
- system should return the next page of data.</p></td>
+this is a continuation of a prior <code>ListSchemas</code> call, and that the
+system should return the next page of data.</p></td>
       
     </tr>
     
@@ -3284,7 +3284,7 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more schemas that match the
- request; this value should be passed in a new <code>ListSchemasRequest</code>.</p></td>
+request; this value should be passed in a new <code>ListSchemasRequest</code>.</p></td>
       
     </tr>
     
@@ -3336,7 +3336,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list snapshots.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -3367,8 +3367,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSnapshotsResponse</code>; indicates that this
- is a continuation of a prior <code>ListSnapshots</code> call, and that the system
- should return the next page of data.</p></td>
+is a continuation of a prior <code>ListSnapshots</code> call, and that the system
+should return the next page of data.</p></td>
       
     </tr>
     
@@ -3438,7 +3438,7 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more snapshot that match the
- request; this value should be passed in a new <code>ListSnapshotsRequest</code>.</p></td>
+request; this value should be passed in a new <code>ListSnapshotsRequest</code>.</p></td>
       
     </tr>
     
@@ -3490,7 +3490,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list subscriptions.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -3521,8 +3521,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListSubscriptionsResponse</code>; indicates that
- this is a continuation of a prior <code>ListSubscriptions</code> call, and that the
- system should return the next page of data.</p></td>
+this is a continuation of a prior <code>ListSubscriptions</code> call, and that the
+system should return the next page of data.</p></td>
       
     </tr>
     
@@ -3592,8 +3592,8 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more subscriptions that match
- the request; this value should be passed in a new
- <code>ListSubscriptionsRequest</code> to get more subscriptions.</p></td>
+the request; this value should be passed in a new
+<code>ListSubscriptionsRequest</code> to get more subscriptions.</p></td>
       
     </tr>
     
@@ -3645,7 +3645,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic that snapshots are attached to.
- Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
+Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
       
     </tr>
     
@@ -3676,8 +3676,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicSnapshotsResponse</code>; indicates
- that this is a continuation of a prior <code>ListTopicSnapshots</code> call, and
- that the system should return the next page of data.</p></td>
+that this is a continuation of a prior <code>ListTopicSnapshots</code> call, and
+that the system should return the next page of data.</p></td>
       
     </tr>
     
@@ -3746,8 +3746,8 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more snapshots that match
- the request; this value should be passed in a new
- <code>ListTopicSnapshotsRequest</code> to get more snapshots.</p></td>
+the request; this value should be passed in a new
+<code>ListTopicSnapshotsRequest</code> to get more snapshots.</p></td>
       
     </tr>
     
@@ -3799,7 +3799,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic that subscriptions are attached to.
- Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
+Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
       
     </tr>
     
@@ -3830,8 +3830,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicSubscriptionsResponse</code>; indicates
- that this is a continuation of a prior <code>ListTopicSubscriptions</code> call, and
- that the system should return the next page of data.</p></td>
+that this is a continuation of a prior <code>ListTopicSubscriptions</code> call, and
+that the system should return the next page of data.</p></td>
       
     </tr>
     
@@ -3900,8 +3900,8 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more subscriptions that match
- the request; this value should be passed in a new
- <code>ListTopicSubscriptionsRequest</code> to get more subscriptions.</p></td>
+the request; this value should be passed in a new
+<code>ListTopicSubscriptionsRequest</code> to get more subscriptions.</p></td>
       
     </tr>
     
@@ -3953,7 +3953,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to list topics.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -3984,8 +3984,8 @@
         </code>
       </td>
       <td class="content"><p>The value returned by the last <code>ListTopicsResponse</code>; indicates that this is
- a continuation of a prior <code>ListTopics</code> call, and that the system should
- return the next page of data.</p></td>
+a continuation of a prior <code>ListTopics</code> call, and that the system should
+return the next page of data.</p></td>
       
     </tr>
     
@@ -4055,7 +4055,7 @@
         </code>
       </td>
       <td class="content"><p>If not empty, indicates that there may be more topics that match the
- request; this value should be passed in a new <code>ListTopicsRequest</code>.</p></td>
+request; this value should be passed in a new <code>ListTopicsRequest</code>.</p></td>
       
     </tr>
     
@@ -4109,10 +4109,10 @@
         </code>
       </td>
       <td class="content"><p>A list of IDs of GCP regions where messages that are published to the topic
- may be persisted in storage. Messages published by publishers running in
- non-allowed GCP regions (or running outside of GCP altogether) will be
- routed for storage in one of the allowed regions. An empty list means that
- no regions are allowed, and is not a valid configuration.</p></td>
+may be persisted in storage. Messages published by publishers running in
+non-allowed GCP regions (or running outside of GCP altogether) will be
+routed for storage in one of the allowed regions. An empty list means that
+no regions are allowed, and is not a valid configuration.</p></td>
       
     </tr>
     
@@ -4141,7 +4141,7 @@
 
 <div class="block content">
   <p>Acknowledgement IDs sent in one or more previous requests to modify the
- deadline for a specific message.</p>
+deadline for a specific message.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4187,7 +4187,7 @@
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs that were malformed or whose acknowledgement
- deadline has expired.</p></td>
+deadline has expired.</p></td>
       
     </tr>
     
@@ -4256,7 +4256,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -4272,13 +4272,13 @@
         </code>
       </td>
       <td class="content"><p>Required. The new ack deadline with respect to the time this request was
- sent to the Pub/Sub system. For example, if the value is 10, the new ack
- deadline will expire 10 seconds after the <code>ModifyAckDeadline</code> call was
- made. Specifying zero might immediately make the message available for
- delivery to another subscriber client. This typically results in an
- increase in the rate of message redeliveries (that is, duplicates).
- The minimum deadline you can specify is 0 seconds.
- The maximum deadline you can specify is 600 seconds (10 minutes).</p></td>
+sent to the Pub/Sub system. For example, if the value is 10, the new ack
+deadline will expire 10 seconds after the <code>ModifyAckDeadline</code> call was
+made. Specifying zero might immediately make the message available for
+delivery to another subscriber client. This typically results in an
+increase in the rate of message redeliveries (that is, duplicates).
+The minimum deadline you can specify is 0 seconds.
+The maximum deadline you can specify is 600 seconds (10 minutes).</p></td>
       
     </tr>
     
@@ -4347,7 +4347,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -4365,9 +4365,9 @@
       </td>
       <td class="content"><p>Required. The push configuration for future deliveries.</p>
 <p>An empty <code>pushConfig</code> indicates that the Pub/Sub system should
- stop pushing messages from the given subscription and allow
- messages to be pulled and acknowledged - effectively pausing
- the subscription if <code>Pull</code> or <code>StreamingPull</code> is not called.</p></td>
+stop pushing messages from the given subscription and allow
+messages to be pulled and acknowledged - effectively pausing
+the subscription if <code>Pull</code> or <code>StreamingPull</code> is not called.</p></td>
       
     </tr>
     
@@ -4396,8 +4396,8 @@
 
 <div class="block content">
   <p>Contains information needed for generating an
- <a href="https://developers.google.com/identity/protocols/OpenIDConnect">OpenID Connect
- token</a>.</p>
+<a href="https://developers.google.com/identity/protocols/OpenIDConnect">OpenID Connect
+token</a>.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4424,10 +4424,10 @@
         </code>
       </td>
       <td class="content"><p><a href="https://cloud.google.com/iam/docs/service-accounts">Service account
- email</a>
- to be used for generating the OIDC token. The caller (for
- CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
- have the iam.serviceAccounts.actAs permission for the service account.</p></td>
+email</a>
+to be used for generating the OIDC token. The caller (for
+CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
+have the iam.serviceAccounts.actAs permission for the service account.</p></td>
       
     </tr>
     
@@ -4443,11 +4443,11 @@
         </code>
       </td>
       <td class="content"><p>Audience to be used when generating OIDC token. The audience claim
- identifies the recipients that the JWT is intended for. The audience
- value is a single case-sensitive string. Having multiple values (array)
- for the audience field is not supported. More info about the OIDC JWT
- token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
- Note: if not specified, the Push endpoint URL will be used.</p></td>
+identifies the recipients that the JWT is intended for. The audience
+value is a single case-sensitive string. Having multiple values (array)
+for the audience field is not supported. More info about the OIDC JWT
+token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3
+Note: if not specified, the Push endpoint URL will be used.</p></td>
       
     </tr>
     
@@ -4499,7 +4499,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The messages in the request will be published on this topic.
- Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
+Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
       
     </tr>
     
@@ -4571,8 +4571,8 @@
         </code>
       </td>
       <td class="content"><p>The server-assigned ID of each published message, in the same order as
- the messages in the request. IDs are guaranteed to be unique within
- the topic.</p></td>
+the messages in the request. IDs are guaranteed to be unique within
+the topic.</p></td>
       
     </tr>
     
@@ -4598,13 +4598,13 @@
 
 <div class="block content">
   <p>A message that is published by publishers and consumed by subscribers. The
- message must contain either a non-empty data field or at least one attribute.
- Note that client libraries represent this object differently
- depending on the language. See the corresponding <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client library
- documentation</a> for
- more information. See [quotas and limits]
- (https://cloud.google.com/pubsub/quotas) for more information about message
- limits.</p>
+message must contain either a non-empty data field or at least one attribute.
+Note that client libraries represent this object differently
+depending on the language. See the corresponding <a href="https://cloud.google.com/pubsub/docs/reference/libraries">client library
+documentation</a> for
+more information. See [quotas and limits]
+(https://cloud.google.com/pubsub/quotas) for more information about message
+limits.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4631,7 +4631,7 @@
         </code>
       </td>
       <td class="content"><p>The message data field. If this field is empty, the message must contain
- at least one attribute.</p></td>
+at least one attribute.</p></td>
       
     </tr>
     
@@ -4650,8 +4650,8 @@
         </code>
       </td>
       <td class="content"><p>Attributes for this message. If this field is empty, the message must
- contain non-empty data. This can be used to filter messages on the
- subscription.</p></td>
+contain non-empty data. This can be used to filter messages on the
+subscription.</p></td>
       
     </tr>
     
@@ -4667,9 +4667,9 @@
         </code>
       </td>
       <td class="content"><p>ID of this message, assigned by the server when the message is published.
- Guaranteed to be unique within the topic. This value may be read by a
- subscriber that receives a <code>PubsubMessage</code> via a <code>Pull</code> call or a push
- delivery. It must not be populated by the publisher in a <code>Publish</code> call.</p></td>
+Guaranteed to be unique within the topic. This value may be read by a
+subscriber that receives a <code>PubsubMessage</code> via a <code>Pull</code> call or a push
+delivery. It must not be populated by the publisher in a <code>Publish</code> call.</p></td>
       
     </tr>
     
@@ -4685,8 +4685,8 @@
         </code>
       </td>
       <td class="content"><p>The time at which the message was published, populated by the server when
- it receives the <code>Publish</code> call. It must not be populated by the
- publisher in a <code>Publish</code> call.</p></td>
+it receives the <code>Publish</code> call. It must not be populated by the
+publisher in a <code>Publish</code> call.</p></td>
       
     </tr>
     
@@ -4702,13 +4702,13 @@
         </code>
       </td>
       <td class="content"><p>If non-empty, identifies related messages for which publish order should be
- respected. If a <code>Subscription</code> has <code>enable_message_ordering</code> set to <code>true</code>,
- messages published with the same non-empty <code>ordering_key</code> value will be
- delivered to subscribers in the order in which they are received by the
- Pub/Sub system. All <code>PubsubMessage</code>s published in a given <code>PublishRequest</code>
- must specify the same <code>ordering_key</code> value.
- For more information, see <a href="https://cloud.google.com/pubsub/docs/ordering">ordering
- messages</a>.</p></td>
+respected. If a <code>Subscription</code> has <code>enable_message_ordering</code> set to <code>true</code>,
+messages published with the same non-empty <code>ordering_key</code> value will be
+delivered to subscribers in the order in which they are received by the
+Pub/Sub system. All <code>PubsubMessage</code>s published in a given <code>PublishRequest</code>
+must specify the same <code>ordering_key</code> value.
+For more information, see <a href="https://cloud.google.com/pubsub/docs/ordering">ordering
+messages</a>.</p></td>
       
     </tr>
     
@@ -4760,7 +4760,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription from which messages should be pulled.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -4776,12 +4776,12 @@
         </code>
       </td>
       <td class="content"><p>Optional. If this field set to true, the system will respond immediately
- even if it there are no messages available to return in the <code>Pull</code>
- response. Otherwise, the system may wait (for a bounded amount of time)
- until at least one message is available, rather than returning no messages.
- Warning: setting this field to <code>true</code> is discouraged because it adversely
- impacts the performance of <code>Pull</code> operations. We recommend that users do
- not set this field.</p></td>
+even if it there are no messages available to return in the <code>Pull</code>
+response. Otherwise, the system may wait (for a bounded amount of time)
+until at least one message is available, rather than returning no messages.
+Warning: setting this field to <code>true</code> is discouraged because it adversely
+impacts the performance of <code>Pull</code> operations. We recommend that users do
+not set this field.</p></td>
       
     </tr>
     
@@ -4797,8 +4797,8 @@
         </code>
       </td>
       <td class="content"><p>Required. The maximum number of messages to return for this request. Must
- be a positive integer. The Pub/Sub system may return fewer than the number
- specified.</p></td>
+be a positive integer. The Pub/Sub system may return fewer than the number
+specified.</p></td>
       
     </tr>
     
@@ -4853,10 +4853,10 @@
         </code>
       </td>
       <td class="content"><p>Received Pub/Sub messages. The list will be empty if there are no more
- messages available in the backlog, or if no messages could be returned
- before the request timeout. For JSON, the response can be entirely
- empty. The Pub/Sub system may return fewer than the <code>maxMessages</code> requested
- even if there are more messages available in the backlog.</p></td>
+messages available in the backlog, or if no messages could be returned
+before the request timeout. For JSON, the response can be entirely
+empty. The Pub/Sub system may return fewer than the <code>maxMessages</code> requested
+even if there are more messages available in the backlog.</p></td>
       
     </tr>
     
@@ -4908,7 +4908,7 @@
         </code>
       </td>
       <td class="content"><p>A URL locating the endpoint to which messages should be pushed.
- For example, a Webhook endpoint might use <code>https://example.com/push</code>.</p></td>
+For example, a Webhook endpoint might use <code>https://example.com/push</code>.</p></td>
       
     </tr>
     
@@ -4924,23 +4924,23 @@
         </code>
       </td>
       <td class="content"><p>Endpoint configuration attributes that can be used to control different
- aspects of the message delivery.</p>
+aspects of the message delivery.</p>
 <p>The only currently supported attribute is <code>x-goog-version</code>, which you can
- use to change the format of the pushed message. This attribute
- indicates the version of the data expected by the endpoint. This
- controls the shape of the pushed message (i.e., its fields and metadata).</p>
+use to change the format of the pushed message. This attribute
+indicates the version of the data expected by the endpoint. This
+controls the shape of the pushed message (i.e., its fields and metadata).</p>
 <p>If not present during the <code>CreateSubscription</code> call, it will default to
- the version of the Pub/Sub API used to make such call. If not present in a
- <code>ModifyPushConfig</code> call, its value will not be changed. <code>GetSubscription</code>
- calls will always return a valid version, even if the subscription was
- created without this attribute.</p>
+the version of the Pub/Sub API used to make such call. If not present in a
+<code>ModifyPushConfig</code> call, its value will not be changed. <code>GetSubscription</code>
+calls will always return a valid version, even if the subscription was
+created without this attribute.</p>
 <p>The only supported values for the <code>x-goog-version</code> attribute are:</p>
 <ul>
 <li><code>v1beta1</code>: uses the push format defined in the v1beta1 Pub/Sub API.</li>
 <li><code>v1</code> or <code>v1beta2</code>: uses the push format defined in the v1 Pub/Sub API.</li>
 </ul>
 <p>For example:
- <code>attributes { "x-goog-version": "v1" }</code></p></td>
+<code>attributes { "x-goog-version": "v1" }</code></p></td>
       
     </tr>
     
@@ -4957,7 +4957,7 @@
         </code>
       </td>
       <td class="content"><p>If specified, Pub/Sub will generate and attach an OIDC JWT token as an
- <code>Authorization</code> header in the HTTP request for every pushed message.</p></td>
+<code>Authorization</code> header in the HTTP request for every pushed message.</p></td>
       
     </tr>
     
@@ -5040,16 +5040,16 @@
         </code>
       </td>
       <td class="content"><p>The approximate number of times that Cloud Pub/Sub has attempted to deliver
- the associated message to a subscriber.</p>
+the associated message to a subscriber.</p>
 <p>More precisely, this is 1 + (number of NACKs) +
- (number of ack_deadline exceeds) for this message.</p>
+(number of ack_deadline exceeds) for this message.</p>
 <p>A NACK is any call to ModifyAckDeadline with a 0 deadline. An ack_deadline
- exceeds event is whenever a message is not acknowledged within
- ack_deadline. Note that ack_deadline is initially
- Subscription.ackDeadlineSeconds, but may get extended automatically by
- the client library.</p>
+exceeds event is whenever a message is not acknowledged within
+ack_deadline. Note that ack_deadline is initially
+Subscription.ackDeadlineSeconds, but may get extended automatically by
+the client library.</p>
 <p>Upon the first delivery of a given message, <code>delivery_attempt</code> will have a
- value of 1. The value is calculated at best effort and is approximate.</p>
+value of 1. The value is calculated at best effort and is approximate.</p>
 <p>If a DeadLetterPolicy is not set on the subscription, this will be 0.</p></td>
       
     </tr>
@@ -5077,12 +5077,12 @@
 <div class="block content">
   <p>A policy that specifies how Cloud Pub/Sub retries message delivery.</p>
 <p>Retry delay will be exponential based on provided minimum and maximum
- backoffs. https://en.wikipedia.org/wiki/Exponential_backoff.</p>
+backoffs. https://en.wikipedia.org/wiki/Exponential_backoff.</p>
 <p>RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded
- events for a given message.</p>
+events for a given message.</p>
 <p>Retry Policy is implemented on a best effort basis. At times, the delay
- between consecutive deliveries may not match the configuration. That is,
- delay can be more or less than configured backoff.</p>
+between consecutive deliveries may not match the configuration. That is,
+delay can be more or less than configured backoff.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -5109,7 +5109,7 @@
         </code>
       </td>
       <td class="content"><p>The minimum delay between consecutive deliveries of a given message.
- Value should be between 0 and 600 seconds. Defaults to 10 seconds.</p></td>
+Value should be between 0 and 600 seconds. Defaults to 10 seconds.</p></td>
       
     </tr>
     
@@ -5125,7 +5125,7 @@
         </code>
       </td>
       <td class="content"><p>The maximum delay between consecutive deliveries of a given message.
- Value should be between 0 and 600 seconds. Defaults to 600 seconds.</p></td>
+Value should be between 0 and 600 seconds. Defaults to 600 seconds.</p></td>
       
     </tr>
     
@@ -5192,7 +5192,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The revision ID to roll back to.
- It must be a revision of the same schema.</p>
+It must be a revision of the same schema.</p>
 <p>Example: c7cfa2a8</p></td>
       
     </tr>
@@ -5245,7 +5245,7 @@
         </code>
       </td>
       <td class="content"><p>Required. Name of the schema.
- Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
+Format is <code>projects/{project}/schemas/{schema}</code>.</p></td>
       
     </tr>
     
@@ -5277,8 +5277,8 @@
         </code>
       </td>
       <td class="content"><p>The definition of the schema. This should contain a string representing
- the full definition of the schema that is a valid schema definition of
- the type specified in <code>type</code>.</p></td>
+the full definition of the schema that is a valid schema definition of
+the type specified in <code>type</code>.</p></td>
       
     </tr>
     
@@ -5360,9 +5360,9 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the schema that messages published should be
- validated against. Format is <code>projects/{project}/schemas/{schema}</code>. The
- value of this field will be <code>_deleted-schema_</code> if the schema has been
- deleted.</p></td>
+validated against. Format is <code>projects/{project}/schemas/{schema}</code>. The
+value of this field will be <code>_deleted-schema_</code> if the schema has been
+deleted.</p></td>
       
     </tr>
     
@@ -5394,8 +5394,8 @@
         </code>
       </td>
       <td class="content"><p>The minimum (inclusive) revision allowed for validating messages. If empty
- or not present, allow any revision to be validated against last_revision or
- any revision created before.</p></td>
+or not present, allow any revision to be validated against last_revision or
+any revision created before.</p></td>
       
     </tr>
     
@@ -5411,8 +5411,8 @@
         </code>
       </td>
       <td class="content"><p>The maximum (inclusive) revision allowed for validating messages. If empty
- or not present, allow any revision to be validated against first_revision
- or any revision created after.</p></td>
+or not present, allow any revision to be validated against first_revision
+or any revision created after.</p></td>
       
     </tr>
     
@@ -5479,16 +5479,16 @@
         </code>
       </td>
       <td class="content"><p>The time to seek to.
- Messages retained in the subscription that were published before this
- time are marked as acknowledged, and messages retained in the
- subscription that were published after this time are marked as
- unacknowledged. Note that this operation affects only those messages
- retained in the subscription (configured by the combination of
- <code>message_retention_duration</code> and <code>retain_acked_messages</code>). For example,
- if <code>time</code> corresponds to a point before the message retention
- window (or to a point before the system's notion of the subscription
- creation time), only retained messages will be marked as unacknowledged,
- and already-expunged messages will not be restored.</p></td>
+Messages retained in the subscription that were published before this
+time are marked as acknowledged, and messages retained in the
+subscription that were published after this time are marked as
+unacknowledged. Note that this operation affects only those messages
+retained in the subscription (configured by the combination of
+<code>message_retention_duration</code> and <code>retain_acked_messages</code>). For example,
+if <code>time</code> corresponds to a point before the message retention
+window (or to a point before the system's notion of the subscription
+creation time), only retained messages will be marked as unacknowledged,
+and already-expunged messages will not be restored.</p></td>
       
     </tr>
     
@@ -5504,8 +5504,8 @@
         </code>
       </td>
       <td class="content"><p>The snapshot to seek to. The snapshot's topic must be the same as that of
- the provided subscription.
- Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
+the provided subscription.
+Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
       
     </tr>
     
@@ -5567,10 +5567,10 @@
 
 <div class="block content">
   <p>A snapshot resource. Snapshots are used in
- <a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
- operations, which allow you to manage message acknowledgments in bulk. That
- is, you can set the acknowledgment state of messages in an existing
- subscription to the state captured by a snapshot.</p>
+<a href="https://cloud.google.com/pubsub/docs/replay-overview">Seek</a>
+operations, which allow you to manage message acknowledgments in bulk. That
+is, you can set the acknowledgment state of messages in an existing
+subscription to the state captured by a snapshot.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -5627,15 +5627,15 @@
         </code>
       </td>
       <td class="content"><p>The snapshot is guaranteed to exist up until this time.
- A newly-created snapshot expires no later than 7 days from the time of its
- creation. Its exact lifetime is determined at creation by the existing
- backlog in the source subscription. Specifically, the lifetime of the
- snapshot is <code>7 days - (age of oldest unacked message in the subscription)</code>.
- For example, consider a subscription whose oldest unacked message is 3 days
- old. If a snapshot is created from this subscription, the snapshot -- which
- will always capture this 3-day-old backlog as long as the snapshot
- exists -- will expire in 4 days. The service will refuse to create a
- snapshot that would expire in less than 1 hour after creation.</p></td>
+A newly-created snapshot expires no later than 7 days from the time of its
+creation. Its exact lifetime is determined at creation by the existing
+backlog in the source subscription. Specifically, the lifetime of the
+snapshot is <code>7 days - (age of oldest unacked message in the subscription)</code>.
+For example, consider a subscription whose oldest unacked message is 3 days
+old. If a snapshot is created from this subscription, the snapshot -- which
+will always capture this 3-day-old backlog as long as the snapshot
+exists -- will expire in 4 days. The service will refuse to create a
+snapshot that would expire in less than 1 hour after creation.</p></td>
       
     </tr>
     
@@ -5651,7 +5651,7 @@
         </code>
       </td>
       <td class="content"><p>See [Creating and managing labels]
- (https://cloud.google.com/pubsub/docs/labels).</p></td>
+(https://cloud.google.com/pubsub/docs/labels).</p></td>
       
     </tr>
     
@@ -5677,8 +5677,8 @@
 
 <div class="block content">
   <p>Request for the <code>StreamingPull</code> streaming RPC method. This request is used to
- establish the initial stream as well as to stream acknowledgements and ack
- deadline modifications from the client to the server.</p>
+establish the initial stream as well as to stream acknowledgements and ack
+deadline modifications from the client to the server.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -5705,9 +5705,9 @@
         </code>
       </td>
       <td class="content"><p>Required. The subscription for which to initialize the new stream. This
- must be provided in the first request on the stream, and must not be set in
- subsequent requests from client to server.
- Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
+must be provided in the first request on the stream, and must not be set in
+subsequent requests from client to server.
+Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
       
     </tr>
     
@@ -5725,10 +5725,10 @@
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs for acknowledging previously received messages
- (received on this stream or a different stream). If an ack ID has expired,
- the corresponding message may be redelivered later. Acknowledging a message
- more than once will not result in an error. If the acknowledgement ID is
- malformed, the stream will be aborted with status <code>INVALID_ARGUMENT</code>.</p></td>
+(received on this stream or a different stream). If an ack ID has expired,
+the corresponding message may be redelivered later. Acknowledging a message
+more than once will not result in an error. If the acknowledgement ID is
+malformed, the stream will be aborted with status <code>INVALID_ARGUMENT</code>.</p></td>
       
     </tr>
     
@@ -5746,16 +5746,16 @@
         </code>
       </td>
       <td class="content"><p>The list of new ack deadlines for the IDs listed in
- <code>modify_deadline_ack_ids</code>. The size of this list must be the same as the
- size of <code>modify_deadline_ack_ids</code>. If it differs the stream will be aborted
- with <code>INVALID_ARGUMENT</code>. Each element in this list is applied to the
- element in the same position in <code>modify_deadline_ack_ids</code>. The new ack
- deadline is with respect to the time this request was sent to the Pub/Sub
- system. Must be &gt;= 0. For example, if the value is 10, the new ack deadline
- will expire 10 seconds after this request is received. If the value is 0,
- the message is immediately made available for another streaming or
- non-streaming pull request. If the value is &lt; 0 (an error), the stream will
- be aborted with status <code>INVALID_ARGUMENT</code>.</p></td>
+<code>modify_deadline_ack_ids</code>. The size of this list must be the same as the
+size of <code>modify_deadline_ack_ids</code>. If it differs the stream will be aborted
+with <code>INVALID_ARGUMENT</code>. Each element in this list is applied to the
+element in the same position in <code>modify_deadline_ack_ids</code>. The new ack
+deadline is with respect to the time this request was sent to the Pub/Sub
+system. Must be &gt;= 0. For example, if the value is 10, the new ack deadline
+will expire 10 seconds after this request is received. If the value is 0,
+the message is immediately made available for another streaming or
+non-streaming pull request. If the value is &lt; 0 (an error), the stream will
+be aborted with status <code>INVALID_ARGUMENT</code>.</p></td>
       
     </tr>
     
@@ -5773,10 +5773,10 @@
         </code>
       </td>
       <td class="content"><p>List of acknowledgement IDs whose deadline will be modified based on the
- corresponding element in <code>modify_deadline_seconds</code>. This field can be used
- to indicate that more time is needed to process a message by the
- subscriber, or to make the message available for redelivery if the
- processing was interrupted.</p></td>
+corresponding element in <code>modify_deadline_seconds</code>. This field can be used
+to indicate that more time is needed to process a message by the
+subscriber, or to make the message available for redelivery if the
+processing was interrupted.</p></td>
       
     </tr>
     
@@ -5792,9 +5792,9 @@
         </code>
       </td>
       <td class="content"><p>Required. The ack deadline to use for the stream. This must be provided in
- the first request on the stream, but it can also be updated on subsequent
- requests from client to server. The minimum deadline you can specify is 10
- seconds. The maximum deadline you can specify is 600 seconds (10 minutes).</p></td>
+the first request on the stream, but it can also be updated on subsequent
+requests from client to server. The minimum deadline you can specify is 10
+seconds. The maximum deadline you can specify is 600 seconds (10 minutes).</p></td>
       
     </tr>
     
@@ -5810,11 +5810,11 @@
         </code>
       </td>
       <td class="content"><p>A unique identifier that is used to distinguish client instances from each
- other. Only needs to be provided on the initial request. When a stream
- disconnects and reconnects for the same stream, the client_id should be set
- to the same value so that state associated with the old stream can be
- transferred to the new stream. The same client_id should not be used for
- different client instances.</p></td>
+other. Only needs to be provided on the initial request. When a stream
+disconnects and reconnects for the same stream, the client_id should be set
+to the same value so that state associated with the old stream can be
+transferred to the new stream. The same client_id should not be used for
+different client instances.</p></td>
       
     </tr>
     
@@ -5830,14 +5830,14 @@
         </code>
       </td>
       <td class="content"><p>Flow control settings for the maximum number of outstanding messages. When
- there are <code>max_outstanding_messages</code> or more currently sent to the
- streaming pull client that have not yet been acked or nacked, the server
- stops sending more messages. The sending of messages resumes once the
- number of outstanding messages is less than this value. If the value is
- &lt;= 0, there is no limit to the number of outstanding messages. This
- property can only be set on the initial StreamingPullRequest. If it is set
- on a subsequent request, the stream will be aborted with status
- <code>INVALID_ARGUMENT</code>.</p></td>
+there are <code>max_outstanding_messages</code> or more currently sent to the
+streaming pull client that have not yet been acked or nacked, the server
+stops sending more messages. The sending of messages resumes once the
+number of outstanding messages is less than this value. If the value is
+&lt;= 0, there is no limit to the number of outstanding messages. This
+property can only be set on the initial StreamingPullRequest. If it is set
+on a subsequent request, the stream will be aborted with status
+<code>INVALID_ARGUMENT</code>.</p></td>
       
     </tr>
     
@@ -5853,14 +5853,14 @@
         </code>
       </td>
       <td class="content"><p>Flow control settings for the maximum number of outstanding bytes. When
- there are <code>max_outstanding_bytes</code> or more worth of messages currently sent
- to the streaming pull client that have not yet been acked or nacked, the
- server will stop sending more messages. The sending of messages resumes
- once the number of outstanding bytes is less than this value. If the value
- is &lt;= 0, there is no limit to the number of outstanding bytes. This
- property can only be set on the initial StreamingPullRequest. If it is set
- on a subsequent request, the stream will be aborted with status
- <code>INVALID_ARGUMENT</code>.</p></td>
+there are <code>max_outstanding_bytes</code> or more worth of messages currently sent
+to the streaming pull client that have not yet been acked or nacked, the
+server will stop sending more messages. The sending of messages resumes
+once the number of outstanding bytes is less than this value. If the value
+is &lt;= 0, there is no limit to the number of outstanding bytes. This
+property can only be set on the initial StreamingPullRequest. If it is set
+on a subsequent request, the stream will be aborted with status
+<code>INVALID_ARGUMENT</code>.</p></td>
       
     </tr>
     
@@ -5886,7 +5886,7 @@
 
 <div class="block content">
   <p>Response for the <code>StreamingPull</code> method. This response is used to stream
- messages from the server to the client.</p>
+messages from the server to the client.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -5932,7 +5932,7 @@
         </code>
       </td>
       <td class="content"><p>This field will only be set if <code>enable_exactly_once_delivery</code> is set to
- <code>true</code>.</p></td>
+<code>true</code>.</p></td>
       
     </tr>
     
@@ -5965,7 +5965,7 @@
         </code>
       </td>
       <td class="content"><p>This field will only be set if <code>enable_exactly_once_delivery</code> is set to
- <code>true</code>.</p></td>
+<code>true</code>.</p></td>
       
     </tr>
     
@@ -5991,8 +5991,8 @@
 
 <div class="block content">
   <p>A subscription resource. If none of <code>push_config</code> or <code>bigquery_config</code> is
- set, then the subscriber will pull and ack messages using API methods. At
- most one of these fields may be set.</p>
+set, then the subscriber will pull and ack messages using API methods. At
+most one of these fields may be set.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -6019,11 +6019,11 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the subscription. It must have the format
- <code>"projects/{project}/subscriptions/{subscription}"</code>. <code>{subscription}</code> must
- start with a letter, and contain only letters (<code>[A-Za-z]</code>), numbers
- (<code>[0-9]</code>), dashes (<code>-</code>), underscores (<code>_</code>), periods (<code>.</code>), tildes (<code>~</code>),
- plus (<code>+</code>) or percent signs (<code>%</code>). It must be between 3 and 255 characters
- in length, and it must not start with <code>"goog"</code>.</p></td>
+<code>"projects/{project}/subscriptions/{subscription}"</code>. <code>{subscription}</code> must
+start with a letter, and contain only letters (<code>[A-Za-z]</code>), numbers
+(<code>[0-9]</code>), dashes (<code>-</code>), underscores (<code>_</code>), periods (<code>.</code>), tildes (<code>~</code>),
+plus (<code>+</code>) or percent signs (<code>%</code>). It must be between 3 and 255 characters
+in length, and it must not start with <code>"goog"</code>.</p></td>
       
     </tr>
     
@@ -6039,8 +6039,8 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic from which this subscription is receiving
- messages. Format is <code>projects/{project}/topics/{topic}</code>. The value of this
- field will be <code>_deleted-topic_</code> if the topic has been deleted.</p></td>
+messages. Format is <code>projects/{project}/topics/{topic}</code>. The value of this
+field will be <code>_deleted-topic_</code> if the topic has been deleted.</p></td>
       
     </tr>
     
@@ -6057,7 +6057,7 @@
         </code>
       </td>
       <td class="content"><p>If push delivery is used with this subscription, this field is
- used to configure it.</p></td>
+used to configure it.</p></td>
       
     </tr>
     
@@ -6073,22 +6073,22 @@
         </code>
       </td>
       <td class="content"><p>The approximate amount of time (on a best-effort basis) Pub/Sub waits for
- the subscriber to acknowledge receipt before resending the message. In the
- interval after the message is delivered and before it is acknowledged, it
- is considered to be <em>outstanding</em>. During that time period, the
- message will not be redelivered (on a best-effort basis).</p>
+the subscriber to acknowledge receipt before resending the message. In the
+interval after the message is delivered and before it is acknowledged, it
+is considered to be <em>outstanding</em>. During that time period, the
+message will not be redelivered (on a best-effort basis).</p>
 <p>For pull subscriptions, this value is used as the initial value for the ack
- deadline. To override this value for a given message, call
- <code>ModifyAckDeadline</code> with the corresponding <code>ack_id</code> if using
- non-streaming pull or send the <code>ack_id</code> in a
- <code>StreamingModifyAckDeadlineRequest</code> if using streaming pull.
- The minimum custom deadline you can specify is 10 seconds.
- The maximum custom deadline you can specify is 600 seconds (10 minutes).
- If this parameter is 0, a default value of 10 seconds is used.</p>
+deadline. To override this value for a given message, call
+<code>ModifyAckDeadline</code> with the corresponding <code>ack_id</code> if using
+non-streaming pull or send the <code>ack_id</code> in a
+<code>StreamingModifyAckDeadlineRequest</code> if using streaming pull.
+The minimum custom deadline you can specify is 10 seconds.
+The maximum custom deadline you can specify is 600 seconds (10 minutes).
+If this parameter is 0, a default value of 10 seconds is used.</p>
 <p>For push delivery, this value is also used to set the request timeout for
- the call to the push endpoint.</p>
+the call to the push endpoint.</p>
 <p>If the subscriber never acknowledges the message, the Pub/Sub
- system will eventually redeliver the message.</p></td>
+system will eventually redeliver the message.</p></td>
       
     </tr>
     
@@ -6104,11 +6104,11 @@
         </code>
       </td>
       <td class="content"><p>Indicates whether to retain acknowledged messages. If true, then
- messages are not expunged from the subscription's backlog, even if they are
- acknowledged, until they fall out of the <code>message_retention_duration</code>
- window. This must be true if you would like to [<code>Seek</code> to a timestamp]
- (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in
- the past to replay previously-acknowledged messages.</p></td>
+messages are not expunged from the subscription's backlog, even if they are
+acknowledged, until they fall out of the <code>message_retention_duration</code>
+window. This must be true if you would like to [<code>Seek</code> to a timestamp]
+(https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in
+the past to replay previously-acknowledged messages.</p></td>
       
     </tr>
     
@@ -6124,11 +6124,11 @@
         </code>
       </td>
       <td class="content"><p>How long to retain unacknowledged messages in the subscription's backlog,
- from the moment a message is published.
- If <code>retain_acked_messages</code> is true, then this also configures the retention
- of acknowledged messages, and thus configures how far back in time a <code>Seek</code>
- can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
- minutes.</p></td>
+from the moment a message is published.
+If <code>retain_acked_messages</code> is true, then this also configures the retention
+of acknowledged messages, and thus configures how far back in time a <code>Seek</code>
+can be done. Defaults to 7 days. Cannot be more than 7 days or less than 10
+minutes.</p></td>
       
     </tr>
     
@@ -6144,7 +6144,7 @@
         </code>
       </td>
       <td class="content"><p>See <a href="https://cloud.google.com/pubsub/docs/labels">Creating and managing
- labels</a>.</p></td>
+labels</a>.</p></td>
       
     </tr>
     
@@ -6160,9 +6160,9 @@
         </code>
       </td>
       <td class="content"><p>If true, messages published with the same <code>ordering_key</code> in <code>PubsubMessage</code>
- will be delivered to the subscribers in the order in which they
- are received by the Pub/Sub system. Otherwise, they may be delivered in
- any order.</p></td>
+will be delivered to the subscribers in the order in which they
+are received by the Pub/Sub system. Otherwise, they may be delivered in
+any order.</p></td>
       
     </tr>
     
@@ -6179,12 +6179,12 @@
         </code>
       </td>
       <td class="content"><p>A policy that specifies the conditions for this subscription's expiration.
- A subscription is considered active as long as any connected subscriber is
- successfully consuming messages from the subscription or is issuing
- operations on the subscription. If <code>expiration_policy</code> is not set, a
- <em>default policy</em> with <code>ttl</code> of 31 days will be used. The minimum allowed
- value for <code>expiration_policy.ttl</code> is 1 day. If <code>expiration_policy</code> is set,
- but <code>expiration_policy.ttl</code> is not set, the subscription never expires.</p></td>
+A subscription is considered active as long as any connected subscriber is
+successfully consuming messages from the subscription or is issuing
+operations on the subscription. If <code>expiration_policy</code> is not set, a
+<em>default policy</em> with <code>ttl</code> of 31 days will be used. The minimum allowed
+value for <code>expiration_policy.ttl</code> is 1 day. If <code>expiration_policy</code> is set,
+but <code>expiration_policy.ttl</code> is not set, the subscription never expires.</p></td>
       
     </tr>
     
@@ -6200,10 +6200,10 @@
         </code>
       </td>
       <td class="content"><p>An expression written in the Pub/Sub <a href="https://cloud.google.com/pubsub/docs/filtering">filter
- language</a>. If non-empty,
- then only <code>PubsubMessage</code>s whose <code>attributes</code> field matches the filter are
- delivered on this subscription. If empty, then no messages are filtered
- out.</p></td>
+language</a>. If non-empty,
+then only <code>PubsubMessage</code>s whose <code>attributes</code> field matches the filter are
+delivered on this subscription. If empty, then no messages are filtered
+out.</p></td>
       
     </tr>
     
@@ -6220,12 +6220,12 @@
         </code>
       </td>
       <td class="content"><p>A policy that specifies the conditions for dead lettering messages in
- this subscription. If dead_letter_policy is not set, dead lettering
- is disabled.</p>
+this subscription. If dead_letter_policy is not set, dead lettering
+is disabled.</p>
 <p>The Cloud Pub/Sub service account associated with this subscriptions's
- parent project (i.e.,
- service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
- permission to Acknowledge() messages on this subscription.</p></td>
+parent project (i.e.,
+service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have
+permission to Acknowledge() messages on this subscription.</p></td>
       
     </tr>
     
@@ -6242,11 +6242,11 @@
         </code>
       </td>
       <td class="content"><p>A policy that specifies how Pub/Sub retries message delivery for this
- subscription.</p>
+subscription.</p>
 <p>If not set, the default retry policy is applied. This generally implies
- that messages will be retried as soon as possible for healthy subscribers.
- RetryPolicy will be triggered on NACKs or acknowledgement deadline
- exceeded events for a given message.</p></td>
+that messages will be retried as soon as possible for healthy subscribers.
+RetryPolicy will be triggered on NACKs or acknowledgement deadline
+exceeded events for a given message.</p></td>
       
     </tr>
     
@@ -6262,10 +6262,10 @@
         </code>
       </td>
       <td class="content"><p>Indicates whether the subscription is detached from its topic. Detached
- subscriptions don't receive messages from their topic and don't retain any
- backlog. <code>Pull</code> and <code>StreamingPull</code> requests will return
- FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
- the endpoint will not be made.</p></td>
+subscriptions don't receive messages from their topic and don't retain any
+backlog. <code>Pull</code> and <code>StreamingPull</code> requests will return
+FAILED_PRECONDITION. If the subscription is a push subscription, pushes to
+the endpoint will not be made.</p></td>
       
     </tr>
     
@@ -6281,16 +6281,16 @@
         </code>
       </td>
       <td class="content"><p>If true, Pub/Sub provides the following guarantees for the delivery of
- a message with a given value of <code>message_id</code> on this subscription:</p>
+a message with a given value of <code>message_id</code> on this subscription:</p>
 <ul>
 <li>The message sent to a subscriber is guaranteed not to be resent
- before the message's acknowledgement deadline expires.</li>
+before the message's acknowledgement deadline expires.</li>
 <li>An acknowledged message will not be resent to a subscriber.</li>
 </ul>
 <p>Note that subscribers may still receive multiple copies of a message
- when <code>enable_exactly_once_delivery</code> is true if the message was published
- multiple times by a publisher client. These copies are  considered distinct
- by Pub/Sub and have distinct <code>message_id</code> values.</p></td>
+when <code>enable_exactly_once_delivery</code> is true if the message was published
+multiple times by a publisher client. These copies are  considered distinct
+by Pub/Sub and have distinct <code>message_id</code> values.</p></td>
       
     </tr>
     
@@ -6306,11 +6306,11 @@
         </code>
       </td>
       <td class="content"><p>Output only. Indicates the minimum duration for which a message is retained
- after it is published to the subscription's topic. If this field is set,
- messages published to the subscription's topic in the last
- <code>topic_message_retention_duration</code> are always available to subscribers. See
- the <code>message_retention_duration</code> field in <code>Topic</code>. This field is set only
- in responses from the server; it is ignored if it is set in any requests.</p></td>
+after it is published to the subscription's topic. If this field is set,
+messages published to the subscription's topic in the last
+<code>topic_message_retention_duration</code> are always available to subscribers. See
+the <code>message_retention_duration</code> field in <code>Topic</code>. This field is set only
+in responses from the server; it is ignored if it is set in any requests.</p></td>
       
     </tr>
     
@@ -6327,7 +6327,7 @@
         </code>
       </td>
       <td class="content"><p>If delivery to BigQuery is used with this subscription, this field is
- used to configure it.</p></td>
+used to configure it.</p></td>
       
     </tr>
     
@@ -6344,7 +6344,7 @@
         </code>
       </td>
       <td class="content"><p>Output only. An output-only field indicating whether or not the
- subscription can receive messages.</p></td>
+subscription can receive messages.</p></td>
       
     </tr>
     
@@ -6465,11 +6465,11 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the topic. It must have the format
- <code>"projects/{project}/topics/{topic}"</code>. <code>{topic}</code> must start with a letter,
- and contain only letters (<code>[A-Za-z]</code>), numbers (<code>[0-9]</code>), dashes (<code>-</code>),
- underscores (<code>_</code>), periods (<code>.</code>), tildes (<code>~</code>), plus (<code>+</code>) or percent
- signs (<code>%</code>). It must be between 3 and 255 characters in length, and it
- must not start with <code>"goog"</code>.</p></td>
+<code>"projects/{project}/topics/{topic}"</code>. <code>{topic}</code> must start with a letter,
+and contain only letters (<code>[A-Za-z]</code>), numbers (<code>[0-9]</code>), dashes (<code>-</code>),
+underscores (<code>_</code>), periods (<code>.</code>), tildes (<code>~</code>), plus (<code>+</code>) or percent
+signs (<code>%</code>). It must be between 3 and 255 characters in length, and it
+must not start with <code>"goog"</code>.</p></td>
       
     </tr>
     
@@ -6488,7 +6488,7 @@
         </code>
       </td>
       <td class="content"><p>See [Creating and managing labels]
- (https://cloud.google.com/pubsub/docs/labels).</p></td>
+(https://cloud.google.com/pubsub/docs/labels).</p></td>
       
     </tr>
     
@@ -6505,8 +6505,8 @@
         </code>
       </td>
       <td class="content"><p>Policy constraining the set of Google Cloud Platform regions where messages
- published to the topic may be stored. If not present, then no constraints
- are in effect.</p></td>
+published to the topic may be stored. If not present, then no constraints
+are in effect.</p></td>
       
     </tr>
     
@@ -6522,7 +6522,7 @@
         </code>
       </td>
       <td class="content"><p>The resource name of the Cloud KMS CryptoKey to be used to protect access
- to messages published on this topic.</p>
+to messages published on this topic.</p>
 <p>The expected format is <code>projects/*/locations/*/keyRings/*/cryptoKeys/*</code>.</p></td>
       
     </tr>
@@ -6555,7 +6555,7 @@
         </code>
       </td>
       <td class="content"><p>Reserved for future use. This field is set only in responses from the
- server; it is ignored if it is set in any requests.</p></td>
+server; it is ignored if it is set in any requests.</p></td>
       
     </tr>
     
@@ -6571,13 +6571,13 @@
         </code>
       </td>
       <td class="content"><p>Indicates the minimum duration to retain a message after it is published to
- the topic. If this field is set, messages published to the topic in the
- last <code>message_retention_duration</code> are always available to subscribers. For
- instance, it allows any attached subscription to <a href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">seek to a
- timestamp</a>
- that is up to <code>message_retention_duration</code> in the past. If this field is
- not set, message retention is controlled by settings on individual
- subscriptions. Cannot be more than 31 days or less than 10 minutes.</p></td>
+the topic. If this field is set, messages published to the topic in the
+last <code>message_retention_duration</code> are always available to subscribers. For
+instance, it allows any attached subscription to <a href="https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time">seek to a
+timestamp</a>
+that is up to <code>message_retention_duration</code> in the past. If this field is
+not set, message retention is controlled by settings on individual
+subscriptions. Cannot be more than 31 days or less than 10 minutes.</p></td>
       
     </tr>
     
@@ -6645,7 +6645,7 @@
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided snapshot to update.
- Must be specified and non-empty.</p></td>
+Must be specified and non-empty.</p></td>
       
     </tr>
     
@@ -6713,7 +6713,7 @@
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided subscription to update.
- Must be specified and non-empty.</p></td>
+Must be specified and non-empty.</p></td>
       
     </tr>
     
@@ -6781,10 +6781,10 @@
         </code>
       </td>
       <td class="content"><p>Required. Indicates which fields in the provided topic to update. Must be
- specified and non-empty. Note that if <code>update_mask</code> contains
- "message_storage_policy" but the <code>message_storage_policy</code> is not set in
- the <code>topic</code> provided above, then the updated value is determined by the
- policy configured at the project or organization level.</p></td>
+specified and non-empty. Note that if <code>update_mask</code> contains
+"message_storage_policy" but the <code>message_storage_policy</code> is not set in
+the <code>topic</code> provided above, then the updated value is determined by the
+policy configured at the project or organization level.</p></td>
       
     </tr>
     
@@ -6836,7 +6836,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to validate schemas.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -6925,7 +6925,7 @@
 
 <div class="block content">
   <p>Response for the <code>ValidateMessage</code> method.
- Empty for now.</p>
+Empty for now.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -6988,7 +6988,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The name of the project in which to validate schemas.
- Format is <code>projects/{project-id}</code>.</p></td>
+Format is <code>projects/{project-id}</code>.</p></td>
       
     </tr>
     
@@ -7030,7 +7030,7 @@
 
 <div class="block content">
   <p>Response for the <code>ValidateSchema</code> method.
- Empty for now.</p>
+Empty for now.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -7099,7 +7099,7 @@
       <td><code>BINARY</code></td>
       <td>2</td>
       <td class="content"><p>Binary encoding, as defined by the schema type. For some schema types,
- binary encoding may not be available.</p></td>
+binary encoding may not be available.</p></td>
     </tr>
     
   </tbody>
@@ -7132,7 +7132,7 @@
       <td><code>SCHEMA_VIEW_UNSPECIFIED</code></td>
       <td>0</td>
       <td class="content"><p>The default / unset value.
- The API will default to the BASIC view.</p></td>
+The API will default to the BASIC view.</p></td>
     </tr>
     
     <tr>
@@ -7189,8 +7189,8 @@
       <td><code>RESOURCE_ERROR</code></td>
       <td>2</td>
       <td class="content"><p>The subscription cannot receive messages because of an error with the
- resource to which it pushes messages. See the more detailed error state
- in the corresponding configuration.</p></td>
+resource to which it pushes messages. See the more detailed error state
+in the corresponding configuration.</p></td>
     </tr>
     
   </tbody>
@@ -7235,11 +7235,11 @@
       <td><code>PERMISSION_DENIED</code></td>
       <td>2</td>
       <td class="content"><p>Cannot write to the BigQuery table because of permission denied errors.
- This can happen if
- - Pub/Sub SA has not been granted the <a href="https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account">appropriate BigQuery IAM
- permissions</a>
- - bigquery.googleapis.com API is not enabled for the project
- (<a href="https://cloud.google.com/service-usage/docs/enable-disable">instructions</a>)</p></td>
+This can happen if
+- Pub/Sub SA has not been granted the <a href="https://cloud.google.com/pubsub/docs/create-subscription#assign_bigquery_service_account">appropriate BigQuery IAM
+permissions</a>
+- bigquery.googleapis.com API is not enabled for the project
+(<a href="https://cloud.google.com/service-usage/docs/enable-disable">instructions</a>)</p></td>
     </tr>
     
     <tr>

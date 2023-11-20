@@ -658,11 +658,11 @@
 
 <div class="block content">
   <p><p>Each RPC normalizes the partition IDs of the keys in its input entities,
- and always returns entities with keys with normalized partition IDs.
- This applies to all keys and entities, including those in values, except keys
- with both an empty path and an empty or unset partition ID. Normalization of
- input keys sets the project ID (if not already set) to the project ID from
- the request.</p></p>
+and always returns entities with keys with normalized partition IDs.
+This applies to all keys and entities, including those in values, except keys
+with both an empty path and an empty or unset partition ID. Normalization of
+input keys sets the project ID (if not already set) to the project ID from
+the request.</p></p>
 </div>
 
 
@@ -762,7 +762,7 @@
   
   <div class="block">
     <p><p>Commits a transaction, optionally creating, deleting or modifying some
- entities.</p></p>
+entities.</p></p>
   </div>
   
 </div>
@@ -803,7 +803,7 @@
   
   <div class="block">
     <p><p>Allocates IDs for the given keys, which is useful for referencing an entity
- before it is inserted.</p></p>
+before it is inserted.</p></p>
   </div>
   
 </div>
@@ -824,7 +824,7 @@
   
   <div class="block">
     <p><p>Prevents the supplied keys' IDs from being auto-allocated by Cloud
- Datastore.</p></p>
+Datastore.</p></p>
   </div>
   
 </div>
@@ -905,31 +905,33 @@
         </code>
       </td>
       <td class="content"><p>Optional. Optional name of the property to store the result of the
- aggregation.</p>
+aggregation.</p>
 <p>If not provided, Datastore will pick a default name following the format
- <code>property_&lt;incremental_id++&gt;</code>. For example:</p>
-<p><code>AGGREGATE
-   COUNT_UP_TO(1) AS count_up_to_1,
-   COUNT_UP_TO(2),
-   COUNT_UP_TO(3) AS count_up_to_3,
-   COUNT_UP_TO(4)
- OVER (
-   ...
- );</code></p>
+<code>property_&lt;incremental_id++&gt;</code>. For example:</p>
+<pre><code>AGGREGATE
+  COUNT_UP_TO(1) AS count_up_to_1,
+  COUNT_UP_TO(2),
+  COUNT_UP_TO(3) AS count_up_to_3,
+  COUNT_UP_TO(4)
+OVER (
+  ...
+);
+</code></pre>
 <p>becomes:</p>
-<p><code>AGGREGATE
-   COUNT_UP_TO(1) AS count_up_to_1,
-   COUNT_UP_TO(2) AS property_1,
-   COUNT_UP_TO(3) AS count_up_to_3,
-   COUNT_UP_TO(4) AS property_2
- OVER (
-   ...
- );</code></p>
+<pre><code>AGGREGATE
+  COUNT_UP_TO(1) AS count_up_to_1,
+  COUNT_UP_TO(2) AS property_1,
+  COUNT_UP_TO(3) AS count_up_to_3,
+  COUNT_UP_TO(4) AS property_2
+OVER (
+  ...
+);
+</code></pre>
 <p>Requires:</p>
 <ul>
 <li>Must be unique across all aggregation aliases.</li>
 <li>Conform to [entity property
- name][google.datastore.v1.Entity.properties] limitations.</li>
+name][google.datastore.v1.Entity.properties] limitations.</li>
 </ul></td>
       
     </tr>
@@ -956,7 +958,7 @@
 
 <div class="block content">
   <p>Datastore query for running an aggregation over a
- [Query][google.datastore.v1.Query].</p>
+[Query][google.datastore.v1.Query].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1002,7 +1004,7 @@
         </code>
       </td>
       <td class="content"><p>Optional. Series of aggregations to apply over the results of the
- <code>nested_query</code>.</p>
+<code>nested_query</code>.</p>
 <p>Requires:</p>
 <ul>
 <li>A minimum of one and maximum of five aggregations per query.</li>
@@ -1033,8 +1035,8 @@
 <div class="block content">
   <p>The result of a single bucket from a Datastore aggregation query.</p>
 <p>The keys of <code>aggregate_properties</code> are the same for all results in an
- aggregation query, unlike entity queries which can have different fields
- present for each result.</p>
+aggregation query, unlike entity queries which can have different fields
+present for each result.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1065,9 +1067,9 @@
       </td>
       <td class="content"><p>The result of the aggregation functions, ex: <code>COUNT(*) AS total_entities</code>.</p>
 <p>The key is the
- [alias][google.datastore.v1.AggregationQuery.Aggregation.alias] assigned to
- the aggregation function on input and the size of this map equals the
- number of aggregation functions in the query.</p></td>
+[alias][google.datastore.v1.AggregationQuery.Aggregation.alias] assigned to
+the aggregation function on input and the size of this map equals the
+number of aggregation functions in the query.</p></td>
       
     </tr>
     
@@ -1138,8 +1140,8 @@
         </code>
       </td>
       <td class="content"><p>The state of the query after the current batch.
- Only COUNT(*) aggregations are supported in the initial launch. Therefore,
- expected result type is limited to <code>NO_MORE_RESULTS</code>.</p></td>
+Only COUNT(*) aggregations are supported in the initial launch. Therefore,
+expected result type is limited to <code>NO_MORE_RESULTS</code>.</p></td>
       
     </tr>
     
@@ -1156,8 +1158,8 @@
       </td>
       <td class="content"><p>Read timestamp this batch was returned from.</p>
 <p>In a single transaction, subsequent query result batches for the same query
- can have a greater timestamp. Each batch's read timestamp
- is valid for all preceding batches.</p></td>
+can have a greater timestamp. Each batch's read timestamp
+is valid for all preceding batches.</p></td>
       
     </tr>
     
@@ -1183,7 +1185,7 @@
 
 <div class="block content">
   <p>The request for
- [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
+[Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1213,7 +1215,7 @@
         </code>
       </td>
       <td class="content"><p>Required. A list of keys with incomplete key paths for which to allocate
- IDs. No key may be reserved/read-only.</p></td>
+IDs. No key may be reserved/read-only.</p></td>
       
     </tr>
     
@@ -1245,7 +1247,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -1271,7 +1273,7 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
+[Datastore.AllocateIds][google.datastore.v1.Datastore.AllocateIds].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1301,7 +1303,7 @@
         </code>
       </td>
       <td class="content"><p>The keys specified in the request (in the same order), each with
- its key path completed with a newly allocated ID.</p></td>
+its key path completed with a newly allocated ID.</p></td>
       
     </tr>
     
@@ -1356,8 +1358,8 @@
         </code>
       </td>
       <td class="content"><p>Values in the array.
- The order of values in an array is preserved as long as all values have
- identical settings for 'exclude_from_indexes'.</p></td>
+The order of values in an array is preserved as long as all values have
+identical settings for 'exclude_from_indexes'.</p></td>
       
     </tr>
     
@@ -1383,7 +1385,7 @@
 
 <div class="block content">
   <p>The request for
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1426,7 +1428,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -1468,7 +1470,7 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1546,8 +1548,8 @@
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction associated with the commit. A
- transaction identifier is returned by a call to
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
+transaction identifier is returned by a call to
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
       
     </tr>
     
@@ -1583,8 +1585,8 @@
       </td>
       <td class="content"><p>The mutations to perform.</p>
 <p>When mode is <code>TRANSACTIONAL</code>, mutations affecting a single entity are
- applied in order. The following sequences of mutations affecting a single
- entity are not permitted in a single <code>Commit</code> request:</p>
+applied in order. The following sequences of mutations affecting a single
+entity are not permitted in a single <code>Commit</code> request:</p>
 <ul>
 <li><code>insert</code> followed by <code>insert</code></li>
 <li><code>update</code> followed by <code>insert</code></li>
@@ -1592,7 +1594,7 @@
 <li><code>delete</code> followed by <code>update</code></li>
 </ul>
 <p>When mode is <code>NON_TRANSACTIONAL</code>, no two mutations may affect a single
- entity.</p></td>
+entity.</p></td>
       
     </tr>
     
@@ -1624,7 +1626,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -1641,9 +1643,9 @@
         </code>
       </td>
       <td class="content"><p>Options for beginning a new transaction for this request.
- The transaction is committed when the request completes. If specified,
- [TransactionOptions.mode][google.datastore.v1.TransactionOptions] must be
- [TransactionOptions.ReadWrite][google.datastore.v1.TransactionOptions.ReadWrite].</p></td>
+The transaction is committed when the request completes. If specified,
+[TransactionOptions.mode][google.datastore.v1.TransactionOptions] must be
+[TransactionOptions.ReadWrite][google.datastore.v1.TransactionOptions.ReadWrite].</p></td>
       
     </tr>
     
@@ -1698,7 +1700,7 @@
         </code>
       </td>
       <td class="content"><p>The result of performing the mutations.
- The i-th mutation result corresponds to the i-th mutation in the request.</p></td>
+The i-th mutation result corresponds to the i-th mutation in the request.</p></td>
       
     </tr>
     
@@ -1714,7 +1716,7 @@
         </code>
       </td>
       <td class="content"><p>The number of index entries updated during the commit, or zero if none were
- updated.</p></td>
+updated.</p></td>
       
     </tr>
     
@@ -1833,7 +1835,7 @@
 <div class="block content">
   <p>Count of entities that match the query.</p>
 <p>The <code>COUNT(*)</code> aggregation function operates on the entire entity
- so it does not require a field reference.</p>
+so it does not require a field reference.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1860,14 +1862,15 @@
         </code>
       </td>
       <td class="content"><p>Optional. Optional constraint on the maximum number of entities to
- count.</p>
+count.</p>
 <p>This provides a way to set an upper bound on the number of entities
- to scan, limiting latency and cost.</p>
+to scan, limiting latency and cost.</p>
 <p>Unspecified is interpreted as no bound.</p>
 <p>If a zero value is provided, a count result of zero should always be
- expected.</p>
+expected.</p>
 <p>High-Level Example:</p>
-<p><code>AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );</code></p>
+<pre><code>AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
+</code></pre>
 <p>Requires:</p>
 <ul>
 <li>Must be non-negative when present.</li>
@@ -1898,8 +1901,8 @@
 <div class="block content">
   <p>A Datastore data object.</p>
 <p>An entity is limited to 1 megabyte when stored. That <em>roughly</em>
- corresponds to a limit of 1 megabyte for the serialized form of this
- message.</p>
+corresponds to a limit of 1 megabyte for the serialized form of this
+message.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -1928,9 +1931,9 @@
       </td>
       <td class="content"><p>The entity's key.</p>
 <p>An entity must have a key, unless otherwise documented (for example,
- an entity in <code>Value.entity_value</code> may have no key).
- An entity's kind is its key path's last element's kind,
- or null if it has no key.</p></td>
+an entity in <code>Value.entity_value</code> may have no key).
+An entity's kind is its key path's last element's kind,
+or null if it has no key.</p></td>
       
     </tr>
     
@@ -1949,11 +1952,11 @@
         </code>
       </td>
       <td class="content"><p>The entity's properties.
- The map's keys are property names.
- A property name matching regex <code>__.*__</code> is reserved.
- A reserved property name is forbidden in certain documented contexts.
- The name must not contain more than 500 characters.
- The name cannot be <code>""</code>.</p></td>
+The map's keys are property names.
+A property name matching regex <code>__.*__</code> is reserved.
+A reserved property name is forbidden in certain documented contexts.
+The name must not contain more than 500 characters.
+The name cannot be <code>""</code>.</p></td>
       
     </tr>
     
@@ -2021,7 +2024,7 @@
         </code>
       </td>
       <td class="content"><p>A cursor that points to the position after the result entity.
- Set only when the <code>EntityResult</code> is part of a <code>QueryResultBatch</code> message.</p></td>
+Set only when the <code>EntityResult</code> is part of a <code>QueryResultBatch</code> message.</p></td>
       
     </tr>
     
@@ -2037,12 +2040,12 @@
         </code>
       </td>
       <td class="content"><p>The version of the entity, a strictly positive number that monotonically
- increases with changes to the entity.</p>
+increases with changes to the entity.</p>
 <p>This field is set for
- [<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.</p>
+[<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.</p>
 <p>For [missing][google.datastore.v1.LookupResponse.missing] entities in
- <code>LookupResponse</code>, this is the version of the snapshot that was used to look
- up the entity, and it is always set except for eventually consistent reads.</p></td>
+<code>LookupResponse</code>, this is the version of the snapshot that was used to look
+up the entity, and it is always set except for eventually consistent reads.</p></td>
       
     </tr>
     
@@ -2058,9 +2061,9 @@
         </code>
       </td>
       <td class="content"><p>The time at which the entity was last changed.
- This field is set for
- [<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
- If this entity is missing, this field will not be set.</p></td>
+This field is set for
+[<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+If this entity is missing, this field will not be set.</p></td>
       
     </tr>
     
@@ -2076,9 +2079,9 @@
         </code>
       </td>
       <td class="content"><p>The time at which the entity was created.
- This field is set for
- [<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
- If this entity is missing, this field will not be set.</p></td>
+This field is set for
+[<code>FULL</code>][google.datastore.v1.EntityResult.ResultType.FULL] entity results.
+If this entity is missing, this field will not be set.</p></td>
       
     </tr>
     
@@ -2172,7 +2175,7 @@
 
 <div class="block content">
   <p>A <a href="https://cloud.google.com/datastore/docs/apis/gql/gql_reference">GQL
- query</a>.</p>
+query</a>.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2199,7 +2202,7 @@
         </code>
       </td>
       <td class="content"><p>A string of the format described
- <a href="https://cloud.google.com/datastore/docs/apis/gql/gql_reference">here</a>.</p></td>
+<a href="https://cloud.google.com/datastore/docs/apis/gql/gql_reference">here</a>.</p></td>
       
     </tr>
     
@@ -2215,9 +2218,9 @@
         </code>
       </td>
       <td class="content"><p>When false, the query string must not contain any literals and instead must
- bind all values. For example,
- <code>SELECT * FROM Kind WHERE a = 'string literal'</code> is not allowed, while
- <code>SELECT * FROM Kind WHERE a = @value</code> is.</p></td>
+bind all values. For example,
+<code>SELECT * FROM Kind WHERE a = 'string literal'</code> is not allowed, while
+<code>SELECT * FROM Kind WHERE a = @value</code> is.</p></td>
       
     </tr>
     
@@ -2236,9 +2239,9 @@
         </code>
       </td>
       <td class="content"><p>Numbered binding site @1 references the first numbered parameter,
- effectively using 1-based indexing, rather than the usual 0.</p>
+effectively using 1-based indexing, rather than the usual 0.</p>
 <p>For each binding site numbered i in <code>query_string</code>, there must be an i-th
- numbered parameter. The inverse must also be true.</p></td>
+numbered parameter. The inverse must also be true.</p></td>
       
     </tr>
     
@@ -2257,9 +2260,9 @@
         </code>
       </td>
       <td class="content"><p>For each non-reserved named binding site in the query string, there must be
- a named parameter with that name, but not necessarily the inverse.</p>
+a named parameter with that name, but not necessarily the inverse.</p>
 <p>Key must match regex <code>[A-Za-z_$][A-Za-z_$0-9]*</code>, must not match regex
- <code>__.*__</code>, and must not be <code>""</code>.</p></td>
+<code>__.*__</code>, and must not be <code>""</code>.</p></td>
       
     </tr>
     
@@ -2327,7 +2330,7 @@
         </code>
       </td>
       <td class="content"><p>A query cursor. Query cursors are returned in query
- result batches.</p></td>
+result batches.</p></td>
       
     </tr>
     
@@ -2353,9 +2356,9 @@
 
 <div class="block content">
   <p>A unique identifier for an entity.
- If a key's partition ID or any of its path kinds or names are
- reserved/read-only, the key is reserved/read-only.
- A reserved/read-only key is forbidden in certain documented contexts.</p>
+If a key's partition ID or any of its path kinds or names are
+reserved/read-only, the key is reserved/read-only.
+A reserved/read-only key is forbidden in certain documented contexts.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2383,8 +2386,8 @@
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, currently identified by a project
- ID and namespace ID.
- Queries are scoped to a single partition.</p></td>
+ID and namespace ID.
+Queries are scoped to a single partition.</p></td>
       
     </tr>
     
@@ -2403,18 +2406,18 @@
         </code>
       </td>
       <td class="content"><p>The entity path.
- An entity path consists of one or more elements composed of a kind and a
- string or numerical identifier, which identify entities. The first
- element identifies a <em>root entity</em>, the second element identifies
- a <em>child</em> of the root entity, the third element identifies a child of the
- second entity, and so forth. The entities identified by all prefixes of
- the path are called the element's <em>ancestors</em>.</p>
+An entity path consists of one or more elements composed of a kind and a
+string or numerical identifier, which identify entities. The first
+element identifies a <em>root entity</em>, the second element identifies
+a <em>child</em> of the root entity, the third element identifies a child of the
+second entity, and so forth. The entities identified by all prefixes of
+the path are called the element's <em>ancestors</em>.</p>
 <p>An entity path is always fully complete: <em>all</em> of the entity's ancestors
- are required to be in the path along with the entity identifier itself.
- The only exception is that in some documented cases, the identifier in the
- last path element (for the entity) itself may be omitted. For example,
- the last path element of the key of <code>Mutation.insert</code> may have no
- identifier.</p>
+are required to be in the path along with the entity identifier itself.
+The only exception is that in some documented cases, the identifier in the
+last path element (for the entity) itself may be omitted. For example,
+the last path element of the key of <code>Mutation.insert</code> may have no
+identifier.</p>
 <p>A path can never be empty, and a path can have at most 100 elements.</p></td>
       
     </tr>
@@ -2568,7 +2571,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -2623,8 +2626,8 @@
         </code>
       </td>
       <td class="content"><p>Entities found as <code>ResultType.FULL</code> entities. The order of results in this
- field is undefined and has no relation to the order of the keys in the
- input.</p></td>
+field is undefined and has no relation to the order of the keys in the
+input.</p></td>
       
     </tr>
     
@@ -2643,8 +2646,8 @@
         </code>
       </td>
       <td class="content"><p>Entities not found as <code>ResultType.KEY_ONLY</code> entities. The order of results
- in this field is undefined and has no relation to the order of the keys
- in the input.</p></td>
+in this field is undefined and has no relation to the order of the keys
+in the input.</p></td>
       
     </tr>
     
@@ -2663,8 +2666,8 @@
         </code>
       </td>
       <td class="content"><p>A list of keys that were not looked up due to resource constraints. The
- order of results in this field is undefined and has no relation to the
- order of the keys in the input.</p></td>
+order of results in this field is undefined and has no relation to the
+order of the keys in the input.</p></td>
       
     </tr>
     
@@ -2680,11 +2683,11 @@
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this Lookup
- request.</p>
+request.</p>
 <p>Set only when
- [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
- was set in
- [LookupRequest.read_options][google.datastore.v1.LookupRequest.read_options].</p></td>
+[ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+was set in
+[LookupRequest.read_options][google.datastore.v1.LookupRequest.read_options].</p></td>
       
     </tr>
     
@@ -2752,7 +2755,7 @@
         </code>
       </td>
       <td class="content"><p>The entity to insert. The entity must not already exist.
- The entity key's final path element may be incomplete.</p></td>
+The entity key's final path element may be incomplete.</p></td>
       
     </tr>
     
@@ -2769,7 +2772,7 @@
         </code>
       </td>
       <td class="content"><p>The entity to update. The entity must already exist.
- Must have a complete key path.</p></td>
+Must have a complete key path.</p></td>
       
     </tr>
     
@@ -2786,7 +2789,7 @@
         </code>
       </td>
       <td class="content"><p>The entity to upsert. The entity may or may not already exist.
- The entity key's final path element may be incomplete.</p></td>
+The entity key's final path element may be incomplete.</p></td>
       
     </tr>
     
@@ -2803,7 +2806,7 @@
         </code>
       </td>
       <td class="content"><p>The key of the entity to delete. The entity may or may not already exist.
- Must have a complete key path and must not be reserved/read-only.</p></td>
+Must have a complete key path and must not be reserved/read-only.</p></td>
       
     </tr>
     
@@ -2819,8 +2822,8 @@
         </code>
       </td>
       <td class="content"><p>The version of the entity that this mutation is being applied
- to. If this does not match the current version on the server, the
- mutation conflicts.</p></td>
+to. If this does not match the current version on the server, the
+mutation conflicts.</p></td>
       
     </tr>
     
@@ -2836,8 +2839,8 @@
         </code>
       </td>
       <td class="content"><p>The update time of the entity that this mutation is being applied
- to. If this does not match the current update time on the server, the
- mutation conflicts.</p></td>
+to. If this does not match the current update time on the server, the
+mutation conflicts.</p></td>
       
     </tr>
     
@@ -2890,7 +2893,7 @@
         </code>
       </td>
       <td class="content"><p>The automatically allocated key.
- Set only when the mutation allocated a key.</p></td>
+Set only when the mutation allocated a key.</p></td>
       
     </tr>
     
@@ -2906,10 +2909,10 @@
         </code>
       </td>
       <td class="content"><p>The version of the entity on the server after processing the mutation. If
- the mutation doesn't change anything on the server, then the version will
- be the version of the current entity or, if no entity is present, a version
- that is strictly greater than the version of any previous entity and less
- than the version of any possible future entity.</p></td>
+the mutation doesn't change anything on the server, then the version will
+be the version of the current entity or, if no entity is present, a version
+that is strictly greater than the version of any previous entity and less
+than the version of any possible future entity.</p></td>
       
     </tr>
     
@@ -2925,7 +2928,7 @@
         </code>
       </td>
       <td class="content"><p>Whether a conflict was detected for this mutation. Always false when a
- conflict detection strategy field is not set in the mutation.</p></td>
+conflict detection strategy field is not set in the mutation.</p></td>
       
     </tr>
     
@@ -2941,9 +2944,9 @@
         </code>
       </td>
       <td class="content"><p>The update time of the entity on the server after processing the mutation.
- If the mutation doesn't change anything on the server, then the timestamp
- will be the update timestamp of the current entity. This field will not be
- set after a 'delete'.</p></td>
+If the mutation doesn't change anything on the server, then the timestamp
+will be the update timestamp of the current entity. This field will not be
+set after a 'delete'.</p></td>
       
     </tr>
     
@@ -3040,23 +3043,23 @@
 
 <div class="block content">
   <p>A partition ID identifies a grouping of entities. The grouping is always
- by project and namespace, however the namespace ID may be empty.</p>
+by project and namespace, however the namespace ID may be empty.</p>
 <p>A partition ID contains several dimensions:
- project ID and namespace ID.</p>
+project ID and namespace ID.</p>
 <p>Partition dimensions:</p>
 <ul>
 <li>May be <code>""</code>.</li>
 <li>Must be valid UTF-8 bytes.</li>
 <li>Must have values that match regex <code>[A-Za-z\d\.\-_]{1,100}</code>
- If the value of any dimension matches regex <code>__.*__</code>, the partition is
- reserved/read-only.
- A reserved/read-only partition ID is forbidden in certain documented
- contexts.</li>
+If the value of any dimension matches regex <code>__.*__</code>, the partition is
+reserved/read-only.
+A reserved/read-only partition ID is forbidden in certain documented
+contexts.</li>
 </ul>
 <p>Foreign partition IDs (in which the project ID does
- not match the context project ID ) are discouraged.
- Reads and writes of foreign partition IDs may fail if the project is not in
- an active state.</p>
+not match the context project ID ) are discouraged.
+Reads and writes of foreign partition IDs may fail if the project is not in
+an active state.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -3098,7 +3101,7 @@
         </code>
       </td>
       <td class="content"><p>If not empty, the ID of the database to which the entities
- belong.</p></td>
+belong.</p></td>
       
     </tr>
     
@@ -3143,7 +3146,7 @@
 <div class="block content">
   <p>A (kind, ID/name) pair used to construct a key path.</p>
 <p>If either name or ID is set, the element is complete.
- If neither is set, the element is incomplete.</p>
+If neither is set, the element is incomplete.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -3171,11 +3174,11 @@
       </td>
       <td class="content"><p>The kind of the entity.</p>
 <p>A kind matching regex <code>__.*__</code> is reserved/read-only.
- A kind must not contain more than 1500 bytes when UTF-8 encoded.
- Cannot be <code>""</code>.</p>
+A kind must not contain more than 1500 bytes when UTF-8 encoded.
+Cannot be <code>""</code>.</p>
 <p>Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
- encoded as <code>__bytes&lt;X&gt;__</code> where <code>&lt;X&gt;</code> is the base-64 encoding of the
- bytes.</p></td>
+encoded as <code>__bytes&lt;X&gt;__</code> where <code>&lt;X&gt;</code> is the base-64 encoding of the
+bytes.</p></td>
       
     </tr>
     
@@ -3192,7 +3195,7 @@
       </td>
       <td class="content"><p>The auto-allocated ID of the entity.</p>
 <p>Never equal to zero. Values less than zero are discouraged and may not
- be supported in the future.</p></td>
+be supported in the future.</p></td>
       
     </tr>
     
@@ -3209,11 +3212,11 @@
       </td>
       <td class="content"><p>The name of the entity.</p>
 <p>A name matching regex <code>__.*__</code> is reserved/read-only.
- A name must not be more than 1500 bytes when UTF-8 encoded.
- Cannot be <code>""</code>.</p>
+A name must not be more than 1500 bytes when UTF-8 encoded.
+Cannot be <code>""</code>.</p>
 <p>Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
- encoded as <code>__bytes&lt;X&gt;__</code> where <code>&lt;X&gt;</code> is the base-64 encoding of the
- bytes.</p></td>
+encoded as <code>__bytes&lt;X&gt;__</code> where <code>&lt;X&gt;</code> is the base-64 encoding of the
+bytes.</p></td>
       
     </tr>
     
@@ -3471,7 +3474,7 @@
         </code>
       </td>
       <td class="content"><p>The name of the property.
- If name includes "."s, it may be interpreted as a property name path.</p></td>
+If name includes "."s, it may be interpreted as a property name path.</p></td>
       
     </tr>
     
@@ -3544,7 +3547,7 @@
         </code>
       </td>
       <td class="content"><p>The kinds to query (if empty, returns entities of all kinds).
- Currently at most 1 kind may be specified.</p></td>
+Currently at most 1 kind may be specified.</p></td>
       
     </tr>
     
@@ -3597,8 +3600,8 @@
         </code>
       </td>
       <td class="content"><p>The properties to make distinct. The query results will contain the first
- result for each distinct combination of values for the given properties
- (if empty, all results are returned).</p></td>
+result for each distinct combination of values for the given properties
+(if empty, all results are returned).</p></td>
       
     </tr>
     
@@ -3614,9 +3617,9 @@
         </code>
       </td>
       <td class="content"><p>A starting point for the query results. Query cursors are
- returned in query result batches and
- <a href="https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets">can only be used to continue the same
- query</a>.</p></td>
+returned in query result batches and
+<a href="https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets">can only be used to continue the same
+query</a>.</p></td>
       
     </tr>
     
@@ -3632,9 +3635,9 @@
         </code>
       </td>
       <td class="content"><p>An ending point for the query results. Query cursors are
- returned in query result batches and
- <a href="https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets">can only be used to limit the same
- query</a>.</p></td>
+returned in query result batches and
+<a href="https://cloud.google.com/datastore/docs/concepts/queries#cursors_limits_and_offsets">can only be used to limit the same
+query</a>.</p></td>
       
     </tr>
     
@@ -3650,7 +3653,7 @@
         </code>
       </td>
       <td class="content"><p>The number of results to skip. Applies before limit, but after all other
- constraints. Optional. Must be &gt;= 0 if specified.</p></td>
+constraints. Optional. Must be &gt;= 0 if specified.</p></td>
       
     </tr>
     
@@ -3666,9 +3669,9 @@
         </code>
       </td>
       <td class="content"><p>The maximum number of results to return. Applies after all other
- constraints. Optional.
- Unspecified is interpreted as no limit.
- Must be &gt;= 0 if specified.</p></td>
+constraints. Optional.
+Unspecified is interpreted as no limit.
+Must be &gt;= 0 if specified.</p></td>
       
     </tr>
     
@@ -3754,7 +3757,7 @@
         </code>
       </td>
       <td class="content"><p>A cursor that points to the position after the last skipped result.
- Will be set when <code>skipped_results</code> != 0.</p></td>
+Will be set when <code>skipped_results</code> != 0.</p></td>
       
     </tr>
     
@@ -3816,13 +3819,13 @@
         </code>
       </td>
       <td class="content"><p>The version number of the snapshot this batch was returned from.
- This applies to the range of results from the query's <code>start_cursor</code> (or
- the beginning of the query if no cursor was given) to this batch's
- <code>end_cursor</code> (not the query's <code>end_cursor</code>).</p>
+This applies to the range of results from the query's <code>start_cursor</code> (or
+the beginning of the query if no cursor was given) to this batch's
+<code>end_cursor</code> (not the query's <code>end_cursor</code>).</p>
 <p>In a single transaction, subsequent query result batches for the same query
- can have a greater snapshot version number. Each batch's snapshot version
- is valid for all preceding batches.
- The value will be zero for eventually consistent queries.</p></td>
+can have a greater snapshot version number. Each batch's snapshot version
+is valid for all preceding batches.
+The value will be zero for eventually consistent queries.</p></td>
       
     </tr>
     
@@ -3838,14 +3841,14 @@
         </code>
       </td>
       <td class="content"><p>Read timestamp this batch was returned from.
- This applies to the range of results from the query's <code>start_cursor</code> (or
- the beginning of the query if no cursor was given) to this batch's
- <code>end_cursor</code> (not the query's <code>end_cursor</code>).</p>
+This applies to the range of results from the query's <code>start_cursor</code> (or
+the beginning of the query if no cursor was given) to this batch's
+<code>end_cursor</code> (not the query's <code>end_cursor</code>).</p>
 <p>In a single transaction, subsequent query result batches for the same query
- can have a greater timestamp. Each batch's read timestamp
- is valid for all preceding batches.
- This value will not be set for eventually consistent queries in Cloud
- Datastore.</p></td>
+can have a greater timestamp. Each batch's read timestamp
+is valid for all preceding batches.
+This value will not be set for eventually consistent queries in Cloud
+Datastore.</p></td>
       
     </tr>
     
@@ -3900,7 +3903,7 @@
         </code>
       </td>
       <td class="content"><p>Reads entities at the given time.
- This may not be older than 60 seconds.</p></td>
+This may not be older than 60 seconds.</p></td>
       
     </tr>
     
@@ -3968,8 +3971,8 @@
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction in which to read. A
- transaction identifier is returned by a call to
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
+transaction identifier is returned by a call to
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
       
     </tr>
     
@@ -3987,10 +3990,10 @@
       </td>
       <td class="content"><p>Options for beginning a new transaction for this request.</p>
 <p>The new transaction identifier will be returned in the corresponding
- response as either
- [LookupResponse.transaction][google.datastore.v1.LookupResponse.transaction]
- or
- [RunQueryResponse.transaction][google.datastore.v1.RunQueryResponse.transaction].</p></td>
+response as either
+[LookupResponse.transaction][google.datastore.v1.LookupResponse.transaction]
+or
+[RunQueryResponse.transaction][google.datastore.v1.RunQueryResponse.transaction].</p></td>
       
     </tr>
     
@@ -4006,8 +4009,8 @@
         </code>
       </td>
       <td class="content"><p>Reads entities as they were at the given time. This may not be older
- than 270 seconds.  This value is only supported for Cloud Firestore in
- Datastore mode.</p></td>
+than 270 seconds.  This value is only supported for Cloud Firestore in
+Datastore mode.</p></td>
       
     </tr>
     
@@ -4087,7 +4090,7 @@
 
 <div class="block content">
   <p>The request for
- [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
+[Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4117,7 +4120,7 @@
         </code>
       </td>
       <td class="content"><p>Required. A list of keys with complete key paths whose numeric IDs should
- not be auto-allocated.</p></td>
+not be auto-allocated.</p></td>
       
     </tr>
     
@@ -4149,7 +4152,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -4175,7 +4178,7 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
+[Datastore.ReserveIds][google.datastore.v1.Datastore.ReserveIds].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4238,7 +4241,7 @@
         </code>
       </td>
       <td class="content"><p>Required. The transaction identifier, returned by a call to
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
       
     </tr>
     
@@ -4270,7 +4273,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -4296,8 +4299,8 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.Rollback][google.datastore.v1.Datastore.Rollback]. (an empty
- message).</p>
+[Datastore.Rollback][google.datastore.v1.Datastore.Rollback]. (an empty
+message).</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4334,7 +4337,7 @@
 
 <div class="block content">
   <p>The request for
- [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
+[Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4378,9 +4381,9 @@
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, identified by a partition ID.
- Queries are scoped to a single partition.
- This partition ID is normalized with the standard default context
- partition ID.</p></td>
+Queries are scoped to a single partition.
+This partition ID is normalized with the standard default context
+partition ID.</p></td>
       
     </tr>
     
@@ -4444,7 +4447,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -4470,7 +4473,7 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
+[Datastore.RunAggregationQuery][google.datastore.v1.Datastore.RunAggregationQuery].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4529,11 +4532,11 @@
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this
- RunAggregationQuery request.</p>
+RunAggregationQuery request.</p>
 <p>Set only when
- [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
- was set in
- [RunAggregationQueryRequest.read_options][google.datastore.v1.RunAggregationQueryRequest.read_options].</p></td>
+[ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+was set in
+[RunAggregationQueryRequest.read_options][google.datastore.v1.RunAggregationQueryRequest.read_options].</p></td>
       
     </tr>
     
@@ -4602,9 +4605,9 @@
         </code>
       </td>
       <td class="content"><p>Entities are partitioned into subsets, identified by a partition ID.
- Queries are scoped to a single partition.
- This partition ID is normalized with the standard default context
- partition ID.</p></td>
+Queries are scoped to a single partition.
+This partition ID is normalized with the standard default context
+partition ID.</p></td>
       
     </tr>
     
@@ -4668,7 +4671,7 @@
       </td>
       <td class="content"><p>The ID of the database against which to make the request.</p>
 <p>'(default)' is not allowed; please use empty string '' to refer the default
- database.</p></td>
+database.</p></td>
       
     </tr>
     
@@ -4694,7 +4697,7 @@
 
 <div class="block content">
   <p>The response for
- [Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>
+[Datastore.RunQuery][google.datastore.v1.Datastore.RunQuery].</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4753,11 +4756,11 @@
         </code>
       </td>
       <td class="content"><p>The identifier of the transaction that was started as part of this
- RunQuery request.</p>
+RunQuery request.</p>
 <p>Set only when
- [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
- was set in
- [RunQueryRequest.read_options][google.datastore.v1.RunQueryRequest.read_options].</p></td>
+[ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+was set in
+[RunQueryRequest.read_options][google.datastore.v1.RunQueryRequest.read_options].</p></td>
       
     </tr>
     
@@ -4784,10 +4787,10 @@
 <div class="block content">
   <p>Options for beginning a new transaction.</p>
 <p>Transactions can be created explicitly with calls to
- [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction]
- or implicitly by setting
- [ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
- in read requests.</p>
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction]
+or implicitly by setting
+[ReadOptions.new_transaction][google.datastore.v1.ReadOptions.new_transaction]
+in read requests.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4856,7 +4859,7 @@
 
 <div class="block content">
   <p>A message that can hold any of the supported value types and associated
- metadata.</p>
+metadata.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -4981,9 +4984,9 @@
         </code>
       </td>
       <td class="content"><p>An array value.
- Cannot contain another array value.
- A <code>Value</code> instance that sets field <code>array_value</code> must not set fields
- <code>meaning</code> or <code>exclude_from_indexes</code>.</p></td>
+Cannot contain another array value.
+A <code>Value</code> instance that sets field <code>array_value</code> must not set fields
+<code>meaning</code> or <code>exclude_from_indexes</code>.</p></td>
       
     </tr>
     
@@ -4999,8 +5002,8 @@
         </code>
       </td>
       <td class="content"><p>A timestamp value.
- When stored in the Datastore, precise only to microseconds;
- any additional precision is rounded down.</p></td>
+When stored in the Datastore, precise only to microseconds;
+any additional precision is rounded down.</p></td>
       
     </tr>
     
@@ -5046,8 +5049,8 @@
         </code>
       </td>
       <td class="content"><p>A UTF-8 encoded string value.
- When <code>exclude_from_indexes</code> is false (it is indexed) , may have at most
- 1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</p></td>
+When <code>exclude_from_indexes</code> is false (it is indexed) , may have at most
+1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</p></td>
       
     </tr>
     
@@ -5063,9 +5066,9 @@
         </code>
       </td>
       <td class="content"><p>A blob value.
- May have at most 1,000,000 bytes.
- When <code>exclude_from_indexes</code> is false, may have at most 1500 bytes.
- In JSON requests, must be base64-encoded.</p></td>
+May have at most 1,000,000 bytes.
+When <code>exclude_from_indexes</code> is false, may have at most 1500 bytes.
+In JSON requests, must be base64-encoded.</p></td>
       
     </tr>
     
@@ -5081,7 +5084,7 @@
         </code>
       </td>
       <td class="content"><p>If the value should be excluded from all indexes including those defined
- explicitly.</p></td>
+explicitly.</p></td>
       
     </tr>
     
@@ -5215,8 +5218,8 @@
       <td><code>TRANSACTIONAL</code></td>
       <td>1</td>
       <td class="content"><p>Transactional: The mutations are either all applied, or none are applied.
- Learn about transactions
- <a href="https://cloud.google.com/datastore/docs/concepts/transactions">here</a>.</p></td>
+Learn about transactions
+<a href="https://cloud.google.com/datastore/docs/concepts/transactions">here</a>.</p></td>
     </tr>
     
     <tr>
@@ -5273,7 +5276,7 @@
       <td><code>MORE_RESULTS_AFTER_CURSOR</code></td>
       <td>4</td>
       <td class="content"><p>The query is finished, but there may be more results after the end
- cursor.</p></td>
+cursor.</p></td>
     </tr>
     
     <tr>
@@ -5507,10 +5510,10 @@
 
 <div class="block content">
   <p><p>Specifies what data the 'entity' field contains.
- A <code>ResultType</code> is either implied (for example, in <code>LookupResponse.missing</code>
- from <code>datastore.proto</code>, it is always <code>KEY_ONLY</code>) or specified by context
- (for example, in message <code>QueryResultBatch</code>, field <code>entity_result_type</code>
- specifies a <code>ResultType</code> for all the values in field <code>entity_results</code>).</p></p>
+A <code>ResultType</code> is either implied (for example, in <code>LookupResponse.missing</code>
+from <code>datastore.proto</code>, it is always <code>KEY_ONLY</code>) or specified by context
+(for example, in message <code>QueryResultBatch</code>, field <code>entity_result_type</code>
+specifies a <code>ResultType</code> for all the values in field <code>entity_results</code>).</p></p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
