@@ -76,7 +76,9 @@
           </code>
         </td>
         <td class="content">{{ field.description_html | safe }}</td>
+        {% if message.has_any_fields_with_default_value %}
         <td>{{ field.default_value }}</td>
+        {% endif %}
       </tr>
       {% endfor %}
     {% endfor %}
