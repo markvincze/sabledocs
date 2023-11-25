@@ -34,9 +34,6 @@
       <td>{{ field.number }}</td>
       <td>
         {{ field.name }}
-        {% if field.oneof_name %}
-          (in oneof {{ field.oneof_name }})
-        {% endif %}
       </td>
       <td>
         <code title="{{ field.full_type }}">
@@ -54,23 +51,23 @@
     {% endfor %}
     {% for oneof_field_group in message.oneof_field_groups %}
       {% for field in oneof_field_group.fields %}
+        {% if loop.first %}
+          <tr><td style="border: 0px"></td></tr>
+          <tr>
+            <td>
+              oneof {{ oneof_field_group.name }}
+            </td>
+          </tr>
+        {% endif %}
+
       <tr>
         <td>
-          {% if loop.first %}
-            <div style="position: relative; top:0px; left:0px">
-              Oneof {{ oneof_field_group.name }}
-            </div>
-          {% endif %}
-
           <div>
             {{ field.number }}
           </div>
         </td>
         <td>
           {{ field.name }}
-          {% if field.oneof_name %}
-            (in oneof {{ field.oneof_name }})
-          {% endif %}
         </td>
         <td>
           <code title="{{ field.full_type }}">
