@@ -32,7 +32,6 @@ FIELD_TYPE_ENUM = 14
 
 
 def build_source_code_url(repository_url, repository_type, repository_branch, repository_dir, file_path, line_number):
-
     match repository_type:
         case RepositoryType.NONE:
             return None
@@ -130,6 +129,7 @@ def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext, parent_mess
 def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
+
     mf.number = field.number
     mf.label = to_label_name(field.label, field.proto3_optional)
     mf.description = ctx.GetComments()
@@ -139,6 +139,7 @@ def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
     mf.default_value = field.default_value
     mf.type = extract_type_name_from_full_name(field.type_name.strip(".")) if field.type_name != "" else to_type_name(field.type)
     mf.type_kind = "MESSAGE" if field.type == FIELD_TYPE_MESSAGE else "ENUM" if field.type == FIELD_TYPE_ENUM else "UNKNOWN"
+
     if mf.type.endswith("Entry"):
         entry_nested_type = next(filter(lambda m: m.name == mf.type, ctx.package.messages), None)
         if entry_nested_type is not None and entry_nested_type.is_map_entry:
@@ -158,9 +159,6 @@ def extract_type_name_from_full_name(full_type_name: str):
 
 
 def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
-    #if message.oneof_decl:
-        #pprint.pprint(message.oneof_decl)
-
     m = Message()
     m.name = message.name
     m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}".lstrip(".")
@@ -177,17 +175,16 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
         m.source_file_path,
         m.line_number)
 
+    # NOTE: The processing of nested types have to happen before processing the fields, to have the Entry nested types representing maps already present.
+    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, f"{message.name}.", config)
+    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, f"{message.name}.", config)
+
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
         m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
 
     if config.member_ordering == MemberOrdering.ALPHABETICAL:
         m.fields.sort(key=lambda mf: mf.number)
-
-    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, f"{message.name}.", config)
-    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, f"{message.name}.", config)
-
-    # print(m.description)
 
     return m
 
