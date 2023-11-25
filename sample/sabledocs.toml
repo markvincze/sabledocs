@@ -1,6 +1,6 @@
 module-title = "Google Cloud SDK"
 
-input-descriptor-file = "sable-test.pb"
+input-descriptor-file = "google-cloud-sdk.pb"
 
 output-dir = "output"
 

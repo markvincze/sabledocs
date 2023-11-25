@@ -146,6 +146,10 @@ body.dark .tag {
   color: $light;
 }
 
+body.dark strong {
+  color: $light;
+}
+
 // Theme switcher button
 @import "https://unpkg.com/open-props/easings.min.css";
 

@@ -7982,6 +7982,9 @@ body.dark .tag {
   background: #2A2A2A;
   color: whitesmoke; }
 
+body.dark strong {
+  color: whitesmoke; }
+
 .theme-toggle {
   --size: 2rem;
   --icon-fill: #016FB9;
