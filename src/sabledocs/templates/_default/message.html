@@ -52,34 +52,36 @@
     {% for oneof_field_group in message.oneof_field_groups %}
       {% for field in oneof_field_group.fields %}
         {% if loop.first %}
-          <tr><td style="border: 0px"></td></tr>
-          <tr>
-            <td>
-              <strong>oneof {{ oneof_field_group.name }}</strong>
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof {{ oneof_field_group.name }}</strong>
+              </div>
             </td>
           </tr>
         {% endif %}
 
-      <tr>
-        <td>
-          {{ field.number }}
-        </td>
-        <td>
-          {{ field.name }}
-        </td>
-        <td>
-          <code title="{{ field.full_type }}">
-            {% if field.label != "" %}
-              {{ field.label }}
-            {% endif %}
-            {{ common.type_name(field) }}
-          </code>
-        </td>
-        <td class="content">{{ field.description_html | safe }}</td>
-        {% if message.has_any_fields_with_default_value %}
-        <td>{{ field.default_value }}</td>
-        {% endif %}
-      </tr>
+        <tr>
+          <td>
+            {{ field.number }}
+          </td>
+          <td>
+            {{ field.name }}
+          </td>
+          <td>
+            <code title="{{ field.full_type }}">
+              {% if field.label != "" %}
+                {{ field.label }}
+              {% endif %}
+              {{ common.type_name(field) }}
+            </code>
+          </td>
+          <td class="content">{{ field.description_html | safe }}</td>
+          {% if message.has_any_fields_with_default_value %}
+          <td>{{ field.default_value }}</td>
+          {% endif %}
+        </tr>
       {% endfor %}
     {% endfor %}
   </tbody>
