@@ -131,7 +131,7 @@
       </nav>
     </div>
 
-    <div class="container mb-6">
+    <div id="main-content" class="container mb-6">
   <p class="mb-2">
     <a style="font-size: 0.9em" href="index.html">← Back to packages</a>
   </p>
@@ -876,22 +876,6 @@ Datastore.</p></p>
   <tbody>
     
     <tr>
-      <td>1</td>
-      <td>
-        count
-      </td>
-      <td>
-        <code title="google.datastore.v1.AggregationQuery.Aggregation.Count">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Count"><span title="google.datastore.v1.AggregationQuery.Aggregation.Count">google.datastore.v1.AggregationQuery.Aggregation.Count</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>Count aggregator.</p></td>
-      
-    </tr>
-    
-    <tr>
       <td>7</td>
       <td>
         alias
@@ -934,6 +918,38 @@ name][google.datastore.v1.Entity.properties] limitations.</li>
       
     </tr>
     
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof operator</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            count
+          </td>
+          <td>
+            <code title="google.datastore.v1.AggregationQuery.Aggregation.Count">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Count"><span title="google.datastore.v1.AggregationQuery.Aggregation.Count">google.datastore.v1.AggregationQuery.Aggregation.Count</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>Count aggregator.</p></td>
+          
+        </tr>
+      
+    
   </tbody>
 </table>
  
@@ -972,22 +988,6 @@ name][google.datastore.v1.Entity.properties] limitations.</li>
   <tbody>
     
     <tr>
-      <td>1</td>
-      <td>
-        nested_query
-      </td>
-      <td>
-        <code title="google.datastore.v1.Query">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>Nested query for aggregation</p></td>
-      
-    </tr>
-    
-    <tr>
       <td>3</td>
       <td>
         aggregations
@@ -1009,6 +1009,38 @@ name][google.datastore.v1.Entity.properties] limitations.</li>
 </ul></td>
       
     </tr>
+    
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof query_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            nested_query
+          </td>
+          <td>
+            <code title="google.datastore.v1.Query">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>Nested query for aggregation</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -1067,6 +1099,7 @@ the aggregation function on input and the size of this map equals the
 number of aggregation functions in the query.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -1158,6 +1191,7 @@ is valid for all preceding batches.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1246,6 +1280,7 @@ database.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1302,6 +1337,7 @@ its key path completed with a newly allocated ID.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1357,6 +1393,7 @@ The order of values in an array is preserved as long as all values have
 identical settings for 'exclude_from_indexes'.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -1443,6 +1480,7 @@ database.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1495,6 +1533,7 @@ database.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1530,23 +1569,6 @@ database.</p></td>
     </tr>
   </thead>
   <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        transaction
-      </td>
-      <td>
-        <code title="bytes">
-          
-          <span>bytes</span>
-        </code>
-      </td>
-      <td class="content"><p>The identifier of the transaction associated with the commit. A
-transaction identifier is returned by a call to
-[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
-      
-    </tr>
     
     <tr>
       <td>5</td>
@@ -1625,24 +1647,61 @@ database.</p></td>
       
     </tr>
     
-    <tr>
-      <td>10</td>
-      <td>
-        single_use_transaction
-      </td>
-      <td>
-        <code title="google.datastore.v1.TransactionOptions">
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof transaction_selector</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            transaction
+          </td>
+          <td>
+            <code title="bytes">
+              
+              <span>bytes</span>
+            </code>
+          </td>
+          <td class="content"><p>The identifier of the transaction associated with the commit. A
+transaction identifier is returned by a call to
+[Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
           
-          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            10
+          </td>
+          <td>
+            single_use_transaction
+          </td>
+          <td>
+            <code title="google.datastore.v1.TransactionOptions">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
     </a>
-        </code>
-      </td>
-      <td class="content"><p>Options for beginning a new transaction for this request.
+            </code>
+          </td>
+          <td class="content"><p>Options for beginning a new transaction for this request.
 The transaction is committed when the request completes. If specified,
 [TransactionOptions.mode][google.datastore.v1.TransactionOptions] must be
 [TransactionOptions.ReadWrite][google.datastore.v1.TransactionOptions.ReadWrite].</p></td>
+          
+        </tr>
       
-    </tr>
     
   </tbody>
 </table>
@@ -1730,6 +1789,7 @@ updated.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1804,6 +1864,7 @@ updated.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -1872,6 +1933,7 @@ expected.</p>
 </ul></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -1951,6 +2013,7 @@ The name must not contain more than 500 characters.
 The name cannot be <code>""</code>.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -2077,6 +2140,7 @@ If this entity is missing, this field will not be set.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -2113,37 +2177,57 @@ If this entity is missing, this field will not be set.</p></td>
   </thead>
   <tbody>
     
-    <tr>
-      <td>1</td>
-      <td>
-        composite_filter
-      </td>
-      <td>
-        <code title="google.datastore.v1.CompositeFilter">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter"><span title="google.datastore.v1.CompositeFilter">google.datastore.v1.CompositeFilter</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>A composite filter.</p></td>
-      
-    </tr>
     
-    <tr>
-      <td>2</td>
-      <td>
-        property_filter
-      </td>
-      <td>
-        <code title="google.datastore.v1.PropertyFilter">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter"><span title="google.datastore.v1.PropertyFilter">google.datastore.v1.PropertyFilter</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>A filter on a property.</p></td>
       
-    </tr>
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof filter_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            composite_filter
+          </td>
+          <td>
+            <code title="google.datastore.v1.CompositeFilter">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.CompositeFilter"><span title="google.datastore.v1.CompositeFilter">google.datastore.v1.CompositeFilter</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>A composite filter.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            property_filter
+          </td>
+          <td>
+            <code title="google.datastore.v1.PropertyFilter">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyFilter"><span title="google.datastore.v1.PropertyFilter">google.datastore.v1.PropertyFilter</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>A filter on a property.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -2255,6 +2339,7 @@ a named parameter with that name, but not necessarily the inverse.</p>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -2291,37 +2376,57 @@ a named parameter with that name, but not necessarily the inverse.</p>
   </thead>
   <tbody>
     
-    <tr>
-      <td>2</td>
-      <td>
-        value
-      </td>
-      <td>
-        <code title="google.datastore.v1.Value">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Value"><span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>A value parameter.</p></td>
-      
-    </tr>
     
-    <tr>
-      <td>3</td>
-      <td>
-        cursor
-      </td>
-      <td>
-        <code title="bytes">
-          
-          <span>bytes</span>
-        </code>
-      </td>
-      <td class="content"><p>A query cursor. Query cursors are returned in query
-result batches.</p></td>
       
-    </tr>
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof parameter_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            value
+          </td>
+          <td>
+            <code title="google.datastore.v1.Value">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Value"><span title="google.datastore.v1.Value">google.datastore.v1.Value</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>A value parameter.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            cursor
+          </td>
+          <td>
+            <code title="bytes">
+              
+              <span>bytes</span>
+            </code>
+          </td>
+          <td class="content"><p>A query cursor. Query cursors are returned in query
+result batches.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -2411,6 +2516,7 @@ identifier.</p>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -2461,6 +2567,7 @@ identifier.</p>
       <td class="content"><p>The name of the kind.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -2563,6 +2670,7 @@ identifier.</p>
 database.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -2695,6 +2803,7 @@ was set in
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -2731,107 +2840,154 @@ was set in
   </thead>
   <tbody>
     
-    <tr>
-      <td>4</td>
-      <td>
-        insert
-      </td>
-      <td>
-        <code title="google.datastore.v1.Entity">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The entity to insert. The entity must not already exist.
-The entity key's final path element may be incomplete.</p></td>
-      
-    </tr>
     
-    <tr>
-      <td>5</td>
-      <td>
-        update
-      </td>
-      <td>
-        <code title="google.datastore.v1.Entity">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof operation</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            insert
+          </td>
+          <td>
+            <code title="google.datastore.v1.Entity">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-        </code>
-      </td>
-      <td class="content"><p>The entity to update. The entity must already exist.
+            </code>
+          </td>
+          <td class="content"><p>The entity to insert. The entity must not already exist.
+The entity key's final path element may be incomplete.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            update
+          </td>
+          <td>
+            <code title="google.datastore.v1.Entity">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The entity to update. The entity must already exist.
 Must have a complete key path.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>6</td>
-      <td>
-        upsert
-      </td>
-      <td>
-        <code title="google.datastore.v1.Entity">
           
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            6
+          </td>
+          <td>
+            upsert
+          </td>
+          <td>
+            <code title="google.datastore.v1.Entity">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
     </a>
-        </code>
-      </td>
-      <td class="content"><p>The entity to upsert. The entity may or may not already exist.
+            </code>
+          </td>
+          <td class="content"><p>The entity to upsert. The entity may or may not already exist.
 The entity key's final path element may be incomplete.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        delete
-      </td>
-      <td>
-        <code title="google.datastore.v1.Key">
           
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            7
+          </td>
+          <td>
+            delete
+          </td>
+          <td>
+            <code title="google.datastore.v1.Key">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
     </a>
-        </code>
-      </td>
-      <td class="content"><p>The key of the entity to delete. The entity may or may not already exist.
+            </code>
+          </td>
+          <td class="content"><p>The key of the entity to delete. The entity may or may not already exist.
 Must have a complete key path and must not be reserved/read-only.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>8</td>
-      <td>
-        base_version
-      </td>
-      <td>
-        <code title="int64">
           
-          <span>int64</span>
-        </code>
-      </td>
-      <td class="content"><p>The version of the entity that this mutation is being applied
+        </tr>
+      
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof conflict_detection_strategy</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            8
+          </td>
+          <td>
+            base_version
+          </td>
+          <td>
+            <code title="int64">
+              
+              <span>int64</span>
+            </code>
+          </td>
+          <td class="content"><p>The version of the entity that this mutation is being applied
 to. If this does not match the current version on the server, the
 mutation conflicts.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>11</td>
-      <td>
-        update_time
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
           
-          <span>google.protobuf.Timestamp</span>
-        </code>
-      </td>
-      <td class="content"><p>The update time of the entity that this mutation is being applied
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            11
+          </td>
+          <td>
+            update_time
+          </td>
+          <td>
+            <code title="google.protobuf.Timestamp">
+              
+              <span>google.protobuf.Timestamp</span>
+            </code>
+          </td>
+          <td class="content"><p>The update time of the entity that this mutation is being applied
 to. If this does not match the current update time on the server, the
 mutation conflicts.</p></td>
+          
+        </tr>
       
-    </tr>
     
   </tbody>
 </table>
@@ -2954,6 +3110,7 @@ set after a 'delete'.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3009,6 +3166,7 @@ set after a 'delete'.</p></td>
       <td class="content"><p>Comment on Nested type foo field</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -3109,6 +3267,7 @@ belong.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3171,43 +3330,63 @@ bytes.</p></td>
       
     </tr>
     
-    <tr>
-      <td>2</td>
-      <td>
-        id
-      </td>
-      <td>
-        <code title="int64">
-          
-          <span>int64</span>
-        </code>
-      </td>
-      <td class="content"><p>The auto-allocated ID of the entity.</p>
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof id_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            id
+          </td>
+          <td>
+            <code title="int64">
+              
+              <span>int64</span>
+            </code>
+          </td>
+          <td class="content"><p>The auto-allocated ID of the entity.</p>
 <p>Never equal to zero. Values less than zero are discouraged and may not
 be supported in the future.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        name
-      </td>
-      <td>
-        <code title="string">
           
-          <span>string</span>
-        </code>
-      </td>
-      <td class="content"><p>The name of the entity.</p>
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            name
+          </td>
+          <td>
+            <code title="string">
+              
+              <span>string</span>
+            </code>
+          </td>
+          <td class="content"><p>The name of the entity.</p>
 <p>A name matching regex <code>__.*__</code> is reserved/read-only.
 A name must not be more than 1500 bytes when UTF-8 encoded.
 Cannot be <code>""</code>.</p>
 <p>Must be valid UTF-8 bytes. Legacy values that are not valid UTF-8 are
 encoded as <code>__bytes&lt;X&gt;__</code> where <code>&lt;X&gt;</code> is the base-64 encoding of the
 bytes.</p></td>
+          
+        </tr>
       
-    </tr>
     
   </tbody>
 </table>
@@ -3260,6 +3439,7 @@ bytes.</p></td>
       <td class="content"><p>The property to project.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -3347,6 +3527,7 @@ bytes.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3415,6 +3596,7 @@ bytes.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3466,6 +3648,7 @@ bytes.</p></td>
 If name includes "."s, it may be interpreted as a property name path.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -3664,6 +3847,7 @@ Must be &gt;= 0 if specified.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3841,6 +4025,7 @@ Datastore.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3896,6 +4081,7 @@ This may not be older than 60 seconds.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -3932,76 +4118,104 @@ This may not be older than 60 seconds.</p></td>
   </thead>
   <tbody>
     
-    <tr>
-      <td>1</td>
-      <td>
-        read_consistency
-      </td>
-      <td>
-        <code title="google.datastore.v1.ReadOptions.ReadConsistency">
-          
-          <a href="google.datastore.v1.html#enum-google.datastore.v1.ReadOptions.ReadConsistency"><span title="google.datastore.v1.ReadOptions.ReadConsistency">google.datastore.v1.ReadOptions.ReadConsistency</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The non-transactional read consistency to use.</p></td>
-      
-    </tr>
     
-    <tr>
-      <td>2</td>
-      <td>
-        transaction
-      </td>
-      <td>
-        <code title="bytes">
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof consistency_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            read_consistency
+          </td>
+          <td>
+            <code title="google.datastore.v1.ReadOptions.ReadConsistency">
+              
+              <a href="google.datastore.v1.html#enum-google.datastore.v1.ReadOptions.ReadConsistency"><span title="google.datastore.v1.ReadOptions.ReadConsistency">google.datastore.v1.ReadOptions.ReadConsistency</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The non-transactional read consistency to use.</p></td>
           
-          <span>bytes</span>
-        </code>
-      </td>
-      <td class="content"><p>The identifier of the transaction in which to read. A
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            transaction
+          </td>
+          <td>
+            <code title="bytes">
+              
+              <span>bytes</span>
+            </code>
+          </td>
+          <td class="content"><p>The identifier of the transaction in which to read. A
 transaction identifier is returned by a call to
 [Datastore.BeginTransaction][google.datastore.v1.Datastore.BeginTransaction].</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        new_transaction
-      </td>
-      <td>
-        <code title="google.datastore.v1.TransactionOptions">
           
-          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            new_transaction
+          </td>
+          <td>
+            <code title="google.datastore.v1.TransactionOptions">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions"><span title="google.datastore.v1.TransactionOptions">google.datastore.v1.TransactionOptions</span>
     </a>
-        </code>
-      </td>
-      <td class="content"><p>Options for beginning a new transaction for this request.</p>
+            </code>
+          </td>
+          <td class="content"><p>Options for beginning a new transaction for this request.</p>
 <p>The new transaction identifier will be returned in the corresponding
 response as either
 [LookupResponse.transaction][google.datastore.v1.LookupResponse.transaction]
 or
 [RunQueryResponse.transaction][google.datastore.v1.RunQueryResponse.transaction].</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>4</td>
-      <td>
-        read_time
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
           
-          <span>google.protobuf.Timestamp</span>
-        </code>
-      </td>
-      <td class="content"><p>Reads entities as they were at the given time. This may not be older
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            read_time
+          </td>
+          <td>
+            <code title="google.protobuf.Timestamp">
+              
+              <span>google.protobuf.Timestamp</span>
+            </code>
+          </td>
+          <td class="content"><p>Reads entities as they were at the given time. This may not be older
 than 270 seconds.  This value is only supported for Cloud Firestore in
 Datastore mode.</p></td>
+          
+        </tr>
       
-    </tr>
     
   </tbody>
 </table>
@@ -4056,6 +4270,7 @@ Datastore mode.</p></td>
       <td class="content"><p>The transaction identifier of the transaction being retried.</p></td>
       
     </tr>
+    
     
   </tbody>
 </table>
@@ -4145,6 +4360,7 @@ database.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -4181,6 +4397,7 @@ database.</p></td>
     </tr>
   </thead>
   <tbody>
+    
     
   </tbody>
 </table>
@@ -4266,6 +4483,7 @@ database.</p></td>
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -4303,6 +4521,7 @@ message).</p>
     </tr>
   </thead>
   <tbody>
+    
     
   </tbody>
 </table>
@@ -4377,38 +4596,6 @@ partition ID.</p></td>
     </tr>
     
     <tr>
-      <td>3</td>
-      <td>
-        aggregation_query
-      </td>
-      <td>
-        <code title="google.datastore.v1.AggregationQuery">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery"><span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The query to run.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        gql_query
-      </td>
-      <td>
-        <code title="google.datastore.v1.GqlQuery">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The GQL query to run. This query must be an aggregation query.</p></td>
-      
-    </tr>
-    
-    <tr>
       <td>8</td>
       <td>
         project_id
@@ -4439,6 +4626,58 @@ partition ID.</p></td>
 database.</p></td>
       
     </tr>
+    
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof query_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            aggregation_query
+          </td>
+          <td>
+            <code title="google.datastore.v1.AggregationQuery">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery"><span title="google.datastore.v1.AggregationQuery">google.datastore.v1.AggregationQuery</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The query to run.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            7
+          </td>
+          <td>
+            gql_query
+          </td>
+          <td>
+            <code title="google.datastore.v1.GqlQuery">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The GQL query to run. This query must be an aggregation query.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -4529,6 +4768,7 @@ was set in
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -4601,38 +4841,6 @@ partition ID.</p></td>
     </tr>
     
     <tr>
-      <td>3</td>
-      <td>
-        query
-      </td>
-      <td>
-        <code title="google.datastore.v1.Query">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The query to run.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>7</td>
-      <td>
-        gql_query
-      </td>
-      <td>
-        <code title="google.datastore.v1.GqlQuery">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The GQL query to run. This query must be a non-aggregation query.</p></td>
-      
-    </tr>
-    
-    <tr>
       <td>8</td>
       <td>
         project_id
@@ -4663,6 +4871,58 @@ partition ID.</p></td>
 database.</p></td>
       
     </tr>
+    
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof query_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            query
+          </td>
+          <td>
+            <code title="google.datastore.v1.Query">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Query"><span title="google.datastore.v1.Query">google.datastore.v1.Query</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The query to run.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            7
+          </td>
+          <td>
+            gql_query
+          </td>
+          <td>
+            <code title="google.datastore.v1.GqlQuery">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.GqlQuery"><span title="google.datastore.v1.GqlQuery">google.datastore.v1.GqlQuery</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The GQL query to run. This query must be a non-aggregation query.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -4753,6 +5013,7 @@ was set in
       
     </tr>
     
+    
   </tbody>
 </table>
  
@@ -4794,37 +5055,57 @@ in read requests.</p>
   </thead>
   <tbody>
     
-    <tr>
-      <td>1</td>
-      <td>
-        read_write
-      </td>
-      <td>
-        <code title="google.datastore.v1.TransactionOptions.ReadWrite">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadWrite"><span title="google.datastore.v1.TransactionOptions.ReadWrite">google.datastore.v1.TransactionOptions.ReadWrite</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The transaction should allow both reads and writes.</p></td>
-      
-    </tr>
     
-    <tr>
-      <td>2</td>
-      <td>
-        read_only
-      </td>
-      <td>
-        <code title="google.datastore.v1.TransactionOptions.ReadOnly">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadOnly"><span title="google.datastore.v1.TransactionOptions.ReadOnly">google.datastore.v1.TransactionOptions.ReadOnly</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>The transaction should only allow reads.</p></td>
       
-    </tr>
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof mode</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            read_write
+          </td>
+          <td>
+            <code title="google.datastore.v1.TransactionOptions.ReadWrite">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadWrite"><span title="google.datastore.v1.TransactionOptions.ReadWrite">google.datastore.v1.TransactionOptions.ReadWrite</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The transaction should allow both reads and writes.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            read_only
+          </td>
+          <td>
+            <code title="google.datastore.v1.TransactionOptions.ReadOnly">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.TransactionOptions.ReadOnly"><span title="google.datastore.v1.TransactionOptions.ReadOnly">google.datastore.v1.TransactionOptions.ReadOnly</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>The transaction should only allow reads.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -4864,154 +5145,6 @@ metadata.</p>
   <tbody>
     
     <tr>
-      <td>1</td>
-      <td>
-        boolean_value
-      </td>
-      <td>
-        <code title="bool">
-          
-          <span>bool</span>
-        </code>
-      </td>
-      <td class="content"><p>A boolean value.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>2</td>
-      <td>
-        integer_value
-      </td>
-      <td>
-        <code title="int64">
-          
-          <span>int64</span>
-        </code>
-      </td>
-      <td class="content"><p>An integer value.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>3</td>
-      <td>
-        double_value
-      </td>
-      <td>
-        <code title="double">
-          
-          <span>double</span>
-        </code>
-      </td>
-      <td class="content"><p>A double value.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>5</td>
-      <td>
-        key_value
-      </td>
-      <td>
-        <code title="google.datastore.v1.Key">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>A key value.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>6</td>
-      <td>
-        entity_value
-      </td>
-      <td>
-        <code title="google.datastore.v1.Entity">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>An entity value.</p>
-<ul>
-<li>May have no key.</li>
-<li>May have a key with an incomplete key path.</li>
-<li>May have a reserved/read-only key.</li>
-</ul></td>
-      
-    </tr>
-    
-    <tr>
-      <td>8</td>
-      <td>
-        geo_point_value
-      </td>
-      <td>
-        <code title="google.type.LatLng">
-          
-          <span>google.type.LatLng</span>
-        </code>
-      </td>
-      <td class="content"><p>A geo point value representing a point on the surface of Earth.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>9</td>
-      <td>
-        array_value
-      </td>
-      <td>
-        <code title="google.datastore.v1.ArrayValue">
-          
-          <a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue"><span title="google.datastore.v1.ArrayValue">google.datastore.v1.ArrayValue</span>
-    </a>
-        </code>
-      </td>
-      <td class="content"><p>An array value.
-Cannot contain another array value.
-A <code>Value</code> instance that sets field <code>array_value</code> must not set fields
-<code>meaning</code> or <code>exclude_from_indexes</code>.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>10</td>
-      <td>
-        timestamp_value
-      </td>
-      <td>
-        <code title="google.protobuf.Timestamp">
-          
-          <span>google.protobuf.Timestamp</span>
-        </code>
-      </td>
-      <td class="content"><p>A timestamp value.
-When stored in the Datastore, precise only to microseconds;
-any additional precision is rounded down.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>11</td>
-      <td>
-        null_value
-      </td>
-      <td>
-        <code title="google.protobuf.NullValue">
-          
-          <span>google.protobuf.NullValue</span>
-        </code>
-      </td>
-      <td class="content"><p>A null value.</p></td>
-      
-    </tr>
-    
-    <tr>
       <td>14</td>
       <td>
         meaning
@@ -5023,41 +5156,6 @@ any additional precision is rounded down.</p></td>
         </code>
       </td>
       <td class="content"><p>The <code>meaning</code> field should only be populated for backwards compatibility.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>17</td>
-      <td>
-        string_value
-      </td>
-      <td>
-        <code title="string">
-          
-          <span>string</span>
-        </code>
-      </td>
-      <td class="content"><p>A UTF-8 encoded string value.
-When <code>exclude_from_indexes</code> is false (it is indexed) , may have at most
-1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</p></td>
-      
-    </tr>
-    
-    <tr>
-      <td>18</td>
-      <td>
-        blob_value
-      </td>
-      <td>
-        <code title="bytes">
-          
-          <span>bytes</span>
-        </code>
-      </td>
-      <td class="content"><p>A blob value.
-May have at most 1,000,000 bytes.
-When <code>exclude_from_indexes</code> is false, may have at most 1500 bytes.
-In JSON requests, must be base64-encoded.</p></td>
       
     </tr>
     
@@ -5076,6 +5174,245 @@ In JSON requests, must be base64-encoded.</p></td>
 explicitly.</p></td>
       
     </tr>
+    
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof value_type</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            1
+          </td>
+          <td>
+            boolean_value
+          </td>
+          <td>
+            <code title="bool">
+              
+              <span>bool</span>
+            </code>
+          </td>
+          <td class="content"><p>A boolean value.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            integer_value
+          </td>
+          <td>
+            <code title="int64">
+              
+              <span>int64</span>
+            </code>
+          </td>
+          <td class="content"><p>An integer value.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            double_value
+          </td>
+          <td>
+            <code title="double">
+              
+              <span>double</span>
+            </code>
+          </td>
+          <td class="content"><p>A double value.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            key_value
+          </td>
+          <td>
+            <code title="google.datastore.v1.Key">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Key"><span title="google.datastore.v1.Key">google.datastore.v1.Key</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>A key value.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            6
+          </td>
+          <td>
+            entity_value
+          </td>
+          <td>
+            <code title="google.datastore.v1.Entity">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.Entity"><span title="google.datastore.v1.Entity">google.datastore.v1.Entity</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>An entity value.</p>
+<ul>
+<li>May have no key.</li>
+<li>May have a key with an incomplete key path.</li>
+<li>May have a reserved/read-only key.</li>
+</ul></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            8
+          </td>
+          <td>
+            geo_point_value
+          </td>
+          <td>
+            <code title="google.type.LatLng">
+              
+              <span>google.type.LatLng</span>
+            </code>
+          </td>
+          <td class="content"><p>A geo point value representing a point on the surface of Earth.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            9
+          </td>
+          <td>
+            array_value
+          </td>
+          <td>
+            <code title="google.datastore.v1.ArrayValue">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.ArrayValue"><span title="google.datastore.v1.ArrayValue">google.datastore.v1.ArrayValue</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>An array value.
+Cannot contain another array value.
+A <code>Value</code> instance that sets field <code>array_value</code> must not set fields
+<code>meaning</code> or <code>exclude_from_indexes</code>.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            10
+          </td>
+          <td>
+            timestamp_value
+          </td>
+          <td>
+            <code title="google.protobuf.Timestamp">
+              
+              <span>google.protobuf.Timestamp</span>
+            </code>
+          </td>
+          <td class="content"><p>A timestamp value.
+When stored in the Datastore, precise only to microseconds;
+any additional precision is rounded down.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            11
+          </td>
+          <td>
+            null_value
+          </td>
+          <td>
+            <code title="google.protobuf.NullValue">
+              
+              <span>google.protobuf.NullValue</span>
+            </code>
+          </td>
+          <td class="content"><p>A null value.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            17
+          </td>
+          <td>
+            string_value
+          </td>
+          <td>
+            <code title="string">
+              
+              <span>string</span>
+            </code>
+          </td>
+          <td class="content"><p>A UTF-8 encoded string value.
+When <code>exclude_from_indexes</code> is false (it is indexed) , may have at most
+1500 bytes. Otherwise, may be set to at most 1,000,000 bytes.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            18
+          </td>
+          <td>
+            blob_value
+          </td>
+          <td>
+            <code title="bytes">
+              
+              <span>bytes</span>
+            </code>
+          </td>
+          <td class="content"><p>A blob value.
+May have at most 1,000,000 bytes.
+When <code>exclude_from_indexes</code> is false, may have at most 1500 bytes.
+In JSON requests, must be base64-encoded.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
