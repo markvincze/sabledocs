@@ -219,6 +219,15 @@
     
       
       <p>
+        <a href="#message-google.datastore.v1.Aggregation.Avg">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Avg</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
         <a href="#message-google.datastore.v1.BeginTransactionRequest">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>BeginTransactionRequest</code> 
@@ -370,15 +379,6 @@
       </p>
       
     
-      
-    
-      
-      <p>
-        <a href="#message-google.datastore.v1.RollbackResponse.NestedMessageTest">
-          <span class="tag" style="min-width: 6em">Message</span>
-          <code>NestedMessageTest</code> 
-        </a>
-      </p>
       
     
       
@@ -556,6 +556,15 @@
     
       
       <p>
+        <a href="#message-google.datastore.v1.Aggregation.Sum">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>Sum</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
         <a href="#message-google.datastore.v1.TransactionOptions">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>TransactionOptions</code> 
@@ -573,13 +582,6 @@
       
     
 
-    
-      <p>
-        <a href="#enum-google.datastore.v1.CommentTestEnum">
-          <span class="tag" style="min-width: 6em">Enum</span>
-          <code>CommentTestEnum</code> 
-        </a>
-      </p>
     
       <p>
         <a href="#enum-google.datastore.v1.PropertyOrder.Direction">
@@ -855,12 +857,12 @@ Datastore.</p></p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L130">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L135">google/datastore/v1/query.proto</a>
   
 </h4>
 
 <div class="block content">
-  <p>Defines a aggregation that produces a single result.</p>
+  <p>Defines an aggregation that produces a single result.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -894,7 +896,7 @@ aggregation.</p>
   COUNT_UP_TO(1) AS count_up_to_1,
   COUNT_UP_TO(2),
   COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT_UP_TO(4)
+  COUNT(*)
 OVER (
   ...
 );
@@ -904,7 +906,7 @@ OVER (
   COUNT_UP_TO(1) AS count_up_to_1,
   COUNT_UP_TO(2) AS property_1,
   COUNT_UP_TO(3) AS count_up_to_3,
-  COUNT_UP_TO(4) AS property_2
+  COUNT(*) AS property_2
 OVER (
   ...
 );
@@ -949,6 +951,46 @@ name][google.datastore.v1.Entity.properties] limitations.</li>
           
         </tr>
       
+        
+
+        <tr>
+          <td>
+            2
+          </td>
+          <td>
+            sum
+          </td>
+          <td>
+            <code title="google.datastore.v1.AggregationQuery.Aggregation.Sum">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Sum"><span title="google.datastore.v1.AggregationQuery.Aggregation.Sum">google.datastore.v1.AggregationQuery.Aggregation.Sum</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>Sum aggregator.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            3
+          </td>
+          <td>
+            avg
+          </td>
+          <td>
+            <code title="google.datastore.v1.AggregationQuery.Aggregation.Avg">
+              
+              <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation.Avg"><span title="google.datastore.v1.AggregationQuery.Aggregation.Avg">google.datastore.v1.AggregationQuery.Aggregation.Avg</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>Average aggregator.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -966,7 +1008,7 @@ name][google.datastore.v1.Entity.properties] limitations.</li>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L128">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L133">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -1208,7 +1250,7 @@ is valid for all preceding batches.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L438">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L423">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -1297,7 +1339,7 @@ database.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L455">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L440">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -1391,6 +1433,78 @@ its key path completed with a newly allocated ID.</p></td>
       <td class="content"><p>Values in the array.
 The order of values in an array is preserved as long as all values have
 identical settings for 'exclude_from_indexes'.</p></td>
+      
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
+<h4 class="title is-4 type-heading" id="message-google.datastore.v1.Aggregation.Avg">
+  <span>
+    <a href="#message-google.datastore.v1.Aggregation.Avg" title="google.datastore.v1.Aggregation.Avg">message Avg</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L202">google/datastore/v1/query.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Average of the values of the requested property.</p>
+<ul>
+<li>
+<p>Only numeric values will be aggregated. All non-numeric values
+including <code>NULL</code> are skipped.</p>
+</li>
+<li>
+<p>If the aggregated values contain <code>NaN</code>, returns <code>NaN</code>. Infinity math
+follows IEEE-754 standards.</p>
+</li>
+<li>
+<p>If the aggregated value set is empty, returns <code>NULL</code>.</p>
+</li>
+<li>
+<p>Always returns the result as a double.</p>
+</li>
+</ul>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        property
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+        </code>
+      </td>
+      <td class="content"><p>The property to aggregate on.</p></td>
       
     </tr>
     
@@ -1550,7 +1664,7 @@ database.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L365">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L350">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -1719,7 +1833,7 @@ The transaction is committed when the request completes. If specified,
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L423">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L408">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -1806,7 +1920,7 @@ updated.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L273">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L331">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -1884,7 +1998,7 @@ updated.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L135">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L140">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -1920,7 +2034,7 @@ so it does not require a field reference.</p>
       <td class="content"><p>Optional. Optional constraint on the maximum number of entities to
 count.</p>
 <p>This provides a way to set an upper bound on the number of entities
-to scan, limiting latency and cost.</p>
+to scan, limiting latency, and cost.</p>
 <p>Unspecified is interpreted as no bound.</p>
 <p>If a zero value is provided, a count result of zero should always be
 expected.</p>
@@ -1951,15 +2065,13 @@ expected.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/entity.proto#L202">google/datastore/v1/entity.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/entity.proto#L200">google/datastore/v1/entity.proto</a>
   
 </h4>
 
 <div class="block content">
   <p>A Datastore data object.</p>
-<p>An entity is limited to 1 megabyte when stored. That <em>roughly</em>
-corresponds to a limit of 1 megabyte for the serialized form of this
-message.</p>
+<p>Must not exceed 1 MiB - 4 bytes.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -2009,8 +2121,8 @@ or null if it has no key.</p></td>
 The map's keys are property names.
 A property name matching regex <code>__.*__</code> is reserved.
 A reserved property name is forbidden in certain documented contexts.
-The name must not contain more than 500 characters.
-The name cannot be <code>""</code>.</p></td>
+The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot
+be empty.</p></td>
       
     </tr>
     
@@ -2157,7 +2269,7 @@ If this entity is missing, this field will not be set.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L261">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L319">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -2245,7 +2357,7 @@ If this entity is missing, this field will not be set.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L381">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L440">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -2356,7 +2468,7 @@ a named parameter with that name, but not necessarily the inverse.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L408">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L467">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -2533,7 +2645,7 @@ identifier.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L221">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L274">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -2820,7 +2932,7 @@ was set in
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L483">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L468">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -3005,7 +3117,7 @@ mutation conflicts.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L527">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L512">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -3117,61 +3229,6 @@ set after a 'delete'.</p></td>
       </div>
       
     
-      
-    
-      
-      <div class="block">
-        
-
-<h4 class="title is-4 type-heading" id="message-google.datastore.v1.RollbackResponse.NestedMessageTest">
-  <span>
-    <a href="#message-google.datastore.v1.RollbackResponse.NestedMessageTest" title="google.datastore.v1.RollbackResponse.NestedMessageTest">message NestedMessageTest</a>
-  
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.RollbackResponse"><span title="google.datastore.v1.RollbackResponse">google.datastore.v1.RollbackResponse</span>
-    </a>)</span>
-  
-  </span>
-  
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L349">google/datastore/v1/datastore.proto</a>
-  
-</h4>
-
-<div class="block content">
-  <p>Comment on NestedMessageTest</p>
-</div>
-
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th></th>
-      <th>Field</th>
-      <th>Type</th>
-      <th>Description</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td>1</td>
-      <td>
-        foo
-      </td>
-      <td>
-        <code title="string">
-          
-          <span>string</span>
-        </code>
-      </td>
-      <td class="content"><p>Comment on Nested type foo field</p></td>
-      
-    </tr>
-    
-    
-  </tbody>
-</table>
- 
-      </div>
       
     
       
@@ -3404,7 +3461,7 @@ bytes.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L234">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L292">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -3459,7 +3516,7 @@ bytes.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L298">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L356">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -3544,7 +3601,7 @@ bytes.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L240">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L298">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -3613,7 +3670,7 @@ bytes.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L227">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L280">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -3644,8 +3701,13 @@ bytes.</p></td>
           <span>string</span>
         </code>
       </td>
-      <td class="content"><p>The name of the property.
-If name includes "."s, it may be interpreted as a property name path.</p></td>
+      <td class="content"><p>A reference to a property.</p>
+<p>Requires:</p>
+<ul>
+<li>MUST be a dot-delimited (<code>.</code>) string of segments, where each segment
+conforms to [entity property name][google.datastore.v1.Entity.properties]
+limitations.</li>
+</ul></td>
       
     </tr>
     
@@ -3773,7 +3835,12 @@ Currently at most 1 kind may be specified.</p></td>
       </td>
       <td class="content"><p>The properties to make distinct. The query results will contain the first
 result for each distinct combination of values for the given properties
-(if empty, all results are returned).</p></td>
+(if empty, all results are returned).</p>
+<p>Requires:</p>
+<ul>
+<li>If <code>order</code> is specified, the set of distinct on properties must appear
+before the non-distinct on properties in <code>order</code>.</li>
+</ul></td>
       
     </tr>
     
@@ -3864,7 +3931,7 @@ Must be &gt;= 0 if specified.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L421">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L480">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -4045,7 +4112,7 @@ Datastore.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L617">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L605">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -4076,8 +4143,10 @@ Datastore.</p></td>
           <span>google.protobuf.Timestamp</span>
         </code>
       </td>
-      <td class="content"><p>Reads entities at the given time.
-This may not be older than 60 seconds.</p></td>
+      <td class="content"><p>Reads entities at the given time.</p>
+<p>This must be a microsecond precision timestamp within the past one hour,
+or if Point-in-Time Recovery is enabled, can additionally be a whole
+minute timestamp within the past 7 days.</p></td>
       
     </tr>
     
@@ -4098,7 +4167,7 @@ This may not be older than 60 seconds.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L554">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L539">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -4210,9 +4279,11 @@ or
               <span>google.protobuf.Timestamp</span>
             </code>
           </td>
-          <td class="content"><p>Reads entities as they were at the given time. This may not be older
-than 270 seconds.  This value is only supported for Cloud Firestore in
-Datastore mode.</p></td>
+          <td class="content"><p>Reads entities as they were at the given time. This value is only
+supported for Cloud Firestore in Datastore mode.</p>
+<p>This must be a microsecond precision timestamp within the past one hour,
+or if Point-in-Time Recovery is enabled, can additionally be a whole
+minute timestamp within the past 7 days.</p></td>
           
         </tr>
       
@@ -4236,7 +4307,7 @@ Datastore mode.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L611">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L599">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -4288,7 +4359,7 @@ Datastore mode.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L463">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L448">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -4377,7 +4448,7 @@ database.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L480">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L465">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -5024,13 +5095,96 @@ was set in
       <div class="block">
         
 
+<h4 class="title is-4 type-heading" id="message-google.datastore.v1.Aggregation.Sum">
+  <span>
+    <a href="#message-google.datastore.v1.Aggregation.Sum" title="google.datastore.v1.Aggregation.Sum">message Sum</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L186">google/datastore/v1/query.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Sum of the values of the requested property.</p>
+<ul>
+<li>
+<p>Only numeric values will be aggregated. All non-numeric values
+including <code>NULL</code> are skipped.</p>
+</li>
+<li>
+<p>If the aggregated values contain <code>NaN</code>, returns <code>NaN</code>. Infinity math
+follows IEEE-754 standards.</p>
+</li>
+<li>
+<p>If the aggregated value set is empty, returns 0.</p>
+</li>
+<li>
+<p>Returns a 64-bit integer if all aggregated numbers are integers and the
+sum result does not overflow. Otherwise, the result is returned as a
+double. Note that even if all the aggregated values are integers, the
+result is returned as a double if it cannot fit within a 64-bit signed
+integer. When this occurs, the returned value will lose precision.</p>
+</li>
+<li>
+<p>When underflow occurs, floating-point aggregation is non-deterministic.
+This means that running the same query repeatedly without any changes to
+the underlying values could produce slightly different results each
+time. In those cases, values should be stored as integers over
+floating-point numbers.</p>
+</li>
+</ul>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        property
+      </td>
+      <td>
+        <code title="google.datastore.v1.PropertyReference">
+          
+          <a href="google.datastore.v1.html#message-google.datastore.v1.PropertyReference"><span title="google.datastore.v1.PropertyReference">google.datastore.v1.PropertyReference</span>
+    </a>
+        </code>
+      </td>
+      <td class="content"><p>The property to aggregate on.</p></td>
+      
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
 <h4 class="title is-4 type-heading" id="message-google.datastore.v1.TransactionOptions">
   <span>
     <a href="#message-google.datastore.v1.TransactionOptions" title="google.datastore.v1.TransactionOptions">message TransactionOptions</a>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L609">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L597">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -5431,48 +5585,10 @@ In JSON requests, must be base64-encoded.</p></td>
 
     
     <div class="block">
-      <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.CommentTestEnum">
-  <a href="#enum-google.datastore.v1.CommentTestEnum" title="google.datastore.v1.CommentTestEnum">enum CommentTestEnum</a>
-  
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L356">google/datastore/v1/datastore.proto</a>
-  
-</h4>
-
-<div class="block content">
-  <p><p>Comment on the CommentTestEnum</p></p>
-</div>
-
-<table class="table is-fullwidth is-hoverable is-bordered">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <tr>
-      <td><code>COMMENT_TEST_ENUM_UNSPECIFIED</code></td>
-      <td>0</td>
-      <td class="content"><p>Comment on Unspecified</p></td>
-    </tr>
-    
-    <tr>
-      <td><code>COMMENT_TEST_ENUM_FOO</code></td>
-      <td>1</td>
-      <td class="content"><p>Comment on Foo</p></td>
-    </tr>
-    
-  </tbody>
-</table> 
-    </div>
-    
-    <div class="block">
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.PropertyOrder.Direction">
   <a href="#enum-google.datastore.v1.PropertyOrder.Direction" title="google.datastore.v1.PropertyOrder.Direction">enum Direction</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L242">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L300">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -5516,7 +5632,7 @@ In JSON requests, must be base64-encoded.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.CommitRequest.Mode">
   <a href="#enum-google.datastore.v1.CommitRequest.Mode" title="google.datastore.v1.CommitRequest.Mode">enum Mode</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L367">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L352">google/datastore/v1/datastore.proto</a>
   
 </h4>
 
@@ -5562,7 +5678,7 @@ Learn about transactions
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.QueryResultBatch.MoreResultsType">
   <a href="#enum-google.datastore.v1.QueryResultBatch.MoreResultsType" title="google.datastore.v1.QueryResultBatch.MoreResultsType">enum MoreResultsType</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L423">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L482">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -5619,7 +5735,7 @@ cursor.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.CompositeFilter.Operator">
   <a href="#enum-google.datastore.v1.CompositeFilter.Operator" title="google.datastore.v1.CompositeFilter.Operator">enum Operator</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L275">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L333">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -5663,7 +5779,7 @@ cursor.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.PropertyFilter.Operator">
   <a href="#enum-google.datastore.v1.PropertyFilter.Operator" title="google.datastore.v1.PropertyFilter.Operator">enum Operator</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L300">google/datastore/v1/query.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/query.proto#L358">google/datastore/v1/query.proto</a>
   
 </h4>
 
@@ -5739,8 +5855,9 @@ cursor.</p></td>
       <td class="content"><p>The given <code>property</code> is equal to at least one value in the given array.</p>
 <p>Requires:</p>
 <ul>
-<li>That <code>value</code> is a non-empty <code>ArrayValue</code> with at most 10 values.</li>
-<li>No other <code>IN</code> or <code>NOT_IN</code> is in the same query.</li>
+<li>That <code>value</code> is a non-empty <code>ArrayValue</code>, subject to disjunction
+  limits.</li>
+<li>No <code>NOT_IN</code> is in the same query.</li>
 </ul></td>
     </tr>
     
@@ -5762,7 +5879,7 @@ cursor.</p></td>
 <p>Requires:</p>
 <ul>
 <li>That <code>value</code> is an entity key.</li>
-<li>No other <code>HAS_ANCESTOR</code> is in the same query.</li>
+<li>All evaluated disjunctions must have the same <code>HAS_ANCESTOR</code> filter.</li>
 </ul></td>
     </tr>
     
@@ -5773,7 +5890,7 @@ cursor.</p></td>
 <p>Requires:</p>
 <ul>
 <li>That <code>value</code> is a non-empty <code>ArrayValue</code> with at most 10 values.</li>
-<li>No other <code>IN</code>, <code>NOT_IN</code>, <code>NOT_EQUAL</code> is in the same query.</li>
+<li>No other <code>OR</code>, <code>IN</code>, <code>NOT_IN</code>, <code>NOT_EQUAL</code> is in the same query.</li>
 <li>That <code>field</code> comes first in the <code>order_by</code>.</li>
 </ul></td>
     </tr>
@@ -5786,7 +5903,7 @@ cursor.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.datastore.v1.ReadOptions.ReadConsistency">
   <a href="#enum-google.datastore.v1.ReadOptions.ReadConsistency" title="google.datastore.v1.ReadOptions.ReadConsistency">enum ReadConsistency</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L556">google/datastore/v1/datastore.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/datastore/v1/datastore.proto#L541">google/datastore/v1/datastore.proto</a>
   
 </h4>
 

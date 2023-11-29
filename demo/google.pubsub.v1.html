@@ -190,9 +190,27 @@
     
       
       <p>
+        <a href="#message-google.pubsub.v1.CloudStorageConfig.AvroConfig">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>AvroConfig</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
         <a href="#message-google.pubsub.v1.BigQueryConfig">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>BigQueryConfig</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.pubsub.v1.CloudStorageConfig">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>CloudStorageConfig</code> 
         </a>
       </p>
       
@@ -513,6 +531,15 @@
     
       
       <p>
+        <a href="#message-google.pubsub.v1.PushConfig.NoWrapper">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>NoWrapper</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
         <a href="#message-google.pubsub.v1.PushConfig.OidcToken">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>OidcToken</code> 
@@ -543,6 +570,15 @@
         <a href="#message-google.pubsub.v1.PubsubMessage">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>PubsubMessage</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
+        <a href="#message-google.pubsub.v1.PushConfig.PubsubWrapper">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>PubsubWrapper</code> 
         </a>
       </p>
       
@@ -684,6 +720,15 @@
     
       
       <p>
+        <a href="#message-google.pubsub.v1.CloudStorageConfig.TextConfig">
+          <span class="tag" style="min-width: 6em">Message</span>
+          <code>TextConfig</code> 
+        </a>
+      </p>
+      
+    
+      
+      <p>
         <a href="#message-google.pubsub.v1.Topic">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>Topic</code> 
@@ -785,6 +830,13 @@
       </p>
     
       <p>
+        <a href="#enum-google.pubsub.v1.CloudStorageConfig.State">
+          <span class="tag" style="min-width: 6em">Enum</span>
+          <code>State</code> 
+        </a>
+      </p>
+    
+      <p>
         <a href="#enum-google.pubsub.v1.Schema.Type">
           <span class="tag" style="min-width: 6em">Enum</span>
           <code>Type</code> 
@@ -837,7 +889,7 @@ messages to a topic.</p></p>
   
   <div class="block">
     <p><p>Creates the given topic with the given name. See the [resource name rules]
-(https://cloud.google.com/pubsub/docs/admin#resource_names).</p></p>
+(https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).</p></p>
   </div>
   
 </div>
@@ -1238,7 +1290,7 @@ subscription, pushes to the endpoint will stop.</p></p>
 <h4 class="title is-4 type-heading" id="service-google.pubsub.v1.Subscriber">
   <a href="#service-google.pubsub.v1.Subscriber" title="google.pubsub.v1.Subscriber">service Subscriber</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L425">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L426">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -1265,15 +1317,15 @@ establishing a bi-directional stream using the <code>StreamingPull</code> method
   
   <div class="block">
     <p><p>Creates a subscription to a given topic. See the [resource name rules]
-(https://cloud.google.com/pubsub/docs/admin#resource_names).
+(https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names).
 If the subscription already exists, returns <code>ALREADY_EXISTS</code>.
 If the corresponding topic doesn't exist, returns <code>NOT_FOUND</code>.</p>
 <p>If the name is not provided in the request, the server will assign a random
 name for this subscription on the same project as the topic, conforming
 to the [resource name format]
-(https://cloud.google.com/pubsub/docs/admin#resource_names). The generated
-name is populated in the returned Subscription object. Note that for REST
-API requests, you must specify a name in the request.</p></p>
+(https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The
+generated name is populated in the returned Subscription object. Note that
+for REST API requests, you must specify a name in the request.</p></p>
   </div>
   
 </div>
@@ -1553,7 +1605,7 @@ See also the <code>Snapshot.expire_time</code> field. If the name is not provide
 the request, the server will assign a random
 name for this snapshot on the same project as the subscription, conforming
 to the [resource name format]
-(https://cloud.google.com/pubsub/docs/admin#resource_names). The
+(https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). The
 generated name is populated in the returned Snapshot object. Note that for
 REST API requests, you must specify a name in the request.</p></p>
   </div>
@@ -1663,7 +1715,7 @@ snapshot must be on the same topic.</p></p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1269">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1373">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -1770,7 +1822,7 @@ deadline has expired.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1168">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1272">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -1840,13 +1892,74 @@ empty.</p></td>
       <div class="block">
         
 
+<h4 class="title is-4 type-heading" id="message-google.pubsub.v1.CloudStorageConfig.AvroConfig">
+  <span>
+    <a href="#message-google.pubsub.v1.CloudStorageConfig.AvroConfig" title="google.pubsub.v1.CloudStorageConfig.AvroConfig">message AvroConfig</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.CloudStorageConfig"><span title="google.pubsub.v1.CloudStorageConfig">google.pubsub.v1.CloudStorageConfig</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1031">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Configuration for writing message data in Avro format.
+Message payloads and metadata will be written to files as an Avro binary.</p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        write_metadata
+      </td>
+      <td>
+        <code title="bool">
+          
+          <span>bool</span>
+        </code>
+      </td>
+      <td class="content"><p>When true, write the subscription name, message_id, publish_time,
+attributes, and ordering_key as additional fields in the output. The
+subscription name, message_id, and publish_time fields are put in their
+own fields while all other message properties other than data (for
+example, an ordering_key, if present) are added as entries in the
+attributes map.</p></td>
+      
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
 <h4 class="title is-4 type-heading" id="message-google.pubsub.v1.BigQueryConfig">
   <span>
     <a href="#message-google.pubsub.v1.BigQueryConfig" title="google.pubsub.v1.BigQueryConfig">message BigQueryConfig</a>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L941">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L971">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -1953,6 +2066,196 @@ subscription can receive messages.</p></td>
       
     </tr>
     
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
+<h4 class="title is-4 type-heading" id="message-google.pubsub.v1.CloudStorageConfig">
+  <span>
+    <a href="#message-google.pubsub.v1.CloudStorageConfig" title="google.pubsub.v1.CloudStorageConfig">message CloudStorageConfig</a>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1023">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Configuration for a Cloud Storage subscription.</p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        bucket
+      </td>
+      <td>
+        <code title="string">
+          
+          <span>string</span>
+        </code>
+      </td>
+      <td class="content"><p>Required. User-provided name for the Cloud Storage bucket.
+The bucket must be created by the user. The bucket name must be without
+any prefix like "gs://". See the [bucket naming
+requirements] (https://cloud.google.com/storage/docs/buckets#naming).</p></td>
+      
+    </tr>
+    
+    <tr>
+      <td>2</td>
+      <td>
+        filename_prefix
+      </td>
+      <td>
+        <code title="string">
+          
+          <span>string</span>
+        </code>
+      </td>
+      <td class="content"><p>User-provided prefix for Cloud Storage filename. See the <a href="https://cloud.google.com/storage/docs/objects#naming">object naming
+requirements</a>.</p></td>
+      
+    </tr>
+    
+    <tr>
+      <td>3</td>
+      <td>
+        filename_suffix
+      </td>
+      <td>
+        <code title="string">
+          
+          <span>string</span>
+        </code>
+      </td>
+      <td class="content"><p>User-provided suffix for Cloud Storage filename. See the <a href="https://cloud.google.com/storage/docs/objects#naming">object naming
+requirements</a>. Must
+not end in "/".</p></td>
+      
+    </tr>
+    
+    <tr>
+      <td>6</td>
+      <td>
+        max_duration
+      </td>
+      <td>
+        <code title="google.protobuf.Duration">
+          
+          <span>google.protobuf.Duration</span>
+        </code>
+      </td>
+      <td class="content"><p>The maximum duration that can elapse before a new Cloud Storage file is
+created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed
+the subscription's acknowledgement deadline.</p></td>
+      
+    </tr>
+    
+    <tr>
+      <td>7</td>
+      <td>
+        max_bytes
+      </td>
+      <td>
+        <code title="int64">
+          
+          <span>int64</span>
+        </code>
+      </td>
+      <td class="content"><p>The maximum bytes that can be written to a Cloud Storage file before a new
+file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded
+in cases where messages are larger than the limit.</p></td>
+      
+    </tr>
+    
+    <tr>
+      <td>9</td>
+      <td>
+        state
+      </td>
+      <td>
+        <code title="google.pubsub.v1.CloudStorageConfig.State">
+          
+          <a href="google.pubsub.v1.html#enum-google.pubsub.v1.CloudStorageConfig.State"><span title="google.pubsub.v1.CloudStorageConfig.State">google.pubsub.v1.CloudStorageConfig.State</span>
+    </a>
+        </code>
+      </td>
+      <td class="content"><p>Output only. An output-only field that indicates whether or not the
+subscription can receive messages.</p></td>
+      
+    </tr>
+    
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof output_format</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            text_config
+          </td>
+          <td>
+            <code title="google.pubsub.v1.CloudStorageConfig.TextConfig">
+              
+              <a href="google.pubsub.v1.html#message-google.pubsub.v1.CloudStorageConfig.TextConfig"><span title="google.pubsub.v1.CloudStorageConfig.TextConfig">google.pubsub.v1.CloudStorageConfig.TextConfig</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>If set, message data will be written to Cloud Storage in text format.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            avro_config
+          </td>
+          <td>
+            <code title="google.pubsub.v1.CloudStorageConfig.AvroConfig">
+              
+              <a href="google.pubsub.v1.html#message-google.pubsub.v1.CloudStorageConfig.AvroConfig"><span title="google.pubsub.v1.CloudStorageConfig.AvroConfig">google.pubsub.v1.CloudStorageConfig.AvroConfig</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>If set, message data will be written to Cloud Storage in Avro format.</p></td>
+          
+        </tr>
+      
     
   </tbody>
 </table>
@@ -2129,7 +2432,7 @@ name constraints.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1323">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1427">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2163,9 +2466,9 @@ name constraints.</p></td>
       <td class="content"><p>Required. User-provided name for this snapshot. If the name is not provided
 in the request, the server will assign a random name for this snapshot on
 the same project as the subscription. Note that for REST API requests, you
-must specify a name.  See the <a href="https://cloud.google.com/pubsub/docs/admin#resource_names">resource name
-rules</a>. Format
-is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
+must specify a name.  See the <a href="https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names">resource name
+rules</a>.
+Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
       
     </tr>
     
@@ -2225,7 +2528,7 @@ labels</a>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L839">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L844">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2434,7 +2737,7 @@ parameter.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1444">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1548">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2487,7 +2790,7 @@ Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1074">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1178">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2540,7 +2843,7 @@ Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L397">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L398">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2593,7 +2896,7 @@ Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L407">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L408">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2646,7 +2949,7 @@ Format is <code>projects/{project}/subscriptions/{subscription}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L420">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L421">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2684,7 +2987,7 @@ Reserved for future use.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L869">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L874">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2812,7 +3115,7 @@ with all fields filled out. Set to <code>BASIC</code> to omit the <code>definiti
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1404">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1508">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2865,7 +3168,7 @@ Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1020">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1124">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -2918,7 +3221,7 @@ Format is <code>projects/{project}/subscriptions/{sub}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L262">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L263">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3325,7 +3628,7 @@ request; this value should be passed in a new <code>ListSchemasRequest</code>.</
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1414">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1518">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3410,7 +3713,7 @@ should return the next page of data.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1434">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1538">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3481,7 +3784,7 @@ request; this value should be passed in a new <code>ListSnapshotsRequest</code>.
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1043">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1147">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3566,7 +3869,7 @@ system should return the next page of data.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1063">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1167">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3638,7 +3941,7 @@ the request; this value should be passed in a new
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L368">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L369">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3723,7 +4026,7 @@ that the system should return the next page of data.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L386">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L387">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3794,7 +4097,7 @@ the request; this value should be passed in a new
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L337">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L338">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3879,7 +4182,7 @@ that the system should return the next page of data.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L355">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L356">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -3950,7 +4253,7 @@ the request; this value should be passed in a new
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L307">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L308">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4035,7 +4338,7 @@ return the next page of data.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L327">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L328">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4139,11 +4442,12 @@ request; this value should be passed in a new <code>ListTopicsRequest</code>.</p
           <span>string</span>
         </code>
       </td>
-      <td class="content"><p>A list of IDs of GCP regions where messages that are published to the topic
-may be persisted in storage. Messages published by publishers running in
-non-allowed GCP regions (or running outside of GCP altogether) will be
-routed for storage in one of the allowed regions. An empty list means that
-no regions are allowed, and is not a valid configuration.</p></td>
+      <td class="content"><p>A list of IDs of Google Cloud regions where messages that are published
+to the topic may be persisted in storage. Messages published by publishers
+running in non-allowed Google Cloud regions (or running outside of Google
+Cloud altogether) are routed for storage in one of the allowed regions.
+An empty list means that no regions are allowed, and is not a valid
+configuration.</p></td>
       
     </tr>
     
@@ -4167,7 +4471,7 @@ no regions are allowed, and is not a valid configuration.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1286">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1390">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4257,7 +4561,7 @@ deadline has expired.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1143">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1247">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4349,7 +4653,7 @@ The maximum deadline you can specify is 600 seconds (10 minutes).</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1086">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1190">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4416,6 +4720,63 @@ the subscription if <code>Pull</code> or <code>StreamingPull</code> is not calle
       <div class="block">
         
 
+<h4 class="title is-4 type-heading" id="message-google.pubsub.v1.PushConfig.NoWrapper">
+  <span>
+    <a href="#message-google.pubsub.v1.PushConfig.NoWrapper" title="google.pubsub.v1.PushConfig.NoWrapper">message NoWrapper</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig"><span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L912">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Sets the <code>data</code> field as the HTTP body for delivery.</p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td>1</td>
+      <td>
+        write_metadata
+      </td>
+      <td>
+        <code title="bool">
+          
+          <span>bool</span>
+        </code>
+      </td>
+      <td class="content"><p>When true, writes the Pub/Sub message metadata to
+<code>x-goog-pubsub-&lt;KEY&gt;:&lt;VAL&gt;</code> headers of the HTTP request. Writes the
+Pub/Sub message attributes to <code>&lt;KEY&gt;:&lt;VAL&gt;</code> headers of the HTTP request.</p></td>
+      
+    </tr>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
 <h4 class="title is-4 type-heading" id="message-google.pubsub.v1.PushConfig.OidcToken">
   <span>
     <a href="#message-google.pubsub.v1.PushConfig.OidcToken" title="google.pubsub.v1.PushConfig.OidcToken">message OidcToken</a>
@@ -4425,7 +4786,7 @@ the subscription if <code>Pull</code> or <code>StreamingPull</code> is not calle
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L884">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L889">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4460,9 +4821,9 @@ token</a>.</p>
       </td>
       <td class="content"><p><a href="https://cloud.google.com/iam/docs/service-accounts">Service account
 email</a>
-to be used for generating the OIDC token. The caller (for
-CreateSubscription, UpdateSubscription, and ModifyPushConfig RPCs) must
-have the iam.serviceAccounts.actAs permission for the service account.</p></td>
+used for generating the OIDC token. For more information
+on setting up authentication, see
+<a href="https://cloud.google.com/pubsub/docs/push">Push subscriptions</a>.</p></td>
       
     </tr>
     
@@ -4503,7 +4864,7 @@ Note: if not specified, the Push endpoint URL will be used.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L286">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L287">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4574,7 +4935,7 @@ Format is <code>projects/{project}/topics/{topic}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L299">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L300">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4630,7 +4991,7 @@ the topic.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L229">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L230">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4758,13 +5119,55 @@ messages</a>.</p></td>
       <div class="block">
         
 
+<h4 class="title is-4 type-heading" id="message-google.pubsub.v1.PushConfig.PubsubWrapper">
+  <span>
+    <a href="#message-google.pubsub.v1.PushConfig.PubsubWrapper" title="google.pubsub.v1.PushConfig.PubsubWrapper">message PubsubWrapper</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig"><span title="google.pubsub.v1.PushConfig">google.pubsub.v1.PushConfig</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L909">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>The payload to the push endpoint is in the form of the JSON representation
+of a PubsubMessage
+(https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).</p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
 <h4 class="title is-4 type-heading" id="message-google.pubsub.v1.PullRequest">
   <span>
     <a href="#message-google.pubsub.v1.PullRequest" title="google.pubsub.v1.PullRequest">message PullRequest</a>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1106">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1210">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4855,7 +5258,7 @@ specified.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1133">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1237">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -4914,7 +5317,7 @@ even if there are more messages available in the backlog.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L880">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L885">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5015,6 +5418,59 @@ created without this attribute.</p>
         </tr>
       
     
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
+                <strong>oneof wrapper</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            4
+          </td>
+          <td>
+            pubsub_wrapper
+          </td>
+          <td>
+            <code title="google.pubsub.v1.PushConfig.PubsubWrapper">
+              
+              <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig.PubsubWrapper"><span title="google.pubsub.v1.PushConfig.PubsubWrapper">google.pubsub.v1.PushConfig.PubsubWrapper</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>When set, the payload to the push endpoint is in the form of the JSON
+representation of a PubsubMessage
+(https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            5
+          </td>
+          <td>
+            no_wrapper
+          </td>
+          <td>
+            <code title="google.pubsub.v1.PushConfig.NoWrapper">
+              
+              <a href="google.pubsub.v1.html#message-google.pubsub.v1.PushConfig.NoWrapper"><span title="google.pubsub.v1.PushConfig.NoWrapper">google.pubsub.v1.PushConfig.NoWrapper</span>
+    </a>
+            </code>
+          </td>
+          <td class="content"><p>When set, the payload to the push endpoint is not wrapped.</p></td>
+          
+        </tr>
+      
+    
   </tbody>
 </table>
  
@@ -5031,7 +5487,7 @@ created without this attribute.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L993">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1097">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5125,7 +5581,7 @@ value of 1. The value is calculated at best effort and is approximate.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L824">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L829">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5386,7 +5842,7 @@ the type specified in <code>type</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L148">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L149">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5491,7 +5947,7 @@ or any revision created after.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1454">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1558">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5604,7 +6060,7 @@ Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1487">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1591">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5641,7 +6097,7 @@ Format is <code>projects/{project}/snapshots/{snap}</code>.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1372">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1476">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5752,7 +6208,7 @@ snapshot that would expire in less than 1 hour after creation.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1187">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1291">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -5962,7 +6418,7 @@ on a subsequent request, the stream will be aborted with status
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1266">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1370">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -6068,14 +6524,14 @@ messages from the server to the client.</p>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L652">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L653">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
 <div class="block content">
-  <p>A subscription resource. If none of <code>push_config</code> or <code>bigquery_config</code> is
-set, then the subscriber will pull and ack messages using API methods. At
-most one of these fields may be set.</p>
+  <p>A subscription resource. If none of <code>push_config</code>, <code>bigquery_config</code>, or
+<code>cloud_storage_config</code> is set, then the subscriber will pull and ack messages
+using API methods. At most one of these fields may be set.</p>
 </div>
 
 <table class="table is-fullwidth is-hoverable is-bordered">
@@ -6431,6 +6887,23 @@ subscription can receive messages.</p></td>
       
     </tr>
     
+    <tr>
+      <td>22</td>
+      <td>
+        cloud_storage_config
+      </td>
+      <td>
+        <code title="google.pubsub.v1.CloudStorageConfig">
+          
+          <a href="google.pubsub.v1.html#message-google.pubsub.v1.CloudStorageConfig"><span title="google.pubsub.v1.CloudStorageConfig">google.pubsub.v1.CloudStorageConfig</span>
+    </a>
+        </code>
+      </td>
+      <td class="content"><p>If delivery to Google Cloud Storage is used with this subscription, this
+field is used to configure it.</p></td>
+      
+    </tr>
+    
     
   </tbody>
 </table>
@@ -6451,7 +6924,7 @@ subscription can receive messages.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1299">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1403">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -6512,13 +6985,55 @@ subscription can receive messages.</p></td>
       <div class="block">
         
 
+<h4 class="title is-4 type-heading" id="message-google.pubsub.v1.CloudStorageConfig.TextConfig">
+  <span>
+    <a href="#message-google.pubsub.v1.CloudStorageConfig.TextConfig" title="google.pubsub.v1.CloudStorageConfig.TextConfig">message TextConfig</a>
+  
+    <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.pubsub.v1.html#message-google.pubsub.v1.CloudStorageConfig"><span title="google.pubsub.v1.CloudStorageConfig">google.pubsub.v1.CloudStorageConfig</span>
+    </a>)</span>
+  
+  </span>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1027">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p>Configuration for writing message data in text format.
+Message payloads will be written to files as raw text, separated by a
+newline.</p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Field</th>
+      <th>Type</th>
+      <th>Description</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    
+    
+  </tbody>
+</table>
+ 
+      </div>
+      
+    
+      
+      <div class="block">
+        
+
 <h4 class="title is-4 type-heading" id="message-google.pubsub.v1.Topic">
   <span>
     <a href="#message-google.pubsub.v1.Topic" title="google.pubsub.v1.Topic">message Topic</a>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L173">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L174">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -6680,7 +7195,7 @@ subscriptions. Cannot be more than 31 days or less than 10 minutes.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1357">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1461">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -6749,7 +7264,7 @@ Must be specified and non-empty.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1032">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1136">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -6818,7 +7333,7 @@ Must be specified and non-empty.</p></td>
   
   </span>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L272">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L273">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -7264,7 +7779,7 @@ The API will default to the BASIC view.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.pubsub.v1.Subscription.State">
   <a href="#enum-google.pubsub.v1.Subscription.State" title="google.pubsub.v1.Subscription.State">enum State</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L659">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L660">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -7310,7 +7825,7 @@ in the corresponding configuration.</p></td>
       <h4 class="title is-4 type-heading" id="enum-google.pubsub.v1.BigQueryConfig.State">
   <a href="#enum-google.pubsub.v1.BigQueryConfig.State" title="google.pubsub.v1.BigQueryConfig.State">enum State</a>
   
-    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L943">google/pubsub/v1/pubsub.proto</a>
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L973">google/pubsub/v1/pubsub.proto</a>
   
 </h4>
 
@@ -7361,6 +7876,57 @@ permissions</a>
       <td><code>SCHEMA_MISMATCH</code></td>
       <td>4</td>
       <td class="content"><p>Cannot write to the BigQuery table due to a schema mismatch.</p></td>
+    </tr>
+    
+  </tbody>
+</table> 
+    </div>
+    
+    <div class="block">
+      <h4 class="title is-4 type-heading" id="enum-google.pubsub.v1.CloudStorageConfig.State">
+  <a href="#enum-google.pubsub.v1.CloudStorageConfig.State" title="google.pubsub.v1.CloudStorageConfig.State">enum State</a>
+  
+    <a class="type-source-link" href="https://github.com/googleapis/googleapis/blob/master/google/pubsub/v1/pubsub.proto#L1042">google/pubsub/v1/pubsub.proto</a>
+  
+</h4>
+
+<div class="block content">
+  <p><p>Possible states for a Cloud Storage subscription.</p></p>
+</div>
+
+<table class="table is-fullwidth is-hoverable is-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <td><code>STATE_UNSPECIFIED</code></td>
+      <td>0</td>
+      <td class="content"><p>Default value. This value is unused.</p></td>
+    </tr>
+    
+    <tr>
+      <td><code>ACTIVE</code></td>
+      <td>1</td>
+      <td class="content"><p>The subscription can actively send messages to Cloud Storage.</p></td>
+    </tr>
+    
+    <tr>
+      <td><code>PERMISSION_DENIED</code></td>
+      <td>2</td>
+      <td class="content"><p>Cannot write to the Cloud Storage bucket because of permission denied
+errors.</p></td>
+    </tr>
+    
+    <tr>
+      <td><code>NOT_FOUND</code></td>
+      <td>3</td>
+      <td class="content"><p>Cannot write to the Cloud Storage bucket because it does not exist.</p></td>
     </tr>
     
   </tbody>
