@@ -1,3 +1,4 @@
+from typing import Dict, Sequence
 from google.protobuf.descriptor_pb2 import FileDescriptorSet
 from google.protobuf.descriptor_pb2 import EnumDescriptorProto
 from google.protobuf.descriptor_pb2 import EnumValueDescriptorProto
@@ -5,8 +6,9 @@ from google.protobuf.descriptor_pb2 import DescriptorProto
 from google.protobuf.descriptor_pb2 import FieldDescriptorProto
 from google.protobuf.descriptor_pb2 import ServiceDescriptorProto
 from google.protobuf.descriptor_pb2 import MethodDescriptorProto
-from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, ServiceMethod, ServiceMethodArgument, Service, Package, LocationInfo, SableContext
+from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, OneOfFieldGroup, ServiceMethod, ServiceMethodArgument, Service, Package, LocationInfo, SableContext
 from sabledocs.sable_config import MemberOrdering, RepositoryType, SableConfig
+import pprint
 import markdown
 import pprint
 import re
@@ -118,7 +120,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
     return e
 
 
-def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
+def parse_enums(enums: Sequence[EnumDescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
     for (i, enum) in enumerate(enums):
         ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i), parent_message, nested_type_chain))
 
@@ -126,7 +128,7 @@ def parse_enums(enums: list[EnumDescriptorProto], ctx: ParseContext, parent_mess
         ctx.package.enums.sort(key=lambda e: e.name)
 
 
-def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
+def parse_field(field: FieldDescriptorProto, containing_message: DescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
 
@@ -146,6 +148,9 @@ def parse_field(field: FieldDescriptorProto, ctx: ParseContext):
             mf.type = f"map<{entry_nested_type.fields[0].type}, {entry_nested_type.fields[1].type}>"
             mf.full_type = f"map<{entry_nested_type.fields[0].type}, {entry_nested_type.fields[1].type}>"
             mf.label = ""
+
+    if field.HasField("oneof_index"):
+        mf.oneof_name = containing_message.oneof_decl[field.oneof_index].name
 
     return mf
 
@@ -181,15 +186,20 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
 
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
-        m.fields.append(parse_field(mf, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
+        m.fields.append(parse_field(mf, message, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
 
     if config.member_ordering == MemberOrdering.ALPHABETICAL:
         m.fields.sort(key=lambda mf: mf.number)
 
+    oneof_names = set([f.oneof_name for f in m.fields if f.oneof_name])
+    m.oneof_field_groups = list(map(
+        lambda n: OneOfFieldGroup(n, list(filter(lambda f: f.oneof_name == n, m.fields))),
+        oneof_names))
+
     return m
 
 
-def parse_messages(messages: list[DescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
+def parse_messages(messages: Sequence[DescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
     for (i, message) in enumerate(messages):
         ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), parent_message, nested_type_chain, config))
 
@@ -239,7 +249,7 @@ def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     return s
 
 
-def parse_services(services: list[ServiceDescriptorProto], ctx: ParseContext, config: SableConfig):
+def parse_services(services: Sequence[ServiceDescriptorProto], ctx: ParseContext, config: SableConfig):
     for (i, service) in enumerate(services):
         ctx.package.services.append(parse_service(service, ctx.ExtendPath(i)))
 
@@ -255,7 +265,7 @@ def extract_package_name_from_full_name(full_type_name: str):
         return full_type_name[:last_dot]
 
 
-def add_package_references(messages: list[Message], services: list[Service], packages):
+def add_package_references(messages: list[Message], services: list[Service], packages: list[Package]):
     for m in messages:
         package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
         if package is not None:
@@ -311,7 +321,7 @@ def build_location_map(source_code_info):
     return location_infos
 
 
-def to_type_name(type: FieldDescriptorProto.Type):
+def to_type_name(type: FieldDescriptorProto.Type.ValueType):
     match type:
         case FieldDescriptorProto.Type.TYPE_BOOL: return "bool"
         case FieldDescriptorProto.Type.TYPE_DOUBLE: return "double"
@@ -332,7 +342,7 @@ def to_type_name(type: FieldDescriptorProto.Type):
         case FieldDescriptorProto.Type.TYPE_SFIXED64: return "sfixed64"
         case FieldDescriptorProto.Type.TYPE_SINT32: return "sint32"
         case FieldDescriptorProto.Type.TYPE_SINT64: return "sint64"
-        case _: "unknown"
+        case _: return "unknown"
 
 
 def to_label_name(type, proto3_optional):
@@ -345,7 +355,7 @@ def to_label_name(type, proto3_optional):
 
 
 def parse_proto_descriptor(sable_config: SableConfig):
-    packages = dict()
+    packages: Dict[str, Package] = dict()
     all_messages = []
     all_enums = []
     all_services = []
@@ -376,7 +386,7 @@ def parse_proto_descriptor(sable_config: SableConfig):
 
             packages[file.package] = package
 
-        add_package_references(all_messages, all_services, packages.values())
+        add_package_references(all_messages, all_services, list(packages.values()))
 
         return SableContext(
             sorted(packages.values(), key=lambda p: (p.name))

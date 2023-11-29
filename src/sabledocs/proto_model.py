@@ -1,4 +1,5 @@
 from pprint import pformat
+from typing import Optional
 from sabledocs.sable_config import SableConfig
 
 
@@ -9,7 +10,7 @@ class CodeItem:
         self.description_html = ''
         self.source_file_path = ''
         self.line_number = 0
-        self.repository_url = ''
+        self.repository_url: Optional[str] = ''
 
 
 class MessageField(CodeItem):
@@ -20,12 +21,19 @@ class MessageField(CodeItem):
         self.type = ''
         self.full_type = ''
         self.default_value = ''
-        self.package = None
+        self.package: Optional[Package] = None
         self.type_kind = "UNKNOWN"
+        self.oneof_name: Optional[str] = None
 
     def __repr__(self):
         filtered_vars = dict(filter(lambda elem: elem[0] != "package", vars(self).items()))
         return pformat(filtered_vars, indent=4, width=1)
+
+
+class OneOfFieldGroup:
+    def __init__(self, name: str, fields: list[MessageField]):
+        self.name = name
+        self.fields: list[MessageField] = fields
 
 
 class Message(CodeItem):
@@ -34,8 +42,9 @@ class Message(CodeItem):
         self.full_name = ''
         self.is_map_entry = False
         self.fields: list[MessageField] = []
+        self.oneof_field_groups: list[OneOfFieldGroup] = []
         self.parent_message = None
-        self.package = None
+        self.package: Optional[Package] = None
         self.type_kind = "MESSAGE"
 
     @property
@@ -45,6 +54,10 @@ class Message(CodeItem):
     @property
     def has_any_fields_with_default_value(self):
         return any(filter(lambda f: f.default_value, self.fields))
+
+    @property
+    def non_oneof_fields(self):
+        return [f for f in self.fields if not f.oneof_name]
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
@@ -62,7 +75,7 @@ class Enum(CodeItem):
         self.full_name = ''
         self.values: list[EnumValue] = []
         self.parent_message = None
-        self.package = None
+        self.package: Optional[Package] = None
         self.type_kind = "ENUM"
 
     def __repr__(self):
@@ -75,7 +88,7 @@ class ServiceMethodArgument(CodeItem):
         self.type = type
         self.full_type = full_type
         self.type_kind = type_kind
-        self.package = None
+        self.package: Optional[Package] = None
 
 
 class ServiceMethod(CodeItem):
