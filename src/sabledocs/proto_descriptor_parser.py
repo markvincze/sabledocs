@@ -149,7 +149,9 @@ def parse_field(field: FieldDescriptorProto, containing_message: DescriptorProto
             mf.full_type = f"map<{entry_nested_type.fields[0].type}, {entry_nested_type.fields[1].type}>"
             mf.label = ""
 
-    if field.HasField("oneof_index"):
+    # We only set the oneof name if the field is not a Proto3 optional.
+    # Proto3 optionals are represented as a "synthetic" oneof, which does nto need to be displayed in the docs.
+    if field.HasField("oneof_index") and not field.proto3_optional:
         mf.oneof_name = containing_message.oneof_decl[field.oneof_index].name
 
     return mf
