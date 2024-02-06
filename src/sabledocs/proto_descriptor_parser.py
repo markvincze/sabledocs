@@ -183,8 +183,9 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
         m.line_number)
 
     # NOTE: The processing of nested types have to happen before processing the fields, to have the Entry nested types representing maps already present.
-    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, f"{message.name}.", config)
-    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, f"{message.name}.", config)
+    new_nested_type_chain = f"{nested_type_chain}{message.name}."
+    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, new_nested_type_chain, config)
+    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, new_nested_type_chain, config)
 
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
