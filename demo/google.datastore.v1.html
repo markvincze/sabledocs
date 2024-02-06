@@ -219,7 +219,7 @@
     
       
       <p>
-        <a href="#message-google.datastore.v1.Aggregation.Avg">
+        <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Avg">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>Avg</code> 
         </a>
@@ -273,7 +273,7 @@
     
       
       <p>
-        <a href="#message-google.datastore.v1.Aggregation.Count">
+        <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Count">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>Count</code> 
         </a>
@@ -556,7 +556,7 @@
     
       
       <p>
-        <a href="#message-google.datastore.v1.Aggregation.Sum">
+        <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Sum">
           <span class="tag" style="min-width: 6em">Message</span>
           <code>Sum</code> 
         </a>
@@ -1447,9 +1447,9 @@ identical settings for 'exclude_from_indexes'.</p></td>
       <div class="block">
         
 
-<h4 class="title is-4 type-heading" id="message-google.datastore.v1.Aggregation.Avg">
+<h4 class="title is-4 type-heading" id="message-google.datastore.v1.AggregationQuery.Aggregation.Avg">
   <span>
-    <a href="#message-google.datastore.v1.Aggregation.Avg" title="google.datastore.v1.Aggregation.Avg">message Avg</a>
+    <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Avg" title="google.datastore.v1.AggregationQuery.Aggregation.Avg">message Avg</a>
   
     <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
     </a>)</span>
@@ -1989,9 +1989,9 @@ updated.</p></td>
       <div class="block">
         
 
-<h4 class="title is-4 type-heading" id="message-google.datastore.v1.Aggregation.Count">
+<h4 class="title is-4 type-heading" id="message-google.datastore.v1.AggregationQuery.Aggregation.Count">
   <span>
-    <a href="#message-google.datastore.v1.Aggregation.Count" title="google.datastore.v1.Aggregation.Count">message Count</a>
+    <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Count" title="google.datastore.v1.AggregationQuery.Aggregation.Count">message Count</a>
   
     <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
     </a>)</span>
@@ -2959,6 +2959,59 @@ was set in
           <tr class="nohover">
             <td class="oneof-heading" colspan="4">
               <div class="oneof-heading">
+                <strong>oneof conflict_detection_strategy</strong>
+              </div>
+            </td>
+          </tr>
+        
+
+        <tr>
+          <td>
+            8
+          </td>
+          <td>
+            base_version
+          </td>
+          <td>
+            <code title="int64">
+              
+              <span>int64</span>
+            </code>
+          </td>
+          <td class="content"><p>The version of the entity that this mutation is being applied
+to. If this does not match the current version on the server, the
+mutation conflicts.</p></td>
+          
+        </tr>
+      
+        
+
+        <tr>
+          <td>
+            11
+          </td>
+          <td>
+            update_time
+          </td>
+          <td>
+            <code title="google.protobuf.Timestamp">
+              
+              <span>google.protobuf.Timestamp</span>
+            </code>
+          </td>
+          <td class="content"><p>The update time of the entity that this mutation is being applied
+to. If this does not match the current update time on the server, the
+mutation conflicts.</p></td>
+          
+        </tr>
+      
+    
+      
+        
+          <tr class="nohover"><td style="border: 0px"></td></tr>
+          <tr class="nohover">
+            <td class="oneof-heading" colspan="4">
+              <div class="oneof-heading">
                 <strong>oneof operation</strong>
               </div>
             </td>
@@ -3044,59 +3097,6 @@ The entity key's final path element may be incomplete.</p></td>
           </td>
           <td class="content"><p>The key of the entity to delete. The entity may or may not already exist.
 Must have a complete key path and must not be reserved/read-only.</p></td>
-          
-        </tr>
-      
-    
-      
-        
-          <tr class="nohover"><td style="border: 0px"></td></tr>
-          <tr class="nohover">
-            <td class="oneof-heading" colspan="4">
-              <div class="oneof-heading">
-                <strong>oneof conflict_detection_strategy</strong>
-              </div>
-            </td>
-          </tr>
-        
-
-        <tr>
-          <td>
-            8
-          </td>
-          <td>
-            base_version
-          </td>
-          <td>
-            <code title="int64">
-              
-              <span>int64</span>
-            </code>
-          </td>
-          <td class="content"><p>The version of the entity that this mutation is being applied
-to. If this does not match the current version on the server, the
-mutation conflicts.</p></td>
-          
-        </tr>
-      
-        
-
-        <tr>
-          <td>
-            11
-          </td>
-          <td>
-            update_time
-          </td>
-          <td>
-            <code title="google.protobuf.Timestamp">
-              
-              <span>google.protobuf.Timestamp</span>
-            </code>
-          </td>
-          <td class="content"><p>The update time of the entity that this mutation is being applied
-to. If this does not match the current update time on the server, the
-mutation conflicts.</p></td>
           
         </tr>
       
@@ -5095,9 +5095,9 @@ was set in
       <div class="block">
         
 
-<h4 class="title is-4 type-heading" id="message-google.datastore.v1.Aggregation.Sum">
+<h4 class="title is-4 type-heading" id="message-google.datastore.v1.AggregationQuery.Aggregation.Sum">
   <span>
-    <a href="#message-google.datastore.v1.Aggregation.Sum" title="google.datastore.v1.Aggregation.Sum">message Sum</a>
+    <a href="#message-google.datastore.v1.AggregationQuery.Aggregation.Sum" title="google.datastore.v1.AggregationQuery.Aggregation.Sum">message Sum</a>
   
     <span style="font-size: 0.7em; font-weight: normal">(Nested in <a href="google.datastore.v1.html#message-google.datastore.v1.AggregationQuery.Aggregation"><span title="google.datastore.v1.AggregationQuery.Aggregation">google.datastore.v1.AggregationQuery.Aggregation</span>
     </a>)</span>
