@@ -3,7 +3,7 @@ import markdown
 import os
 import pprint
 import sys
-from shutil import copytree, rmtree
+from shutil import copy, copytree, rmtree
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
@@ -87,14 +87,6 @@ def cli():
 
         fh.write(output)
 
-    output_static_path = os.path.join(sable_config.output_dir, "static")
-
-    if os.path.exists(output_static_path):
-        # This is needed, because shutils.copytree cannot copy to a target folder which already exists.
-        rmtree(output_static_path)
-
-    copytree(os.path.join(template_base_dir, "static"), output_static_path)
-
     if sable_config.enable_lunr_search:
         (search_documents, search_index) = build_search_index(sable_context)
 
@@ -107,6 +99,29 @@ def cli():
             fh.write(output)
 
     index_abs_path = os.path.abspath(os.path.join(sable_config.output_dir, "index.html"))
+
+    output_static_path = os.path.join(sable_config.output_dir, "static")
+
+    if os.path.exists(output_static_path):
+        # This is needed, because shutils.copytree cannot copy to a target folder which already exists.
+        rmtree(output_static_path)
+
+    copytree(os.path.join(template_base_dir, "static"), output_static_path)
+
+    if os.path.exists("static") and os.path.isdir("static"):
+        print("Copying static content from the folder 'static'.")
+        for root, _, files in os.walk("static"):
+            dir_path = "" if root == "static" else root.removeprefix("static\\")
+            dest_dir_path = os.path.join(sable_config.output_dir, dir_path)
+            if dir_path != "":
+                if not os.path.exists(dest_dir_path):
+                    os.makedirs(dest_dir_path)
+
+            for f in files:
+                src_file_path = os.path.join(root, f)
+                dest_file_path = os.path.join(dest_dir_path, f)
+                if not os.path.exists(dest_file_path):
+                    copy(src_file_path, dest_file_path)
 
     print()
     print(f"Building documentation done. It can be opened with {index_abs_path}")
