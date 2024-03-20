@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.13]
+- Extra Jinja templates can be used. Added
+  - option `extra-template-path`
+  - option `extra-template-suffix`
+
 ## [0.7]
 - Packages can now be hidden. Added
   - option `hidden-packages` to the config and
