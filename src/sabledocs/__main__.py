@@ -72,7 +72,7 @@ def cli():
         if os.path.exists(sable_config.main_page_content_file):
             print(f"Found main content page, {sable_config.main_page_content_file}.")
             with open(sable_config.main_page_content_file, mode='r') as main_page_content_file:
-                main_page_content = markdown.markdown(main_page_content_file.read(), extensions=['fenced_code'])
+                main_page_content = markdown.markdown(main_page_content_file.read(), extensions=sable_config.markdown_extensions)
         else:
             print(f"WARNING: The configured main content page, {sable_config.main_page_content_file} was not found.")
 

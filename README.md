@@ -102,6 +102,12 @@ hidden-packages = ["google.protobuf"]
 # were listed in the input when `protoc` was executed.
 # Default value: ""
 member-ordering = "preserve"
+
+# The markdown extensions supported by the main-page-content-file
+# Default value: ["fenced_code"]
+# See: https://python-markdown.github.io/extensions/#officially-supported-extensions
+markdown-extensions = ["fenced_code", "nl2br"]
+
 ```
 
 ### Main page content
