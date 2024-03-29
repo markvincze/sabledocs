@@ -21,6 +21,8 @@ class SableConfig:
         self.input_descriptor_file = "descriptor.pb"
         self.template = "_default"
         self.template_path = ""
+        self.extra_template_path = ""
+        self.extra_template_suffix = ".html"
         self.footer_content = ""
         self.main_page_content_file = ""
         self.output_dir = "sabledocs_output"
@@ -44,6 +46,10 @@ class SableConfig:
                 self.input_descriptor_file = config_values.get('input-descriptor-file', self.input_descriptor_file)
                 self.template = config_values.get('template', self.template).rstrip("/\\")
                 self.template_path = config_values.get('template-path', self.template_path).rstrip("/\\")
+                self.extra_template_path = config_values.get(
+                    'extra-template-path',
+                    self.extra_template_path).rstrip("/\\")
+                self.extra_template_suffix = config_values.get('extra-template-suffix', self.extra_template_suffix)
                 self.footer_content = config_values.get('footer-content', self.footer_content)
                 self.main_page_content_file = config_values.get('main-page-content-file', self.main_page_content_file)
                 self.output_dir = config_values.get('output-dir', self.output_dir).rstrip("/\\")
