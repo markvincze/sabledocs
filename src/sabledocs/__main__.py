@@ -123,6 +123,27 @@ def cli():
                 if not os.path.exists(dest_file_path):
                     copy(src_file_path, dest_file_path)
 
+    if sable_config.extra_template_path != "":
+        print(f"Rendering extra Jinja templates from, {sable_config.extra_template_path}")
+        jinja_extra_env = Environment(
+            loader=FileSystemLoader(searchpath=sable_config.extra_template_path),
+            autoescape=select_autoescape()
+        )
+        for root, _, files in os.walk(sable_config.extra_template_path):
+            dir_path = "" if root == sable_config.extra_template_path else (
+                root.removeprefix(sable_config.extra_template_path).rstrip("/\\"))
+            if "/_" in dir_path or "\\_" in dir_path:  # ignore subdirectories that start with "_"
+                continue
+            for file in files:
+                if not file.endswith(sable_config.extra_template_suffix):
+                    continue
+                file_path = file if dir_path == "" else str(os.path.join(dir_path, file))
+                print(f"Rendering extra Jinja template, {file_path}")
+                with open(os.path.join(sable_config.output_dir, file_path), 'wb') as fh:
+                    output = jinja_extra_env.get_template(file_path).render(
+                        sable_config=sable_config).encode('utf-8')
+
+                    fh.write(output)
     print()
     print(f"Building documentation done. It can be opened with {index_abs_path}")
 

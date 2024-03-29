@@ -145,6 +145,30 @@ message SearchRequest {
 
 (If you include code blocks in a comment, then it's better to use single-line comments (`// ...`) as opposed to block comments (`/* ... */`), because the `protoc` compiler trims all leading whitespace from the lines in block comments, thus the indentation in code blocks gets lost.)
 
+### Customize Jinja templates for primary content
+
+The `template-path` configuration parameter can be used to specify an alternative directory where the Jinja templates that drive the content of Sabledocs can be found.
+Copy the contents of the `src/sabledocs/templates/_default` from the current version of Sabledocs to the configured directory then edit the templates as necessary. 
+
+```toml
+template-path = "templates"
+```
+
+### Extra Jinja templates
+
+If you would like to include your own Jinja templates, specify the `extra-template-path` configuration parameter and
+all files that end in `template-path-suffix` (default ".html") will be processed and included as a Jinja template in the output
+path at a location relative to the `extra-template-path`.
+
+Also processes all subdirectories of `extra-template-path` recursively.  
+
+Prefix a subdirectory with `_` to have it ignored.
+
+```toml
+template-path = "extra-templates"
+template-path-suffix = ".tpl" # default value is ".html"
+```
+
 ### Using with Docker
 
 For convenient usage in CI builds and other scenarios where a Docker image is preferable, the image [`markvincze/sabledocs`](https://hub.docker.com/r/markvincze/sabledocs) can be used, which has both the `protoc` CLI, and `sabledocs` preinstalled.
