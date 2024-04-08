@@ -1,4 +1,4 @@
-FROM python:3.11.9-alpine
+FROM python:3.12-alpine
 
 ARG sabledocs_version
 
