@@ -11,7 +11,7 @@
   </h3>
   <div class="block">This site contains the documentation for the following Protobuf packages.</div>
   <div class="block">
-  {% for p in packages %}
+  {% for p in non_hidden_packages %}
     <h5 class="title is-5">
       {% if p.name %}
         <a href="{{ p.name }}.html">{{ p.name }}</a>
