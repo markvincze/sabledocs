@@ -53,7 +53,7 @@ def cli():
         os.makedirs(sable_config.output_dir)
 
     # NOTE: When the output files are generated, the encode('utf-8') option has to be used, otherwise Unicode characters like © can end up garbled.
-    for package in sable_context.packages:
+    for package in sable_context.non_hidden_packages:
         with open(os.path.join(sable_config.output_dir, f'{package.name if package.name else "__default"}.html'), 'wb') as fh:
             output = package_template.render(
                 sable_config=sable_config,

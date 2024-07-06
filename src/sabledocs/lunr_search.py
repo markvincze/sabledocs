@@ -5,7 +5,7 @@ from sabledocs.proto_model import Enum, Message, Package, SableContext, Service
 def build_search_index(sable_context: SableContext) -> tuple[dict[str, dict[str, str]], lunr.index.Index]:
     documents = []
 
-    for package in sable_context.packages:
+    for package in sable_context.non_hidden_packages:
         doc = {
             "package": package.name,
             "url": f"{package.name}.html",
