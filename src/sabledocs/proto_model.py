@@ -22,6 +22,7 @@ class MessageField(CodeItem):
         self.full_type = ''
         self.default_value = ''
         self.package: Optional[Package] = None
+        self.is_package_hidden = False
         self.type_kind = "UNKNOWN"
         self.oneof_name: Optional[str] = None
 

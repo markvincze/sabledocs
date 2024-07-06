@@ -268,7 +268,7 @@ def extract_package_name_from_full_name(full_type_name: str):
         return full_type_name[:last_dot]
 
 
-def add_package_references(messages: list[Message], services: list[Service], packages: list[Package]):
+def add_package_references(messages: list[Message], services: list[Service], packages: list[Package], hidden_packages: list[str]):
     for m in messages:
         package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
         if package is not None:
@@ -281,10 +281,7 @@ def add_package_references(messages: list[Message], services: list[Service], pac
             package = next(filter(lambda p: mf.full_type.startswith(p.name), packages), None)
             if package is not None:
                 mf.package = package
-
-            package = next(filter(lambda p: mf.full_type.startswith(p.name), packages), None)
-            if package is not None:
-                mf.package = package
+                mf.is_package_hidden = any(filter(lambda p: mf.full_type.startswith(p), hidden_packages))
 
     for s in services:
         for sm in s.methods:
@@ -389,7 +386,7 @@ def parse_proto_descriptor(sable_config: SableConfig):
 
             packages[file.package] = package
 
-        add_package_references(all_messages, all_services, list(packages.values()))
+        add_package_references(all_messages, all_services, list(packages.values()), sable_config.hidden_packages)
 
         return SableContext(
             sorted(packages.values(), key=lambda p: (p.name))
