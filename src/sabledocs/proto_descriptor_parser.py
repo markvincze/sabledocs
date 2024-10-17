@@ -370,6 +370,7 @@ def parse_proto_descriptor(sable_config: SableConfig):
 
             package = packages.get(file.package, Package())
             package.name = file.package
+            package.is_hidden_from_main = package.name in sable_config.hidden_from_main_packages
 
             ctx = ParseContext.New(sable_config, package, file.name, locations)
 

@@ -34,6 +34,7 @@ class SableConfig:
         self.ignore_comments_after: List[str] = []
         self.ignore_comment_lines_containing: List[str] = []
         self.hidden_packages: List[str] = []
+        self.hidden_from_main_packages: List[str] = []
         self.member_ordering = MemberOrdering.ALPHABETICAL
         self.markdown_extensions: List[str] = ['fenced_code']
 
@@ -68,6 +69,7 @@ class SableConfig:
                 self.ignore_comments_after = config_values.get('ignore-comments-after', [])
                 self.ignore_comment_lines_containing = config_values.get('ignore-comment-lines-containing', [])
                 self.hidden_packages = config_values.get('hidden-packages', [])
+                self.hidden_from_main_packages = config_values.get('hidden-from-main-packages', [])
                 self.markdown_extensions = config_values.get('markdown-extensions', self.markdown_extensions)
 
                 if 'member-ordering' in config_values:

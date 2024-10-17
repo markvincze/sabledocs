@@ -94,6 +94,9 @@ ignore-comment-lines-containing = ["buf:lint"]
 # Default value: []
 hidden-packages = ["google.protobuf"]
 
+# Packages can be hidden from the index.html file but still be accessible as links from othes packages
+hidden-from-main-packages = ["google.struct"]
+
 # By default, packages and members in a package are ordered alphabetically.
 # By setting the member-ordering option to "preserve", the original order present in the Protobuf
 # definitions will be preserved.
