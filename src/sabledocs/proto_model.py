@@ -112,6 +112,7 @@ class Package(CodeItem):
         self.messages = []
         self.enums = []
         self.services = []
+        self.is_included_to_main = True
 
     def __repr__(self):
         return pformat(vars(self), indent=4, width=1)
