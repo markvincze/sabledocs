@@ -94,7 +94,7 @@ ignore-comment-lines-containing = ["buf:lint"]
 # Default value: []
 hidden-packages = ["google.protobuf"]
 
-# Packages can be hidden from the index.html file but still be accessible as links from othes packages
+# Packages can be hidden from the index.html file, but still will be accessible as links from other packages.
 hidden-from-main-packages = ["google.struct"]
 
 # By default, packages and members in a package are ordered alphabetically.
