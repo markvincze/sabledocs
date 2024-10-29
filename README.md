@@ -95,7 +95,8 @@ ignore-comment-lines-containing = ["buf:lint"]
 hidden-packages = ["google.protobuf"]
 
 # Packages which will be included to index.html. Empty will mean all. Empty by default.
-included-to-main-packages = ["MyMessage"]
+[included-to-main-packages]
+MyMessage = 'My Awesome Message'
 
 # By default, packages and members in a package are ordered alphabetically.
 # By setting the member-ordering option to "preserve", the original order present in the Protobuf
