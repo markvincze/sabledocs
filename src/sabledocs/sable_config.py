@@ -8,6 +8,7 @@ class RepositoryType(Enum):
     NONE = 1
     GITHUB = 2
     BITBUCKET = 3
+    GITLAB = 4
 
 
 class MemberOrdering(Enum):
@@ -64,6 +65,8 @@ class SableConfig:
                             self.repository_type = RepositoryType.GITHUB
                         case 'bitbucket':
                             self.repository_type = RepositoryType.BITBUCKET
+                        case 'gitlab':
+                            self.repository_type = RepositoryType.GITLAB
 
                 self.ignore_comments_after = config_values.get('ignore-comments-after', [])
                 self.ignore_comment_lines_containing = config_values.get('ignore-comment-lines-containing', [])

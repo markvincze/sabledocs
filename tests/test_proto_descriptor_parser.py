@@ -88,3 +88,45 @@ class TestProtoDescriptorParser(unittest.TestCase):
         expected = 'https://git.example.com/src/main/myrepodir/foo/bar.proto#lines-42'
 
         self.assertEqual(got, expected)
+
+    def test_code_url_gitlab_style(self):
+
+        got = build_source_code_url(
+                'https://git.example.com',
+                RepositoryType.GITLAB,
+                "main",
+                "", # no repository_dir
+                "foo/bar.proto",
+                41)
+
+        expected = 'https://git.example.com/-/blob/main/foo/bar.proto#L41'
+
+        self.assertEqual(got, expected)
+
+    def test_code_url_gitlab_style_with_repo_dir(self):
+
+        got = build_source_code_url(
+                'https://git.example.com',
+                RepositoryType.GITLAB,
+                "main",
+                "myrepodir",
+                "foo/bar.proto",
+                41)
+
+        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41'
+
+        self.assertEqual(got, expected)
+
+    def test_code_url_gitlab_style_extra_slashes(self):
+
+        got = build_source_code_url(
+                'https://git.example.com/',
+                RepositoryType.GITLAB,
+                "main",
+                "/myrepodir/",
+                "/foo/bar.proto",
+                41)
+
+        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41'
+
+        self.assertEqual(got, expected)

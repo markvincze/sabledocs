@@ -38,6 +38,10 @@
               <span class="icon">
                 <i class="fa-brands fa-bitbucket"></i>
               </span>
+              {% elif sable_config.repository_type | string == "RepositoryType.GITLAB" %}
+              <span class="icon">
+                <i class="fa-brands fa-gitlab"></i>
+              </span>
               {% endif %}
               <span>Source</span>
             </a>
