@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.14]
+- Deep links to sources hosted on GitLab can be generated. Added
+  - `gitlab` value to the `repository-type` option
+
 ## [0.13]
 - Extra Jinja templates can be used. Added
   - option `extra-template-path`
