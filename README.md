@@ -187,7 +187,7 @@ This class will be instantiated by `sabledocs` and its methods invoked to pre-pr
 Messages, Fields, Enums, EnumValues, Services, and ServiceMethods.
 Or, processing of all of these different entities can be indicate by reimplementing `CommentsParser.ParseAll()`.
 
-An example of using this feature to process comments formatted as JSON strings can be found at (custom_comments_parser.py)[sample/custom_comments_parser.py].
+An example of using this feature to process comments formatted as JSON strings can be found at [custom_comments_parser.py](sample/custom_comments_parser.py).
 
 ```toml
 comments-parser-file = "sample/custom_comments_parser.py"
