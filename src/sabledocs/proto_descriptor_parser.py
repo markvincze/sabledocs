@@ -50,6 +50,12 @@ def build_source_code_url(repository_url, repository_type, repository_branch, re
             u.fragment.add(f"lines-{line_number + 1}")
             u.path.normalize()
             return u.url
+        case RepositoryType.GITLAB:
+            # ex: https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41
+            u = furl(repository_url) / '-' / 'blob' / repository_branch / repository_dir / file_path
+            u.fragment.add(f"L{line_number}")
+            u.path.normalize()
+            return u.url
     return ""
 
 
@@ -144,7 +150,7 @@ def parse_field(field: FieldDescriptorProto, containing_message: DescriptorProto
     mf.type_kind = "MESSAGE" if field.type == FIELD_TYPE_MESSAGE else "ENUM" if field.type == FIELD_TYPE_ENUM else "UNKNOWN"
 
     if mf.type.endswith("Entry"):
-        entry_nested_type = next(filter(lambda m: m.name == mf.type, ctx.package.messages), None)
+        entry_nested_type = next(filter(lambda m: m.full_name == mf.full_type, ctx.package.messages), None)
         if entry_nested_type is not None and entry_nested_type.is_map_entry:
             mf.type = f"map<{entry_nested_type.fields[0].type}, {entry_nested_type.fields[1].type}>"
             mf.full_type = f"map<{entry_nested_type.fields[0].type}, {entry_nested_type.fields[1].type}>"
