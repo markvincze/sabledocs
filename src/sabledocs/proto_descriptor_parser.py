@@ -8,7 +8,6 @@ from google.protobuf.descriptor_pb2 import ServiceDescriptorProto
 from google.protobuf.descriptor_pb2 import MethodDescriptorProto
 from sabledocs.proto_model import MessageField, Message, EnumValue, Enum, OneOfFieldGroup, ServiceMethod, ServiceMethodArgument, Service, Package, LocationInfo, SableContext
 from sabledocs.sable_config import MemberOrdering, RepositoryType, SableConfig
-from sabledocs.comments_parser import CommentsParser
 import pprint
 import markdown
 import pprint
@@ -94,12 +93,12 @@ class ParseContext:
         return 0 if location is None else location.line_number
 
 
-def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
-    def parse_enum_value(enum_value: EnumValueDescriptorProto, ctx: ParseContext, config: SableConfig):
+def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str):
+    def parse_enum_value(enum_value: EnumValueDescriptorProto, ctx: ParseContext):
         ev = EnumValue()
         ev.name = enum_value.name
         ev.number = enum_value.number
-        ev.description = config.comments_parser.ParseEnumValue(ctx.GetComments())
+        ev.description = ctx.config.comments_parser.ParseEnumValue(ctx.GetComments())
         ev.description_html = markdown_to_html(ev.description, ctx.config)
         ev.line_number = ctx.GetLineNumber()
 
@@ -109,7 +108,7 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
     e.name = enum.name
     e.full_name = f"{ctx.package.name}.{nested_type_chain}{enum.name}".lstrip(".")
     e.parent_message = parent_message
-    e.description = config.comments_parser.ParseEnum(ctx.GetComments())
+    e.description = ctx.config.comments_parser.ParseEnum(ctx.GetComments())
     e.description_html = markdown_to_html(e.description, ctx.config)
     e.source_file_path = ctx.source_file_path
     e.line_number = ctx.GetLineNumber()
@@ -122,26 +121,26 @@ def parse_enum(enum: EnumDescriptorProto, ctx: ParseContext, parent_message, nes
         e.line_number)
 
     for i, ev in enumerate(enum.value):
-        e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i), config))
+        e.values.append(parse_enum_value(ev, ctx.ExtendPath(COMMENT_ENUM_VALUE_INDEX, i)))
 
     return e
 
 
-def parse_enums(enums: Sequence[EnumDescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
+def parse_enums(enums: Sequence[EnumDescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str):
     for (i, enum) in enumerate(enums):
-        ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i), parent_message, nested_type_chain, config))
+        ctx.package.enums.append(parse_enum(enum, ctx.ExtendPath(i), parent_message, nested_type_chain))
 
-    if config.member_ordering == MemberOrdering.ALPHABETICAL:
+    if ctx.config.member_ordering == MemberOrdering.ALPHABETICAL:
         ctx.package.enums.sort(key=lambda e: e.name)
 
 
-def parse_field(field: FieldDescriptorProto, containing_message: DescriptorProto, ctx: ParseContext, config: SableConfig):
+def parse_field(field: FieldDescriptorProto, containing_message: DescriptorProto, ctx: ParseContext):
     mf = MessageField()
     mf.name = field.name
 
     mf.number = field.number
     mf.label = to_label_name(field.label, field.proto3_optional)
-    mf.description = config.comments_parser.ParseField(ctx.GetComments())
+    mf.description = ctx.config.comments_parser.ParseField(ctx.GetComments())
     mf.description_html = markdown_to_html(mf.description, ctx.config)
     mf.line_number = ctx.GetLineNumber()
     mf.full_type = field.type_name.strip(".") if field.type_name != "" else to_type_name(field.type)
@@ -172,12 +171,12 @@ def extract_type_name_from_full_name(full_type_name: str):
         return full_type_name[last_dot + 1:]
 
 
-def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
+def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, nested_type_chain: str):
     m = Message()
     m.name = message.name
     m.full_name = f"{ctx.package.name}.{nested_type_chain}{message.name}".lstrip(".")
     m.parent_message = parent_message
-    m.description = config.comments_parser.ParseMessage(ctx.GetComments())
+    m.description = ctx.config.comments_parser.ParseMessage(ctx.GetComments())
     m.description_html = markdown_to_html(m.description, ctx.config)
     m.source_file_path = ctx.source_file_path
     m.line_number = ctx.GetLineNumber()
@@ -191,14 +190,14 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
 
     # NOTE: The processing of nested types have to happen before processing the fields, to have the Entry nested types representing maps already present.
     new_nested_type_chain = f"{nested_type_chain}{message.name}."
-    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, new_nested_type_chain, config)
-    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, new_nested_type_chain, config)
+    parse_messages(message.nested_type, ctx.ExtendPath(COMMENT_MESSAGE_MESSAGE_INDEX), m, new_nested_type_chain)
+    parse_enums(message.enum_type, ctx.ExtendPath(COMMENT_MESSAGE_ENUM_INDEX), m, new_nested_type_chain)
 
     m.is_map_entry = message.options.map_entry
     for i, mf in enumerate(message.field):
-        m.fields.append(parse_field(mf, message, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i), config))
+        m.fields.append(parse_field(mf, message, ctx.ExtendPath(COMMENT_MESSAGE_FIELD_INDEX, i)))
 
-    if config.member_ordering == MemberOrdering.ALPHABETICAL:
+    if ctx.config.member_ordering == MemberOrdering.ALPHABETICAL:
         m.fields.sort(key=lambda mf: mf.number)
 
     oneof_names = set([f.oneof_name for f in m.fields if f.oneof_name])
@@ -209,18 +208,18 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
     return m
 
 
-def parse_messages(messages: Sequence[DescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str, config: SableConfig):
+def parse_messages(messages: Sequence[DescriptorProto], ctx: ParseContext, parent_message, nested_type_chain: str):
     for (i, message) in enumerate(messages):
-        ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), parent_message, nested_type_chain, config))
+        ctx.package.messages.append(parse_message(message, ctx.ExtendPath(i), parent_message, nested_type_chain))
 
-    if config.member_ordering == MemberOrdering.ALPHABETICAL:
+    if ctx.config.member_ordering == MemberOrdering.ALPHABETICAL:
         ctx.package.messages.sort(key=lambda m: m.name)
 
 
-def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContext, config: SableConfig):
+def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContext):
     sm = ServiceMethod()
     sm.name = service_method.name
-    sm.description = config.comments_parser.ParseServiceMethod(ctx.GetComments())
+    sm.description = ctx.config.comments_parser.ParseServiceMethod(ctx.GetComments())
     sm.description_html = markdown_to_html(sm.description, ctx.config)
     sm.line_number = ctx.GetLineNumber()
     sm.request = ServiceMethodArgument(
@@ -238,11 +237,11 @@ def parse_service_method(service_method: MethodDescriptorProto, ctx: ParseContex
     return sm
 
 
-def parse_service(service: ServiceDescriptorProto, ctx: ParseContext, config: SableConfig):
+def parse_service(service: ServiceDescriptorProto, ctx: ParseContext):
     s = Service()
     s.name = service.name
     s.full_name = f"{ctx.package.name}.{service.name}".lstrip(".")
-    s.description = config.comments_parser.ParseService(ctx.GetComments())
+    s.description = ctx.config.comments_parser.ParseService(ctx.GetComments())
     s.description_html = markdown_to_html(s.description, ctx.config)
     s.source_file_path = ctx.source_file_path
     s.line_number = ctx.GetLineNumber()
@@ -254,16 +253,16 @@ def parse_service(service: ServiceDescriptorProto, ctx: ParseContext, config: Sa
         s.source_file_path,
         s.line_number)
     for i, service_method in enumerate(service.method):
-        s.methods.append(parse_service_method(service_method, ctx.ExtendPath(COMMENT_SERVICE_METHOD_INDEX, i), config))
+        s.methods.append(parse_service_method(service_method, ctx.ExtendPath(COMMENT_SERVICE_METHOD_INDEX, i)))
 
     return s
 
 
-def parse_services(services: Sequence[ServiceDescriptorProto], ctx: ParseContext, config: SableConfig):
+def parse_services(services: Sequence[ServiceDescriptorProto], ctx: ParseContext):
     for (i, service) in enumerate(services):
-        ctx.package.services.append(parse_service(service, ctx.ExtendPath(i), config))
+        ctx.package.services.append(parse_service(service, ctx.ExtendPath(i)))
 
-    if config.member_ordering == MemberOrdering.ALPHABETICAL:
+    if ctx.config.member_ordering == MemberOrdering.ALPHABETICAL:
         ctx.package.services.sort(key=lambda s: s.name)
 
 
@@ -383,9 +382,9 @@ def parse_proto_descriptor(sable_config: SableConfig):
             package.description += sable_config.comments_parser.ParsePackage(ctx.GetComments(str(COMMENT_PACKAGE_INDEX)))
             package.description_html = markdown_to_html(package.description, sable_config)
 
-            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), None, "", sable_config)
-            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), None, "", sable_config)
-            parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX), sable_config)
+            parse_enums(file.enum_type, ctx.WithPath(COMMENT_ENUM_INDEX), None, "")
+            parse_messages(file.message_type, ctx.WithPath(COMMENT_MESSAGE_INDEX), None, "")
+            parse_services(file.service, ctx.WithPath(COMMENT_SERVICE_INDEX))
 
             all_messages.extend(package.messages)
             all_enums.extend(package.enums)

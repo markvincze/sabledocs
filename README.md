@@ -175,6 +175,24 @@ template-path = "extra-templates"
 template-path-suffix = ".tpl" # default value is ".html"
 ```
 
+### Custom Parsing of Comments
+
+In some cases, it may be desirable to implement additional processing on the comment strings before inserting them into the HTML document.
+
+PLEASE NOTE: This is an advanced feature that some have used to embed additional machine-parseable information into a `.proto` file.
+Users should be aware that use of this feature will probably make it harder to formatting options that `sabledocs` implements, especially those that are white-space sensitive.
+
+It is activated by indicating a python script defining a class that inherits from [CommentsParser](src/sabledocs/comments_parser.py).
+This class will be instantiated by `sabledocs` and its methods invoked to pre-process the comment strings that have been collected for
+`Message`s, `Field`s, `Enum`s, `EnumValue`s, `Service`s, and `ServiceMethod`s.
+Or, processing of all of these different entities can be indicate by reimplementing `CommentsParser.ParseAll()`.
+
+An example of using this feature to process comments formatted as JSON strings can be found at [sample/custom_comments_parser.py].
+
+```toml
+comments-parser-file = sample/custom_comments_parser.py
+```
+
 ### Using with Docker
 
 For convenient usage in CI builds and other scenarios where a Docker image is preferable, the image [`markvincze/sabledocs`](https://hub.docker.com/r/markvincze/sabledocs) can be used, which has both the `protoc` CLI, and `sabledocs` preinstalled.
