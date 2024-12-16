@@ -184,13 +184,13 @@ Users should be aware that use of this feature will probably make it harder to f
 
 It is activated by indicating a python script defining a class that inherits from [CommentsParser](src/sabledocs/comments_parser.py).
 This class will be instantiated by `sabledocs` and its methods invoked to pre-process the comment strings that have been collected for
-`Message`s, `Field`s, `Enum`s, `EnumValue`s, `Service`s, and `ServiceMethod`s.
+Messages, Fields, Enums, EnumValues, Services, and ServiceMethods.
 Or, processing of all of these different entities can be indicate by reimplementing `CommentsParser.ParseAll()`.
 
-An example of using this feature to process comments formatted as JSON strings can be found at [sample/custom_comments_parser.py].
+An example of using this feature to process comments formatted as JSON strings can be found at (custom_comments_parser.py)[sample/custom_comments_parser.py].
 
 ```toml
-comments-parser-file = sample/custom_comments_parser.py
+comments-parser-file = "sample/custom_comments_parser.py"
 ```
 
 ### Using with Docker
