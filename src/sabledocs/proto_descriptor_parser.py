@@ -274,9 +274,19 @@ def extract_package_name_from_full_name(full_type_name: str):
         return full_type_name[:last_dot]
 
 
+def extract_package_name_from_message(message: Message) -> str:
+    if message.is_map_entry:
+        assert message.full_name.endswith(".XEntry")
+        name_without_xentry = message.full_name.removesuffix(".XEntry")
+        return extract_package_name_from_full_name(name_without_xentry)
+    else:
+        return extract_package_name_from_full_name(message.full_name)
+
+
 def add_package_references(messages: list[Message], services: list[Service], packages: list[Package], hidden_packages: list[str]):
     for m in messages:
-        package = next(filter(lambda p: m.full_name.startswith(p.name), packages), None)
+        m_package_name = extract_package_name_from_message(m)
+        package = next(filter(lambda p: m_package_name == p.name, packages), None)
         if package is not None:
             m.package = package
 
@@ -284,7 +294,8 @@ def add_package_references(messages: list[Message], services: list[Service], pac
             if mf.full_type == "":
                 continue
 
-            package = next(filter(lambda p: mf.full_type.startswith(p.name), packages), None)
+            mf_package_name = extract_package_name_from_full_name(mf.full_type)
+            package = next(filter(lambda p: mf_package_name == p.name, packages), None)
             if package is not None:
                 mf.package = package
                 mf.is_package_hidden = any(filter(lambda p: mf.full_type.startswith(p), hidden_packages))
