@@ -10,6 +10,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from sabledocs.lunr_search import build_search_index
 from sabledocs.proto_descriptor_parser import parse_proto_descriptor
 from sabledocs.sable_config import SableConfig
+from sabledocs.comments_parser import CommentsParser
 
 
 def check_python_version():
@@ -31,6 +32,29 @@ def cli():
         print()
         print(f'ERROR: The Proto descriptor file {sable_config.input_descriptor_file} does not exist. Exiting.')
         return
+
+    if sable_config.comments_parser_file is None:
+        sable_config.comments_parser = CommentsParser()
+    else:
+        if not os.path.exists(sable_config.comments_parser_file):
+            print(f'ERROR: The custom comments parser file {sable_config.comments_parser_file} does not exist. Exiting.')
+            return
+        eval_globals = {'CommentsParser': CommentsParser}
+        try:
+            exec(open(sable_config.comments_parser_file, 'r').read(), eval_globals)
+        except Exception as e:  # don't get more specific; they all lead to the same next step. SyntaxError NameError TypeError ValueError SystemExit
+            print(f'ERROR: Failed to exec() the contents of the custom comments parser file {sable_config.comments_parser_file}: {e}. Exiting.')
+            return
+        if 'CustomCommentsParser' not in eval_globals:
+            print(f'ERROR: After calling exec() on the contents of the custom comments parser file {sable_config.comments_parser_file}, ' +
+                   'no CustomCommentsParser symbol was found. Exiting')
+            return
+        sable_config.comments_parser = eval_globals['CustomCommentsParser']()
+        if not isinstance(sable_config.comments_parser, CommentsParser):
+            print(f'ERROR: The class instance created from the custom comments parser file {sable_config.comments_parser_file}, ' +
+                   'was not derived from the class CommentsParser. Exiting.')
+            return
+        print(f"Successfully installed CustomCommentsParser from {sable_config.comments_parser_file}");
 
     # Execute the main processing of the Proto contracts.
     sable_context = parse_proto_descriptor(sable_config)
