@@ -274,19 +274,16 @@ def extract_package_name_from_full_name(full_type_name: str):
         return full_type_name[:last_dot]
 
 
-def extract_package_name_from_message(message: Message) -> str:
-    if message.is_map_entry:
-        if message.full_name.endswith(".XEntry"):
-            return extract_package_name_from_full_name(message.full_name.removesuffix(".XEntry"))
-        return extract_package_name_from_full_name(message.full_name)
-    else:
-        return extract_package_name_from_full_name(message.full_name)
-
-
 def add_package_references(messages: list[Message], services: list[Service], packages: list[Package], hidden_packages: list[str]):
+    def find_matching_package(full_type_name):
+            # We sort the matching packages by the length of their name, and pick the longest.
+            # This is needed, because if we have a package foo, and a package foo.bar, and a type foo.bar.Baz,
+            # then we could incorrectly pick the package foo instead of foo.bar.
+            filtered = sorted(filter(lambda p: full_type_name.startswith(p.name), packages), key=lambda package: len(package.name), reverse=True)
+            return None if len(filtered) == 0 else filtered[0]
+
     for m in messages:
-        m_package_name = extract_package_name_from_message(m)
-        package = next(filter(lambda p: m_package_name == p.name, packages), None)
+        package = find_matching_package(m.full_type)
         if package is not None:
             m.package = package
 
@@ -294,8 +291,7 @@ def add_package_references(messages: list[Message], services: list[Service], pac
             if mf.full_type == "":
                 continue
 
-            mf_package_name = extract_package_name_from_full_name(mf.full_type)
-            package = next(filter(lambda p: mf_package_name == p.name, packages), None)
+            package = find_matching_package(mf.full_type)
             if package is not None:
                 mf.package = package
                 mf.is_package_hidden = any(filter(lambda p: mf.full_type.startswith(p), hidden_packages))
