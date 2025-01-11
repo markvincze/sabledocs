@@ -276,9 +276,9 @@ def extract_package_name_from_full_name(full_type_name: str):
 
 def extract_package_name_from_message(message: Message) -> str:
     if message.is_map_entry:
-        assert message.full_name.endswith(".XEntry")
-        name_without_xentry = message.full_name.removesuffix(".XEntry")
-        return extract_package_name_from_full_name(name_without_xentry)
+        if message.full_name.endswith(".XEntry"):
+            return extract_package_name_from_full_name(message.full_name.removesuffix(".XEntry"))
+        return extract_package_name_from_full_name(message.full_name)
     else:
         return extract_package_name_from_full_name(message.full_name)
 
