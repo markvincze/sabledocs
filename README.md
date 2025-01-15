@@ -73,7 +73,7 @@ footer-content = "© 2023 Jane Doe. All rights reserved."
 # The following 3 fields configure the source control repository of the project.
 # They are used to generate deeplinks for the members of the Proto model pointing to the original source
 # code. By default these fields are not configured, and source code links are not included in the docs.
-# The repository-type field supports three possible values, "github", "bitbucket" and "gitlab".
+# The repository-type field supports the following possible values, "github", "bitbucket", "bitbucket-data-center" and "gitlab".
 # The fields repository-url and repository-branch should be configured to point to the correct repository.
 # repository-dir should be set only if the root of your Protobuf module is in a specific directory inside your repository.
 repository-type = "github"
