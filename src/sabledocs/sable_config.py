@@ -8,7 +8,8 @@ class RepositoryType(Enum):
     NONE = 1
     GITHUB = 2
     BITBUCKET = 3
-    GITLAB = 4
+    BITBUCKET_DATA_CENTER = 4
+    GITLAB = 5
 
 
 class MemberOrdering(Enum):
@@ -66,6 +67,8 @@ class SableConfig:
                             self.repository_type = RepositoryType.GITHUB
                         case 'bitbucket':
                             self.repository_type = RepositoryType.BITBUCKET
+                        case 'bitbucket-data-center':
+                            self.repository_type = RepositoryType.BITBUCKET_DATA_CENTER
                         case 'gitlab':
                             self.repository_type = RepositoryType.GITLAB
 

@@ -49,6 +49,12 @@ def build_source_code_url(repository_url, repository_type, repository_branch, re
             u.fragment.add(f"lines-{line_number + 1}")
             u.path.normalize()
             return u.url
+        case RepositoryType.BITBUCKET_DATA_CENTER:
+            # ex: https://bitbucket.corp.mycompany.com/projects/MYTEAM/repos/myreponame/browse/foo/bar.proto#42
+            u = furl(repository_url) / 'browse' / repository_dir / file_path
+            u.fragment.add(f"{line_number + 1}")
+            u.path.normalize()
+            return u.url
         case RepositoryType.GITLAB:
             # ex: https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41
             u = furl(repository_url) / '-' / 'blob' / repository_branch / repository_dir / file_path
