@@ -20,7 +20,20 @@ def check_python_version():
         print("WARNING: Sabledocs requires Python version 3.11 or higher")
 
 
+def return_error(error_message):
+    print()
+    print(f'ERROR: {error_message}', file=sys.stderr)
+    sys.exit(1)
+
+
 def cli():
+    try:
+        run_sabledocs()
+    except Exception as e:
+        return_error(f'Unexpected error: {e}')
+
+
+def run_sabledocs():
     print("Starting Sabledocs")
     check_python_version()
 
@@ -29,31 +42,28 @@ def cli():
     sable_config = SableConfig("sabledocs.toml")
 
     if not os.path.exists(sable_config.input_descriptor_file):
-        print()
-        print(f'ERROR: The Proto descriptor file {sable_config.input_descriptor_file} does not exist. Exiting.')
-        return
+        return_error(f'The Proto descriptor file {sable_config.input_descriptor_file} does not exist.')
 
     if sable_config.comments_parser_file is None:
         sable_config.comments_parser = CommentsParser()
     else:
         if not os.path.exists(sable_config.comments_parser_file):
-            print(f'ERROR: The custom comments parser file {sable_config.comments_parser_file} does not exist. Exiting.')
-            return
+            return_error(f'The custom comments parser file {sable_config.comments_parser_file} does not exist.')
+
         eval_globals = {'CommentsParser': CommentsParser}
+
         try:
             exec(open(sable_config.comments_parser_file, 'r').read(), eval_globals)
         except Exception as e:  # don't get more specific; they all lead to the same next step. SyntaxError NameError TypeError ValueError SystemExit
-            print(f'ERROR: Failed to exec() the contents of the custom comments parser file {sable_config.comments_parser_file}: {e}. Exiting.')
-            return
+            return_error(f'Failed to exec() the contents of the custom comments parser file {sable_config.comments_parser_file}: {e}.')
+
         if 'CustomCommentsParser' not in eval_globals:
-            print(f'ERROR: After calling exec() on the contents of the custom comments parser file {sable_config.comments_parser_file}, ' +
-                   'no CustomCommentsParser symbol was found. Exiting')
-            return
+            return_error(f'After calling exec() on the contents of the custom comments parser file {sable_config.comments_parser_file}, no CustomCommentsParser symbol was found. Exiting')
+
         sable_config.comments_parser = eval_globals['CustomCommentsParser']()
         if not isinstance(sable_config.comments_parser, CommentsParser):
-            print(f'ERROR: The class instance created from the custom comments parser file {sable_config.comments_parser_file}, ' +
-                   'was not derived from the class CommentsParser. Exiting.')
-            return
+            return_error(f'The class instance created from the custom comments parser file {sable_config.comments_parser_file}, was not derived from the class CommentsParser. Exiting.')
+
         print(f"Successfully installed CustomCommentsParser from {sable_config.comments_parser_file}");
 
     # Execute the main processing of the Proto contracts.
