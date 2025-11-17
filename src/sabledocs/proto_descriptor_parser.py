@@ -206,7 +206,9 @@ def parse_message(message: DescriptorProto, ctx: ParseContext, parent_message, n
     if ctx.config.member_ordering == MemberOrdering.ALPHABETICAL:
         m.fields.sort(key=lambda mf: mf.number)
 
-    oneof_names = set([f.oneof_name for f in m.fields if f.oneof_name])
+    # Get the distinct names of the oneof fields. We use a dict instead of a set to preserve the ordering.
+    oneof_names = dict.fromkeys([f.oneof_name for f in m.fields if f.oneof_name])
+
     m.oneof_field_groups = list(map(
         lambda n: OneOfFieldGroup(n, list(filter(lambda f: f.oneof_name == n, m.fields))),
         oneof_names))
