@@ -175,7 +175,9 @@ def run_sabledocs():
                 print(f"Rendering extra Jinja template, {file_path}")
                 with open(os.path.join(sable_config.output_dir, file_path), 'wb') as fh:
                     output = jinja_extra_env.get_template(file_path).render(
-                        sable_config=sable_config).encode('utf-8')
+                        sable_config=sable_config,
+                        packages=sable_context.packages,
+                        non_hidden_packages=sable_context.non_hidden_packages).encode('utf-8')
 
                     fh.write(output)
     print()
