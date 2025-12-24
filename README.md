@@ -163,7 +163,7 @@ template-path = "templates"
 ### Extra Jinja templates
 
 If you would like to include your own Jinja templates, specify the `extra-template-path` configuration parameter and
-all files that end in `template-path-suffix` (default ".html") will be processed and included as a Jinja template in the output
+all files that end in `extra-template-suffix` (default ".html") will be processed and included as a Jinja template in the output
 path at a location relative to the `extra-template-path`.
 
 Also processes all subdirectories of `extra-template-path` recursively.  
@@ -171,8 +171,8 @@ Also processes all subdirectories of `extra-template-path` recursively.
 Prefix a subdirectory with `_` to have it ignored.
 
 ```toml
-template-path = "extra-templates"
-template-path-suffix = ".tpl" # default value is ".html"
+extra-template-path = "extra-templates"
+extra-template-suffix = ".tpl" # default value is ".html"
 ```
 
 ### Custom Parsing of Comments
