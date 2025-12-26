@@ -1,7 +1,7 @@
 from enum import Enum
 from os import path
 import tomllib
-from typing import List
+from typing import List, Dict
 
 
 class RepositoryType(Enum):
@@ -37,6 +37,7 @@ class SableConfig:
         self.ignore_comment_lines_containing: List[str] = []
         self.comments_parser_file = None
         self.hidden_packages: List[str] = []
+        self.included_to_main_packages: Dict[str, str] = []
         self.member_ordering = MemberOrdering.ALPHABETICAL
         self.markdown_extensions: List[str] = ['fenced_code']
 
@@ -76,6 +77,7 @@ class SableConfig:
                 self.ignore_comment_lines_containing = config_values.get('ignore-comment-lines-containing', [])
                 self.comments_parser_file = config_values.get('comments-parser-file', None)
                 self.hidden_packages = config_values.get('hidden-packages', [])
+                self.included_to_main_packages = config_values.get('included-to-main-packages', {})
                 self.markdown_extensions = config_values.get('markdown-extensions', self.markdown_extensions)
 
                 if 'member-ordering' in config_values:

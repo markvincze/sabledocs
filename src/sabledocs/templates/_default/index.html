@@ -12,17 +12,19 @@
   <div class="block">This site contains the documentation for the following Protobuf packages.</div>
   <div class="block">
   {% for p in non_hidden_packages %}
-    <h5 class="title is-5">
-      {% if p.name %}
-        <a href="{{ p.name }}.html">{{ p.name }}</a>
-      {% else %}
-        <a href="__default.html">(Default package)</a>
+    {% if p.is_included_to_main %}
+      <h5 class="title is-5">
+        {% if p.name %}
+          <a href="{{ p.name }}.html">{{ p.displayed_name }}</a>
+        {% else %}
+          <a href="__default.html">(Default package)</a>
+        {% endif %}
+      </h4>
+      {% if p.description_html %}
+      <div style="margin-top: -0.5rem; margin-bottom: 2.5rem">
+        {{ p.description_html | safe }}
+      </div>
       {% endif %}
-    </h4>
-    {% if p.description_html %}
-    <div style="margin-top: -0.5rem; margin-bottom: 2.5rem">
-      {{ p.description_html | safe }}
-    </div>
     {% endif %}
   {% endfor %}
   </div>
