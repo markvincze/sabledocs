@@ -86,16 +86,19 @@ def run_sabledocs():
     if not os.path.exists(sable_config.output_dir):
         os.makedirs(sable_config.output_dir)
 
+    jinja_render_input = {
+        'sable_config':sable_config,
+        'packages':sable_context.packages,
+        'non_hidden_packages':sable_context.non_hidden_packages,
+        'all_messages':sable_context.all_messages,
+        'all_enums':sable_context.all_enums
+    }
+
     # NOTE: When the output files are generated, the encode('utf-8') option has to be used, otherwise Unicode characters like © can end up garbled.
     for package in sable_context.non_hidden_packages:
         with open(os.path.join(sable_config.output_dir, f'{package.name if package.name else "__default"}.html'), 'wb') as fh:
             output = package_template.render(
-                sable_config=sable_config,
-                package=package,
-                packages=sable_context.packages,
-                non_hidden_packages=sable_context.non_hidden_packages,
-                all_messages=sable_context.all_messages,
-                all_enums=sable_context.all_enums).encode('utf-8')
+                jinja_render_input | { 'package': package }).encode('utf-8')
 
             fh.write(output)
 
@@ -111,13 +114,10 @@ def run_sabledocs():
             print(f"WARNING: The configured main content page, {sable_config.main_page_content_file} was not found.")
 
     with open(os.path.join(sable_config.output_dir, 'index.html'), 'wb') as fh:
-        output = jinja_env.get_template("index.html").render(
-            sable_config = sable_config,
-            main_page_content = main_page_content,
-            packages = sable_context.packages,
-            non_hidden_packages=sable_context.non_hidden_packages,
-            all_messages = sable_context.all_messages,
-            all_enums = sable_context.all_enums).encode('utf-8')
+        output = (jinja_env
+                  .get_template("index.html")
+                  .render(jinja_render_input | { 'main_page_content': main_page_content})
+                  .encode('utf-8'))
 
         fh.write(output)
 
@@ -174,10 +174,10 @@ def run_sabledocs():
                 file_path = file if dir_path == "" else str(os.path.join(dir_path, file))
                 print(f"Rendering extra Jinja template, {file_path}")
                 with open(os.path.join(sable_config.output_dir, file_path), 'wb') as fh:
-                    output = jinja_extra_env.get_template(file_path).render(
-                        sable_config=sable_config,
-                        packages=sable_context.packages,
-                        non_hidden_packages=sable_context.non_hidden_packages).encode('utf-8')
+                    output = (jinja_extra_env
+                              .get_template(file_path)
+                              .render(jinja_render_input)
+                              .encode('utf-8'))
 
                     fh.write(output)
     print()
