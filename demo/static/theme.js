@@ -1,47 +1,34 @@
-
-const storageKey = 'theme-preference'
+const storageKey = 'theme-preference';
 
 const onClick = () => {
     // flip current value
     theme.value = theme.value === 'light'
         ? 'dark'
-        : 'light'
+        : 'light';
 
-    setPreference()
+    setPreference();
 }
 
 const getColorPreference = () => {
     if (localStorage.getItem(storageKey))
-        return localStorage.getItem(storageKey)
+        return localStorage.getItem(storageKey);
     else
         return window.matchMedia('(prefers-color-scheme: dark)').matches
             ? 'dark'
-            : 'light'
+            : 'light';
 }
 
 const setPreference = () => {
-    localStorage.setItem(storageKey, theme.value)
-    reflectPreference()
+    localStorage.setItem(storageKey, theme.value);
+    reflectPreference();
 }
 
 const reflectPreference = () => {
-    const body = document.querySelector('body');
-    const html = document.querySelector('html'); // The html element is also configured to make sure the background color is correct on mobile if the content overflows horizontally.
+    document.documentElement.className =
+        theme.value === 'dark' ? 'dark' : '';
 
-    if (theme.value === 'dark') {
-        body.className = 'dark';
-        html.className = 'dark';
-    } else {
-        body.className = '';
-        html.className = '';
-    }
-
-    document.firstElementChild
-        .setAttribute('data-theme', theme.value)
-
-    document
-        .querySelector('#theme-toggle')
-        ?.setAttribute('aria-label', theme.value)
+    document.documentElement
+        .setAttribute('data-theme', theme.value);
 }
 
 const theme = {
@@ -51,19 +38,17 @@ const theme = {
 window.addEventListener(
     "load",
     () => {
-        // set on load so screen readers can see latest value on the button
-        reflectPreference()
-
-        // now this script can find and listen for clicks on the control
         document
             .querySelector('#theme-toggle')
-            .addEventListener('click', onClick)
+            .addEventListener('click', onClick);
     });
 
 // sync with system changes
 window
     .matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener('change', ({matches:isDark}) => {
-        theme.value = isDark ? 'dark' : 'light'
-        setPreference()
+    .addEventListener('change', ({ matches: isDark }) => {
+        theme.value = isDark ? 'dark' : 'light';
+        setPreference();
     });
+
+reflectPreference();
