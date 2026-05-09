@@ -99,7 +99,7 @@ class TestProtoDescriptorParser(unittest.TestCase):
                 "foo/bar.proto",
                 41)
 
-        expected = 'https://git.example.com/-/blob/main/foo/bar.proto#L41'
+        expected = 'https://git.example.com/-/blob/main/foo/bar.proto#L42'
 
         self.assertEqual(got, expected)
 
@@ -113,7 +113,7 @@ class TestProtoDescriptorParser(unittest.TestCase):
                 "foo/bar.proto",
                 41)
 
-        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41'
+        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L42'
 
         self.assertEqual(got, expected)
 
@@ -127,6 +127,6 @@ class TestProtoDescriptorParser(unittest.TestCase):
                 "/foo/bar.proto",
                 41)
 
-        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41'
+        expected = 'https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L42'
 
         self.assertEqual(got, expected)

@@ -4,7 +4,7 @@
   <span>
     <a href="#message-{{ message.full_name }}" title="{{ message.full_name }}">message {{ message.name }}</a>
   {% if message.parent_message %}
-    <span style="font-size: 0.7em; font-weight: normal">(Nested in {{ common.type_name(message.parent_message) }})</span>
+    <br /><span style="font-size: 0.7em; font-weight: normal">(Nested in {{ common.type_name(message.parent_message) }})</span>
   {% endif %}
   </span>
   {% if message.repository_url %}
