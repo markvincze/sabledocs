@@ -94,7 +94,7 @@ html.dark div.oneof-heading {
     background-color: transparent !important;
 }
 
-body.dark .table.is-hoverable tbody tr.nohover:hover {
+html.dark .table.is-hoverable tbody tr.nohover:hover {
     background-color: transparent !important;
 }
 
@@ -102,78 +102,79 @@ html.dark {
     background-color: $dark;
 }
 
-body.dark,
-body.dark .box,
-body.dark h1, body.dark h2, body.dark h3, body.dark h4, body.dark h5, body.dark h6,
-body.dark table thead td,
-body.dark table thead th,
-body.dark table {
+html.dark,
+html.dark body,
+html.dark .box,
+html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6,
+html.dark table thead td,
+html.dark table thead th,
+html.dark table {
     background-color: $dark;
     color: $light;
 }
 
-body.dark .table.is-hoverable tbody tr:not(.is-selected):hover {
+html.dark .table.is-hoverable tbody tr:not(.is-selected):hover {
     background-color: #252525;
 }
 
-body.dark a:hover {
+html.dark a:hover {
     color: $light;
 }
 
-body.dark .box,
-body.dark .type-heading,
-body.dark td,
-body.dark th {
+html.dark .box,
+html.dark .type-heading,
+html.dark td,
+html.dark th {
     border-color: #444444
 }
 
-body.dark .subtitle,
-body.dark .title {
+html.dark .subtitle,
+html.dark .title {
     color: $light;
 }
 
-body.dark footer {
+html.dark footer {
     background-color: #101010;
 }
 
-body.dark .bottom-border {
+html.dark .bottom-border {
   border-color: #444444
 }
 
-body.dark hr {
+html.dark hr {
   background-color: #444444
 }
 
-body.dark .input, .textarea, .select select {
+html.dark .input, .textarea, .select select {
     background-color: #363636;
     border-color: #565656;
     border-radius: 4px;
     color: white;
 }
 
-body.dark input.input::placeholder {
+html.dark input.input::placeholder {
   color: #565656;
 }
 
-body.dark pre {
+html.dark pre {
   background: #2A2A2A;
 }
 
-body.dark code {
+html.dark code {
   background: #2A2A2A;
   color: #569cd6;
 }
 
-body.dark code a {
+html.dark code a {
   color: #569cd6;
 }
 
-body.dark .tag {
+html.dark .tag {
   background: #2A2A2A;
   color: $light;
 }
 
-body.dark strong {
+html.dark strong {
   color: $light;
 }
 

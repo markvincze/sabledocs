@@ -58,7 +58,7 @@ def build_source_code_url(repository_url, repository_type, repository_branch, re
         case RepositoryType.GITLAB:
             # ex: https://git.example.com/-/blob/main/myrepodir/foo/bar.proto#L41
             u = furl(repository_url) / '-' / 'blob' / repository_branch / repository_dir / file_path
-            u.fragment.add(f"L{line_number}")
+            u.fragment.add(f"L{line_number + 1}")
             u.path.normalize()
             return u.url
     return ""
